@@ -12,8 +12,10 @@
  * the License.
  */
 
-package org.ml4j.nn;
+package org.ml4j.nn.unsupervised;
 
+import org.ml4j.nn.NeuralNetwork;
+import org.ml4j.nn.NeuralNetworkContext;
 import org.ml4j.nn.layers.Layer;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
