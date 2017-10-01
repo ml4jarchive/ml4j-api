@@ -17,6 +17,7 @@
 package org.ml4j.nn.unsupervised;
 
 import org.ml4j.nn.layers.FeedForwardLayer;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * An AutoEncoder is an UnsupervisedNeuralNetwork consisting of FeedForwardLayers.
@@ -26,4 +27,7 @@ import org.ml4j.nn.layers.FeedForwardLayer;
 public interface AutoEncoder extends UnsupervisedNeuralNetwork<FeedForwardLayer<?>, 
     AutoEncoderContext, AutoEncoder> {
 
+  NeuronsActivation encode(NeuronsActivation unencoded, AutoEncoderContext context);
+  
+  NeuronsActivation decode(NeuronsActivation encoded, AutoEncoderContext context);
 }

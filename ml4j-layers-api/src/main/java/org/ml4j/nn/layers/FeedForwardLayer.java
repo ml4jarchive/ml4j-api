@@ -17,7 +17,7 @@
 package org.ml4j.nn.layers;
 
 /**
- * A FeedForwardLayer is a directed Layer which composes input neurons and output neurons into a
+ * A FeedForwardLayer is a DirectedLayer which composes input neurons and output neurons into a
  * directed acyclic bipartite graph.
  * There are no input-input connections or output-output connections, only input-output connections.
  * 
@@ -25,6 +25,5 @@ package org.ml4j.nn.layers;
  *
  * @param <L> The type of FeedForwardLayer
  */
-public interface FeedForwardLayer<L extends FeedForwardLayer<L>> extends Layer<L> {
-  
+public interface FeedForwardLayer<L extends FeedForwardLayer<L>> extends DirectedLayer<L> {
 }

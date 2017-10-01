@@ -38,4 +38,27 @@ public interface Matrix extends Serializable {
    * @return The number of columns of this matrix
    */
   int getColumns();
+
+  /**
+   * Obtain data of this matrix returned as a flattened array.
+   * 
+   * @return The data of this matrix returned as a flattened array
+   */
+  double[] toArray();
+
+  /**
+   * Return the row of this Matrix identified by rowIndex.
+   * 
+   * @param rowIndex The index of the row to return
+   * @return The row of this Matrix identified by rowIndex
+   */
+  Matrix getRow(int rowIndex);
+  
+  /**
+   * Return the column of this Matrix identified by columnIndex.
+   * 
+   * @param columnIndex The index of the column to return
+   * @return The row of this Matrix identified by columnIndex
+   */
+  Matrix getColumn(int columnIndex);
 }
