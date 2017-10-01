@@ -16,6 +16,8 @@
 
 package org.ml4j.nn.layers;
 
+import org.ml4j.nn.axons.Axons;
+
 import java.io.Serializable;
 
 /**
@@ -25,7 +27,7 @@ import java.io.Serializable;
  *
  * @param <L> The type of Layer
  */
-public interface Layer<L extends Layer<L>> extends Serializable {
+public interface Layer<A extends Axons<?, ?, ?>, L extends Layer<A, L>> extends Serializable {
 
   /**
    * Duplicates this Layer.
@@ -33,4 +35,15 @@ public interface Layer<L extends Layer<L>> extends Serializable {
    * @return A deep clone of this Layer
    */
   L dup();
+  
+  /**
+   * Each Layer is associated with a primary type of Axons, after which the Layer is often named.
+   * For example, Fully Connected Layers contain FullyConnectedAxons, ConvolutionalLayers contain
+   * ConvolutionalAxons.
+   * Layers may contain other secondary Axons they may use for pre-or-post processing of
+   * activations, for example, Axons which are to be trained for batch normalisation.
+   * 
+   * @return The primary Axons for this Layer
+   */
+  A getPrimaryAxons();
 }

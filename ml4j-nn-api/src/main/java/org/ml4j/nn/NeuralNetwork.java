@@ -28,7 +28,7 @@ import java.util.List;
  * @param <C> The NeuralNetworkContext used with this NeuralNetwork
  * @param <N> The type of NeuralNetwork
  */
-public interface NeuralNetwork<L extends Layer<?>, C extends NeuralNetworkContext, 
+public interface NeuralNetwork<L extends Layer<?, ?>, C extends NeuralNetworkContext, 
     N extends NeuralNetwork<L, C, N>> extends Serializable {
 
   /**

@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,20 +14,22 @@
  * limitations under the License.
  */
 
-package org.ml4j.nn.unsupervised;
-
-import org.ml4j.nn.layers.FeedForwardLayer;
-import org.ml4j.nn.neurons.NeuronsActivation;
+package org.ml4j.nn.neurons;
 
 /**
- * An AutoEncoder is an UnsupervisedNeuralNetwork consisting of FeedForwardLayers.
+ * Neurons that are arranged in a 3D shape.
  * 
  * @author Michael Lavelle
  */
-public interface AutoEncoder extends UnsupervisedNeuralNetwork<FeedForwardLayer<?, ?>, 
-    AutoEncoderContext, AutoEncoder> {
+public class Neurons3D extends Neurons {
 
-  NeuronsActivation encode(NeuronsActivation unencoded, AutoEncoderContext context);
-  
-  NeuronsActivation decode(NeuronsActivation encoded, AutoEncoderContext context);
+  /**
+   * Default serialization id.
+   */
+  private static final long serialVersionUID = 1L;
+
+  public Neurons3D(int width, int height, int depth, boolean hasBiasUnit) {
+    super(width * height * depth, hasBiasUnit);
+  }
 }
+

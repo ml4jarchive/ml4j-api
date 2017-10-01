@@ -14,16 +14,19 @@
 
 package org.ml4j.nn.layers;
 
+import org.ml4j.nn.axons.Axons;
+
 /**
  * Represents a Directed Layer of a NeuralNetwork - a Layer through which information propagates
  * from input neurons to output neurons in one direction.
  * 
  * @author Michael Lavelle
  * 
+
  * @param <L> The type of DirectedLayer
  */
-public interface DirectedLayer<L extends DirectedLayer<L>>
-    extends Layer<L> {
+public interface DirectedLayer<A extends Axons<?,?,?>, L extends DirectedLayer<A, L>>
+    extends Layer<A, L> {
 
   /**
    * @return The number of input neurons (including any bias unit) to the left of this 
@@ -36,4 +39,6 @@ public interface DirectedLayer<L extends DirectedLayer<L>>
    *     Directed Layer.
    */
   int getOutputNeuronCount();
+  
+
 }

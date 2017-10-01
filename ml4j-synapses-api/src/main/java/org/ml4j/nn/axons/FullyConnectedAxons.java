@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.ml4j.nn.unsupervised;
+package org.ml4j.nn.axons;
 
-import org.ml4j.nn.layers.FeedForwardLayer;
-import org.ml4j.nn.neurons.NeuronsActivation;
+import org.ml4j.nn.neurons.Neurons;
 
 /**
- * An AutoEncoder is an UnsupervisedNeuralNetwork consisting of FeedForwardLayers.
+ * Encapsulates the connections between two sets of Neurons which are fully connected (ie. each
+ * Neuron on the left of the Axons is connected to each Neuron on the right )
  * 
  * @author Michael Lavelle
+ *
+ * @param <L> The type of Neurons on the left hand side of these FullyConnectedAxons
+ * @param <R> The type of Neurons on the right hand side of these FullyConnectedAxons
  */
-public interface AutoEncoder extends UnsupervisedNeuralNetwork<FeedForwardLayer<?, ?>, 
-    AutoEncoderContext, AutoEncoder> {
+public interface FullyConnectedAxons<L extends Neurons, R extends Neurons> 
+    extends Axons<L, R, FullyConnectedAxons<L, R>> {
 
-  NeuronsActivation encode(NeuronsActivation unencoded, AutoEncoderContext context);
-  
-  NeuronsActivation decode(NeuronsActivation encoded, AutoEncoderContext context);
 }
