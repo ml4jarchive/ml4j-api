@@ -24,10 +24,8 @@ import org.ml4j.nn.neurons.Neurons;
  * 
  * @author Michael Lavelle
  *
- * @param <L> The type of Neurons on the left hand side of these FullyConnectedAxons
- * @param <R> The type of Neurons on the right hand side of these FullyConnectedAxons
  */
-public interface FullyConnectedAxons<L extends Neurons, R extends Neurons> 
-    extends Axons<L, R, FullyConnectedAxons<L, R>> {
+public interface FullyConnectedAxons
+    extends Axons<Neurons, Neurons, FullyConnectedAxons> {
 
 }
