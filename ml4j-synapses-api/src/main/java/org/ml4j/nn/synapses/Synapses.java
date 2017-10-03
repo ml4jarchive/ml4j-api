@@ -12,16 +12,30 @@
  * the License.
  */
 
-package org.ml4j.nn.layers;
+package org.ml4j.nn.synapses;
 
-import org.ml4j.nn.neurons.NeuronsActivationContext;
+import org.ml4j.nn.axons.Axons;
+
+import java.io.Serializable;
 
 /**
- * Encapsulates the runtime context used with a Layer.
+ * Synapses are containers for Axons with optional surrounding
+ * transformations such as ActivationFunctions.
  * 
  * @author Michael Lavelle
+ *
+ * @param <A> The type of Axons within these Synapses
+ * @param <S> The type of Synapses
  */
-public interface LayerContext extends NeuronsActivationContext {
+public interface Synapses<A extends Axons<?,?,?>, S extends Synapses<A, S>> extends Serializable {
 
-
+  /**
+   * @return The Axons within these Synapses.
+   */
+  A getAxons();
+  
+  /**
+   * @return A deep copy of these Synapses.
+   */
+  S dup();
 }

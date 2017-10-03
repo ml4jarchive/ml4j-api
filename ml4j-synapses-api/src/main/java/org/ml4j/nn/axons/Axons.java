@@ -64,4 +64,9 @@ public interface Axons<L extends Neurons, R extends Neurons, A extends Axons<L, 
    */
   public NeuronsActivation pushRightToLeft(NeuronsActivation rightNeuronsActivation,
       AxonsContext axonsContext);
+  
+  /**
+   * @return A deep copy of these Axons.
+   */
+  public A dup();
 }

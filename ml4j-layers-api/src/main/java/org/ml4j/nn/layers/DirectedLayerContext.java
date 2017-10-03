@@ -14,6 +14,8 @@
 
 package org.ml4j.nn.layers;
 
+import org.ml4j.nn.synapses.DirectedSynapsesContext;
+
 /**
  * Encapsulates the runtime context used with a DirectedLayer.
  * 
@@ -21,4 +23,9 @@ package org.ml4j.nn.layers;
  */
 public interface DirectedLayerContext extends LayerContext {
 
+  /**
+   * @return The context we use to propagate data through the directed 
+   *         synapses of this Layer.
+   */
+  DirectedSynapsesContext createSynapsesContext();
 }

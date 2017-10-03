@@ -12,16 +12,23 @@
  * the License.
  */
 
-package org.ml4j.nn.layers;
+package org.ml4j.nn.synapses;
+
+import org.ml4j.nn.axons.AxonsContext;
 
 import org.ml4j.nn.neurons.NeuronsActivationContext;
 
 /**
- * Encapsulates the runtime context used with a Layer.
+ * Defines the context for activations travelling through Synapses.
  * 
  * @author Michael Lavelle
+ *
  */
-public interface LayerContext extends NeuronsActivationContext {
+public interface SynapsesContext extends NeuronsActivationContext {
 
-
+  /**
+   * @return The context we use for activations travelling through
+   *        the Axons within these Synapses.
+   */
+  AxonsContext createAxonsContext();
 }

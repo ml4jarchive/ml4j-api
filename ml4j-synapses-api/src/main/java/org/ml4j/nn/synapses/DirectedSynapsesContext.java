@@ -12,16 +12,14 @@
  * the License.
  */
 
-package org.ml4j.nn.layers;
-
-import org.ml4j.nn.neurons.NeuronsActivationContext;
+package org.ml4j.nn.synapses;
 
 /**
- * Encapsulates the runtime context used with a Layer.
+ * Defines the context for activations travelling through DirectedSynapses.
  * 
  * @author Michael Lavelle
+ *
  */
-public interface LayerContext extends NeuronsActivationContext {
-
+public interface DirectedSynapsesContext extends SynapsesContext {
 
 }
