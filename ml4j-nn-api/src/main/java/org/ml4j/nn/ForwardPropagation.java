@@ -18,7 +18,17 @@ package org.ml4j.nn;
 
 import org.ml4j.nn.neurons.NeuronsActivation;
 
+/**
+ * Encapsulates the artifacts generated from a forward propagation through a
+ * DirectedNeuralNetwork.
+ * 
+ * @author Michael Lavelle
+ */
 public interface ForwardPropagation {
 
+  /**
+   * @return The output activations at the
+   *        right hand side of a DirectedNeuralNetwork after a forward propagation.
+   */
   NeuronsActivation getOutputs();
 }
