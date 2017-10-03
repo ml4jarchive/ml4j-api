@@ -14,6 +14,8 @@
 
 package org.ml4j.nn.layers;
 
+import org.ml4j.nn.neurons.NeuronsActivation;
+
 /**
  * Represents a Directed Layer of a NeuralNetwork - a Layer through which information propagates
  * from input neurons to output neurons in one direction.
@@ -36,4 +38,17 @@ public interface DirectedLayer<L extends DirectedLayer<L>>
    *     Directed Layer.
    */
   int getOutputNeuronCount();
+  
+  /**
+   * Obtain the input NeuronsActivation which maximises the output
+   *        of the specified output neuron.
+   * 
+   * @param outpuNeuronIndex The index of the output neuron we wish to obtain the
+   *        output activation maximising input activation for.
+   * @param directedLayerContext The directed layer context
+   * @return The input NeuronsActivation which maximises the output
+   *        of the specified output neuron.
+   */
+  NeuronsActivation getOptimalInputForOutputNeuron(int outpuNeuronIndex, 
+      DirectedLayerContext directedLayerContext);
 }

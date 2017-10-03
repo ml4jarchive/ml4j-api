@@ -16,13 +16,13 @@
 
 package org.ml4j.nn.unsupervised;
 
-import org.ml4j.nn.NeuralNetworkContext;
+import org.ml4j.nn.DirectedNeuralNetworkContext;
 
 /**
  * Encapsulates the runtime context used with an AutoEncoder.
  * 
  * @author Michael Lavelle
  */
-public interface AutoEncoderContext extends NeuralNetworkContext {
+public interface AutoEncoderContext extends DirectedNeuralNetworkContext {
 
 }
