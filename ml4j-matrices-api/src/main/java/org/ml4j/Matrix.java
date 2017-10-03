@@ -61,4 +61,31 @@ public interface Matrix extends Serializable {
    * @return The row of this Matrix identified by columnIndex
    */
   Matrix getColumn(int columnIndex);
+
+  /**
+   * @return A Matrix formed from the sigmoid function applied to each element of this Matrix.
+   */
+  Matrix sigmoid();
+
+  /**
+   * A Matrix formed by multiplying this matrix by the other Matrix.
+   * 
+   * @param other The other Matrix
+   * @return The result
+   */
+  Matrix mmul(Matrix other);
+
+  /**
+   * @return A clone of this Matrix.
+   */
+  Matrix dup();
+  
+  /**
+   * Obtain the value in the Matrix at row and column specified.
+   * 
+   * @param row The row
+   * @param column The column
+   * @return The value in the Matrix at row and column specified
+   */
+  double get(int row, int column);
 }
