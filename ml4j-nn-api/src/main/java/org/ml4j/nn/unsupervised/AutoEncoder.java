@@ -29,7 +29,21 @@ public interface AutoEncoder extends UnsupervisedNeuralNetwork<FeedForwardLayer<
     AutoEncoderContext, AutoEncoder>, DirectedNeuralNetwork<FeedForwardLayer<?, ?>, 
     AutoEncoderContext, AutoEncoder> {
 
+  /**
+   * Encode the specified activations.
+   * 
+   * @param unencoded The activations we wish to encode.
+   * @param context The AutoEncoder context under which we perform this encode.
+   * @return The encoded activations.
+   */
   NeuronsActivation encode(NeuronsActivation unencoded, AutoEncoderContext context);
   
+  /**
+   * Decode the specified activations.
+   * 
+   * @param encoded The activations we wish to decode.
+   * @param context The AutoEncoder context under which we perform this decode.
+   * @return The decoded activations.
+   */
   NeuronsActivation decode(NeuronsActivation encoded, AutoEncoderContext context);
 }
