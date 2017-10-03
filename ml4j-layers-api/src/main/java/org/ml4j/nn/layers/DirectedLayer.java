@@ -14,6 +14,7 @@
 
 package org.ml4j.nn.layers;
 
+import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -41,6 +42,12 @@ public interface DirectedLayer<A extends Axons<?,?,?>, L extends DirectedLayer<A
    */
   int getOutputNeuronCount();
   
+  /**
+   * @return The primary differentiable activation function configured for this DirectedLayer.   
+   * 
+   */
+  DifferentiableActivationFunction getPrimaryActivationFunction();
+
   /**
    * Obtain the input NeuronsActivation which maximises the output
    *        of the specified output neuron.
