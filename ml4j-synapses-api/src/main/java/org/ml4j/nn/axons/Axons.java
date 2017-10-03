@@ -36,14 +36,14 @@ public interface Axons<L extends Neurons, R extends Neurons, A extends Axons<L, 
    * 
    * @return The Neurons on the left hand side of these Axons
    */
-  public L getLeftNeurons();
+  L getLeftNeurons();
 
   /**
    * Get the Neurons on the right hand side of these Axons.
    * 
    * @return The Neurons on the right hand side of these Axons
    */
-  public R getRightNeurons();
+  R getRightNeurons();
 
   /**
    * Push the activations from left to right through these Axons.
@@ -52,7 +52,7 @@ public interface Axons<L extends Neurons, R extends Neurons, A extends Axons<L, 
    * @param axonsContext The context of the activation
    * @return The activation resulting at the right hand side of these Axons
    */
-  public NeuronsActivation pushLeftToRight(NeuronsActivation leftNeuronsActivation,
+  NeuronsActivation pushLeftToRight(NeuronsActivation leftNeuronsActivation,
       AxonsContext axonsContext);
 
   /**
@@ -62,11 +62,11 @@ public interface Axons<L extends Neurons, R extends Neurons, A extends Axons<L, 
    * @param axonsContext The context of the activation
    * @return The activation resulting at the left hand side of these Axons
    */
-  public NeuronsActivation pushRightToLeft(NeuronsActivation rightNeuronsActivation,
+  NeuronsActivation pushRightToLeft(NeuronsActivation rightNeuronsActivation,
       AxonsContext axonsContext);
   
   /**
    * @return A deep copy of these Axons.
    */
-  public A dup();
+  A dup();
 }
