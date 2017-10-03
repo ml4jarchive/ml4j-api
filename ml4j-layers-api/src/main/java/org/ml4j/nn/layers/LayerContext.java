@@ -14,11 +14,18 @@
 
 package org.ml4j.nn.layers;
 
+import org.ml4j.nn.axons.AxonsContext;
+import org.ml4j.nn.neurons.NeuronsActivationContext;
+
 /**
- * Encapsulates the runtime context used with a DirectedLayer.
+ * Encapsulates the runtime context used with a Layer.
  * 
  * @author Michael Lavelle
  */
-public interface DirectedLayerContext extends LayerContext {
+public interface LayerContext extends NeuronsActivationContext {
 
+  /**
+   * @return The context we use to propagate data through the primary axons.
+   */
+  AxonsContext createPrimaryAxonsContext();
 }
