@@ -16,6 +16,7 @@
 
 package org.ml4j.nn.unsupervised;
 
+import org.ml4j.nn.DirectedNeuralNetwork;
 import org.ml4j.nn.layers.FeedForwardLayer;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -25,6 +26,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @author Michael Lavelle
  */
 public interface AutoEncoder extends UnsupervisedNeuralNetwork<FeedForwardLayer<?, ?>, 
+    AutoEncoderContext, AutoEncoder>, DirectedNeuralNetwork<FeedForwardLayer<?, ?>, 
     AutoEncoderContext, AutoEncoder> {
 
   NeuronsActivation encode(NeuronsActivation unencoded, AutoEncoderContext context);
