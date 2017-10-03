@@ -19,4 +19,15 @@ public interface DirectedNeuralNetworkContext extends NeuralNetworkContext {
    *        by the layerIndex.
    */
   DirectedLayerContext createLayerContext(int layerIndex);
+  
+  /**
+   * @return The index of the starting layer for a propagation through a DirectedNeuralNetwork.
+   */
+  int getStartLayerIndex();
+
+  /**
+   * @return The index of the end layer for a propagation through a DirectedNeuralNetwork, or null
+   *         if the propagation is required to reach the final Layer.
+   */
+  Integer getEndLayerIndex();
 }

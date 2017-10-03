@@ -15,6 +15,7 @@
 package org.ml4j.nn;
 
 import org.ml4j.nn.layers.DirectedLayer;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * Base interface for classes representing a DirectedNeuralNetwork.
@@ -29,4 +30,15 @@ public interface DirectedNeuralNetwork<L extends DirectedLayer<?, ?>,
     C extends NeuralNetworkContext, 
     N extends DirectedNeuralNetwork<L, C, N>> extends NeuralNetwork<L, C, N> {
 
+  /**
+   * Forward propagate the activation through this DirectedLayer
+   * 
+   * @param inputActivation The NeuronsActivation input on the left hand side of this 
+   *        DirectedLayer.
+   * @param context The context in which we are performing the forward propagation
+   * @return A ForwardPropagation instance encapsulating the artifacts generated during the
+   *         forward propagation through this DirectedLayer, including the NeuronsActivation output
+   *         on the right hand side of the DirectedLayer
+   */
+  ForwardPropagation forwardPropagate(NeuronsActivation inputActivation, C context);
 }
