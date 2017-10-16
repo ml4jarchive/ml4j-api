@@ -15,6 +15,9 @@
 package org.ml4j.nn.neurons;
 
 import org.ml4j.Matrix;
+import org.ml4j.MatrixFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Encapsulates the activation activities of a set of Neurons.
@@ -23,6 +26,8 @@ import org.ml4j.Matrix;
  */
 public class NeuronsActivation {
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(NeuronsActivation.class);
+  
   /**
    * The matrix of activations.
    */
@@ -102,5 +107,52 @@ public class NeuronsActivation {
   public int getFeatureCountExcludingBias() {
     int featureCountIncludingBias = getFeatureCountIncludingBias();
     return biasUnitIncluded ? (featureCountIncludingBias - 1) : featureCountIncludingBias;
+  }
+
+  /**
+   * Returns this NeuronsActivation ensuring the presence of a bias unit is consistent with the 
+   * requested withBiasUnit parameter.
+   * 
+   * @param withBiasUnit Whether a bias unit should be included in the returned activation
+   * @param neuronsActivationContext The activation context
+   * @return this NeuronsActivation ensuring the presence of a bias unit is consistent with the 
+   *         requested withBiasUnit parameter.
+   */
+  public NeuronsActivation withBiasUnit(boolean withBiasUnit,
+      NeuronsActivationContext neuronsActivationContext) {
+
+    MatrixFactory matrixFactory = neuronsActivationContext.getMatrixFactory();
+
+    if (isBiasUnitIncluded()) {
+      if (withBiasUnit) {
+        return this;
+      } else {
+        throw new UnsupportedOperationException("Removing bias unit not yet supported");
+      }
+    } else {
+      if (withBiasUnit) {
+
+        if (featureOrientation == NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET) {
+
+          Matrix bias = matrixFactory.createOnes(activations.getRows(), 1);
+          LOGGER.debug("Adding bias unit to activations");
+          Matrix activationsWithBias = bias.appendHorizontally(activations);
+          return new NeuronsActivation(activationsWithBias, true,
+              NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET);
+
+        } else if (featureOrientation 
+            == NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET) {
+          Matrix bias = matrixFactory.createOnes(1, activations.getColumns());
+          Matrix activationsWithBias = bias.appendVertically(activations);
+          return new NeuronsActivation(activationsWithBias, true,
+              NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET);
+        } else {
+          throw new IllegalStateException(
+              "Unsupported feature orientation type:" + featureOrientation);
+        }
+      } else {
+        return this;
+      }
+    }
   }
 }
