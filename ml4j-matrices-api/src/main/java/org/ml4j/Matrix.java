@@ -88,4 +88,20 @@ public interface Matrix extends Serializable {
    * @return The value in the Matrix at row and column specified
    */
   double get(int row, int column);
+  
+  /**
+   * Append the other matrix to the right of this matrix horizontally
+   * 
+   * @param other The other matrix to append.
+   * @return The appended Matrix
+   */
+  Matrix appendHorizontally(Matrix other);
+  
+  /**
+   * Append the other matrix to the bottom of this matrix vertically.
+   * 
+   * @param other The other matrix to append.
+   * @return The appended Matrix
+   */
+  Matrix appendVertically(Matrix other);
 }
