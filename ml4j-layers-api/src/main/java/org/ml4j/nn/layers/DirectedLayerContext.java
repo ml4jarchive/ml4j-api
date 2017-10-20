@@ -24,7 +24,7 @@ import org.ml4j.nn.synapses.DirectedSynapsesContext;
 public interface DirectedLayerContext extends LayerContext {
 
   /**
-   * @param The index of the synapses within this DirectedLayer
+   * @param synapsesIndex The index of the synapses within this DirectedLayer.
    * @return The context we use to propagate data through the directed 
    *         synapses of this Layer.
    */
