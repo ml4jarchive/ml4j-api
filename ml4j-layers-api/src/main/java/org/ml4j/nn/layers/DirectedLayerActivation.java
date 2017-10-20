@@ -29,4 +29,10 @@ public interface DirectedLayerActivation {
    *        through a DirectedLayer.
    */
   NeuronsActivation getOutput();
+  
+  DirectedLayer<?,?> getLayer();
+  
+  //public List<DirectedSynapsesActivation> getSynapsesActivations();
+  public DirectedLayerGradient backPropagate(NeuronsActivation outpuGradient, 
+      DirectedLayerContext arg1, boolean outerLayer);
 }

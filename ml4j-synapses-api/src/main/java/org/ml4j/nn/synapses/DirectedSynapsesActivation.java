@@ -29,4 +29,10 @@ public interface DirectedSynapsesActivation {
    *        following a forward propagation.
    */
   public NeuronsActivation getOutput();
+  
+  public DirectedSynapses<?> getSynapses();
+  
+  DirectedSynapsesGradient backPropagate(NeuronsActivation neuronsActivation, 
+      DirectedSynapsesContext synapsesContext, boolean outerLayer);
+
 }
