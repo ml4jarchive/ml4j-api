@@ -69,7 +69,7 @@ public interface MatrixFactory {
    * Create a new uninitialised Matrix for the provided shape
    * 
    * @param rows The number of rows
-   * @param columns The number of columns
+   * @param cols The number of columns
    * @return A new Matrix of size (rows, columns).
    */
   Matrix createMatrix(int rows, int cols);
