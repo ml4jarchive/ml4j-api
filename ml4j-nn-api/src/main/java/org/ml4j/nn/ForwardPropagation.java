@@ -29,7 +29,6 @@ public interface ForwardPropagation {
    */
   NeuronsActivation getOutputs();
 
-
   BackPropagation backPropagate(NeuronsActivation neuronActivationGradients,
       DirectedNeuralNetworkContext context);
 

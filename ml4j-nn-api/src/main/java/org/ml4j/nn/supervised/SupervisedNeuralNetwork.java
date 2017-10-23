@@ -22,24 +22,24 @@ import org.ml4j.nn.layers.Layer;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Base interface for classes representing an UnsupervisedNeuralNetwork.
+ * Base interface for classes representing a SupervisedNeuralNetwork.
  *
- * @param <N> The type of {@link org.ml4j.nn.SupervisedNeuralNetwork}
- * @param <C> The specific type of {@link org.ml4j.nn.NeuralNetworkTrainingContext} used to 
- *      train this UnsupervisedNeuralNetwork
+ * @param <L> The type of Layer
+ * @param <C> The type of runtime NeuralNetworkContext used with this UnsupervisedNeuralNetwork
+ * @param <N> The type of SupervisedNeuralNetwork
  */
 public interface SupervisedNeuralNetwork<L extends Layer<?, ?, ?>, C extends NeuralNetworkContext, 
     N extends SupervisedNeuralNetwork<L, C, N>
     > extends NeuralNetwork<L, C, N> {
 
   /**
-   * Trains the UnsupervisedNeuralNetwork
+   * Trains the SupervisedNeuralNetwork.
    * 
-   * @param trainingDataActivations The {@link org.ml4j.nn.synapses.api.NeuronsActivation} produced
+   * @param trainingDataActivations The NeuronsActivation produced
    *       by the training data
-   * @param labelActivations The {@link org.ml4j.nn.synapses.api.NeuronsActivation} produced
-   *       by the training data
-   * @param trainingContext The {@link org.ml4j.nn.NeuralNetworkTrainingContext} used for training
+   * @param labelActivations The NeuronsActivation produced
+   *       by the training labels
+   * @param trainingContext The NeuralNetworkContext used for training
    */
   public void train(NeuronsActivation trainingDataActivations, NeuronsActivation labelActivations, 
       C trainingContext);

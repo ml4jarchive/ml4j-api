@@ -22,11 +22,10 @@ import org.ml4j.nn.layers.FeedForwardLayer;
  * 
  * @author Michael Lavelle
  *
- * @param <C> The specific type of {@link org.ml4j.nn.NeuralNetworkTrainingContext} 
- *          used to train this AutoEncoder.
+ * @param <C> The specific type of FeedForwardNeuralNetworkContext 
+ *          used to train this FeedForwardNeuralNetwork.
  */
 public interface FeedForwardNeuralNetwork<C extends FeedForwardNeuralNetworkContext, 
     N extends FeedForwardNeuralNetwork<C, N>> extends 
     DirectedNeuralNetwork<FeedForwardLayer<?, ?>, C, N> {
-
 }

@@ -22,11 +22,9 @@ import org.ml4j.nn.layers.FeedForwardLayer;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
+ * Interface for a supervised FeedForwardNeuralNetwork.
  * 
  * @author Michael Lavelle
- *
- * @param <C> The specific type of {@link org.ml4j.nn.NeuralNetworkTrainingContext} 
- *      used to train this AutoEncoder
  */
 public interface SupervisedFeedForwardNeuralNetwork extends 
     SupervisedNeuralNetwork<FeedForwardLayer<?, ?>, FeedForwardNeuralNetworkContext, 
@@ -44,6 +42,15 @@ public interface SupervisedFeedForwardNeuralNetwork extends
   public void train(NeuronsActivation trainingDataActivations, 
       NeuronsActivation trainingLabelActivations, FeedForwardNeuralNetworkContext trainingContext);
 
+  /**
+   * Obtains the accuracy  of this neural network given the inputs and desired
+   * classification activations.
+   * 
+   * @param inputActivations The input activations
+   * @param desiredClassificationActivations The desired classification activations
+   * @param context The NeuralNetworkContext used for classification
+   * @return The classification accuracy
+   */
   public double getClassificationAccuracy(NeuronsActivation inputActivations,
       NeuronsActivation desiredClassificationActivations, FeedForwardNeuralNetworkContext context); 
 }
