@@ -44,5 +44,6 @@ public interface SupervisedFeedForwardNeuralNetwork extends
   public void train(NeuronsActivation trainingDataActivations, 
       NeuronsActivation trainingLabelActivations, FeedForwardNeuralNetworkContext trainingContext);
 
-  
+  public double getClassificationAccuracy(NeuronsActivation inputActivations,
+      NeuronsActivation desiredClassificationActivations, FeedForwardNeuralNetworkContext context); 
 }
