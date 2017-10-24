@@ -12,21 +12,18 @@
  * the License.
  */
 
-package org.ml4j.nn.layers;
+package org.ml4j.nn;
 
-import org.ml4j.nn.synapses.DirectedSynapsesContext;
+import org.ml4j.nn.layers.DirectedLayerGradient;
+
+import java.util.List;
 
 /**
- * Encapsulates the runtime context used with a DirectedLayer.
+ * Encapsulates the artifacts generated from a back propagation through a DirectedNeuralNetwork.
  * 
  * @author Michael Lavelle
  */
-public interface DirectedLayerContext extends LayerContext {
+public interface BackPropagation {
 
-  /**
-   * @param synapsesIndex The index of the synapses within this DirectedLayer.
-   * @return The context we use to propagate data through the directed 
-   *         synapses of this Layer.
-   */
-  DirectedSynapsesContext createSynapsesContext(int synapsesIndex);
+  List<DirectedLayerGradient> getDirectedLayerGradients();
 }

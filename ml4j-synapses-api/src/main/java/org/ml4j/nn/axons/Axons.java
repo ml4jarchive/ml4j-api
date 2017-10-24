@@ -14,6 +14,7 @@
 
 package org.ml4j.nn.axons;
 
+import org.ml4j.Matrix;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -64,6 +65,12 @@ public interface Axons<L extends Neurons, R extends Neurons, A extends Axons<L, 
    */
   NeuronsActivation pushRightToLeft(NeuronsActivation rightNeuronsActivation,
       AxonsContext axonsContext);
+  
+  
+  /**
+   * @return A clone of the connection weights Matrix for these Axons.
+   */
+  Matrix getDetachedConnectionWeights();
   
   /**
    * @return A deep copy of these Axons.

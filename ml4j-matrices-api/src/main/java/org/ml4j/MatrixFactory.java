@@ -32,6 +32,8 @@ public interface MatrixFactory {
    * @return A new Matrix of size (rows, columns) with every element value set to 1
    */
   Matrix createOnes(int rows, int columns);
+  
+  Matrix createOnes(int rows);
 
   /**
    * Create a new Matrix with every element value set to 0.
@@ -52,6 +54,8 @@ public interface MatrixFactory {
    */
   Matrix createRandn(int rows, int columns);
 
+  Matrix createRand(int rows, int columns);
+  
   /**
    * Create a new Matrix from the provided double array
    * 
@@ -60,4 +64,50 @@ public interface MatrixFactory {
    *         data[r][c].
    */
   Matrix createMatrix(double[][] data);
+ 
+  /**
+   * Create a new uninitialised Matrix for the provided shape
+   * 
+   * @param rows The number of rows
+   * @param cols The number of columns
+   * @return A new Matrix of size (rows, columns).
+   */
+  Matrix createMatrix(int rows, int cols);
+
+  /**
+   * Create a new Matrix from the provided flattened double array
+   * 
+   * @param data The values of this matrix, with the value for row r, column c equal to data[r][c].
+   * @return A new Matrix of size (rows, columns) with the value for row r, column c equal to
+   *         data[r * cols + c].
+   */
+  Matrix createMatrix(int rows, int cols, double[] data);
+
+  /**
+   * @return Create a new uninitialised Matrix.
+   */
+  Matrix createMatrix();
+
+  /**
+   * @return Create a new uninitialised Matrix wrapping the data.
+   */
+  Matrix createMatrix(double[] data);
+  
+  /**
+   * Return a new Matrix formed of a horizontal concatenation of matrix1, matrix2.
+   * 
+   * @param matrix1 The first Matrix
+   * @param matrix2 The second Matrix
+   * @return The horizontal concatenation
+   */
+  Matrix createHorizontalConcatenation(Matrix matrix1, Matrix matrix2);
+  
+  /**
+   * Return a new Matrix formed of a vertical concatenation of matrix1, matrix2.
+   * 
+   * @param matrix1 The first Matrix
+   * @param matrix2 The second Matrix
+   * @return The vertical concatenation
+   */
+  Matrix createVerticalConcatenation(Matrix matrix1, Matrix matrix2);
 }

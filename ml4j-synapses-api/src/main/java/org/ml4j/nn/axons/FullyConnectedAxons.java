@@ -26,6 +26,6 @@ import org.ml4j.nn.neurons.Neurons;
  *
  */
 public interface FullyConnectedAxons
-    extends Axons<Neurons, Neurons, FullyConnectedAxons> {
+    extends TrainableAxons<Neurons, Neurons, FullyConnectedAxons> {
 
 }

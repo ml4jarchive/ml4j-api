@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-package org.ml4j.nn.layers;
+package org.ml4j.nn;
 
-import org.ml4j.nn.axons.Axons;
+import org.ml4j.nn.layers.FeedForwardLayer;
 
 /**
- * A FeedForwardLayer is a DirectedLayer which composes input neurons and output neurons into a
- * directed acyclic bipartite graph.
- * There are no input-input connections or output-output connections, only input-output connections.
  * 
  * @author Michael Lavelle
  *
- * @param <A> The type of Axons in this FeedForwardLayer
- * @param <L> The type of FeedForwardLayer
+ * @param <C> The specific type of FeedForwardNeuralNetworkContext 
+ *          used to train this FeedForwardNeuralNetwork.
  */
-public interface FeedForwardLayer<A extends Axons<?, ?, ?>, L extends FeedForwardLayer<A, L>> 
-    extends DirectedLayer<A, L> {
+public interface FeedForwardNeuralNetwork<C extends FeedForwardNeuralNetworkContext, 
+    N extends FeedForwardNeuralNetwork<C, N>> extends 
+    DirectedNeuralNetwork<FeedForwardLayer<?, ?>, C, N> {
 }

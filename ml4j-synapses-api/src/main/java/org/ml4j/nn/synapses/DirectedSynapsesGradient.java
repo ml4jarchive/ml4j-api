@@ -12,21 +12,27 @@
  * the License.
  */
 
-package org.ml4j.nn.layers;
+package org.ml4j.nn.synapses;
 
-import org.ml4j.nn.synapses.DirectedSynapsesContext;
+import org.ml4j.Matrix;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Encapsulates the runtime context used with a DirectedLayer.
+ * Encapsulates the gradient-related artifacts as they propagate backwards through
+ * a DirectedSynapses instance.  
  * 
  * @author Michael Lavelle
  */
-public interface DirectedLayerContext extends LayerContext {
+public interface DirectedSynapsesGradient {
 
   /**
-   * @param synapsesIndex The index of the synapses within this DirectedLayer.
-   * @return The context we use to propagate data through the directed 
-   *         synapses of this Layer.
+   * @return The gradient of the Axons weights if they are trainable, or null otherwise.
    */
-  DirectedSynapsesContext createSynapsesContext(int synapsesIndex);
+  Matrix getTrainableAxonsGradient();
+
+  /**
+   * @return The backpropagated gradient passing backwards through the DirectedSynapses.
+   */
+  NeuronsActivation getOutput();
+
 }

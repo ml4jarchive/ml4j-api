@@ -22,8 +22,9 @@ import org.ml4j.nn.neurons.NeuronsActivation;
 /**
  * Base interface for classes representing an UnsupervisedNeuralNetwork.
  *
- * @param <N> The type of UnsupervisedNeuralNetwork
+ * @param <L> The type of Layer
  * @param <C> The type of runtime NeuralNetworkContext used with this UnsupervisedNeuralNetwork
+ * @param <N> The type of UnsupervisedNeuralNetwork
  */
 public interface UnsupervisedNeuralNetwork<L extends Layer<?, ?, ?>, 
     C extends NeuralNetworkContext, 

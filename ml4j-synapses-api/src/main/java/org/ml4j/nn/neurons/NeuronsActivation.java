@@ -141,7 +141,7 @@ public class NeuronsActivation {
               NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET);
 
         } else if (featureOrientation 
-            == NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET) {
+            == NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET) {
           Matrix bias = matrixFactory.createOnes(1, activations.getColumns());
           Matrix activationsWithBias = bias.appendVertically(activations);
           return new NeuronsActivation(activationsWithBias, true,

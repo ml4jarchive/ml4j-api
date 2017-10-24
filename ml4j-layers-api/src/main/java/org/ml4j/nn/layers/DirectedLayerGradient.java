@@ -14,19 +14,19 @@
 
 package org.ml4j.nn.layers;
 
-import org.ml4j.nn.synapses.DirectedSynapsesContext;
+import org.ml4j.nn.synapses.DirectedSynapsesGradient;
+
+import java.util.List;
 
 /**
- * Encapsulates the runtime context used with a DirectedLayer.
+ * Encapsulates the gradient-related artifacts back-propagating through a DirectedLayer.
  * 
  * @author Michael Lavelle
  */
-public interface DirectedLayerContext extends LayerContext {
+public interface DirectedLayerGradient {
 
   /**
-   * @param synapsesIndex The index of the synapses within this DirectedLayer.
-   * @return The context we use to propagate data through the directed 
-   *         synapses of this Layer.
+   * @return The list of DirectedSynapsesGradients back-propagating through a DirectedLayer.
    */
-  DirectedSynapsesContext createSynapsesContext(int synapsesIndex);
+  List<DirectedSynapsesGradient> getSynapsesGradients();
 }
