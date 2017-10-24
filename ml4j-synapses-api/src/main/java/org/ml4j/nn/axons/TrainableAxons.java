@@ -19,7 +19,7 @@ import org.ml4j.nn.neurons.Neurons;
 
 /**
  * Encapsulates the connections between two sets of Neurons, and allows for
- * retrieval and update of the connection weights.
+ * adjustment of the connection weights.
  * 
  * @author Michael Lavelle
  *
@@ -32,7 +32,9 @@ public interface TrainableAxons<L extends Neurons, R extends Neurons,
     extends Axons<L, R, A> {
   
   /**
-   * @param matrix The connection weights Matrix.
+   * @param adjustments The adjustment Matrix.
+   * @param adjustmentDirection The adjustment direction.
    */
-  public void setConnectionWeights(Matrix matrix);
+  public void adjustConnectionWeights(Matrix adjustments, 
+      ConnectionWeightsAdjustmentDirection adjustmentDirection);
 }
