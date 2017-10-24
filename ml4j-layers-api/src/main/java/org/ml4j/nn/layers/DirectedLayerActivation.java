@@ -29,4 +29,18 @@ public interface DirectedLayerActivation {
    *        through a DirectedLayer.
    */
   NeuronsActivation getOutput();
+  
+  /**
+   * @return The DirectedLayer that generated this DirectedLayerActivation.
+   */
+  DirectedLayer<?,?> getLayer();
+  
+  /**
+   * @param outerGradient The outer gradient to back propagate.
+   * @param layerContext The layer context.
+   * @param outerMostLayer Whether this is the outer most Layer of a NeuralNetwork.
+   * @return The back propagated DirectedLayerGradient.
+   */
+  DirectedLayerGradient backPropagate(NeuronsActivation outerGradient, 
+      DirectedLayerContext layerContext, boolean outerMostLayer);
 }

@@ -30,4 +30,24 @@ public interface DirectedNeuralNetworkContext extends NeuralNetworkContext {
    *         if the propagation is required to reach the final Layer.
    */
   Integer getEndLayerIndex();
+  
+  /**
+   * @return The learning rate used during training.
+   */
+  double getTrainingLearningRate();
+  
+  /**
+   * @return The number of iterations used during training.
+   */
+  int getTrainingIterations();
+  
+  /**
+   * @param trainingLearningRate The learning rate used during training.
+   */
+  void setTrainingLearningRate(double trainingLearningRate);
+  
+  /**
+   * @param trainingIterations The number of iterations used during training.
+   */
+  void setTrainingIterations(int trainingIterations);
 }

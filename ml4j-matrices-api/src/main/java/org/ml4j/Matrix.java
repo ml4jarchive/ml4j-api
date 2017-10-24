@@ -1,17 +1,15 @@
 /*
  * Copyright 2017 the original author or authors.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 
 package org.ml4j;
@@ -23,7 +21,7 @@ import java.io.Serializable;
  * 
  * @author Michael Lavelle
  */
-public interface Matrix extends Serializable {
+public interface Matrix extends MatrixOperations<Matrix>, Serializable {
 
   /**
    * Obtain the number of rows of this matrix.
@@ -53,7 +51,7 @@ public interface Matrix extends Serializable {
    * @return The row of this Matrix identified by rowIndex
    */
   Matrix getRow(int rowIndex);
-  
+
   /**
    * Return the column of this Matrix identified by columnIndex.
    * 
@@ -79,7 +77,7 @@ public interface Matrix extends Serializable {
    * @return A clone of this Matrix.
    */
   Matrix dup();
-  
+
   /**
    * Obtain the value in the Matrix at row and column specified.
    * 
@@ -88,7 +86,7 @@ public interface Matrix extends Serializable {
    * @return The value in the Matrix at row and column specified
    */
   double get(int row, int column);
-  
+
   /**
    * Append the other matrix to the right of this matrix horizontally
    * 
@@ -96,7 +94,7 @@ public interface Matrix extends Serializable {
    * @return The appended Matrix
    */
   Matrix appendHorizontally(Matrix other);
-  
+
   /**
    * Append the other matrix to the bottom of this matrix vertically.
    * 
@@ -104,4 +102,51 @@ public interface Matrix extends Serializable {
    * @return The appended Matrix
    */
   Matrix appendVertically(Matrix other);
+
+  /**
+   * A Matrix formed by raising each element of this Matrix to the power value.
+   * 
+   * @param value The value
+   * @return A Matrix formed by raising each element of this Matrix to the power value
+   */
+  Matrix pow(int value);
+
+  /**
+   * A Matrix formed by taking the log of each element of this Matrix.
+   * 
+   * @return A Matrix formed by taking the log of each element of this Matrix.
+   */
+  Matrix log();
+
+  /**
+   * Replace each element of this Matrix with exp(elementValue) in place.
+   * 
+   * @return This Matrix with each element of this Matrix replaced with exp(elementValue) in place.
+   */
+  Matrix expi();
+
+  /**
+   * Raise each element of this Matrix to the power value in place
+   * 
+   * @param value The value
+   * @return this Matrix with each element replaced by the element to the power value in place.
+   */
+  Matrix powi(int value);
+
+  /**
+   * Replace each element of this Matrix with exp(elementValue) in place.
+   * 
+   * @return this Matrix with each element replaced by exp(elementValue) in place.
+   */
+  Matrix logi();
+
+  /**
+   * @return This Matrix as a JBlasMatrix.
+   */
+  Matrix asJBlasMatrix();
+
+  /**
+   * @return This Matrix as a CudaMatrix.
+   */
+  Matrix asCudaMatrix();
 }

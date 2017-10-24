@@ -12,21 +12,13 @@
  * the License.
  */
 
-package org.ml4j.nn.layers;
-
-import org.ml4j.nn.synapses.DirectedSynapsesContext;
+package org.ml4j.nn.axons;
 
 /**
- * Encapsulates the runtime context used with a DirectedLayer.
+ * Enum specifying whether to add or subtract a connection weights adjustment.
  * 
  * @author Michael Lavelle
  */
-public interface DirectedLayerContext extends LayerContext {
-
-  /**
-   * @param synapsesIndex The index of the synapses within this DirectedLayer.
-   * @return The context we use to propagate data through the directed 
-   *         synapses of this Layer.
-   */
-  DirectedSynapsesContext createSynapsesContext(int synapsesIndex);
+public enum ConnectionWeightsAdjustmentDirection {
+  ADDITION, SUBTRACTION;
 }

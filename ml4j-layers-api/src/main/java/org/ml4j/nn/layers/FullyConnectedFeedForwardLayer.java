@@ -16,18 +16,15 @@
 
 package org.ml4j.nn.layers;
 
-import org.ml4j.nn.axons.Axons;
+import org.ml4j.nn.axons.FullyConnectedAxons;
 
 /**
- * A FeedForwardLayer is a DirectedLayer which composes input neurons and output neurons into a
- * directed acyclic bipartite graph.
- * There are no input-input connections or output-output connections, only input-output connections.
+ * Convenience interface for FeedForwardLayer implementations which are fully connected.
  * 
  * @author Michael Lavelle
  *
- * @param <A> The type of Axons in this FeedForwardLayer
- * @param <L> The type of FeedForwardLayer
  */
-public interface FeedForwardLayer<A extends Axons<?, ?, ?>, L extends FeedForwardLayer<A, L>> 
-    extends DirectedLayer<A, L> {
+public interface FullyConnectedFeedForwardLayer 
+    extends FeedForwardLayer<FullyConnectedAxons, FullyConnectedFeedForwardLayer> {
+
 }
