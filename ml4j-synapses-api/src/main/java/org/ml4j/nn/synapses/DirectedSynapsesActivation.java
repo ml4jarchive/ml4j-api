@@ -30,9 +30,18 @@ public interface DirectedSynapsesActivation {
    */
   public NeuronsActivation getOutput();
   
+  /**
+   * @return The DirectedSynapses that generated this DirectedSynapsesActivation.
+   */
   public DirectedSynapses<?> getSynapses();
   
-  DirectedSynapsesGradient backPropagate(NeuronsActivation neuronsActivation, 
-      DirectedSynapsesContext synapsesContext, boolean outerLayer);
+  /**
+   * @param outerGradient The outer gradient to back propagate.
+   * @param synapsesContext The synapses context.
+   * @param outerMostSynapses Whether these are the outer most Synapses of a NeuralNetwork.
+   * @return The back propagated DirectedSynapsesGradient.
+   */
+  DirectedSynapsesGradient backPropagate(NeuronsActivation outerGradient, 
+      DirectedSynapsesContext synapsesContext, boolean outerMostSynapses);
 
 }
