@@ -25,4 +25,7 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
  *
  */
 public interface AxonsContext extends NeuronsActivationContext {
+
+  double getLeftHandInputDropoutKeepProbability();
+
 }
