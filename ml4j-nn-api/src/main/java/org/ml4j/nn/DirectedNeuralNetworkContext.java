@@ -50,4 +50,17 @@ public interface DirectedNeuralNetworkContext extends NeuralNetworkContext {
    * @param trainingIterations The number of iterations used during training.
    */
   void setTrainingIterations(int trainingIterations);
+  
+  /**
+   * @param layerIndex The index of the Layer
+   * @param inputDropoutKeepProbability The input dropout keep probability for that Layer.
+   */
+  void setLayerInputDropoutKeepProbability(int layerIndex,
+      double inputDropoutKeepProbability);
+  
+  /**
+   * @param layerIndex The index of the Layer
+   * @return The input dropout keep probability for that Layer.
+   */
+  double getLayerInputDropoutKeepProbability(int layerIndex);
 }

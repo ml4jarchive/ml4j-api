@@ -16,16 +16,16 @@
 
 package org.ml4j.nn.axons;
 
-import org.ml4j.nn.neurons.NeuronsActivationContext;
+import org.ml4j.nn.neurons.Neurons3D;
 
 /**
- * Defines the context for activations travelling through Axons.
+ * Encapsulates the connections between two sets of Neurons which are pooled
+ * from left to right.
  * 
  * @author Michael Lavelle
  *
  */
-public interface AxonsContext extends NeuronsActivationContext {
-
-  double getLeftHandInputDropoutKeepProbability();
+public interface PoolingAxons<A extends PoolingAxons<A>>
+    extends Axons<Neurons3D, Neurons3D, A> {
 
 }

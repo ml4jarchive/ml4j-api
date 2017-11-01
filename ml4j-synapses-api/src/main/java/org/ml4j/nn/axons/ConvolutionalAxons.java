@@ -16,16 +16,19 @@
 
 package org.ml4j.nn.axons;
 
-import org.ml4j.nn.neurons.NeuronsActivationContext;
+import org.ml4j.nn.neurons.Neurons3D;
 
 /**
- * Defines the context for activations travelling through Axons.
+ * Encapsulates the connections between two sets of Neurons which are 
+ * convolutionally connected (ie. each Neuron on the right of the Axons 
+ * is connected to locally connected region on the left )
  * 
  * @author Michael Lavelle
  *
+ * @param <L> The type of Neurons on the left hand side of these FullyConnectedAxons
+ * @param <R> The type of Neurons on the right hand side of these FullyConnectedAxons
  */
-public interface AxonsContext extends NeuronsActivationContext {
-
-  double getLeftHandInputDropoutKeepProbability();
+public interface ConvolutionalAxons
+    extends TrainableAxons<Neurons3D, Neurons3D, ConvolutionalAxons> {
 
 }

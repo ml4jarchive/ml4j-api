@@ -16,16 +16,14 @@
 
 package org.ml4j.nn.axons;
 
-import org.ml4j.nn.neurons.NeuronsActivationContext;
-
 /**
- * Defines the context for activations travelling through Axons.
+ * Encapsulates the connections between two sets of Neurons which are max-pooled
+ * from left to right.
  * 
  * @author Michael Lavelle
  *
  */
-public interface AxonsContext extends NeuronsActivationContext {
-
-  double getLeftHandInputDropoutKeepProbability();
+public interface MaxPoolingAxons
+    extends PoolingAxons<MaxPoolingAxons> {
 
 }

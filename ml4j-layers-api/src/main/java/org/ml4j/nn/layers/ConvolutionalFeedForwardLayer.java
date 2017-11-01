@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package org.ml4j.nn.axons;
+package org.ml4j.nn.layers;
 
-import org.ml4j.nn.neurons.NeuronsActivationContext;
+import org.ml4j.nn.axons.ConvolutionalAxons;
 
 /**
- * Defines the context for activations travelling through Axons.
+ * A FeedForwardLayer is a DirectedLayer which composes input neurons and output neurons into a
+ * directed acyclic bipartite graph.
+ * There are no input-input connections or output-output connections, only input-output connections.
  * 
  * @author Michael Lavelle
  *
+ * @param <L> The type of FeedForwardLayer
  */
-public interface AxonsContext extends NeuronsActivationContext {
-
-  double getLeftHandInputDropoutKeepProbability();
-
+public interface ConvolutionalFeedForwardLayer 
+    extends FeedForwardLayer<ConvolutionalAxons, ConvolutionalFeedForwardLayer> {
 }
