@@ -19,13 +19,14 @@ package org.ml4j.nn.layers;
 import org.ml4j.nn.axons.ConvolutionalAxons;
 
 /**
- * A FeedForwardLayer is a DirectedLayer which composes input neurons and output neurons into a
- * directed acyclic bipartite graph.
+ * A ConvolutionalFeedForwardLayer is a FeedForwardLayer which composes input neurons and output
+ * neurons that are arranged in 3D volumes into directed acyclic bipartite graph in such a 
+ * way that each output neurons is connected to a local region of the input volume 
+ *  ( a convolution ).
  * There are no input-input connections or output-output connections, only input-output connections.
  * 
  * @author Michael Lavelle
  *
- * @param <L> The type of FeedForwardLayer
  */
 public interface ConvolutionalFeedForwardLayer 
     extends FeedForwardLayer<ConvolutionalAxons, ConvolutionalFeedForwardLayer> {

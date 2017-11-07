@@ -45,14 +45,23 @@ public class Neurons3D extends Neurons {
     this.depth = depth;
   }
 
+  /**
+   * @return The width of the volume of Neurons.
+   */
   public int getWidth() {
     return width;
   }
 
+  /**
+   * @return The height of the volume of Neurons.
+   */
   public int getHeight() {
     return height;
   }
 
+  /**
+   * @return The depth of the volume of Neurons.
+   */
   public int getDepth() {
     return depth;
   }
