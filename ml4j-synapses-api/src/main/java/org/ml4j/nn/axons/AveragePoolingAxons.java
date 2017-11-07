@@ -16,19 +16,14 @@
 
 package org.ml4j.nn.axons;
 
-import org.ml4j.nn.neurons.NeuronsActivationContext;
-
 /**
- * Defines the context for activations travelling through Axons.
+ * Encapsulates the connections between two sets of Neurons which are average-pooled
+ * from left to right.
  * 
  * @author Michael Lavelle
  *
  */
-public interface AxonsContext extends NeuronsActivationContext {
-
-  /**
-   * @return The keep probability for input dropout on the left hand side of an Axons instance.
-   */
-  double getLeftHandInputDropoutKeepProbability();
+public interface AveragePoolingAxons
+    extends PoolingAxons<AveragePoolingAxons> {
 
 }

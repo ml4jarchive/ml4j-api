@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,21 +14,17 @@
  * limitations under the License.
  */
 
-package org.ml4j.nn.axons;
+package org.ml4j.nn.layers;
 
-import org.ml4j.nn.neurons.NeuronsActivationContext;
+import org.ml4j.nn.axons.MaxPoolingAxons;
 
 /**
- * Defines the context for activations travelling through Axons.
+ * Base interface for MaxPoolingLayer implementations.
  * 
  * @author Michael Lavelle
  *
  */
-public interface AxonsContext extends NeuronsActivationContext {
-
-  /**
-   * @return The keep probability for input dropout on the left hand side of an Axons instance.
-   */
-  double getLeftHandInputDropoutKeepProbability();
+public interface MaxPoolingFeedForwardLayer 
+    extends FeedForwardLayer<MaxPoolingAxons, MaxPoolingFeedForwardLayer> {
 
 }
