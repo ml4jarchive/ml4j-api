@@ -25,8 +25,6 @@ import org.ml4j.nn.neurons.Neurons3D;
  * 
  * @author Michael Lavelle
  *
- * @param <L> The type of Neurons on the left hand side of these FullyConnectedAxons
- * @param <R> The type of Neurons on the right hand side of these FullyConnectedAxons
  */
 public interface ConvolutionalAxons
     extends TrainableAxons<Neurons3D, Neurons3D, ConvolutionalAxons> {
