@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,19 +14,20 @@
  * limitations under the License.
  */
 
-package org.ml4j.nn.axons;
+package org.ml4j.nn.costfunctions;
 
-import org.ml4j.nn.neurons.Neurons3D;
+import org.ml4j.Matrix;
 
 /**
- * Encapsulates the connections between two sets of Neurons which are 
- * convolutionally connected (ie. each Neuron on the right of the Axons 
- * is connected to locally connected region on the left )
+ * Interface for a cost function which calculates cost of generating an output Matrix
+ * given a desired output Matrix. 
  * 
  * @author Michael Lavelle
- *
  */
-public interface ConvolutionalAxons
-    extends TrainableAxons<Neurons3D, Neurons3D, ConvolutionalAxons> {
+public interface CostFunction {
+
+  double getTotalCost(Matrix desiredOutputs, Matrix actualOutputs);
+  
+  double getAverageCost(Matrix desiredOutputs, Matrix actualOutputs);
 
 }
