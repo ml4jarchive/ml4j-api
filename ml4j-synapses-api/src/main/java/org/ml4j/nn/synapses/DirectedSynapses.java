@@ -25,7 +25,6 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @author Michael Lavelle
  *
  * @param <A> The type of Axons within these DirectedSynapses
- * @param <S> The type of DirectedSynapses
  */
 public interface DirectedSynapses<A extends Axons<?, ?, ?>>
     extends Synapses<A, DirectedSynapses<A>> {
