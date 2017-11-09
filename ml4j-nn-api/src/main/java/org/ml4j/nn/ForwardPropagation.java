@@ -31,5 +31,16 @@ public interface ForwardPropagation {
 
   BackPropagation backPropagate(NeuronsActivation neuronActivationGradients,
       DirectedNeuralNetworkContext context);
-
+  
+  /**
+   * @param context The context.
+   * @return The regularisation cost of this forward propagation.
+   */
+  double getTotalRegularisationCost(DirectedNeuralNetworkContext context);
+  
+  /**
+   * @param context The context.
+   * @return The average regularisation cost of this forward propagation.
+   */
+  double getAverageRegularisationCost(DirectedNeuralNetworkContext context);
 }
