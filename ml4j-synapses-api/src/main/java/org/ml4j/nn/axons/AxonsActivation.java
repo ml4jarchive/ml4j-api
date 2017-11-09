@@ -12,33 +12,20 @@
  * the License.
  */
 
-package org.ml4j.nn.synapses;
+package org.ml4j.nn.axons;
 
 import org.ml4j.Matrix;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Encapsulates the gradient-related artifacts as they propagate backwards through
- * a DirectedSynapses instance.  
+ * Encapsulates the artifacts produced when pushing NeuronsActivations
+ * through an Axons instance.
  * 
  * @author Michael Lavelle
  */
-public interface DirectedSynapsesGradient {
+public interface AxonsActivation {
 
-  /**
-   * @return The total gradient of the Axons weights if they are trainable, or null otherwise.
-   */
-  Matrix getTotalTrainableAxonsGradient();
+  Matrix getInputDropoutMask();
   
-  /**
-   * @return The average gradient of the Axons weights if they are trainable, or null otherwise.
-   */
-  Matrix getAverageTrainableAxonsGradient();
-  
-
-  /**
-   * @return The backpropagated gradient passing backwards through the DirectedSynapses.
-   */
   NeuronsActivation getOutput();
-
 }

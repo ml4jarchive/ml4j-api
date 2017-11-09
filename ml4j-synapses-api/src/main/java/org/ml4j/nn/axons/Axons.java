@@ -50,21 +50,32 @@ public interface Axons<L extends Neurons, R extends Neurons, A extends Axons<L, 
    * Push the activations from left to right through these Axons.
    * 
    * @param leftNeuronsActivation The activation applied to the left hand side of these Axons
+   * @param previousRightToLeftActivation If this push from left to right depends on a previous push
+   *        from right to left, the previous right-to-left activation should be provided as an input
+   *        here. It is up to concrete implementations of Axons to determine whether this input is
+   *        required or not and to validate this is present - if not required this input can be left
+   *        as null.
+   * 
    * @param axonsContext The context of the activation
    * @return The activation resulting at the right hand side of these Axons
    */
-  NeuronsActivation pushLeftToRight(NeuronsActivation leftNeuronsActivation,
-      AxonsContext axonsContext);
+  AxonsActivation pushLeftToRight(NeuronsActivation leftNeuronsActivation,
+      AxonsActivation previousRightToLeftActivation, AxonsContext axonsContext);
 
   /**
    * Push the activations from right to left through these Axons.
    * 
    * @param rightNeuronsActivation The activation applied to the left hand side of these Axons
+   * @param previousLeftToRightActivation If this push from right to left depends on a previous push
+   *        from left to right, the previous left-to-right activation should be provided as an input
+   *        here. It is up to concrete implementations of Axons to determine whether this input is
+   *        required or not and to validate this is present - if not required this input can be left
+   *        as null.
    * @param axonsContext The context of the activation
    * @return The activation resulting at the left hand side of these Axons
    */
-  NeuronsActivation pushRightToLeft(NeuronsActivation rightNeuronsActivation,
-      AxonsContext axonsContext);
+  AxonsActivation pushRightToLeft(NeuronsActivation rightNeuronsActivation,
+      AxonsActivation previousLeftToRightActivation, AxonsContext axonsContext);
   
   
   /**

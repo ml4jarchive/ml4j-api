@@ -18,7 +18,7 @@ public interface DirectedNeuralNetworkContext extends NeuralNetworkContext {
    * @return The DirectedLayerContext for the DirectedLayer specified
    *        by the layerIndex.
    */
-  DirectedLayerContext createLayerContext(int layerIndex);
+  DirectedLayerContext getLayerContext(int layerIndex);
   
   /**
    * @return The index of the starting layer for a propagation through a DirectedNeuralNetwork.
@@ -50,4 +50,5 @@ public interface DirectedNeuralNetworkContext extends NeuralNetworkContext {
    * @param trainingIterations The number of iterations used during training.
    */
   void setTrainingIterations(int trainingIterations);
+ 
 }

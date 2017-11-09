@@ -43,4 +43,18 @@ public interface DirectedLayerActivation {
    */
   DirectedLayerGradient backPropagate(NeuronsActivation outerGradient, 
       DirectedLayerContext layerContext, boolean outerMostLayer);
+  
+  /**
+   * @param primaryAxonsRegularisationLambda The regularisation lambda for the primary axons in
+   *        this DirectedLayer.
+   * @return The total regularisation cost of this activation.
+   */
+  double getTotalRegularisationCost(double primaryAxonsRegularisationLambda);
+  
+  /**
+   * @param primaryAxonsRegularisationLambda The regularisation lambda for the primary axons in
+   *        this DirectedLayer.
+   * @return The average regularisation cost of this activation.
+   */
+  double getAverageRegularistationCost(double primaryAxonsRegularisationLambda);
 }

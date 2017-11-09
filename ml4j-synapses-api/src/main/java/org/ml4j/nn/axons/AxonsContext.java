@@ -25,4 +25,10 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
  *
  */
 public interface AxonsContext extends NeuronsActivationContext {
+
+  /**
+   * @return The keep probability for input dropout on the left hand side of an Axons instance.
+   */
+  double getLeftHandInputDropoutKeepProbability();
+
 }

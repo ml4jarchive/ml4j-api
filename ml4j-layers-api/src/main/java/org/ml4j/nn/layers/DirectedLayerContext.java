@@ -29,4 +29,28 @@ public interface DirectedLayerContext extends LayerContext {
    *         synapses of this Layer.
    */
   DirectedSynapsesContext createSynapsesContext(int synapsesIndex);
+  
+  /**
+   * @param inputDropoutKeepProbability The input dropout keep probability for 
+   *        this DirectedLayer.
+   */
+  void setInputDropoutKeepProbability(
+      double inputDropoutKeepProbability);
+  
+  /**
+   * @return The input dropout keep probability for this DirectedLayer.
+   */
+  double getLayerInputDropoutKeepProbability();
+  
+  /**
+   * @param regularisationLamdba The regularisation lambda to use with the primary axons of
+   *        a DirectedLayer.
+   */
+  void setPrimaryAxonsRegularisationLambda(double regularisationLamdba);
+  
+  /**
+   * @return The regularisation lambda to use with the primary axons of
+   *        a DirectedLayer.
+   */
+  double getPrimaryAxonsRegularisationLambda();
 }
