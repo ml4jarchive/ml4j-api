@@ -41,4 +41,16 @@ public interface DirectedLayerContext extends LayerContext {
    * @return The input dropout keep probability for this DirectedLayer.
    */
   double getLayerInputDropoutKeepProbability();
+  
+  /**
+   * @param regularisationLamdba The regularisation lambda to use with the primary axons of
+   *        a DirectedLayer.
+   */
+  void setPrimaryAxonsRegularisationLambda(double regularisationLamdba);
+  
+  /**
+   * @return The regularisation lambda to use with the primary axons of
+   *        a DirectedLayer.
+   */
+  double getPrimaryAxonsRegularisationLambda();
 }

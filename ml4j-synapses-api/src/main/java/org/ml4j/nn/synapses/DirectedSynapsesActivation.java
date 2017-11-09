@@ -39,9 +39,27 @@ public interface DirectedSynapsesActivation {
    * @param outerGradient The outer gradient to back propagate.
    * @param synapsesContext The synapses context.
    * @param outerMostSynapses Whether these are the outer most Synapses of a NeuralNetwork.
+   * @param regularisationLambda The regularisation lambda for the axons of these Synapses.
    * @return The back propagated DirectedSynapsesGradient.
    */
   DirectedSynapsesGradient backPropagate(NeuronsActivation outerGradient, 
-      DirectedSynapsesContext synapsesContext, boolean outerMostSynapses);
+      DirectedSynapsesContext synapsesContext, boolean outerMostSynapses, 
+      double regularisationLambda);
+  
+  /**
+   * The total regularisation cost of these synapse.
+   * 
+   * @param regularisationLambda The regularisation lambda
+   * @return The total regularisation cost.
+   */
+  double getTotalRegularisationCost(double regularisationLambda);
+  
+  /**
+   * The average regularisation cost of these synapse.
+   * 
+   * @param regularisationLambda The regularisation lambda
+   * @return The total regularisation cost.
+   */
+  double getAverageRegularisationCost(double regularisationLambda);
 
 }
