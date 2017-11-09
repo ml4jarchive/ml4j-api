@@ -19,7 +19,7 @@ package org.ml4j.nn.unsupervised;
 import org.ml4j.nn.NeuralNetworkContext;
 
 /**
- * Encapsulates the runtime context used with an AutoEncoder.
+ * Encapsulates the runtime context used with an RestrictedBoltzmannMachine.
  * 
  * @author Michael Lavelle
  */

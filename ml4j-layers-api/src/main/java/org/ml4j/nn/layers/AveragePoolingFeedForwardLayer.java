@@ -25,6 +25,6 @@ import org.ml4j.nn.axons.AveragePoolingAxons;
  *
  */
 public interface AveragePoolingFeedForwardLayer 
-    extends FeedForwardLayer<AveragePoolingAxons, AveragePoolingFeedForwardLayer> {
+    extends PoolingFeedForwardLayer<AveragePoolingAxons, AveragePoolingFeedForwardLayer> {
 
 }

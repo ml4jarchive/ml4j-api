@@ -16,17 +16,16 @@
 
 package org.ml4j.nn.layers;
 
-import org.ml4j.nn.axons.ConvolutionalAxons;
+import org.ml4j.nn.axons.PoolingAxons;
 
 /**
- * A FeedForwardLayer is a DirectedLayer which composes input neurons and output neurons into a
- * directed acyclic bipartite graph.
- * There are no input-input connections or output-output connections, only input-output connections.
+ * A PoolingFeedForwardLayer is a FeedForwardLayer whose primary Axons are PoolingAxons.
  * 
  * @author Michael Lavelle
  *
- * @param <L> The type of FeedForwardLayer
+ * @param <L> The type of PoolingFeedForwardLayer
  */
-public interface ConvolutionalLayer<L extends ConvolutionalLayer<L>> 
-    extends DirectedLayer<ConvolutionalAxons, L> {
+public interface PoolingFeedForwardLayer<A extends PoolingAxons<?>, 
+    L extends PoolingFeedForwardLayer<A, L>> 
+    extends FeedForwardLayer<A, L> {
 }

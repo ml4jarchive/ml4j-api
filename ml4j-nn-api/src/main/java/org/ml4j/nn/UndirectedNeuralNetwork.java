@@ -12,21 +12,20 @@
  * the License.
  */
 
-package org.ml4j.nn.layers;
+package org.ml4j.nn;
 
-import org.ml4j.nn.axons.Axons;
-import org.ml4j.nn.synapses.UndirectedSynapses;
+import org.ml4j.nn.layers.UndirectedLayer;
 
 /**
- * Represents an Undirected Layer of a NeuralNetwork - a Layer through which information propagates
- * from input neurons to output neurons in both directions.
- * 
+ * Base interface for classes representing an UndirectedNeuralNetwork.
+ *
  * @author Michael Lavelle
  * 
-
- * @param <L> The type of DirectedLayer
+ * @param <L> The type of UndirectedLayer used within this NeuralNetwork
+ * @param <C> The NeuralNetworkContext used with this UndirectedNeuralNetwork
+ * @param <N> The type of UndirectedNeuralNetwork
  */
-public interface UndirectedLayer<A extends Axons<?,?,?>, L extends UndirectedLayer<A, L>>
-    extends Layer<A, UndirectedSynapses<?>, L> {
-
+public interface UndirectedNeuralNetwork<L extends UndirectedLayer<?, ?>, 
+    C extends NeuralNetworkContext, 
+    N extends UndirectedNeuralNetwork<L, C, N>> extends NeuralNetwork<L, C, N> {
 }

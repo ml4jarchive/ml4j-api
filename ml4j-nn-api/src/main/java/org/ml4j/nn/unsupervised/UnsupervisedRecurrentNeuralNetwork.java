@@ -21,11 +21,9 @@ import org.ml4j.nn.RecurrentNeuralNetworkContext;
 import org.ml4j.nn.layers.DirectedLayer;
 
 /**
+ * Interface for a unsupervised RecurrentNeuralNetwork.
  * 
  * @author Michael Lavelle
- *
- * @param <C> The specific type of 
- *      {@link org.ml4j.nn.NeuralNetworkTrainingContext} used to train this AutoEncoder
  */
 public interface UnsupervisedRecurrentNeuralNetwork extends 
         UnsupervisedNeuralNetwork<DirectedLayer<?,?>,RecurrentNeuralNetworkContext, 

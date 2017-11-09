@@ -20,10 +20,10 @@ import org.ml4j.nn.layers.Layer;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Base interface for classes representing an UnsupervisedNeuralNetwork.
+ * Base interface for classes representing a GenerativeNeuralNetwork.
  *
- * @param <N> The type of UnsupervisedNeuralNetwork
- * @param <C> The type of runtime NeuralNetworkContext used with this UnsupervisedNeuralNetwork
+ * @param <N> The type of GenerativeNeuralNetwork
+ * @param <C> The type of runtime NeuralNetworkContext used with this GenerativeNeuralNetwork
  */
 public interface GenerativeNeuralNetwork<L extends Layer<?, ?, ?>, C extends NeuralNetworkContext, 
     N extends GenerativeNeuralNetwork<L, C, N>> extends NeuralNetwork<L, C, N> {

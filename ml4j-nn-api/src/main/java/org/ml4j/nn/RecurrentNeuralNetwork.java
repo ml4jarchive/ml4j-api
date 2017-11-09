@@ -19,11 +19,9 @@ package org.ml4j.nn;
 import org.ml4j.nn.layers.DirectedLayer;
 
 /**
- * 
  * @author Michael Lavelle
  *
- * @param <C> The specific type of {@link org.ml4j.nn.NeuralNetworkTrainingContext} 
- *      used to train this AutoEncoder.
+ * @param <N> The type of this RecurrentNeuralNetwork.
  */
 public interface RecurrentNeuralNetwork<N extends RecurrentNeuralNetwork<N>> extends 
     DirectedNeuralNetwork<DirectedLayer<?,?>, RecurrentNeuralNetworkContext, N> {

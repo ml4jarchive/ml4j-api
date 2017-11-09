@@ -17,16 +17,13 @@ package org.ml4j.nn.synapses;
 import org.ml4j.nn.axons.Axons;
 
 /**
- * DirectedSynapses are containers for Axons with a DifferentiableActivationFunction applied
- * to the right hand Axons output on a push of data left-to-right during forward propagation.
+ * UndirectedSynapses are undirected containers for Axons.
  * 
  * @author Michael Lavelle
  *
- * @param <A> The type of Axons within these DirectedSynapses
- * @param <S> The type of DirectedSynapses
+ * @param <A> The type of Axons within these UndirectedSynapses
  */
 public interface UndirectedSynapses<A extends Axons<?, ?, ?>>
     extends Synapses<A, UndirectedSynapses<A>> {
-
 
 }

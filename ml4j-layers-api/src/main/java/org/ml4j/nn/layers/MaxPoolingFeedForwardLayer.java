@@ -25,6 +25,6 @@ import org.ml4j.nn.axons.MaxPoolingAxons;
  *
  */
 public interface MaxPoolingFeedForwardLayer 
-    extends FeedForwardLayer<MaxPoolingAxons, MaxPoolingFeedForwardLayer> {
+    extends PoolingFeedForwardLayer<MaxPoolingAxons, MaxPoolingFeedForwardLayer> {
 
 }

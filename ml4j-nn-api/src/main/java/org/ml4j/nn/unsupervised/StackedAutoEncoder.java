@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 the original author or authors.
+ * Copyright 2017 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,20 +19,17 @@ package org.ml4j.nn.unsupervised;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * <p>StackedAutoEncoder interface.</p>
+ * Interface for a stacked AutoEncoder.
+ * 
+ * @author Michael Lavelle
  */
 public interface StackedAutoEncoder extends AutoEncoder {
 
-
-
   /**
-   * <p>trainGreedilyLayerwise.</p>
-   *
-   * @param doubleMatrix a {@link org.ml4j.DoubleMatrix} object.
-   * @param contexts an array of {@link org.ml4j.nn.layers.
-   * NeuralNetworkLayerTrainingContext} objects.
+   *@param inputActivations The input activations
+   *@param context The context.
    */
-  public void trainGreedilyLayerwise(NeuronsActivation doubleMatrix,
-      StackedAutoEncoderContext contexts);
+  public void trainGreedilyLayerwise(NeuronsActivation inputActivations,
+      StackedAutoEncoderContext context);
 
 }

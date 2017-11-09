@@ -16,10 +16,12 @@
 
 package org.ml4j.nn.unsupervised;
 
+import org.ml4j.nn.UndirectedNeuralNetwork;
 import org.ml4j.nn.layers.RestrictedBoltzmannLayer;
 
 /**
- * An AutoEncoder is an UnsupervisedNeuralNetwork consisting of FeedForwardLayers.
+ * An RestrictedBoltzmannMachine is an Unsupervised, Undirected NeuralNetwork consisting a single 
+ * RestrictedBoltzmannLayer.
  * 
  * @author Michael Lavelle
  */
@@ -27,5 +29,7 @@ public interface RestrictedBoltzmannMachine extends
     UnsupervisedNeuralNetwork<RestrictedBoltzmannLayer<?, ?>, 
     RestrictedBoltzmannMachineContext, RestrictedBoltzmannMachine>,
     GenerativeNeuralNetwork<RestrictedBoltzmannLayer<?, ?>, 
+    RestrictedBoltzmannMachineContext, RestrictedBoltzmannMachine>,
+    UndirectedNeuralNetwork<RestrictedBoltzmannLayer<?, ?>, 
     RestrictedBoltzmannMachineContext, RestrictedBoltzmannMachine> {
 }
