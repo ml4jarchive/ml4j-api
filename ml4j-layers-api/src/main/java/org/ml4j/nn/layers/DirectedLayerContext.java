@@ -29,4 +29,16 @@ public interface DirectedLayerContext extends LayerContext {
    *         synapses of this Layer.
    */
   DirectedSynapsesContext createSynapsesContext(int synapsesIndex);
+  
+  /**
+   * @param inputDropoutKeepProbability The input dropout keep probability for 
+   *        this DirectedLayer.
+   */
+  void setInputDropoutKeepProbability(
+      double inputDropoutKeepProbability);
+  
+  /**
+   * @return The input dropout keep probability for this DirectedLayer.
+   */
+  double getLayerInputDropoutKeepProbability();
 }
