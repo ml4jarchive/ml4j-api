@@ -26,9 +26,15 @@ import org.ml4j.nn.neurons.NeuronsActivation;
 public interface DirectedSynapsesGradient {
 
   /**
-   * @return The gradient of the Axons weights if they are trainable, or null otherwise.
+   * @return The total gradient of the Axons weights if they are trainable, or null otherwise.
    */
-  Matrix getTrainableAxonsGradient();
+  Matrix getTotalTrainableAxonsGradient();
+  
+  /**
+   * @return The average gradient of the Axons weights if they are trainable, or null otherwise.
+   */
+  Matrix getAverageTrainableAxonsGradient();
+  
 
   /**
    * @return The backpropagated gradient passing backwards through the DirectedSynapses.

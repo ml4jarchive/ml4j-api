@@ -16,6 +16,7 @@
 
 package org.ml4j.nn.supervised;
 
+import org.ml4j.nn.CostAndGradients;
 import org.ml4j.nn.FeedForwardNeuralNetwork;
 import org.ml4j.nn.FeedForwardNeuralNetworkContext;
 import org.ml4j.nn.layers.FeedForwardLayer;
@@ -53,4 +54,19 @@ public interface SupervisedFeedForwardNeuralNetwork extends
    */
   public double getClassificationAccuracy(NeuronsActivation inputActivations,
       NeuronsActivation desiredClassificationActivations, FeedForwardNeuralNetworkContext context); 
+  
+  /**
+   * Obtains the cost and weight gradients calculated for the outputs of this 
+   * FeedForwardNeuralNetwork
+   * 
+   * @param inputActivations The NeuronsActivation produced
+   *       by the input data
+   * @param desiredOutputActivations The NeuronsActivation produced
+   *       by the desired output data.
+   *       
+   * @param trainingContext The NeuralNetworkContext used for training
+   */
+  public CostAndGradients getCostAndGradients(NeuronsActivation inputActivations, 
+          NeuronsActivation desiredOutputActivations, 
+          FeedForwardNeuralNetworkContext trainingContext);
 }
