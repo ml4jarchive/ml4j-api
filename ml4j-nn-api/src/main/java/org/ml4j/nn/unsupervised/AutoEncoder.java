@@ -16,6 +16,7 @@
 
 package org.ml4j.nn.unsupervised;
 
+import org.ml4j.nn.CostAndGradients;
 import org.ml4j.nn.FeedForwardNeuralNetwork;
 import org.ml4j.nn.layers.FeedForwardLayer;
 import org.ml4j.nn.neurons.NeuronsActivation;
@@ -46,4 +47,16 @@ public interface AutoEncoder extends UnsupervisedNeuralNetwork<FeedForwardLayer<
    * @return The decoded activations.
    */
   NeuronsActivation decode(NeuronsActivation encoded, AutoEncoderContext context);
+  
+  /**
+   * Obtains the cost and weight gradients calculated for the outputs of this 
+   * AutoEncoder.
+   * 
+   * @param inputActivations The NeuronsActivation produced
+   *       by the input data
+   *  
+   * @param trainingContext The NeuralNetworkContext used for training
+   */
+  public CostAndGradients getCostAndGradients(NeuronsActivation inputActivations,  
+          AutoEncoderContext trainingContext);
 }
