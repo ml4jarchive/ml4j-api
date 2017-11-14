@@ -228,7 +228,7 @@ public class NeuronsActivation {
       rows[r] = r;
     }
     int[] cols = new int[activations.getColumns() - 1];
-    for (int c = 0; c < cols.length - 1; c++) {
+    for (int c = 0; c < cols.length; c++) {
       cols[c] = c + 1;
     }
     return activations.get(rows, cols);
