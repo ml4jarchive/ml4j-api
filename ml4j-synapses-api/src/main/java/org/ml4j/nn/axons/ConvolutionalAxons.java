@@ -29,4 +29,14 @@ import org.ml4j.nn.neurons.Neurons3D;
 public interface ConvolutionalAxons
     extends TrainableAxons<Neurons3D, Neurons3D, ConvolutionalAxons> {
 
+  /**
+   * @return The stride.
+   */
+  int getStride();
+
+  /**
+   * @return The amount of zero padding.
+   */
+  int getZeroPadding();
+  
 }
