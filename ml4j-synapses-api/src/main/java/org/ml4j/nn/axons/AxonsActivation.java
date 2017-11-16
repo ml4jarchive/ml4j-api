@@ -28,4 +28,6 @@ public interface AxonsActivation {
   Matrix getInputDropoutMask();
   
   NeuronsActivation getOutput();
+  
+  NeuronsActivation getInput();
 }
