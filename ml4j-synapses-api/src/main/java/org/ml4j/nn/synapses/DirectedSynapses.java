@@ -16,7 +16,6 @@ package org.ml4j.nn.synapses;
 
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons;
-import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * DirectedSynapses are containers for Axons with a DifferentiableActivationFunction applied
