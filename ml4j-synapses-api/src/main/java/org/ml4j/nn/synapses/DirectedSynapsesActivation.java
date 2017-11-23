@@ -14,6 +14,7 @@
 
 package org.ml4j.nn.synapses;
 
+import org.ml4j.nn.axons.AxonsActivation;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -33,18 +34,13 @@ public interface DirectedSynapsesActivation {
   /**
    * @return The DirectedSynapses that generated this DirectedSynapsesActivation.
    */
-  public DirectedSynapses<?> getSynapses();
+  public DirectedSynapses<?, ?> getSynapses();
+
+  public AxonsActivation getAxonsActivation();
   
-  /**
-   * @param outerGradient The outer gradient to back propagate.
-   * @param synapsesContext The synapses context.
-   * @param outerMostSynapses Whether these are the outer most Synapses of a NeuralNetwork.
-   * @param regularisationLambda The regularisation lambda for the axons of these Synapses.
-   * @return The back propagated DirectedSynapsesGradient.
-   */
-  DirectedSynapsesGradient backPropagate(NeuronsActivation outerGradient, 
-      DirectedSynapsesContext synapsesContext, boolean outerMostSynapses, 
-      double regularisationLambda);
+  public NeuronsActivation getInput();
+
+  
   
   /**
    * The total regularisation cost of these synapse.

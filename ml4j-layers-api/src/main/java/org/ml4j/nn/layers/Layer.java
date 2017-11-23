@@ -29,7 +29,7 @@ import java.util.List;
  *
  * @param <L> The type of Layer
  */
-public interface Layer<A extends Axons<?, ?, ?>, S extends Synapses<?, ?>, 
+public interface Layer<A extends Axons<?, ?, ?>, S extends Synapses<?>, 
     L extends Layer<A, S, L>> extends Serializable {
 
   /**
