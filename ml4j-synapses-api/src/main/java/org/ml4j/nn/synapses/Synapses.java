@@ -14,8 +14,6 @@
 
 package org.ml4j.nn.synapses;
 
-import org.ml4j.nn.axons.Axons;
-
 import java.io.Serializable;
 
 /**
@@ -24,16 +22,10 @@ import java.io.Serializable;
  * 
  * @author Michael Lavelle
  *
- * @param <A> The type of Axons within these Synapses
  * @param <S> The type of Synapses
  */
-public interface Synapses<A extends Axons<?,?,?>, S extends Synapses<A, S>> extends Serializable {
+public interface Synapses<S extends Synapses<S>> extends Serializable {
 
-  /**
-   * @return The Axons within these Synapses.
-   */
-  A getAxons();
-  
   /**
    * @return A deep copy of these Synapses.
    */
