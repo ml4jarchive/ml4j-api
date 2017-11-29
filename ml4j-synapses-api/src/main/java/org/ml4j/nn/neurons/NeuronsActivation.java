@@ -15,7 +15,6 @@
 package org.ml4j.nn.neurons;
 
 import org.ml4j.Matrix;
-import org.ml4j.MatrixFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,45 +38,18 @@ public class NeuronsActivation {
    */
   private NeuronsActivationFeatureOrientation featureOrientation;
 
-  
-  /**
-   * Whether the activations include an activation from a bias unit.
-   */
-  private boolean biasUnitIncluded;
-  
-  
+
   /**
    * Constructs a NeuronsActivation instance from a matrix of activations.
    * 
    * @param activations A matrix of activations
-   * @param biasUnitIncluded Whether a bias unit is included in the activation features
    * @param featureOrientation The orientation of the features of the activation matrix
    */
-  public NeuronsActivation(Matrix activations, boolean biasUnitIncluded,
+  public NeuronsActivation(Matrix activations,
       NeuronsActivationFeatureOrientation featureOrientation) {
-      this(activations, biasUnitIncluded, featureOrientation, false);
-  }
-  
-  /**
-   * Constructs a NeuronsActivation instance from a matrix of activations.
-   * 
-   * @param activations A matrix of activations
-   * @param biasUnitIncluded Whether a bias unit is included in the activation features
-   * @param featureOrientation The orientation of the features of the activation matrix
-   * @param resetBiasValues Whether to reset the bias values of the activations matrix
-   */
-  public NeuronsActivation(Matrix activations, boolean biasUnitIncluded,
-      NeuronsActivationFeatureOrientation featureOrientation, boolean resetBiasValues) {
     LOGGER.debug("Creating new NeuronsActivation");
     this.activations = activations;
-    this.biasUnitIncluded = biasUnitIncluded;
     this.featureOrientation = featureOrientation;
-    if (biasUnitIncluded) {
-      if (resetBiasValues) {
-        resetBiasActivations(activations, featureOrientation);
-      }
-      validateBiasActivations(activations, featureOrientation);
-    }
   }
 
   /**
@@ -91,17 +63,14 @@ public class NeuronsActivation {
     return featureOrientation;
   }
 
+  /*
   public Matrix getActivations() {
     return activations;
   }
-
-  /**
-   * Indicates whether the features represented by this NeuronsActivation include a bias unit.
-   * 
-   * @return Whether the features represented by this NeuronsActivation include a bias unit
-   */
-  public boolean isBiasUnitIncluded() {
-    return biasUnitIncluded;
+  */
+  
+  public Matrix getActivations() {
+    return activations;
   }
 
   /**
@@ -109,7 +78,7 @@ public class NeuronsActivation {
    * 
    * @return the number of features ( including any bias ) represented by this NeuronsActivation.
    */
-  public int getFeatureCountIncludingBias() {
+  public int getFeatureCount() {
 
     if (featureOrientation == NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET) {
       int featureCount = activations.getColumns();
@@ -120,147 +89,4 @@ public class NeuronsActivation {
     }
   }
 
-  /**
-   * Obtain the number of features ( excluding any bias ) represented by this NeuronsActivation.
-   *
-   * @return the number of features ( excluding any bias ) represented by this NeuronsActivation.
-   */
-  public int getFeatureCountExcludingBias() {
-    int featureCountIncludingBias = getFeatureCountIncludingBias();
-    return biasUnitIncluded ? (featureCountIncludingBias - 1) : featureCountIncludingBias;
-  }
-
-  /**
-   * Returns this NeuronsActivation ensuring the presence of a bias unit is consistent with the 
-   * requested withBiasUnit parameter.
-   * 
-   * @param withBiasUnit Whether a bias unit should be included in the returned activation
-   * @param neuronsActivationContext The activation context
-   * @return this NeuronsActivation ensuring the presence of a bias unit is consistent with the 
-   *         requested withBiasUnit parameter.
-   */
-  public NeuronsActivation withBiasUnit(boolean withBiasUnit,
-      NeuronsActivationContext neuronsActivationContext) {
-
-    MatrixFactory matrixFactory = neuronsActivationContext.getMatrixFactory();
-
-    if (isBiasUnitIncluded()) {
-      if (withBiasUnit) {
-        return this;
-      } else {
-
-        if (featureOrientation == NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET) {
-
-          LOGGER.debug("Removing bias unit from activations");
-          
-          return new NeuronsActivation(removeFirstColumn(activations), false,
-              NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET, false);
-
-        } else if (featureOrientation 
-            == NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET) {
-          LOGGER.debug("Removing bias unit from activations");
-        
-          return new NeuronsActivation(removeFirstRow(activations), false,
-              NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET, false);
-        } else {
-          throw new IllegalStateException(
-              "Unsupported feature orientation type:" + featureOrientation);
-        }
-      
-      }
-    } else {
-      if (withBiasUnit) {
-
-        if (featureOrientation == NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET) {
-
-          Matrix bias = matrixFactory.createOnes(activations.getRows(), 1);
-          LOGGER.debug("Adding bias unit to activations");
-          Matrix activationsWithBias = bias.appendHorizontally(activations);
-          return new NeuronsActivation(activationsWithBias, true,
-              NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET, false);
-
-        } else if (featureOrientation 
-            == NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET) {
-          Matrix bias = matrixFactory.createOnes(1, activations.getColumns());
-          LOGGER.debug("Adding bias unit to activations");
-          Matrix activationsWithBias = bias.appendVertically(activations);
-          return new NeuronsActivation(activationsWithBias, true,
-              NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET, false);
-        } else {
-          throw new IllegalStateException(
-              "Unsupported feature orientation type:" + featureOrientation);
-        }
-      } else {
-        return this;
-      }
-    }
-  }
-  
-  private void validateBiasActivations(Matrix activations,
-      NeuronsActivationFeatureOrientation featureOrientation) {
-    if (!biasUnitIncluded) {
-      throw new IllegalStateException("Cannot validate bias activations as bias unit not included");
-    }
-    LOGGER.debug("Validating bias activations");
-    if (NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET == featureOrientation) {
-      Matrix firstColumn = activations.getColumn(0);
-      for (int r = 0; r < activations.getRows(); r++) {
-        if (firstColumn.get(r, 0) != 1d) {
-          throw new IllegalArgumentException("Values of bias unit is not 1");
-        }
-      }
-    } else if (NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET == featureOrientation) {
-      Matrix firstRow = activations.getRow(0);
-      for (int c = 0; c < activations.getColumns(); c++) {
-        if (firstRow.get(0, c) != 1d) {
-          throw new IllegalArgumentException("Values of bias unit is not 1");
-        }
-      }
-    } else {
-      throw new IllegalStateException(
-          "Unsupported feature orientation type:" + featureOrientation);
-    }
-  }
-  
-  private Matrix removeFirstColumn(Matrix activations) {
-    int[] rows = new int[activations.getRows()];
-    for (int r = 0; r < rows.length; r++) {
-      rows[r] = r;
-    }
-    int[] cols = new int[activations.getColumns() - 1];
-    for (int c = 0; c < cols.length; c++) {
-      cols[c] = c + 1;
-    }
-    return activations.get(rows, cols);
-  }
-  
-  private Matrix removeFirstRow(Matrix activations) {
-    int[] rows = new int[activations.getRows() - 1];
-    for (int r = 0; r < rows.length; r++) {
-      rows[r] = r + 1;
-    }
-    int[] cols = new int[activations.getColumns()];
-    for (int c = 0; c < cols.length; c++) {
-      cols[c] = c;
-    }
-    return activations.get(rows, cols);
-  }
-  
-  private void resetBiasActivations(Matrix activations,
-      NeuronsActivationFeatureOrientation featureOrientation) {
-    if (!biasUnitIncluded) {
-      throw new IllegalStateException("Cannot reset bias activations as bias unit not included");
-    }
-    LOGGER.debug("Resetting bias activations");
-    if (NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET == featureOrientation) {
-      for (int r = 0; r < activations.getRows(); r++) {
-        activations.put(r, 0, 1);
-      }
-    }
-    if (NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET == featureOrientation) {
-      for (int c = 0; c < activations.getColumns(); c++) {
-        activations.put(0, c, 1);
-      }
-    }
-  }
 }
