@@ -16,6 +16,7 @@ package org.ml4j.nn.axons;
 
 import org.ml4j.Matrix;
 import org.ml4j.nn.neurons.NeuronsActivation;
+import org.ml4j.nn.neurons.NeuronsActivationWithPossibleBiasUnit;
 
 /**
  * Encapsulates the artifacts produced when pushing NeuronsActivations
@@ -29,5 +30,5 @@ public interface AxonsActivation {
   
   NeuronsActivation getOutput();
   
-  NeuronsActivation getInput();
+  NeuronsActivationWithPossibleBiasUnit getPostDropoutInputWithPossibleBias();
 }
