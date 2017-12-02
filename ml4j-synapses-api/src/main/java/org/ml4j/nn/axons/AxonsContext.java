@@ -30,5 +30,7 @@ public interface AxonsContext extends NeuronsActivationContext {
    * @return The keep probability for input dropout on the left hand side of an Axons instance.
    */
   double getLeftHandInputDropoutKeepProbability();
-
+  
+  boolean isWithFreezeOut();
+  
 }

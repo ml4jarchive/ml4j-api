@@ -87,4 +87,11 @@ public interface Axons<L extends Neurons, R extends Neurons, A extends Axons<L, 
    * @return A deep copy of these Axons.
    */
   A dup();
+  
+  /**
+   *
+   * @return Whether these Axons are trainable within this context.
+   */
+  boolean isTrainable(AxonsContext axonsContext);
+  
 }
