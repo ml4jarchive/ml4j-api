@@ -16,6 +16,8 @@
 
 package org.ml4j;
 
+import java.io.Serializable;
+
 /**
  * Base interface for common operations between different matrix provider implementations.
  * 
@@ -23,7 +25,7 @@ package org.ml4j;
  *
  * @param <M> The type of MatrixOperations.
  */
-public interface MatrixOperations<M extends MatrixOperations<M>> {
+public interface MatrixOperations<M extends MatrixOperations<M>> extends Serializable {
 
   M transpose();
 
