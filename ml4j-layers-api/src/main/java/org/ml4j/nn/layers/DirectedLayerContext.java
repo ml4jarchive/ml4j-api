@@ -53,4 +53,14 @@ public interface DirectedLayerContext extends LayerContext {
    *        a DirectedLayer.
    */
   double getPrimaryAxonsRegularisationLambda();
+  
+  /**
+   * @return Whether to freeze out this Layer for training.
+   */
+  boolean isWithFreezeOut();
+  
+  /**
+   * @param withFreezeOut Whether to freeze out this Layer for training.
+   */
+  void setWithFreezeOut(boolean withFreezeOut);
 }

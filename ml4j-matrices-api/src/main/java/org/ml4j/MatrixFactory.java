@@ -16,13 +16,15 @@
 
 package org.ml4j;
 
+import java.io.Serializable;
+
 /**
  * A Matrix factory.
  * 
  * @author Michael Lavelle
  *
  */
-public interface MatrixFactory {
+public interface MatrixFactory extends Serializable {
 
   /**
    * Create a new Matrix with every element value set to 1.
