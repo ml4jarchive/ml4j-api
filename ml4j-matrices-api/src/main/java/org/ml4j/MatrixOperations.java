@@ -50,6 +50,8 @@ public interface MatrixOperations<M extends MatrixOperations<M>> extends Seriali
   M muli(double value);
 
   M divi(double value);
+  
+  M divi(M other);
 
   M mmul(M matrix);
 
@@ -102,7 +104,9 @@ public interface MatrixOperations<M extends MatrixOperations<M>> extends Seriali
   int[] findIndices();
 
   M div(double value);
-
+  
+  M div(M other);
+  
   M getColumn(int columnIndex);
 
   double get(int index);
