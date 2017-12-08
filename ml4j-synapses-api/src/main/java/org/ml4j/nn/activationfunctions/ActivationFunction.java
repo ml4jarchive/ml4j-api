@@ -17,6 +17,8 @@ package org.ml4j.nn.activationfunctions;
 import org.ml4j.nn.neurons.NeuronsActivation;
 import org.ml4j.nn.neurons.NeuronsActivationContext;
 
+import java.io.Serializable;
+
 /**
  * Encapsulates a function to create an output NeuronsActivation
  * from an input NeuronsActivation - typically applied to the output
@@ -25,7 +27,7 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
  * @author Michael Lavelle
  *
  */
-public interface ActivationFunction {
+public interface ActivationFunction extends Serializable {
   
   /**
   * Create an output activation from input activations.

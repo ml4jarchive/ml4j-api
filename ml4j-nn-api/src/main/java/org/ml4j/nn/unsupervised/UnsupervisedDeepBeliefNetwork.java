@@ -26,9 +26,9 @@ import org.ml4j.nn.layers.RestrictedBoltzmannLayer;
  */
 public interface UnsupervisedDeepBeliefNetwork
     extends
-    DeepBeliefNetwork<RestrictedBoltzmannLayer<?, ?>, UnsupervisedDeepBeliefNetwork, 
+    DeepBeliefNetwork<RestrictedBoltzmannLayer<?>, UnsupervisedDeepBeliefNetwork, 
         DeepBeliefNetworkContext>,
-        UnsupervisedNeuralNetwork<RestrictedBoltzmannLayer<?, ?>, 
+        UnsupervisedNeuralNetwork<RestrictedBoltzmannLayer<?>, 
         DeepBeliefNetworkContext, UnsupervisedDeepBeliefNetwork> {
 
   StackedAutoEncoder createStackedAutoEncoder(); 

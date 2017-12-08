@@ -24,9 +24,9 @@ import org.ml4j.nn.synapses.UndirectedSynapses;
  * @author Michael Lavelle
  * 
 
- * @param <L> The type of DirectedLayer
+ * @param <L> The type of UndirectedLayer
  */
 public interface UndirectedLayer<A extends Axons<?,?,?>, L extends UndirectedLayer<A, L>>
-    extends Layer<A, UndirectedSynapses<?>, L> {
-
+    extends Layer<A, UndirectedSynapses<?, ?>, L> {
+  
 }

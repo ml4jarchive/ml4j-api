@@ -29,7 +29,7 @@ import org.ml4j.nn.synapses.DirectedSynapses;
  * @param <L> The type of DirectedLayer
  */
 public interface DirectedLayer<A extends Axons<?,?,?>, L extends DirectedLayer<A, L>>
-    extends Layer<A, DirectedSynapses<?>, L> {
+    extends Layer<A, DirectedSynapses<?, ?>, L> {
 
   /**
    * @return The number of input neurons (including any bias unit) to the left of this 

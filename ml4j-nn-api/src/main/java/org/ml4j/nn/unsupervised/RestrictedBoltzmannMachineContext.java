@@ -16,13 +16,8 @@
 
 package org.ml4j.nn.unsupervised;
 
-import org.ml4j.nn.NeuralNetworkContext;
+import org.ml4j.nn.UndirectedNeuralNetworkContext;
 
-/**
- * Encapsulates the runtime context used with an RestrictedBoltzmannMachine.
- * 
- * @author Michael Lavelle
- */
-public interface RestrictedBoltzmannMachineContext extends NeuralNetworkContext {
+public interface RestrictedBoltzmannMachineContext extends UndirectedNeuralNetworkContext {
 
 }

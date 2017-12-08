@@ -37,9 +37,14 @@ public interface DirectedNeuralNetworkContext extends NeuralNetworkContext {
   double getTrainingLearningRate();
   
   /**
-   * @return The number of iterations used during training.
+   * @return The number of iterations through the entire data set during training.
    */
-  int getTrainingIterations();
+  int getTrainingEpochs();
+  
+  /**
+   * @return The size of the mini batch if training in batch mode... or null if non-batch mode.
+   */
+  Integer getTrainingMiniBatchSize();
   
   /**
    * @param trainingLearningRate The learning rate used during training.
@@ -47,8 +52,14 @@ public interface DirectedNeuralNetworkContext extends NeuralNetworkContext {
   void setTrainingLearningRate(double trainingLearningRate);
   
   /**
-   * @param trainingIterations The number of iterations used during training.
+   * @param trainingEpochs The number of iterations through the entire data set during training.
    */
-  void setTrainingIterations(int trainingIterations);
+  void setTrainingEpochs(int trainingEpochs);
+  
+  /**
+   * @param batchSize The size of the mini batch if training in batch mode... or null if non-batch
+   *        mode.
+   */
+  void setTrainingMiniBatchSize(Integer batchSize);
  
 }

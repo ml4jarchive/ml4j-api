@@ -12,23 +12,14 @@
  * the License.
  */
 
-package org.ml4j.nn.axons;
-
-import org.ml4j.Matrix;
-import org.ml4j.nn.neurons.NeuronsActivation;
-import org.ml4j.nn.neurons.NeuronsActivationWithPossibleBiasUnit;
+package org.ml4j.nn.synapses;
 
 /**
- * Encapsulates the artifacts produced when pushing NeuronsActivations
- * through an Axons instance.
+ * Defines the context for activations travelling through UndirectedSynapses.
  * 
  * @author Michael Lavelle
+ *
  */
-public interface AxonsActivation {
+public interface UndirectedSynapsesContext extends SynapsesContext {
 
-  Matrix getInputDropoutMask();
-  
-  NeuronsActivation getOutput();
-  
-  NeuronsActivationWithPossibleBiasUnit getPostDropoutInputWithPossibleBias();
 }

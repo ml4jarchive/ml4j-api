@@ -11,6 +11,13 @@
 	<distributionManagement>
 	</distributionManagement>
 	<repositories>
+		<repository>
+			<id>ml4j-snapshots</id>
+			<url>https://raw.githubusercontent.com/ml4j/mvn-repository/master/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
@@ -34,6 +41,18 @@
             <artifactId>logback-classic</artifactId>
             <version>1.1.2</version>
         </dependency>
+        <dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+		<dependency>
+    		<groupId>org.mockito</groupId>
+    		<artifactId>mockito-core</artifactId>
+    		<version>1.10.19</version>
+    	<scope>test</scope>
+    	</dependency>
 	</dependencies>
 	<build>
 		<plugins>
