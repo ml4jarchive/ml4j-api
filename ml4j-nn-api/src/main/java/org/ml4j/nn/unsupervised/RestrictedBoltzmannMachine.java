@@ -17,6 +17,7 @@ package org.ml4j.nn.unsupervised;
 import org.ml4j.nn.UndirectedNeuralNetwork;
 import org.ml4j.nn.axons.FullyConnectedAxons;
 import org.ml4j.nn.layers.RestrictedBoltzmannLayer;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * Interface for a RestrictedBoltzmannMachine.
@@ -28,5 +29,17 @@ public interface RestrictedBoltzmannMachine extends UndirectedNeuralNetwork<
       RestrictedBoltzmannMachineContext, RestrictedBoltzmannMachine>,
       UnsupervisedNeuralNetwork<RestrictedBoltzmannLayer<FullyConnectedAxons>, 
       RestrictedBoltzmannMachineContext, RestrictedBoltzmannMachine> {
+  
+  /**
+   * Perform cdn steps of alternating Gibbs sampling
+   * 
+   * @param visibleActivations The initial visible activations.
+   * @param cdn The number of alternating Gibbs steps - set to 1 for cd1.
+   * @param context The Context.
+   * @return The sampling activation.
+   */
+  RestrictedBoltzmannSamplingActivation performGibbsSampling(
+      NeuronsActivation visibleActivations, int cdn, 
+      RestrictedBoltzmannMachineContext context);
 
 }
