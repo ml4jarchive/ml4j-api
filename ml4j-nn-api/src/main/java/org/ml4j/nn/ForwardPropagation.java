@@ -14,6 +14,7 @@
 
 package org.ml4j.nn;
 
+import org.ml4j.nn.costfunctions.CostFunctionGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -29,7 +30,7 @@ public interface ForwardPropagation {
    */
   NeuronsActivation getOutputs();
 
-  BackPropagation backPropagate(NeuronsActivation neuronActivationGradients,
+  BackPropagation backPropagate(CostFunctionGradient neuronActivationGradients,
       DirectedNeuralNetworkContext context);
   
   /**
