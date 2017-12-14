@@ -45,7 +45,7 @@ public interface UndirectedSynapses<L extends Neurons, R extends Neurons>
    * @return The ActivationFunction for the output on the left hand side of these
    *         UndirectedSynapses.
    */
-  ActivationFunction getLeftActivationFunction();
+  ActivationFunction<?, ?> getLeftActivationFunction();
 
   /**
    * @return The Neurons on the right hand side of these UndirectedSynapses.
@@ -57,7 +57,7 @@ public interface UndirectedSynapses<L extends Neurons, R extends Neurons>
    * @return The ActivationFunction for the output on the right hand side of these
    *         UndirectedSynapses.
    */
-  ActivationFunction getRightActivationFunction();
+  ActivationFunction<?, ?> getRightActivationFunction();
   
   /**
    * Push data from left to right through these UndirectedSynapses.

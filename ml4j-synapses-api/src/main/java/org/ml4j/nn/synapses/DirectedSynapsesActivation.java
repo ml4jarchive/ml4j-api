@@ -14,7 +14,9 @@
 
 package org.ml4j.nn.synapses;
 
+import org.ml4j.nn.activationfunctions.DifferentiableActivationFunctionActivation;
 import org.ml4j.nn.axons.AxonsActivation;
+import org.ml4j.nn.costfunctions.CostFunctionGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -38,9 +40,36 @@ public interface DirectedSynapsesActivation {
 
   public AxonsActivation getAxonsActivation();
   
+  /**
+   * @return The activation of the ActivationFunction.
+   */
+  public DifferentiableActivationFunctionActivation getActivationFunctionActivation();
+  
   public NeuronsActivation getInput();
 
+
+  /**
+   * @param outerGradient The outer gradient to back propagate.
+   * @param synapsesContext The synapses context.
+   * @param regularisationLamdda The regularisation lambda for the axons of these 
+   *        Synapses.
+   * @return The back propagated DirectedSynapsesGradient.
+   */
+  public DirectedSynapsesGradient backPropagate(DirectedSynapsesGradient outerGradient,
+      DirectedSynapsesContext synapsesContext, 
+      double regularisationLamdda);
   
+  
+  /**
+   * @param outerGradient The outer gradient to back propagate.
+   * @param synapsesContext The synapses context.
+   * @param regularisationLamdda The regularisation lambda for the axons of these 
+   *        Synapses.
+   * @return The back propagated DirectedSynapsesGradient.
+   */
+  public DirectedSynapsesGradient backPropagate(CostFunctionGradient outerGradient,
+      DirectedSynapsesContext synapsesContext, 
+      double regularisationLamdda);
   
   /**
    * The total regularisation cost of these synapse.
