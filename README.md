@@ -4,12 +4,15 @@
 ## Neural Networks
  
 
-A NeuralNetwork consists of groups of **[Neurons](https://github.com/ml4j/ml4j-api/blob/master/ml4j-synapses-api/src/main/java/org/ml4j/nn/neurons/Neurons.java)** -    connected via **[Synapses](https://github.com/ml4j/ml4j-api/blob/master/ml4j-synapses-api/src/main/java/org/ml4j/nn/synapses/Synapses.java)**, and organised into **[Layer](https://github.com/ml4j/ml4j-api/blob/master/ml4j-layers-api/src/main/java/org/ml4j/nn/layers/Layer.java)**s.
+A **[NeuralNetwork](https://github.com/ml4j/ml4j-api/blob/master/ml4j-nn-api/src/main/java/org/ml4j/nn/NeuralNetwork.java) consists of groups of **[Neurons](https://github.com/ml4j/ml4j-api/blob/master/ml4j-synapses-api/src/main/java/org/ml4j/nn/neurons/Neurons.java)** -    connected via **[Synapses](https://github.com/ml4j/ml4j-api/blob/master/ml4j-synapses-api/src/main/java/org/ml4j/nn/synapses/Synapses.java)**, and organised into **[Layers](https://github.com/ml4j/ml4j-api/blob/master/ml4j-layers-api/src/main/java/org/ml4j/nn/layers/Layer.java)**.
 
 ```
-Layer1:															Layer2:
 
-Neurons <-> Synapses <-> Neurons <-> Synapses <-> Neurons <->	Neurons <->..
+Neural Network:
+
+Layer1:										Layer2			
+
+Neurons <-> Synapses <-> Neurons <-> Synapses <-> Neurons <->	Neurons <->	Neurons <->....
 
 ```
 
