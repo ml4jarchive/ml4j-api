@@ -37,4 +37,51 @@ The aim of training a NeuralNetwork is **optimise the connection weights for all
 generates some desired output data ( encoded as NeuronsActivation instances), eg., in response to some given input NeuronsActivation.
 
 
+## Directed Neural Networks
+
+A **[DirectedNeuralNetwork](https://github.com/ml4j/ml4j-api/blob/master/ml4j-nn-api/src/main/java/org/ml4j/nn/DirectedNeuralNetwork.java)** is a subclass of NeuralNetwork in which there is a natural direction for the flow of activations, from left to right.
+
+The Layers within a DirectedNeuralNetwork are **[DirectedLayers](https://github.com/ml4j/ml4j-api/blob/master/ml4j-layers-api/src/main/java/org/ml4j/nn/layers/DirectedLayer.java)**, within which Neurons are connected via **[DirectedSynapses](https://github.com/ml4j/ml4j-api/blob/master/ml4j-synapses-api/src/main/java/org/ml4j/nn/synapses/DirectedSynapses.java)**.
+```
+DirectedNeuralNetwork:
+
+DirectedLayer1:													
+
+Neurons -> DirectedSynapses -> Neurons -> DirectedSynapses ->	 
+
+```
+
+	
+DirectedSynapses contain Axons followed by a specific type of ActivationFunction - a **[DifferentiableActivationFunction](https://github.com/ml4j/ml4j-api/blob/master/ml4j-synapses-api/src/main/java/org/ml4j/nn/activationfunctions/DifferentiableActivationFunction.java)** to the right hand side of the Axons.
+```
+
+DirectedSynapses:						
+
+Axons -> DifferentiableActivationFunction
+
+```
+
+DirectedLayers and DirectedSynapses each know how to "forward propagate" the activations of the Neurons on their left hand side to to Neurons on their right hand side.
+
+As NeuronsActivation instances propagate through this DirectedNeuralNetwork,  the activiations of each of these components are collected into
+ "forward propagation" chain.
+
+eg.
+```
+
+NeuronsActivation -> AxonsActivation-> DifferentiableActivationFunctionActivation -> NeuronsActivation -> .....
+
+```
+
+The activations within each Synapses instance are grouped together into a DirectedSynapseActivation, and these DirectedSynapseActivations are themselves further grouped into DirectedLayerActivations.
+
+Our **[ForwardPropagation](https://github.com/ml4j/ml4j-api/blob/master/ml4j-nn-api/src/main/java/org/ml4j/nn/ForwardPropagation.java)** now contains a chain of **[DirectedLayerActivations](https://github.com/ml4j/ml4j-api/blob/master/ml4j-layers-api/src/main/java/org/ml4j/nn/layers/DirectedLayerActivation.java)**,  each containing a chain of **[DirectedSynapseActivations](https://github.com/ml4j/ml4j-api/blob/master/ml4j-synapses-api/src/main/java/org/ml4j/nn/synapses/DirectedSynapsesActivation.java)**, each of which contain an **[AxonsActivation](https://github.com/ml4j/ml4j-api/blob/master/ml4j-synapses-api/src/main/java/org/ml4j/nn/axons/AxonsActivation.java)** and **[DifferentiableActivationFunctionActivation](https://github.com/ml4j/ml4j-api/blob/master/ml4j-synapses-api/src/main/java/org/ml4j/nn/activationfunctions/DifferentiableActivationFunction.java)**
+
+```	
+ForwardPropagation:
+
+DirectedLayerActivation1 -> DirectedLayerActivation2 -> ...
+
+```
+
 
