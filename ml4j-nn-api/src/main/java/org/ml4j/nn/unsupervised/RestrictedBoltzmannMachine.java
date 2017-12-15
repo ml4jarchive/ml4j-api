@@ -41,5 +41,11 @@ public interface RestrictedBoltzmannMachine extends UndirectedNeuralNetwork<
   RestrictedBoltzmannSamplingActivation performGibbsSampling(
       NeuronsActivation visibleActivations, int cdn, 
       RestrictedBoltzmannMachineContext context);
+  
+  /**
+   * @return An AutoEncoder initialised with the layers configurations and weights of 
+   *        this RestrictedBoltzmannMachine.
+   */
+  AutoEncoder createAutoEncoder();
 
 }
