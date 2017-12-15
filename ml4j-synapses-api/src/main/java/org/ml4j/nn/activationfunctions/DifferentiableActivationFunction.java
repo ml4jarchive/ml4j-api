@@ -25,7 +25,9 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
  * @author Michael Lavelle
  *
  */
-public interface DifferentiableActivationFunction extends ActivationFunction {
+public interface DifferentiableActivationFunction 
+    extends ActivationFunction<DifferentiableActivationFunction, 
+          DifferentiableActivationFunctionActivation> {
 
   /**
   * Obtains the gradient of a differentiable function given the output of the function.
@@ -34,6 +36,6 @@ public interface DifferentiableActivationFunction extends ActivationFunction {
   * @param context The context under which we wish to obtain the gradient
   * @return The gradient of the function at the output
   */
-  NeuronsActivation activationGradient(NeuronsActivation outputActivation, 
+  NeuronsActivation activationGradient(DifferentiableActivationFunctionActivation outputActivation, 
       NeuronsActivationContext context);
 }

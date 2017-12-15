@@ -17,7 +17,6 @@ package org.ml4j.nn.synapses;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.neurons.Neurons;
-import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * DirectedSynapses are containers for Axons with a DifferentiableActivationFunction applied
@@ -64,18 +63,5 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons>
    */
   DirectedSynapsesActivation forwardPropagate(DirectedSynapsesInput input,
       DirectedSynapsesContext synapsesContext);
-  
-  /**
-   * @param synapsesActivation The outer synapses activation.
-   * @param outerGradient The outer gradient to back propagate.
-   * @param synapsesContext The synapses context.
-   * @param outerMostSynapses Whether these are the outer most Synapses of a NeuralNetwork.
-   * @param regularisationLambda The regularisation lambda for the axons of these Synapses.
-   * @return The back propagated DirectedSynapsesGradient.
-   */
-  DirectedSynapsesGradient backPropagate(DirectedSynapsesActivation synapsesActivation, 
-      NeuronsActivation outerGradient, 
-      DirectedSynapsesContext synapsesContext, boolean outerMostSynapses, 
-      double regularisationLambda);
-
+ 
 }

@@ -12,24 +12,18 @@
  * the License.
  */
 
-package org.ml4j.nn.layers;
+package org.ml4j.nn.activationfunctions;
 
 import org.ml4j.nn.neurons.NeuronsActivation;
-import org.ml4j.nn.synapses.DirectedSynapsesGradient;
-
-import java.util.List;
 
 /**
- * Encapsulates the gradient-related artifacts back-propagating through a DirectedLayer.
+ * Encapsulates the gradient-related artifacts as they propagate backwards through
+ * a ActivationFunction instance.  
  * 
  * @author Michael Lavelle
  */
-public interface DirectedLayerGradient {
+public interface ActivationFunctionGradient {
 
-  /**
-   * @return The list of DirectedSynapsesGradients back-propagating through a DirectedLayer.
-   */
-  List<DirectedSynapsesGradient> getSynapsesGradients();
-  
   NeuronsActivation getOutput();
+  
 }
