@@ -17,6 +17,7 @@ package org.ml4j.nn.synapses;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunctionActivation;
 import org.ml4j.nn.axons.AxonsActivation;
 import org.ml4j.nn.costfunctions.CostFunctionGradient;
+import org.ml4j.nn.graph.DirectedDipoleGraph;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -38,7 +39,7 @@ public interface DirectedSynapsesActivation {
    */
   public DirectedSynapses<?, ?> getSynapses();
 
-  public AxonsActivation getAxonsActivation();
+  public DirectedDipoleGraph<AxonsActivation> getAxonsActivationGraph();
   
   /**
    * @return The activation of the ActivationFunction.

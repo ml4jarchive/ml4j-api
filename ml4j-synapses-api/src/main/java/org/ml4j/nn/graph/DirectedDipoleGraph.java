@@ -12,25 +12,21 @@
  * the License.
  */
 
-package org.ml4j.nn.axons;
+package org.ml4j.nn.graph;
 
-import org.ml4j.Matrix;
-import org.ml4j.nn.neurons.NeuronsActivation;
-import org.ml4j.nn.neurons.NeuronsActivationWithPossibleBiasUnit;
+import java.util.List;
 
 /**
- * Encapsulates the artifacts produced when pushing NeuronsActivations
- * through an Axons instance.
+ * Data structure consisting of parallel paths of edges of type E, with all parallel paths starting
+ * at the same point in the Network, and ending at the same point in the Network.
  * 
  * @author Michael Lavelle
+ *
+ * @param <E> The type of edge in this Graph.
  */
-public interface AxonsActivation {
+public interface DirectedDipoleGraph<E> {
 
-  Matrix getInputDropoutMask();
-  
-  NeuronsActivation getOutput();
-  
-  Axons<?, ?, ?> getAxons();
-  
-  NeuronsActivationWithPossibleBiasUnit getPostDropoutInputWithPossibleBias();
+  List<DirectedPath<E>> getParallelPaths();
+ 
+  void addParallelPath(DirectedPath<E> parallelPath);
 }

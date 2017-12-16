@@ -12,25 +12,21 @@
  * the License.
  */
 
-package org.ml4j.nn.axons;
+package org.ml4j.nn.graph;
 
-import org.ml4j.Matrix;
-import org.ml4j.nn.neurons.NeuronsActivation;
-import org.ml4j.nn.neurons.NeuronsActivationWithPossibleBiasUnit;
+import java.util.List;
 
 /**
- * Encapsulates the artifacts produced when pushing NeuronsActivations
- * through an Axons instance.
+ * Data structure consisting of a path of edges of type E between two points in the Network.
  * 
  * @author Michael Lavelle
+ *
+ * @param <E> The type of edge in this path.
  */
-public interface AxonsActivation {
+public interface DirectedPath<E> {
 
-  Matrix getInputDropoutMask();
+  List<E> getEdges();
   
-  NeuronsActivation getOutput();
+  void addEdge(E edge);
   
-  Axons<?, ?, ?> getAxons();
-  
-  NeuronsActivationWithPossibleBiasUnit getPostDropoutInputWithPossibleBias();
 }

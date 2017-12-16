@@ -16,6 +16,7 @@ package org.ml4j.nn.synapses;
 
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons;
+import org.ml4j.nn.graph.DirectedDipoleGraph;
 import org.ml4j.nn.neurons.Neurons;
 
 /**
@@ -37,9 +38,14 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons>
   DifferentiableActivationFunction getActivationFunction();
   
   /**
-   * @return The Axons within these DirectedSynapses.
+   * @return The primary Axons within these DirectedSynapses.
    */
-  Axons<? ,? ,?> getAxons();
+  Axons<? ,? ,?> getPrimaryAxons();
+  
+  /**
+   * @return The Axons graph within these DirectedSynapses.
+   */
+  DirectedDipoleGraph<Axons<?, ? ,?>> getAxonsGraph();
   
   /**
    * @return The Neurons on the left hand side of these DirectedSynapses.

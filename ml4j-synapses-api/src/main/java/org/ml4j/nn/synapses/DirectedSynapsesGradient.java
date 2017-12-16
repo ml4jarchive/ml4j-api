@@ -17,6 +17,8 @@ package org.ml4j.nn.synapses;
 import org.ml4j.Matrix;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
+import java.util.List;
+
 /**
  * Encapsulates the gradient-related artifacts as they propagate backwards through
  * a DirectedSynapses instance.  
@@ -26,14 +28,14 @@ import org.ml4j.nn.neurons.NeuronsActivation;
 public interface DirectedSynapsesGradient {
 
   /**
-   * @return The total gradient of the Axons weights if they are trainable, or null otherwise.
+   * @return The total gradients of the Axons weights if they are trainable.
    */
-  Matrix getTotalTrainableAxonsGradient();
+  List<Matrix> getTotalTrainableAxonsGradients();
   
   /**
-   * @return The average gradient of the Axons weights if they are trainable, or null otherwise.
+   * @return The average gradients of the Axons weights if they are trainable.
    */
-  Matrix getAverageTrainableAxonsGradient();
+  List<Matrix> getAverageTrainableAxonsGradients();
   
 
   /**
