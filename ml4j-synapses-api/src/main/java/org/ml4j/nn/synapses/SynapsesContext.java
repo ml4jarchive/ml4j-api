@@ -35,7 +35,13 @@ public interface SynapsesContext extends NeuronsActivationContext {
    */
   AxonsContext getAxonsContext(int pathIndex, int axonsIndexInPath);
   
-  public boolean isWithFreezeOut();
+  /**
+   * @return Whether these Synapses are frozen out of training.
+   */
+  boolean isWithFreezeOut();
   
+  /**
+   * @param withFreezeOut Whether these Synapses are frozen out of training.
+   */
   public void setWithFreezeOut(boolean withFreezeOut);
 }
