@@ -53,16 +53,14 @@ public interface DirectedLayerActivation {
       DirectedLayerContext layerContext);
   
   /**
-   * @param primaryAxonsRegularisationLambda The regularisation lambda for the primary axons in
-   *        this DirectedLayer.
+   * @param layerContext The layer context.
    * @return The total regularisation cost of this activation.
    */
-  double getTotalRegularisationCost(double primaryAxonsRegularisationLambda);
+  double getTotalRegularisationCost(DirectedLayerContext layerContext);
   
   /**
-   * @param primaryAxonsRegularisationLambda The regularisation lambda for the primary axons in
-   *        this DirectedLayer.
+   * @param layerContext The layer context.
    * @return The average regularisation cost of this activation.
    */
-  double getAverageRegularistationCost(double primaryAxonsRegularisationLambda);
+  double getAverageRegularistationCost(DirectedLayerContext layerContext);
 }

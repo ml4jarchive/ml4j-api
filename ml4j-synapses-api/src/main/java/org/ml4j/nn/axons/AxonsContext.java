@@ -31,6 +31,33 @@ public interface AxonsContext extends NeuronsActivationContext {
    */
   double getLeftHandInputDropoutKeepProbability();
   
+  /**
+   * @return Whether these Axons are frozen out for training.
+   */
   boolean isWithFreezeOut();
+
+  /**
+   * @param withFreezeOut Whether these Axons are frozen out for training.
+   */
+  void setWithFreezeOut(boolean withFreezeOut);
+  
+  /**
+   * @param inputDropoutKeepProbability The keep probability for input dropout 
+   *        on the left hand side of an Axons instance.
+   */
+  void setLeftHandInputDropoutKeepProbability(
+      double inputDropoutKeepProbability);
+ 
+  /**
+   * @param regularisationLamdba The regularisation lambda to use with the primary axons of
+   *        a DirectedLayer.
+   */
+  void setRegularisationLambda(double regularisationLamdba);
+  
+  /**
+   * @return The regularisation lambda to use with the primary axons of
+   *        a DirectedLayer.
+   */
+  double getRegularisationLambda();
   
 }
