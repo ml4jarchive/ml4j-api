@@ -14,7 +14,7 @@
 
 package org.ml4j.nn;
 
-import org.ml4j.Matrix;
+import org.ml4j.nn.axons.AxonsGradient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class CostAndGradients {
 
   private double totalCost;
   
-  private List<Matrix> totalTrainableAxonsGradients;
+  private List<AxonsGradient> totalTrainableAxonsGradients;
   
   private int numberOfTrainingExamples;
 
@@ -39,7 +39,7 @@ public class CostAndGradients {
    * @param numberOfTrainingExamples The number of training examples.
    */
   public CostAndGradients(double totalCost, 
-      List<Matrix> totalTrainableAxonsGradients, int numberOfTrainingExamples) {
+      List<AxonsGradient> totalTrainableAxonsGradients, int numberOfTrainingExamples) {
     super();
     this.totalCost = totalCost;
     this.totalTrainableAxonsGradients = totalTrainableAxonsGradients;
@@ -54,18 +54,19 @@ public class CostAndGradients {
     return getTotalCost() / numberOfTrainingExamples;
   }
 
-  public List<Matrix> getTotalTrainableAxonsGradients() {
+  public List<AxonsGradient> getTotalTrainableAxonsGradients() {
     return totalTrainableAxonsGradients;
   }
-  
+
   /**
    * @return The average gradients.
    */
-  public List<Matrix> getAverageTrainableAxonsGradients() {
+  public List<AxonsGradient> getAverageTrainableAxonsGradients() {
 
-    List<Matrix> averages = new ArrayList<>();
-    for (Matrix total : getTotalTrainableAxonsGradients()) {
-      averages.add(total.div(numberOfTrainingExamples));
+    List<AxonsGradient> averages = new ArrayList<>();
+    for (AxonsGradient total : getTotalTrainableAxonsGradients()) {
+      averages.add(
+          new AxonsGradient(total.getAxons(), total.getGradient().div(numberOfTrainingExamples)));
     }
     return averages;
   }

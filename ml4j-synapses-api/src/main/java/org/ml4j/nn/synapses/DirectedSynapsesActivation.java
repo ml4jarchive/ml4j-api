@@ -46,7 +46,7 @@ public interface DirectedSynapsesActivation {
    */
   public DifferentiableActivationFunctionActivation getActivationFunctionActivation();
   
-  public NeuronsActivation getInput();
+  public DirectedSynapsesInput getInput();
 
 
   /**

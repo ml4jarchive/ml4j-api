@@ -12,21 +12,32 @@
  * the License.
  */
 
-package org.ml4j.nn.synapses;
+package org.ml4j.nn.axons;
 
-import org.ml4j.nn.neurons.NeuronsActivation;
+import org.ml4j.Matrix;
 
-/**
- * Encapsulates the input artifacts for forward propagation through a DirectedSynapses instance.
- * 
- * @author Michael Lavelle
- */
-public interface DirectedSynapsesInput {
+public class AxonsGradient {
+
+  private TrainableAxons<?, ?, ?> axons;
+  
+  private Matrix gradient;
 
   /**
-   * @return The neurons activation input on the left hand side Neurons of the Synapses' Axons.
+   * @param axons The TrainableAxons that generated this gradient.
+   * @param gradient The gradient.
    */
-  NeuronsActivation getInput();
+  public AxonsGradient(TrainableAxons<?, ?, ?> axons, Matrix gradient) {
+    super();
+    this.axons = axons;
+    this.gradient = gradient;
+  }
+
+  public TrainableAxons<?, ?, ?> getAxons() {
+    return axons;
+  }
+
+  public Matrix getGradient() {
+    return gradient;
+  }
   
-  NeuronsActivation getResidualInput();
 }
