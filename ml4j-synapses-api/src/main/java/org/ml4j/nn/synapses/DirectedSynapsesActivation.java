@@ -51,40 +51,34 @@ public interface DirectedSynapsesActivation {
   /**
    * @param outerGradient The outer gradient to back propagate.
    * @param synapsesContext The synapses context.
-   * @param regularisationLamdda The regularisation lambda for the axons of these 
-   *        Synapses.
    * @return The back propagated DirectedSynapsesGradient.
    */
   public DirectedSynapsesGradient backPropagate(DirectedSynapsesGradient outerGradient,
-      DirectedSynapsesContext synapsesContext, 
-      double regularisationLamdda);
+      DirectedSynapsesContext synapsesContext);
   
   
   /**
    * @param outerGradient The outer gradient to back propagate.
    * @param synapsesContext The synapses context.
-   * @param regularisationLamdda The regularisation lambda for the axons of these 
-   *        Synapses.
    * @return The back propagated DirectedSynapsesGradient.
    */
   public DirectedSynapsesGradient backPropagate(CostFunctionGradient outerGradient,
-      DirectedSynapsesContext synapsesContext, 
-      double regularisationLamdda);
+      DirectedSynapsesContext synapsesContext);
   
   /**
    * The total regularisation cost of these synapse.
    * 
-   * @param regularisationLambda The regularisation lambda
+   * @param synapsesContext The synapses context.
    * @return The total regularisation cost.
    */
-  double getTotalRegularisationCost(double regularisationLambda);
+  double getTotalRegularisationCost(DirectedSynapsesContext synapsesContext);
   
   /**
    * The average regularisation cost of these synapse.
    * 
-   * @param regularisationLambda The regularisation lambda
+   * @param synapsesContext The synapses context.
    * @return The total regularisation cost.
    */
-  double getAverageRegularisationCost(double regularisationLambda);
+  double getAverageRegularisationCost(DirectedSynapsesContext synapsesContext);
 
 }
