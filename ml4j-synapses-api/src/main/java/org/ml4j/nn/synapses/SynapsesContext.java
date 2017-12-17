@@ -30,5 +30,15 @@ public interface SynapsesContext extends NeuronsActivationContext {
    * @return The context we use for activations travelling through
    *        the Axons within these Synapses.
    */
-  AxonsContext createAxonsContext();
+  AxonsContext getAxonsContext(int axonsIndex);
+  
+  /**
+   * @return Whether these Synapses are frozen out of training.
+   */
+  boolean isWithFreezeOut();
+  
+  /**
+   * @param withFreezeOut Whether these Synapses are frozen out of training.
+   */
+  public void setWithFreezeOut(boolean withFreezeOut);
 }
