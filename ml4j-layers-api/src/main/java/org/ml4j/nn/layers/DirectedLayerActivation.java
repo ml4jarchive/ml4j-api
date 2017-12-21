@@ -71,4 +71,5 @@ public interface DirectedLayerActivation {
    * @return The average regularisation cost of this activation.
    */
   double getAverageRegularistationCost(DirectedLayerContext layerContext);
+  
 }

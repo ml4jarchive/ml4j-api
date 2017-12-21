@@ -31,7 +31,7 @@ public interface DirectedSynapsesGradient {
    * @return The total gradients of the Axons weights if they are trainable.
    */
   List<AxonsGradient> getTotalTrainableAxonsGradients();
-  
+
   /**
    * @return The average gradients of the Axons weights if they are trainable.
    */

@@ -16,28 +16,16 @@ package org.ml4j.nn.axons;
 
 import org.ml4j.Matrix;
 
-public class AxonsGradient {
-
-  private TrainableAxons<?, ?, ?> axons;
+public interface AxonsGradient {
   
-  private Matrix gradient;
+  /**
+   * @return The TrainableAxons instance that generated this gradient.
+   */
+  TrainableAxons<?, ?, ?> getAxons();
 
   /**
-   * @param axons The TrainableAxons that generated this gradient.
-   * @param gradient The gradient.
+   * @return The gradient for these TrainableAxons.
    */
-  public AxonsGradient(TrainableAxons<?, ?, ?> axons, Matrix gradient) {
-    super();
-    this.axons = axons;
-    this.gradient = gradient;
-  }
-
-  public TrainableAxons<?, ?, ?> getAxons() {
-    return axons;
-  }
-
-  public Matrix getGradient() {
-    return gradient;
-  }
+  Matrix getGradient();
   
 }
