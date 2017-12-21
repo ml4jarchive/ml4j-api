@@ -26,6 +26,8 @@ import org.ml4j.nn.neurons.NeuronsActivationWithPossibleBiasUnit;
  */
 public interface AxonsActivation {
 
+  Axons<?, ?, ?> getAxons();
+  
   Matrix getInputDropoutMask();
   
   NeuronsActivation getOutput();
