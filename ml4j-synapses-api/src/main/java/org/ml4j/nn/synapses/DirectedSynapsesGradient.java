@@ -14,7 +14,7 @@
 
 package org.ml4j.nn.synapses;
 
-import org.ml4j.Matrix;
+import org.ml4j.nn.axons.AxonsGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -28,12 +28,12 @@ public interface DirectedSynapsesGradient {
   /**
    * @return The total gradient of the Axons weights if they are trainable, or null otherwise.
    */
-  Matrix getTotalTrainableAxonsGradient();
+  AxonsGradient getTotalTrainableAxonsGradient();
   
   /**
    * @return The average gradient of the Axons weights if they are trainable, or null otherwise.
    */
-  Matrix getAverageTrainableAxonsGradient();
+  AxonsGradient getAverageTrainableAxonsGradient();
   
 
   /**
