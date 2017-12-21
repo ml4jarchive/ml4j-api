@@ -14,7 +14,7 @@
 
 package org.ml4j.nn.synapses;
 
-import org.ml4j.Matrix;
+import org.ml4j.nn.axons.AxonsGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 import java.util.List;
@@ -30,17 +30,16 @@ public interface DirectedSynapsesGradient {
   /**
    * @return The total gradients of the Axons weights if they are trainable.
    */
-  List<Matrix> getTotalTrainableAxonsGradients();
-  
+  List<AxonsGradient> getTotalTrainableAxonsGradients();
+
   /**
    * @return The average gradients of the Axons weights if they are trainable.
    */
-  List<Matrix> getAverageTrainableAxonsGradients();
+  List<AxonsGradient> getAverageTrainableAxonsGradients();
   
 
   /**
    * @return The backpropagated gradient passing backwards through the DirectedSynapses.
    */
   NeuronsActivation getOutput();
-
 }
