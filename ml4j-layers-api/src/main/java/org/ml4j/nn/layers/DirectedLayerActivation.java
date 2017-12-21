@@ -16,6 +16,9 @@ package org.ml4j.nn.layers;
 
 import org.ml4j.nn.costfunctions.CostFunctionGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
+import org.ml4j.nn.synapses.DirectedSynapsesActivation;
+
+import java.util.List;
 
 /**
  * Encapsulates the artifacts produced when propagating NeuronsActivations
@@ -63,4 +66,9 @@ public interface DirectedLayerActivation {
    * @return The average regularisation cost of this activation.
    */
   double getAverageRegularistationCost(DirectedLayerContext layerContext);
+  
+  /**
+  * @return All the Synapses activations of this Layer Activation.
+  */
+  List<DirectedSynapsesActivation> getSynapsesActivations();
 }

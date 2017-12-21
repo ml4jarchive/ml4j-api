@@ -12,37 +12,20 @@
  * the License.
  */
 
-package org.ml4j.nn;
+package org.ml4j.nn.axons;
 
-import org.ml4j.nn.axons.AxonsGradient;
+import org.ml4j.Matrix;
 
-import java.util.List;
-
-/**
- * Encapsulates the total and average costs and gradients associated with a forward propagation
- * through a FeedForwardNeuralNetwork.
- * 
- * @author Michael Lavelle
- */
-public interface CostAndGradients {
-
-  /**
-   * @return The total cost.
-   */
-  double getTotalCost();
+public interface AxonsGradient {
   
   /**
-   * @return The average cost.
+   * @return The TrainableAxons instance that generated this gradient.
    */
-  double getAverageCost();
+  TrainableAxons<?, ?, ?> getAxons();
 
   /**
-   * @return The total gradients.
+   * @return The gradient for these TrainableAxons.
    */
-  List<AxonsGradient> getTotalTrainableAxonsGradients();
+  Matrix getGradient();
   
-  /**
-   * @return The average gradients.
-   */
-  List<AxonsGradient> getAverageTrainableAxonsGradients();
 }
