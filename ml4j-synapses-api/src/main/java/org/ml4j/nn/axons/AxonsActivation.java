@@ -32,7 +32,5 @@ public interface AxonsActivation {
   
   NeuronsActivation getOutput();
   
-  Axons<?, ?, ?> getAxons();
-  
   NeuronsActivationWithPossibleBiasUnit getPostDropoutInputWithPossibleBias();
 }
