@@ -61,5 +61,6 @@ public interface DirectedNeuralNetworkContext extends NeuralNetworkContext {
    *        mode.
    */
   void setTrainingMiniBatchSize(Integer batchSize);
+  
  
 }

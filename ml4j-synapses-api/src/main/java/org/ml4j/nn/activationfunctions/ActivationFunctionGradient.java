@@ -12,13 +12,18 @@
  * the License.
  */
 
-package org.ml4j.nn;
+package org.ml4j.nn.activationfunctions;
+
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Encapsulates the runtime context used with a DeepBeliefNetwork.
+ * Encapsulates the gradient-related artifacts as they propagate backwards through
+ * a ActivationFunction instance.  
  * 
  * @author Michael Lavelle
  */
-public interface DeepBeliefNetworkContext extends NeuralNetworkContext {
+public interface ActivationFunctionGradient {
 
+  NeuronsActivation getOutput();
+  
 }

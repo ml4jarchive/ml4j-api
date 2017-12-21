@@ -55,7 +55,7 @@ public interface RestrictedBoltzmannLayer<A extends TrainableAxons<?, ?, ?>>
    * the visible neurons.
    * 
    * @param visibleNeuronsActivation The visible Neurons activation.
-   * @layerContext The LayerContext
+   * @param layerContext The LayerContext
    * @return The RestrictedBoltzmannLayerActivation, both the visible and hidden activations.
    */
   RestrictedBoltzmannLayerActivation activateHiddenNeuronsFromVisibleNeuronsData(
@@ -68,7 +68,7 @@ public interface RestrictedBoltzmannLayer<A extends TrainableAxons<?, ?, ?>>
    * 
    * @param visibleNeuronsReconstructionActivation The synapses activation that generated the
    *        visible reconstruction.
-   * @layerContext The LayerContext
+   * @param layerContext The LayerContext
    * @return The RestrictedBoltzmannLayerActivation, both the visible and hidden activations.
    */
   RestrictedBoltzmannLayerActivation 

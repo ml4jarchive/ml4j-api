@@ -20,21 +20,22 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
 import java.io.Serializable;
 
 /**
- * Encapsulates a function to create an output NeuronsActivation
- * from an input NeuronsActivation - typically applied to the output
- * of Axons within Layers to introduce non linearities.
+ * Encapsulates a function to create an output NeuronsActivation from an input NeuronsActivation -
+ * typically applied to the output of Axons within Layers to introduce non linearities.
  * 
  * @author Michael Lavelle
  *
  */
-public interface ActivationFunction extends Serializable {
-  
+public interface ActivationFunction<F extends ActivationFunction<F, G>, 
+    G extends ActivationFunctionActivation<F, G>>
+    extends Serializable {
+
   /**
-  * Create an output activation from input activations.
-  * 
-  * @param input The input NeuronsActivation
-  * @param context The activation context
-  * @return The activation
-  */
-  NeuronsActivation activate(NeuronsActivation input, NeuronsActivationContext context);
+   * Create an output activation from input activations.
+   * 
+   * @param input The input NeuronsActivation
+   * @param context The activation context
+   * @return The activation
+   */
+  G activate(NeuronsActivation input, NeuronsActivationContext context);
 }

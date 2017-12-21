@@ -16,14 +16,20 @@
 
 package org.ml4j.nn.unsupervised;
 
+import org.ml4j.nn.FeedForwardNeuralNetwork;
+import org.ml4j.nn.layers.FeedForwardLayer;
 import org.ml4j.nn.neurons.NeuronsActivation;
+
+import java.util.List;
 
 /**
  * Interface for a stacked AutoEncoder.
  * 
  * @author Michael Lavelle
  */
-public interface StackedAutoEncoder extends AutoEncoder {
+public interface StackedAutoEncoder extends UnsupervisedNeuralNetwork<FeedForwardLayer<?, ?>, 
+    StackedAutoEncoderContext, StackedAutoEncoder>, 
+    FeedForwardNeuralNetwork<StackedAutoEncoderContext, StackedAutoEncoder> {
 
   /**
    *@param inputActivations The input activations
@@ -31,5 +37,7 @@ public interface StackedAutoEncoder extends AutoEncoder {
    */
   public void trainGreedilyLayerwise(NeuronsActivation inputActivations,
       StackedAutoEncoderContext context);
+  
+  List<AutoEncoder> getAutoEncoderStack();
 
 }

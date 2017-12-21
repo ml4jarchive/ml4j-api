@@ -14,7 +14,11 @@
 
 package org.ml4j.nn.layers;
 
+import org.ml4j.nn.costfunctions.CostFunctionGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
+import org.ml4j.nn.synapses.DirectedSynapsesActivation;
+
+import java.util.List;
 
 /**
  * Encapsulates the artifacts produced when propagating NeuronsActivations
@@ -38,23 +42,33 @@ public interface DirectedLayerActivation {
   /**
    * @param outerGradient The outer gradient to back propagate.
    * @param layerContext The layer context.
-   * @param outerMostLayer Whether this is the outer most Layer of a NeuralNetwork.
    * @return The back propagated DirectedLayerGradient.
    */
-  DirectedLayerGradient backPropagate(NeuronsActivation outerGradient, 
-      DirectedLayerContext layerContext, boolean outerMostLayer);
+  DirectedLayerGradient backPropagate(DirectedLayerGradient outerGradient, 
+      DirectedLayerContext layerContext);
   
   /**
-   * @param primaryAxonsRegularisationLambda The regularisation lambda for the primary axons in
-   *        this DirectedLayer.
+   * @param outerGradient The outer gradient to back propagate.
+   * @param layerContext The layer context.
+   * @return The back propagated DirectedLayerGradient.
+   */
+  DirectedLayerGradient backPropagate(CostFunctionGradient outerGradient, 
+      DirectedLayerContext layerContext);
+  
+  /**
+   * @param layerContext The layer context.
    * @return The total regularisation cost of this activation.
    */
-  double getTotalRegularisationCost(double primaryAxonsRegularisationLambda);
+  double getTotalRegularisationCost(DirectedLayerContext layerContext);
   
   /**
-   * @param primaryAxonsRegularisationLambda The regularisation lambda for the primary axons in
-   *        this DirectedLayer.
+   * @param layerContext The layer context.
    * @return The average regularisation cost of this activation.
    */
-  double getAverageRegularistationCost(double primaryAxonsRegularisationLambda);
+  double getAverageRegularistationCost(DirectedLayerContext layerContext);
+  
+  /**
+  * @return All the Synapses activations of this Layer Activation.
+  */
+  List<DirectedSynapsesActivation> getSynapsesActivations();
 }

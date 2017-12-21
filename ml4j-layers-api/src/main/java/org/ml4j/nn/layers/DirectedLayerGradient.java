@@ -14,6 +14,7 @@
 
 package org.ml4j.nn.layers;
 
+import org.ml4j.nn.neurons.NeuronsActivation;
 import org.ml4j.nn.synapses.DirectedSynapsesGradient;
 
 import java.util.List;
@@ -29,4 +30,6 @@ public interface DirectedLayerGradient {
    * @return The list of DirectedSynapsesGradients back-propagating through a DirectedLayer.
    */
   List<DirectedSynapsesGradient> getSynapsesGradients();
+  
+  NeuronsActivation getOutput();
 }

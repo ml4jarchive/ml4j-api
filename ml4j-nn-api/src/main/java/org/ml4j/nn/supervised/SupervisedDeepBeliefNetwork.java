@@ -16,9 +16,9 @@
 
 package org.ml4j.nn.supervised;
 
+import org.ml4j.nn.DeepBeliefNetwork;
 import org.ml4j.nn.DeepBeliefNetworkContext;
 import org.ml4j.nn.layers.RestrictedBoltzmannLayer;
-import org.ml4j.nn.unsupervised.DeepBeliefNetwork;
 
 /**
  * Interface for a supervised DeepBeliefNetwork.
@@ -26,7 +26,7 @@ import org.ml4j.nn.unsupervised.DeepBeliefNetwork;
  * @author Michael Lavelle
  */
 public interface SupervisedDeepBeliefNetwork extends
-    DeepBeliefNetwork<RestrictedBoltzmannLayer<?>, SupervisedDeepBeliefNetwork, 
+    DeepBeliefNetwork<SupervisedDeepBeliefNetwork, 
     DeepBeliefNetworkContext>,
     SupervisedNeuralNetwork<RestrictedBoltzmannLayer<?>, 
     DeepBeliefNetworkContext, SupervisedDeepBeliefNetwork> {

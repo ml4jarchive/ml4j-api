@@ -14,7 +14,9 @@
 
 package org.ml4j.nn.synapses;
 
+import org.ml4j.nn.activationfunctions.DifferentiableActivationFunctionActivation;
 import org.ml4j.nn.axons.AxonsActivation;
+import org.ml4j.nn.costfunctions.CostFunctionGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -38,24 +40,45 @@ public interface DirectedSynapsesActivation {
 
   public AxonsActivation getAxonsActivation();
   
-  public NeuronsActivation getInput();
-
+  /**
+   * @return The activation of the ActivationFunction.
+   */
+  public DifferentiableActivationFunctionActivation getActivationFunctionActivation();
   
+  public DirectedSynapsesInput getInput();
+
+
+  /**
+   * @param outerGradient The outer gradient to back propagate.
+   * @param synapsesContext The synapses context.
+   * @return The back propagated DirectedSynapsesGradient.
+   */
+  public DirectedSynapsesGradient backPropagate(DirectedSynapsesGradient outerGradient,
+      DirectedSynapsesContext synapsesContext);
+  
+  
+  /**
+   * @param outerGradient The outer gradient to back propagate.
+   * @param synapsesContext The synapses context.
+   * @return The back propagated DirectedSynapsesGradient.
+   */
+  public DirectedSynapsesGradient backPropagate(CostFunctionGradient outerGradient,
+      DirectedSynapsesContext synapsesContext);
   
   /**
    * The total regularisation cost of these synapse.
    * 
-   * @param regularisationLambda The regularisation lambda
+   * @param synapsesContext The synapses context.
    * @return The total regularisation cost.
    */
-  double getTotalRegularisationCost(double regularisationLambda);
+  double getTotalRegularisationCost(DirectedSynapsesContext synapsesContext);
   
   /**
    * The average regularisation cost of these synapse.
    * 
-   * @param regularisationLambda The regularisation lambda
+   * @param synapsesContext The synapses context.
    * @return The total regularisation cost.
    */
-  double getAverageRegularisationCost(double regularisationLambda);
+  double getAverageRegularisationCost(DirectedSynapsesContext synapsesContext);
 
 }

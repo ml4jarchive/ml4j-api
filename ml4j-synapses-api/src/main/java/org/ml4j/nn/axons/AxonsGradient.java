@@ -12,13 +12,20 @@
  * the License.
  */
 
-package org.ml4j.nn;
+package org.ml4j.nn.axons;
 
-/**
- * Encapsulates the runtime context used with a DeepBeliefNetwork.
- * 
- * @author Michael Lavelle
- */
-public interface DeepBeliefNetworkContext extends NeuralNetworkContext {
+import org.ml4j.Matrix;
 
+public interface AxonsGradient {
+  
+  /**
+   * @return The TrainableAxons instance that generated this gradient.
+   */
+  TrainableAxons<?, ?, ?> getAxons();
+
+  /**
+   * @return The gradient for these TrainableAxons.
+   */
+  Matrix getGradient();
+  
 }
