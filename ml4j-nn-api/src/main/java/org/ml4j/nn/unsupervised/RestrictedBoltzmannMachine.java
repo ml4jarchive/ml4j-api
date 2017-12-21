@@ -47,5 +47,36 @@ public interface RestrictedBoltzmannMachine extends UndirectedNeuralNetwork<
    *        this RestrictedBoltzmannMachine.
    */
   AutoEncoder createAutoEncoder();
+  
+  /**
+   * Encode the visible activations into the hidden binary activations.
+   * 
+   * @param visibleActivations The visible activations.
+   * @param context The context.
+   * @return The hidden binary activations.
+   */
+  NeuronsActivation encodeToBinary(NeuronsActivation visibleActivations, 
+      RestrictedBoltzmannMachineContext context);
+  
+  /**
+   * Decode the hidden activations into the visible binary activations.
+   * 
+   * @param hiddenActivations The hidden unit activations.
+   * @param context The context.
+   * @return The visible binary unit activations.
+   */
+  NeuronsActivation decodeToBinary(NeuronsActivation hiddenActivations, 
+      RestrictedBoltzmannMachineContext context);
+  
+  
+  /**
+   * Decode the hidden activations into the visible probability activations.
+   * 
+   * @param hiddenActivations The hidden unit activations.
+   * @param context The context.
+   * @return The visible probability activations.
+   */
+  NeuronsActivation decodeToProbabilities(NeuronsActivation hiddenActivations, 
+      RestrictedBoltzmannMachineContext context);
 
 }
