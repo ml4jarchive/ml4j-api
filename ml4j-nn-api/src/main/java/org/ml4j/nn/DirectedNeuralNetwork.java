@@ -41,4 +41,11 @@ public interface DirectedNeuralNetwork<L extends DirectedLayer<?, ?>,
    *         on the right hand side of the DirectedLayer
    */
   ForwardPropagation forwardPropagate(NeuronsActivation inputActivation, C context);
+  
+  /**
+   * @return The training context used for the last epoch of training, or null if no context
+   *         available.
+   */
+  C getLastEpochTrainingContext();
+  
 }
