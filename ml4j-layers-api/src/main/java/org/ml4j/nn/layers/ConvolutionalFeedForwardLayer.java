@@ -30,4 +30,24 @@ import org.ml4j.nn.axons.ConvolutionalAxons;
  */
 public interface ConvolutionalFeedForwardLayer 
     extends FeedForwardLayer<ConvolutionalAxons, ConvolutionalFeedForwardLayer> {
+  
+  /**
+   * @return The stride.
+   */
+  int getStride();
+
+  /**
+   * @return THe filter width.
+   */
+  int getFilterWidth();
+
+  /**
+   * @return The filter height.
+   */
+  int getFilterHeight();
+  
+  /**
+   * @return The amount of zero padding.
+   */
+  int getZeroPadding();
 }

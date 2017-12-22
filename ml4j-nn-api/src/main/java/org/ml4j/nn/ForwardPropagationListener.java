@@ -14,33 +14,16 @@
  * limitations under the License.
  */
 
-package org.ml4j.nn.axons;
+package org.ml4j.nn;
 
-import org.ml4j.nn.neurons.Neurons3D;
+import java.io.Serializable;
 
 /**
- * Encapsulates the connections between two sets of Neurons which are pooled
- * from left to right.
+ * A listener for forward propagations through the network.
  * 
  * @author Michael Lavelle
- *
  */
-public interface PoolingAxons<A extends PoolingAxons<A>>
-    extends Axons<Neurons3D, Neurons3D, A> {
+public interface ForwardPropagationListener extends Serializable {
 
-  /**
-   * @return The stride.
-   */
-  int getStride();
-  
-  /**
-   * @return The filter width.
-   */
-  int getFilterWidth();
-  
-  /**
-   * @return The filter height.
-   */
-  int getFilterHeight();
-  
+  void onForwardPropagation(ForwardPropagation forwardPropagation);
 }

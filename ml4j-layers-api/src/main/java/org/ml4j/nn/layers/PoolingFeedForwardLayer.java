@@ -28,4 +28,19 @@ import org.ml4j.nn.axons.PoolingAxons;
 public interface PoolingFeedForwardLayer<A extends PoolingAxons<?>, 
     L extends PoolingFeedForwardLayer<A, L>> 
     extends FeedForwardLayer<A, L> {
+  
+  /**
+   * @return The stride.
+   */
+  int getStride();
+
+  /**
+   * @return THe filter width.
+   */
+  int getFilterWidth();
+
+  /**
+   * @return The filter height.
+   */
+  int getFilterHeight();
 }
