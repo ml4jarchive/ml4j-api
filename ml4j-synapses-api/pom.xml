@@ -4,7 +4,7 @@
 	<groupId>org.ml4j</groupId>
 	<artifactId>ml4j-synapses-api</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>ml4j-synapses-api</name>
 	<properties>
 	</properties>
