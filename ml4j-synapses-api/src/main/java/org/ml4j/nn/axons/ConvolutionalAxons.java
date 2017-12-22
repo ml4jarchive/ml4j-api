@@ -39,4 +39,14 @@ public interface ConvolutionalAxons
    */
   int getZeroPadding();
   
+  /**
+   * @return The filter width.
+   */
+  int getFilterWidth();
+  
+  /**
+   * @return The filter height.
+   */
+  int getFilterHeight();
+ 
 }

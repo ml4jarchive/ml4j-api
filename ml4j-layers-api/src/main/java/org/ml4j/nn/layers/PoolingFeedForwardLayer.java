@@ -16,15 +16,31 @@
 
 package org.ml4j.nn.layers;
 
-import org.ml4j.nn.axons.AveragePoolingAxons;
+import org.ml4j.nn.axons.PoolingAxons;
 
 /**
- * Base interface for AveragePoolingLayer implementations.
+ * A PoolingFeedForwardLayer is a FeedForwardLayer whose primary Axons are PoolingAxons.
  * 
  * @author Michael Lavelle
  *
+ * @param <L> The type of PoolingFeedForwardLayer
  */
-public interface AveragePoolingFeedForwardLayer 
-    extends PoolingFeedForwardLayer<AveragePoolingAxons, AveragePoolingFeedForwardLayer> {
+public interface PoolingFeedForwardLayer<A extends PoolingAxons<?>, 
+    L extends PoolingFeedForwardLayer<A, L>> 
+    extends FeedForwardLayer<A, L> {
+  
+  /**
+   * @return The stride.
+   */
+  int getStride();
 
+  /**
+   * @return THe filter width.
+   */
+  int getFilterWidth();
+
+  /**
+   * @return The filter height.
+   */
+  int getFilterHeight();
 }

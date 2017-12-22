@@ -20,4 +20,6 @@ import org.ml4j.nn.UndirectedNeuralNetworkContext;
 
 public interface RestrictedBoltzmannMachineContext extends UndirectedNeuralNetworkContext {
 
+  
+  
 }
