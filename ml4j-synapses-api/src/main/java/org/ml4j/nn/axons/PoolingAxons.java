@@ -33,4 +33,14 @@ public interface PoolingAxons<A extends PoolingAxons<A>>
    */
   int getStride();
   
+  /**
+   * @return The filter width.
+   */
+  int getFilterWidth();
+  
+  /**
+   * @return The filter height.
+   */
+  int getFilterHeight();
+  
 }

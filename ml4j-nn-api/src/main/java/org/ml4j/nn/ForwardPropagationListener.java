@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,17 +14,16 @@
  * limitations under the License.
  */
 
-package org.ml4j.nn.layers;
+package org.ml4j.nn;
 
-import org.ml4j.nn.axons.AveragePoolingAxons;
+import java.io.Serializable;
 
 /**
- * Base interface for AveragePoolingLayer implementations.
+ * A listener for forward propagations through the network.
  * 
  * @author Michael Lavelle
- *
  */
-public interface AveragePoolingFeedForwardLayer 
-    extends PoolingFeedForwardLayer<AveragePoolingAxons, AveragePoolingFeedForwardLayer> {
+public interface ForwardPropagationListener extends Serializable {
 
+  void onForwardPropagation(ForwardPropagation forwardPropagation);
 }
