@@ -1,6 +1,8 @@
 package org.ml4j.nn;
 
 import org.ml4j.nn.layers.DirectedLayerContext;
+import org.ml4j.nn.optimisation.GradientDescentOptimisationStrategy;
+import org.ml4j.nn.optimisation.TrainingLearningRateAdjustmentStrategy;
 
 /**
  * Encapsulates the runtime context used with a DirectedNeuralNetwork.
@@ -62,5 +64,60 @@ public interface DirectedNeuralNetworkContext extends NeuralNetworkContext {
    */
   void setTrainingMiniBatchSize(Integer batchSize);
   
- 
+  /**
+   * @return The gradient descent optimisation strategy if set, null otherwise.
+   */
+  GradientDescentOptimisationStrategy getGradientDescentOptimisationStrategy(); 
+  
+  /**
+   * @param gradientDescentOptimisationStrategy The gradient descent optimisation strategy.
+   */
+  void setGradientDescentOptimisationStrategy(GradientDescentOptimisationStrategy 
+      gradientDescentOptimisationStrategy);
+  
+  /**
+   * @return The learning rate adjustment strategy if set, null otherwise.
+   */
+  TrainingLearningRateAdjustmentStrategy getTrainingLearningRateAdjustmentStrategy(); 
+  
+  /**
+   * @param trainingLearningRateAdjustmentStrategy The training learning rate adjustment strategy.
+   */
+  void setTrainingLearningRateAdjustmentStrategy(TrainingLearningRateAdjustmentStrategy 
+      trainingLearningRateAdjustmentStrategy);
+  
+  /**
+   * @return The index of the Epoch of training, or null if not set.
+   */
+  Integer getLastTrainingEpochIndex();
+  
+  /**
+   * @param lastTrainingEpochIndex  The index of the Epoch of training.
+   */
+  void setLastTrainingEpochIndex(Integer lastTrainingEpochIndex);
+  
+  /**
+   * Set a forward propagation listener.
+   * 
+   * @param forwardPropagationListener The forward propagation listener.
+   */
+  void setForwardPropagationListener(ForwardPropagationListener forwardPropagationListener);
+
+  /**
+   * Set a back propagation listener.
+   * 
+   * @param backPropagationListener The back propagation listener.
+   */
+  void setBackPropagationListener(BackPropagationListener backPropagationListener);
+  
+  /**
+   * @return The configured forward propagation listener, or null if not configured.
+   */
+  ForwardPropagationListener getForwardPropagationListener();
+
+  /**
+   * @return The configured back propagation listener, or null if not configured.
+   */
+  BackPropagationListener getBackPropagationListener();
+
 }
