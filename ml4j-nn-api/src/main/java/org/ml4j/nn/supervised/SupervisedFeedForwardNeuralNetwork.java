@@ -65,6 +65,7 @@ public interface SupervisedFeedForwardNeuralNetwork extends
    *       by the desired output data.
    *       
    * @param trainingContext The NeuralNetworkContext used for training
+   * @return The CostAndGradients for the provided parameters.
    */
   public CostAndGradients getCostAndGradients(NeuronsActivation inputActivations, 
           NeuronsActivation desiredOutputActivations, 

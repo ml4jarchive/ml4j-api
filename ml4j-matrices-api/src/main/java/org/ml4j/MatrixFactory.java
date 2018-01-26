@@ -35,6 +35,12 @@ public interface MatrixFactory extends Serializable {
    */
   Matrix createOnes(int rows, int columns);
   
+  /**
+   * Create a new column Matrix with every element value set to 1.
+   * 
+   * @param rows The number of rows of this column Matrix.
+   * @return A new Matrix of size (rows, 1) with every element value set to 1
+   */
   Matrix createOnes(int rows);
 
   /**
@@ -56,6 +62,14 @@ public interface MatrixFactory extends Serializable {
    */
   Matrix createRandn(int rows, int columns);
 
+  /**
+   * Create a new Matrix with every element value set to a normally distributed random number.
+   * 
+   * @param rows The number of rows of this Matrix
+   * @param columns The number of columns of this Matrix
+   * @return A new Matrix of size (rows, columns) with every element value set to a uniformly
+   *         distributed random number
+   */
   Matrix createRand(int rows, int columns);
   
   /**
@@ -79,6 +93,8 @@ public interface MatrixFactory extends Serializable {
   /**
    * Create a new Matrix from the provided flattened double array
    * 
+   * @param rows The number of rows
+   * @param cols The number of columns
    * @param data The values of this matrix, with the value for row r, column c equal to data[r][c].
    * @return A new Matrix of size (rows, columns) with the value for row r, column c equal to
    *         data[r * cols + c].
@@ -91,6 +107,7 @@ public interface MatrixFactory extends Serializable {
   Matrix createMatrix();
 
   /**
+   * @param data The data.
    * @return Create a new uninitialised Matrix wrapping the data.
    */
   Matrix createMatrix(double[] data);
