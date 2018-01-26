@@ -56,6 +56,7 @@ public interface AutoEncoder extends UnsupervisedNeuralNetwork<FeedForwardLayer<
    *       by the input data
    *  
    * @param trainingContext The NeuralNetworkContext used for training
+   * @return The CostAndGradients for the provided parameters.
    */
   public CostAndGradients getCostAndGradients(NeuronsActivation inputActivations,  
           AutoEncoderContext trainingContext);

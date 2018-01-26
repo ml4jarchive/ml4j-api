@@ -27,8 +27,8 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
 public interface SynapsesContext extends NeuronsActivationContext {
 
   /**
-   * @return The context we use for activations travelling through
-   *        the Axons within these Synapses.
+   * @param axonsIndex The index of the Axons within these Synapse.
+   * @return The context we use for activations travelling through the Axons within these Synapses.
    */
   AxonsContext getAxonsContext(int axonsIndex);
   
