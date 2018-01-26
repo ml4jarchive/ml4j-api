@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,22 +14,17 @@
  * limitations under the License.
  */
 
-package org.ml4j.nn;
+package org.ml4j.nn.layers;
 
-import java.io.Serializable;
+import org.ml4j.nn.axons.PoolingAxons;
 
 /**
- * A listener for forward propagations through the network.
+ * A PoolingLayer is a DirectedLayer whose primary Axons are PoolingAxons.
  * 
  * @author Michael Lavelle
+ *
+ * @param <L> The type of PoolingLayer
  */
-public interface ForwardPropagationListener extends Serializable {
-
-  /**
-   * Callback for a forward propagation event.
-   * 
-   * @param forwardPropagation The forward propagation.
-   * 
-   */
-  void onForwardPropagation(ForwardPropagation forwardPropagation);
+public interface PoolingLayer<A extends PoolingAxons<?>, L extends PoolingLayer<A, L>> 
+    extends DirectedLayer<A, L> {
 }

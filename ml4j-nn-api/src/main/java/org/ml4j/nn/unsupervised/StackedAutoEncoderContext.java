@@ -14,22 +14,12 @@
  * limitations under the License.
  */
 
-package org.ml4j.nn;
-
-import java.io.Serializable;
+package org.ml4j.nn.unsupervised;
 
 /**
- * A listener for forward propagations through the network.
+ * Encapsulates the runtime context used with a StackedAutoEncoder.
  * 
  * @author Michael Lavelle
  */
-public interface ForwardPropagationListener extends Serializable {
-
-  /**
-   * Callback for a forward propagation event.
-   * 
-   * @param forwardPropagation The forward propagation.
-   * 
-   */
-  void onForwardPropagation(ForwardPropagation forwardPropagation);
+public interface StackedAutoEncoderContext extends AutoEncoderContext {
 }
