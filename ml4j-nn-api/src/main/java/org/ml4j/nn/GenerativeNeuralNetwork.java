@@ -14,20 +14,17 @@
 
 package org.ml4j.nn;
 
-import java.io.Serializable;
+import org.ml4j.nn.layers.Layer;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- *  A listener for back propagations through the network.
- * 
- * @author Michael Lavelle
+ * Base interface for classes representing an GenerativeNeuralNetwork.
+ *
+ * @param <N> The type of GenerativeNeuralNetwork
+ * @param <C> The type of runtime NeuralNetworkContext used with this GenerativeNeuralNetwork
  */
-public interface BackPropagationListener extends Serializable {
+public interface GenerativeNeuralNetwork<L extends Layer<?, ?, ?>, C extends NeuralNetworkContext, 
+    N extends GenerativeNeuralNetwork<L, C, N>> extends NeuralNetwork<L, C, N> {
 
-  /**
-   * Callback for a back propagation event.
-   * 
-   * @param backPropagation The back propagation.
-   * 
-   */
-  void onBackPropagation(BackPropagation backPropagation);
+  NeuronsActivation generate(NeuronsActivation seed, C generativeContext);
 }

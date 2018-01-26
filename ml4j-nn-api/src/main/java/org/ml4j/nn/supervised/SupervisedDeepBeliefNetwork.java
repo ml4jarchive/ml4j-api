@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,22 +14,21 @@
  * limitations under the License.
  */
 
-package org.ml4j.nn;
+package org.ml4j.nn.supervised;
 
-import java.io.Serializable;
+import org.ml4j.nn.DeepBeliefNetwork;
+import org.ml4j.nn.DeepBeliefNetworkContext;
+import org.ml4j.nn.layers.RestrictedBoltzmannLayer;
 
 /**
- * A listener for forward propagations through the network.
+ * Interface for a supervised DeepBeliefNetwork.
  * 
  * @author Michael Lavelle
  */
-public interface ForwardPropagationListener extends Serializable {
+public interface SupervisedDeepBeliefNetwork extends
+    DeepBeliefNetwork<SupervisedDeepBeliefNetwork, 
+    DeepBeliefNetworkContext>,
+    SupervisedNeuralNetwork<RestrictedBoltzmannLayer<?>, 
+    DeepBeliefNetworkContext, SupervisedDeepBeliefNetwork> {
 
-  /**
-   * Callback for a forward propagation event.
-   * 
-   * @param forwardPropagation The forward propagation.
-   * 
-   */
-  void onForwardPropagation(ForwardPropagation forwardPropagation);
 }

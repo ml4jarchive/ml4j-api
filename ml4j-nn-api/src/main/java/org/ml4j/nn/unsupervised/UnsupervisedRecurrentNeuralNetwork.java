@@ -14,22 +14,20 @@
  * limitations under the License.
  */
 
-package org.ml4j.nn;
+package org.ml4j.nn.unsupervised;
 
-import java.io.Serializable;
+import org.ml4j.nn.RecurrentNeuralNetwork;
+import org.ml4j.nn.RecurrentNeuralNetworkContext;
+import org.ml4j.nn.layers.DirectedLayer;
 
 /**
- * A listener for forward propagations through the network.
+ * Interface for a unsupervised RecurrentNeuralNetwork.
  * 
  * @author Michael Lavelle
  */
-public interface ForwardPropagationListener extends Serializable {
+public interface UnsupervisedRecurrentNeuralNetwork extends 
+        UnsupervisedNeuralNetwork<DirectedLayer<?,?>,RecurrentNeuralNetworkContext, 
+        UnsupervisedRecurrentNeuralNetwork>,
+            RecurrentNeuralNetwork<UnsupervisedRecurrentNeuralNetwork> {
 
-  /**
-   * Callback for a forward propagation event.
-   * 
-   * @param forwardPropagation The forward propagation.
-   * 
-   */
-  void onForwardPropagation(ForwardPropagation forwardPropagation);
 }

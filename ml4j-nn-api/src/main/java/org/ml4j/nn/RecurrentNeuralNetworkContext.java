@@ -16,20 +16,12 @@
 
 package org.ml4j.nn;
 
-import java.io.Serializable;
-
 /**
- * A listener for forward propagations through the network.
+ * Encapsulates the runtime context used with a RecurrentNeuralNetwork.
  * 
  * @author Michael Lavelle
  */
-public interface ForwardPropagationListener extends Serializable {
+public interface RecurrentNeuralNetworkContext extends DirectedNeuralNetworkContext {
 
-  /**
-   * Callback for a forward propagation event.
-   * 
-   * @param forwardPropagation The forward propagation.
-   * 
-   */
-  void onForwardPropagation(ForwardPropagation forwardPropagation);
+ 
 }

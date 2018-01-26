@@ -14,20 +14,11 @@
 
 package org.ml4j.nn;
 
-import java.io.Serializable;
+import org.ml4j.nn.NeuralNetwork;
+import org.ml4j.nn.layers.RestrictedBoltzmannLayer;
 
-/**
- *  A listener for back propagations through the network.
- * 
- * @author Michael Lavelle
- */
-public interface BackPropagationListener extends Serializable {
+public interface DeepBeliefNetwork<
+    N extends DeepBeliefNetwork<N, C>, C extends NeuralNetworkContext>
+    extends NeuralNetwork<RestrictedBoltzmannLayer<?>, C, N> {
 
-  /**
-   * Callback for a back propagation event.
-   * 
-   * @param backPropagation The back propagation.
-   * 
-   */
-  void onBackPropagation(BackPropagation backPropagation);
 }

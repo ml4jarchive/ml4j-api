@@ -12,22 +12,18 @@
  * the License.
  */
 
-package org.ml4j.nn;
+package org.ml4j.nn.layers;
 
-import java.io.Serializable;
+import org.ml4j.nn.axons.FullyConnectedAxons;
 
 /**
- *  A listener for back propagations through the network.
+ * A DirectedLayer which composes input neurons and output neurons into a directed graph 
+ * with cycles.
  * 
  * @author Michael Lavelle
+ *
+ * @param <L> The type of FeedForwardLayer
  */
-public interface BackPropagationListener extends Serializable {
-
-  /**
-   * Callback for a back propagation event.
-   * 
-   * @param backPropagation The back propagation.
-   * 
-   */
-  void onBackPropagation(BackPropagation backPropagation);
+public interface RecurrentLayer<L extends RecurrentLayer<L>>
+    extends DirectedLayer<FullyConnectedAxons, L> {
 }
