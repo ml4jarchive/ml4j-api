@@ -14,7 +14,6 @@
 
 package org.ml4j.nn.axons;
 
-import org.ml4j.Matrix;
 import org.ml4j.nn.neurons.Neurons;
 
 /**
@@ -29,12 +28,5 @@ import org.ml4j.nn.neurons.Neurons;
  */
 public interface TrainableAxons<L extends Neurons, R extends Neurons, 
     A extends TrainableAxons<L, R, A>>
-    extends Axons<L, R, A> {
-  
-  /**
-   * @param adjustments The adjustment Matrix.
-   * @param adjustmentDirection The adjustment direction.
-   */
-  public void adjustConnectionWeights(Matrix adjustments, 
-      ConnectionWeightsAdjustmentDirection adjustmentDirection);
+    extends Axons<L, R, A>, TrainableAxonsWeightsContainer {
 }

@@ -16,7 +16,6 @@ package org.ml4j.nn.synapses;
 
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons;
-import org.ml4j.nn.graph.DirectedDipoleGraph;
 import org.ml4j.nn.neurons.Neurons;
 
 /**
@@ -43,11 +42,6 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons>
   Axons<? ,? ,?> getPrimaryAxons();
   
   /**
-   * @return The Axons graph within these DirectedSynapses.
-   */
-  DirectedDipoleGraph<Axons<?, ? ,?>> getAxonsGraph();
-  
-  /**
    * @return The Neurons on the left hand side of these DirectedSynapses.
    */
   L getLeftNeurons();
@@ -69,5 +63,13 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons>
    */
   DirectedSynapsesActivation forwardPropagate(DirectedSynapsesInput input,
       DirectedSynapsesContext synapsesContext);
+  
+  /**
+   * The total regularisation cost of these synapse.
+   * 
+   * @param synapsesContext The synapses context.
+   * @return The total regularisation cost.
+   */
+  double getTotalRegularisationCost(DirectedSynapsesContext synapsesContext);
  
 }

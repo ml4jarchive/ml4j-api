@@ -14,10 +14,7 @@
 
 package org.ml4j.nn.synapses;
 
-import org.ml4j.nn.activationfunctions.DifferentiableActivationFunctionActivation;
-import org.ml4j.nn.axons.AxonsActivation;
 import org.ml4j.nn.costfunctions.CostFunctionGradient;
-import org.ml4j.nn.graph.DirectedDipoleGraph;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -38,16 +35,8 @@ public interface DirectedSynapsesActivation {
    * @return The DirectedSynapses that generated this DirectedSynapsesActivation.
    */
   public DirectedSynapses<?, ?> getSynapses();
-
-  public DirectedDipoleGraph<AxonsActivation> getAxonsActivationGraph();
-  
-  /**
-   * @return The activation of the ActivationFunction.
-   */
-  public DifferentiableActivationFunctionActivation getActivationFunctionActivation();
   
   public DirectedSynapsesInput getInput();
-
 
   /**
    * @param outerGradient The outer gradient to back propagate.
@@ -66,20 +55,4 @@ public interface DirectedSynapsesActivation {
   public DirectedSynapsesGradient backPropagate(CostFunctionGradient outerGradient,
       DirectedSynapsesContext synapsesContext);
   
-  /**
-   * The total regularisation cost of these synapse.
-   * 
-   * @param synapsesContext The synapses context.
-   * @return The total regularisation cost.
-   */
-  double getTotalRegularisationCost(DirectedSynapsesContext synapsesContext);
-  
-  /**
-   * The average regularisation cost of these synapse.
-   * 
-   * @param synapsesContext The synapses context.
-   * @return The total regularisation cost.
-   */
-  double getAverageRegularisationCost(DirectedSynapsesContext synapsesContext);
-
 }

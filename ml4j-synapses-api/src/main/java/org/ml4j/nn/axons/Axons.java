@@ -14,11 +14,11 @@
 
 package org.ml4j.nn.axons;
 
-import org.ml4j.Matrix;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 import java.io.Serializable;
+
 
 /**
  * Encapsulates the connections between two sets of Neurons.
@@ -30,7 +30,7 @@ import java.io.Serializable;
  * @param <A> The type of these Axons
  */
 public interface Axons<L extends Neurons, R extends Neurons, A extends Axons<L, R, A>>
-    extends Serializable {
+    extends AxonsWeightsContainer, Serializable {
 
   /**
    * Get the Neurons on the left hand side of these Axons.
@@ -76,12 +76,7 @@ public interface Axons<L extends Neurons, R extends Neurons, A extends Axons<L, 
    */
   AxonsActivation pushRightToLeft(NeuronsActivation rightNeuronsActivation,
       AxonsActivation previousLeftToRightActivation, AxonsContext axonsContext);
-  
-  
-  /**
-   * @return A clone of the connection weights Matrix for these Axons.
-   */
-  Matrix getDetachedConnectionWeights();
+ 
   
   /**
    * @return A deep copy of these Axons.

@@ -74,4 +74,10 @@ public interface DirectedLayer<A extends Axons<?,?,?>, L extends DirectedLayer<A
    */
   NeuronsActivation getOptimalInputForOutputNeuron(int outpuNeuronIndex, 
       DirectedLayerContext directedLayerContext);
+  
+  /**
+   * @param layerContext The layer context.
+   * @return The total regularisation cost of this layer.
+   */
+  double getTotalRegularisationCost(DirectedLayerContext layerContext);
 }

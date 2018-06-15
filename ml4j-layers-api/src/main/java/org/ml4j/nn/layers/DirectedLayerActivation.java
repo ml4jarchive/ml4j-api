@@ -58,18 +58,6 @@ public interface DirectedLayerActivation {
    * @return The back propagated DirectedLayerGradient.
    */
   DirectedLayerGradient backPropagate(CostFunctionGradient outerGradient, 
-      DirectedLayerContext layerContext);
-  
-  /**
-   * @param layerContext The layer context.
-   * @return The total regularisation cost of this activation.
-   */
-  double getTotalRegularisationCost(DirectedLayerContext layerContext);
-  
-  /**
-   * @param layerContext The layer context.
-   * @return The average regularisation cost of this activation.
-   */
-  double getAverageRegularistationCost(DirectedLayerContext layerContext);
+      DirectedLayerContext layerContext);  
   
 }
