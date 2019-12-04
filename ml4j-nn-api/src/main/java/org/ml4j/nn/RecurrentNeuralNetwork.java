@@ -16,14 +16,12 @@
 
 package org.ml4j.nn;
 
-import org.ml4j.nn.layers.DirectedLayer;
-
 /**
  * @author Michael Lavelle
  *
  * @param <N> The type of this RecurrentNeuralNetwork.
  */
 public interface RecurrentNeuralNetwork<N extends RecurrentNeuralNetwork<N>> extends 
-    DirectedNeuralNetwork<DirectedLayer<?,?>, RecurrentNeuralNetworkContext, N> {
+    DirectedNeuralNetwork<RecurrentNeuralNetworkContext, N> {
 
 }

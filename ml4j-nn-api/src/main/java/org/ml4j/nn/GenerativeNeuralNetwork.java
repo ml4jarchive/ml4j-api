@@ -14,7 +14,6 @@
 
 package org.ml4j.nn;
 
-import org.ml4j.nn.layers.Layer;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -23,8 +22,8 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @param <N> The type of GenerativeNeuralNetwork
  * @param <C> The type of runtime NeuralNetworkContext used with this GenerativeNeuralNetwork
  */
-public interface GenerativeNeuralNetwork<L extends Layer<?, ?, ?>, C extends NeuralNetworkContext, 
-    N extends GenerativeNeuralNetwork<L, C, N>> extends NeuralNetwork<L, C, N> {
+public interface GenerativeNeuralNetwork<C extends NeuralNetworkContext, 
+    N extends GenerativeNeuralNetwork<C, N>> extends NeuralNetwork<C, N> {
 
   NeuronsActivation generate(NeuronsActivation seed, C generativeContext);
 }

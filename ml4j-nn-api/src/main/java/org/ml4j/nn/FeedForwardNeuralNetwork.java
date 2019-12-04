@@ -16,16 +16,16 @@
 
 package org.ml4j.nn;
 
-import org.ml4j.nn.layers.FeedForwardLayer;
-
 /**
  * 
  * @author Michael Lavelle
  *
  * @param <C> The specific type of FeedForwardNeuralNetworkContext 
  *          used to train this FeedForwardNeuralNetwork.
+ * @param <N> The type of NeuralNetwork
+
  */
 public interface FeedForwardNeuralNetwork<C extends FeedForwardNeuralNetworkContext, 
     N extends FeedForwardNeuralNetwork<C, N>> extends 
-    DirectedNeuralNetwork<FeedForwardLayer<?, ?>, C, N> {
+    DirectedNeuralNetwork<C, N> {
 }

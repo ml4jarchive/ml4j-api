@@ -19,7 +19,6 @@ package org.ml4j.nn.supervised;
 import org.ml4j.nn.CostAndGradients;
 import org.ml4j.nn.FeedForwardNeuralNetwork;
 import org.ml4j.nn.FeedForwardNeuralNetworkContext;
-import org.ml4j.nn.layers.FeedForwardLayer;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -28,7 +27,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @author Michael Lavelle
  */
 public interface SupervisedFeedForwardNeuralNetwork extends 
-    SupervisedNeuralNetwork<FeedForwardLayer<?, ?>, FeedForwardNeuralNetworkContext, 
+    SupervisedNeuralNetwork<FeedForwardNeuralNetworkContext, 
         SupervisedFeedForwardNeuralNetwork>,
             FeedForwardNeuralNetwork<FeedForwardNeuralNetworkContext, 
             SupervisedFeedForwardNeuralNetwork> {
@@ -52,7 +51,7 @@ public interface SupervisedFeedForwardNeuralNetwork extends
    * @param context The NeuralNetworkContext used for classification
    * @return The classification accuracy
    */
-  public double getClassificationAccuracy(NeuronsActivation inputActivations,
+  public float getClassificationAccuracy(NeuronsActivation inputActivations,
       NeuronsActivation desiredClassificationActivations, FeedForwardNeuralNetworkContext context); 
   
   /**

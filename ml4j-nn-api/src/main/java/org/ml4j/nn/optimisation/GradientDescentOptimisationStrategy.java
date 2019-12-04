@@ -14,10 +14,10 @@
 
 package org.ml4j.nn.optimisation;
 
-import org.ml4j.Matrix;
-import org.ml4j.nn.DirectedNeuralNetworkContext;
-
 import java.io.Serializable;
+
+import org.ml4j.nn.DirectedNeuralNetworkContext;
+import org.ml4j.nn.axons.AxonsGradient;
 
 /**
  * Encapsulates a strategy for adjusting the gradient to optimise gradient descent.
@@ -38,7 +38,7 @@ public interface GradientDescentOptimisationStrategy extends Serializable {
    * @param iterationIndex The iteration index.
    * @return The adjusted axons gradient
    */
-  Matrix getAdjustedAxonsGradient(Matrix axonsGradient, int axonsIndex,
+  AxonsGradient getAdjustedAxonsGradient(AxonsGradient axonsGradient, int axonsIndex,
        DirectedNeuralNetworkContext trainingContext, 
        int epochIndex, int batchIndex, int iterationIndex);
 

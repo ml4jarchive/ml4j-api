@@ -1,6 +1,6 @@
 package org.ml4j.nn;
 
-import org.ml4j.nn.layers.DirectedLayerContext;
+import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.optimisation.GradientDescentOptimisationStrategy;
 import org.ml4j.nn.optimisation.TrainingLearningRateAdjustmentStrategy;
 
@@ -10,33 +10,17 @@ import org.ml4j.nn.optimisation.TrainingLearningRateAdjustmentStrategy;
  * @author Michael Lavelle
  */
 public interface DirectedNeuralNetworkContext extends NeuralNetworkContext {
-
-  /**
-   * Create the DirectedLayerContext for the DirectedLayer specified
-   * by the layerIndex.
-   * 
-   * @param layerIndex The index of the DirectedLayer in this
-   *        DirectedNeuralNetwork to create the context for.
-   * @return The DirectedLayerContext for the DirectedLayer specified
-   *        by the layerIndex.
-   */
-  DirectedLayerContext getLayerContext(int layerIndex);
-  
-  /**
-   * @return The index of the starting layer for a propagation through a DirectedNeuralNetwork.
-   */
-  int getStartLayerIndex();
-
-  /**
-   * @return The index of the end layer for a propagation through a DirectedNeuralNetwork, or null
-   *         if the propagation is required to reach the final Layer.
-   */
-  Integer getEndLayerIndex();
   
   /**
    * @return The learning rate used during training.
    */
-  double getTrainingLearningRate();
+  float getTrainingLearningRate();
+  
+  
+  /**
+   * @return The context containing the optional contexts for each directed component.
+   */
+  DirectedComponentsContext getDirectedComponentsContext();
   
   /**
    * @return The number of iterations through the entire data set during training.
@@ -51,7 +35,7 @@ public interface DirectedNeuralNetworkContext extends NeuralNetworkContext {
   /**
    * @param trainingLearningRate The learning rate used during training.
    */
-  void setTrainingLearningRate(double trainingLearningRate);
+  void setTrainingLearningRate(float trainingLearningRate);
   
   /**
    * @param trainingEpochs The number of iterations through the entire data set during training.

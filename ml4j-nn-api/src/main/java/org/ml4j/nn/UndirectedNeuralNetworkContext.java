@@ -14,8 +14,6 @@
 
 package org.ml4j.nn;
 
-import org.ml4j.nn.layers.UndirectedLayerContext;
-
 /**
  * Encapsulates the runtime context used with a UndirectedNeuralNetwork.
  * 
@@ -32,12 +30,12 @@ public interface UndirectedNeuralNetworkContext extends NeuralNetworkContext {
    * @return The UndirectedLayerContext for the UndirectedLayer specified
    *        by the layerIndex.
    */
-  UndirectedLayerContext getLayerContext(int layerIndex);
+  //UndirectedLayerContext getLayerContext(int layerIndex);
   
   /**
    * @return The learning rate used during training.
    */
-  double getTrainingLearningRate();
+  float getTrainingLearningRate();
   
   /**
    * @return The number of iterations through the entire data set during training.
@@ -52,7 +50,7 @@ public interface UndirectedNeuralNetworkContext extends NeuralNetworkContext {
   /**
    * @param trainingLearningRate The learning rate used during training.
    */
-  void setTrainingLearningRate(double trainingLearningRate);
+  void setTrainingLearningRate(float trainingLearningRate);
   
   /**
    * @param trainingEpochs The number of iterations through the entire data set during training.
