@@ -18,6 +18,9 @@ import org.ml4j.Matrix;
 
 public interface AxonsGradient {
 
+	
+  TrainableAxons<?, ?, ?> getAxons();	
+	
   /**
    * @return The gradient for these TrainableAxons.
    */
