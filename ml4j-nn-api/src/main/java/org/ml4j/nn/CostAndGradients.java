@@ -29,12 +29,12 @@ public interface CostAndGradients {
   /**
    * @return The total cost.
    */
-  double getTotalCost();
+  float getTotalCost();
   
   /**
    * @return The average cost.
    */
-  double getAverageCost();
+  float getAverageCost();
 
   /**
    * @return The total gradients.
@@ -45,4 +45,6 @@ public interface CostAndGradients {
    * @return The average gradients.
    */
   List<AxonsGradient> getAverageTrainableAxonsGradients();
+  
+  void close();
 }

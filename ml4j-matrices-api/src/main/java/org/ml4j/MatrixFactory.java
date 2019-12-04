@@ -79,7 +79,7 @@ public interface MatrixFactory extends Serializable {
    * @return A new Matrix of size (rows, columns) with the value for row r, column c equal to
    *         data[r][c].
    */
-  Matrix createMatrix(double[][] data);
+  Matrix createMatrixFromRows(float[][] data);
  
   /**
    * Create a new uninitialised Matrix for the provided shape
@@ -99,8 +99,19 @@ public interface MatrixFactory extends Serializable {
    * @return A new Matrix of size (rows, columns) with the value for row r, column c equal to
    *         data[r * cols + c].
    */
-  Matrix createMatrix(int rows, int cols, double[] data);
-
+  Matrix createMatrixFromColumnsByColumnsArray(int rows, int cols, float[] data);
+  
+  /**
+   * Create a new Matrix from the provided flattened double array
+   * 
+   * @param rows The number of rows
+   * @param cols The number of columns
+   * @param data The values of this matrix, with the value for row r, column c equal to data[r][c].
+   * @return A new Matrix of size (rows, columns) with the value for row r, column c equal to
+   *         data[r * cols + c].
+   */
+  Matrix createMatrixFromRowsByRowsArray(int rows, int cols, float[] data);
+ 
   /**
    * @return Create a new uninitialised Matrix.
    */
@@ -110,7 +121,7 @@ public interface MatrixFactory extends Serializable {
    * @param data The data.
    * @return Create a new uninitialised Matrix wrapping the data.
    */
-  Matrix createMatrix(double[] data);
+  Matrix createMatrix(float[] data);
   
   /**
    * Return a new Matrix formed of a horizontal concatenation of matrix1, matrix2.

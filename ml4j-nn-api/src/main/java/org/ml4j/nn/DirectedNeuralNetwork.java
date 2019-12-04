@@ -14,7 +14,7 @@
 
 package org.ml4j.nn;
 
-import org.ml4j.nn.layers.DirectedLayer;
+import org.ml4j.nn.components.ChainableDirectedComponent;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -22,13 +22,12 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  *
  * @author Michael Lavelle
  * 
- * @param <L> The type of DirectedLayer used within this NeuralNetwork
  * @param <C> The NeuralNetworkContext used with this NeuralNetwork
  * @param <N> The type of NeuralNetwork
  */
-public interface DirectedNeuralNetwork<L extends DirectedLayer<?, ?>, 
-    C extends NeuralNetworkContext, 
-    N extends DirectedNeuralNetwork<L, C, N>> extends NeuralNetwork<L, C, N> {
+public interface DirectedNeuralNetwork<C extends NeuralNetworkContext, 
+    N extends DirectedNeuralNetwork<C, N>> 
+    extends NeuralNetwork<C, N>, ChainableDirectedComponent<NeuronsActivation, ForwardPropagation, C> {
 
   /**
    * Forward propagate the activation through this DirectedLayer

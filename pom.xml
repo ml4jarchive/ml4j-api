@@ -3,12 +3,12 @@
         <modelVersion>4.0.0</modelVersion>
         <groupId>org.ml4j</groupId>
         <artifactId>ml4j-api</artifactId>
-        <version>1.0</version>
+        <version>2.0</version>
         <packaging>pom</packaging>
 	<modules>
-		<module>ml4j-matrices-api</module>
-		<module>ml4j-synapses-api</module>
-		<module>ml4j-layers-api</module>
+		<module>ml4j-matrices-api</module>	
+		<module>ml4j-axons-api</module>
+		<module>ml4j-components-api</module>
 		<module>ml4j-nn-api</module>
         </modules>
 	 <reporting>

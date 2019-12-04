@@ -14,18 +14,14 @@
 
 package org.ml4j.nn;
 
-import org.ml4j.nn.layers.UndirectedLayer;
-
 /**
  * Base interface for classes representing an UndirectedNeuralNetwork.
  *
  * @author Michael Lavelle
  * 
- * @param <L> The type of UndirectedLayer used within this NeuralNetwork
  * @param <C> The type of NeuralNetworkContext used with this UndirectedNeuralNetwork
  * @param <N> The type of UndirectedNeuralNetwork
  */
-public interface UndirectedNeuralNetwork<L extends UndirectedLayer<?, ?>, 
-    C extends NeuralNetworkContext, 
-    N extends UndirectedNeuralNetwork<L, C, N>> extends NeuralNetwork<L, C, N> {
+public interface UndirectedNeuralNetwork<C extends NeuralNetworkContext, 
+    N extends UndirectedNeuralNetwork<C, N>> extends NeuralNetwork<C, N> {
 }
