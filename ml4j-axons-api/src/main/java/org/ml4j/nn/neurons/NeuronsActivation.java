@@ -19,14 +19,10 @@ public interface NeuronsActivation {
 	void addInline(MatrixFactory matrixFactory, NeuronsActivation other);
 	void combineFeaturesInline(NeuronsActivation other);
 	void close();
-	Neurons getNeurons();
-	
-	//Matrix getActivations();
-	
+	Neurons getNeurons();	
 	void applyValueModifier(FloatPredicate condition, FloatModifier modifier);
 	void applyValueModifier(FloatModifier modifier);
 	NeuronsActivation dup();
-	
 	ImageNeuronsActivation asImageNeuronsActivation(Neurons3D neurons);
 
 }

@@ -1,6 +1,8 @@
 package org.ml4j;
 
-public interface Matrix  {
+import java.io.Serializable;
+
+public interface Matrix extends Serializable {
 	
 	int getColumns();
 	int getRows();

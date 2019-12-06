@@ -38,4 +38,6 @@ public interface ActivationFunction<F extends ActivationFunction<F, G>,
    * @return The activation
    */
   G activate(NeuronsActivation input, NeuronsActivationContext context);
+  
+  ActivationFunctionType getActivationFunctionType();
 }

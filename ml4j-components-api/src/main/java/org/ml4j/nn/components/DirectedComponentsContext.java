@@ -18,4 +18,9 @@ public interface DirectedComponentsContext {
 	<C extends Serializable> void setContext(DirectedComponent<?, ?, C> component, C context);
 
 	MatrixFactory getMatrixFactory();
+	
+	/**
+	 * @return Whether this context is for training
+	 */
+	boolean isTrainingContext();
 }
