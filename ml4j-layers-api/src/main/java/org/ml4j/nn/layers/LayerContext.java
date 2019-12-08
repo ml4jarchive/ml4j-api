@@ -12,24 +12,16 @@
  * the License.
  */
 
-package org.ml4j.nn.axons;
+package org.ml4j.nn.layers;
 
-import org.ml4j.nn.neurons.NeuronsActivation;
+import org.ml4j.nn.neurons.NeuronsActivationContext;
 
 /**
- * Encapsulates the artifacts produced when pushing NeuronsActivations
- * through an Axons instance.
+ * Encapsulates the runtime context used with a Layer.
  * 
  * @author Michael Lavelle
  */
-public interface AxonsActivation {
+public interface LayerContext extends NeuronsActivationContext {
 
-  Axons<?, ?, ?> getAxons();
-  
-  AxonsDropoutMask getDropoutMask();
-  
-  NeuronsActivation getPostDropoutOutput();
-  
-  NeuronsActivation getPostDropoutInput();
-  
+
 }

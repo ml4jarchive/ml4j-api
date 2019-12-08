@@ -12,24 +12,21 @@
  * the License.
  */
 
-package org.ml4j.nn.axons;
+package org.ml4j.nn.layers;
 
-import org.ml4j.nn.neurons.NeuronsActivation;
+import org.ml4j.nn.axons.Axons;
+import org.ml4j.nn.synapses.UndirectedSynapses;
 
 /**
- * Encapsulates the artifacts produced when pushing NeuronsActivations
- * through an Axons instance.
+ * Represents an Undirected Layer of a NeuralNetwork - a Layer through which information propagates
+ * from input neurons to output neurons in both directions.
  * 
  * @author Michael Lavelle
- */
-public interface AxonsActivation {
+ * 
 
-  Axons<?, ?, ?> getAxons();
-  
-  AxonsDropoutMask getDropoutMask();
-  
-  NeuronsActivation getPostDropoutOutput();
-  
-  NeuronsActivation getPostDropoutInput();
+ * @param <L> The type of UndirectedLayer
+ */
+public interface UndirectedLayer<A extends Axons<?,?,?>, L extends UndirectedLayer<A, L>>
+    extends Layer<A, UndirectedSynapses<?, ?>, L> {
   
 }
