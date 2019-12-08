@@ -14,6 +14,9 @@
 
 package org.ml4j.nn.synapses;
 
+import org.ml4j.nn.components.ChainableDirectedComponentActivation;
+import org.ml4j.nn.components.DirectedComponentGradient;
+import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.costfunctions.CostFunctionGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -23,36 +26,68 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * 
  * @author Michael Lavelle
  */
-public interface DirectedSynapsesActivation {
+public interface DirectedSynapsesActivation extends ChainableDirectedComponentActivation<NeuronsActivation> {
 
   /**
    * @return The NeuronsActivation output from the right hand side of DirectedSynapses 
    *        following a forward propagation.
    */
-  public NeuronsActivation getOutput();
+  //public NeuronsActivation getOutput();
+  
+  //public DirectedComponentsContext getContext();
   
   /**
    * @return The DirectedSynapses that generated this DirectedSynapsesActivation.
    */
   public DirectedSynapses<?, ?> getSynapses();
+
+  //public DirectedDipoleGraph<AxonsActivation> getAxonsActivationGraph();
   
-  public DirectedSynapsesInput getInput();
+  /**
+   * @return The activation of the ActivationFunction.
+   */
+  //public DifferentiableActivationFunctionActivation getActivationFunctionActivation();
+  
+  //public NeuronsActivation getInput();
+
 
   /**
    * @param outerGradient The outer gradient to back propagate.
    * @param synapsesContext The synapses context.
-   * @return The back propagated DirectedSynapsesGradient.
+   * @return The back propagated DirectedComponentGradient.
    */
-  public DirectedSynapsesGradient backPropagate(DirectedSynapsesGradient outerGradient,
-      DirectedSynapsesContext synapsesContext);
+  //public DirectedComponentGradient<NeuronsActivation> backPropagate(DirectedComponentGradient<NeuronsActivation> outerGradient);
   
   
   /**
    * @param outerGradient The outer gradient to back propagate.
    * @param synapsesContext The synapses context.
-   * @return The back propagated DirectedSynapsesGradient.
+   * @return The back propagated DirectedComponentGradient.
    */
-  public DirectedSynapsesGradient backPropagate(CostFunctionGradient outerGradient,
-      DirectedSynapsesContext synapsesContext);
+  //public DirectedComponentGradient<NeuronsActivation> backPropagate(CostFunctionGradient outerGradient);
   
+  /**
+   * The total regularisation cost of these synapse.
+   * 
+   * @param synapsesContext The synapses context.
+   * @return The total regularisation cost.
+   */
+  double getTotalRegularisationCost(DirectedComponentsContext synapsesContext);
+  
+  /**
+   * The average regularisation cost of these synapse.
+   * 
+   * @param synapsesContext The synapses context.
+   * @return The total regularisation cost.
+   */
+  //double getAverageRegularisationCost(DirectedSynapsesContext synapsesContext);
+	
+	/**
+	   * @param outerGradient The outer gradient to back propagate.
+	   * @param synapsesContext The synapses context.
+	   * @return The back propagated DirectedComponentGradient.
+	   */
+	  public DirectedComponentGradient<NeuronsActivation> backPropagate(CostFunctionGradient outerGradient);
+	  
+	
 }

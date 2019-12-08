@@ -16,7 +16,12 @@ package org.ml4j.nn.synapses;
 
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons;
+import org.ml4j.nn.components.ChainableDirectedComponent;
+import org.ml4j.nn.components.DirectedComponentBipoleGraph;
+import org.ml4j.nn.components.DirectedComponentsBipoleGraphActivation;
+import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.neurons.Neurons;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * DirectedSynapses are containers for Axons with a DifferentiableActivationFunction applied
@@ -28,7 +33,7 @@ import org.ml4j.nn.neurons.Neurons;
  * @param <R> The type of Neurons on the right of these DirectedSynapses.
  */
 public interface DirectedSynapses<L extends Neurons, R extends Neurons>
-    extends Synapses<DirectedSynapses<L, R>> {
+    extends Synapses<DirectedSynapses<L, R>>, ChainableDirectedComponent<NeuronsActivation, DirectedSynapsesActivation, DirectedComponentsContext> {
 
   /**
    * @return The DifferentiableActivationFunction applied
@@ -40,6 +45,11 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons>
    * @return The primary Axons within these DirectedSynapses.
    */
   Axons<? ,? ,?> getPrimaryAxons();
+  
+  /**
+   * @return The Axons graph within these DirectedSynapses.
+   */
+  DirectedComponentBipoleGraph<NeuronsActivation, DirectedComponentsContext, DirectedComponentsBipoleGraphActivation<NeuronsActivation>, ?> getAxonsGraph();
   
   /**
    * @return The Neurons on the left hand side of these DirectedSynapses.
@@ -61,15 +71,7 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons>
    *        propagation  - including the NeuronsActivation output from the right hand side of these 
    *        DirectedSynapses.
    */
-  DirectedSynapsesActivation forwardPropagate(DirectedSynapsesInput input,
-      DirectedSynapsesContext synapsesContext);
-  
-  /**
-   * The total regularisation cost of these synapse.
-   * 
-   * @param synapsesContext The synapses context.
-   * @return The total regularisation cost.
-   */
-  double getTotalRegularisationCost(DirectedSynapsesContext synapsesContext);
+  DirectedSynapsesActivation forwardPropagate(NeuronsActivation input,
+      DirectedComponentsContext synapsesContext);
  
 }
