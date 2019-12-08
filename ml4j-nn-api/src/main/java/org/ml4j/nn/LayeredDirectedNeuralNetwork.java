@@ -14,11 +14,20 @@
 
 package org.ml4j.nn;
 
-/**
- * Encapsulates the runtime context used with a DeepBeliefNetwork.
- * 
- * @author Michael Lavelle
- */
-public interface DeepBeliefNetworkContext extends LayeredNeuralNetworkContext {
+import org.ml4j.nn.layers.DirectedLayer;
 
+/**
+ * Base interface for classes representing a DirectedNeuralNetwork.
+ *
+ * @author Michael Lavelle
+ * 
+ * @param <L> The type of DirectedLayer used within this NeuralNetwork
+ * @param <C> The NeuralNetworkContext used with this NeuralNetwork
+ * @param <N> The type of NeuralNetwork
+ */
+public interface LayeredDirectedNeuralNetwork<L extends DirectedLayer<?, ?>, 
+    C extends LayeredDirectedNeuralNetworkContext, 
+    N extends LayeredDirectedNeuralNetwork<L, C, N>> extends DirectedNeuralNetwork<C, N>,
+    LayeredNeuralNetwork<L, C, N>{
+  
 }

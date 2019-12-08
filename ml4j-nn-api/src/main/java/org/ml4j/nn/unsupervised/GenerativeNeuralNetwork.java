@@ -12,13 +12,20 @@
  * the License.
  */
 
-package org.ml4j.nn;
+package org.ml4j.nn.unsupervised;
+
+import org.ml4j.nn.NeuralNetwork;
+import org.ml4j.nn.NeuralNetworkContext;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Encapsulates the runtime context used with a DeepBeliefNetwork.
- * 
- * @author Michael Lavelle
+ * Base interface for classes representing a GenerativeNeuralNetwork.
+ *
+ * @param <N> The type of GenerativeNeuralNetwork
+ * @param <C> The type of runtime NeuralNetworkContext used with this GenerativeNeuralNetwork
  */
-public interface DeepBeliefNetworkContext extends LayeredNeuralNetworkContext {
+public interface GenerativeNeuralNetwork<C extends NeuralNetworkContext, 
+    N extends GenerativeNeuralNetwork<C, N>> extends NeuralNetwork<C, N> {
 
+  NeuronsActivation generate(NeuronsActivation seed, C generativeContext);
 }

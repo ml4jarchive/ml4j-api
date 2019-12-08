@@ -14,11 +14,10 @@
 
 package org.ml4j.nn;
 
-/**
- * Encapsulates the runtime context used with a DeepBeliefNetwork.
- * 
- * @author Michael Lavelle
- */
-public interface DeepBeliefNetworkContext extends LayeredNeuralNetworkContext {
+import org.ml4j.nn.layers.RestrictedBoltzmannLayer;
+
+public interface DeepBeliefNetwork<
+    N extends DeepBeliefNetwork<N, C>, C extends LayeredNeuralNetworkContext>
+    extends LayeredNeuralNetwork<RestrictedBoltzmannLayer<?>, C, N> {
 
 }
