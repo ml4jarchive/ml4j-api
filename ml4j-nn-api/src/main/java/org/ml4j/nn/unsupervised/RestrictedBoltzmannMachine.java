@@ -15,7 +15,6 @@
 package org.ml4j.nn.unsupervised;
 
 import org.ml4j.nn.UndirectedNeuralNetwork;
-import org.ml4j.nn.axons.FullyConnectedAxons;
 import org.ml4j.nn.axons.TrainableAxons;
 import org.ml4j.nn.layers.RestrictedBoltzmannLayer;
 import org.ml4j.nn.neurons.NeuronsActivation;

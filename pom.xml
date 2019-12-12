@@ -8,6 +8,8 @@
 	<modules>
 		<module>ml4j-matrices-api</module>	
 		<module>ml4j-axons-api</module>
+		<module>ml4j-streams-api</module>
+		<module>ml4j-datasets-api</module>
 		<module>ml4j-components-api</module>
 		<module>ml4j-synapses-api</module>
 		<module>ml4j-layers-api</module>

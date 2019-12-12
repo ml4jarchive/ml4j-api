@@ -14,6 +14,8 @@
 
 package org.ml4j.nn;
 
+import java.util.stream.Stream;
+
 import org.ml4j.nn.components.ChainableDirectedComponent;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -41,6 +43,7 @@ public interface DirectedNeuralNetwork<C extends NeuralNetworkContext,
    */
   ForwardPropagation forwardPropagate(NeuronsActivation inputActivation, C context);
   
+  Stream<ForwardPropagation> forwardPropagate(Stream<NeuronsActivation> inputActivation, C context);  
   /**
    * @return The training context used for the last epoch of training, or null if no context
    *         available.
