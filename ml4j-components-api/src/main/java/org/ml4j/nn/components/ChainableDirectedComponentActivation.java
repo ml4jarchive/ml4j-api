@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface ChainableDirectedComponentActivation<I> extends DirectedComponentActivation<I, I> {
 
-	public List<ChainableDirectedComponentActivation<I>> decompose();
+	public List<? extends ChainableDirectedComponentActivation<I>> decompose();
 
 }

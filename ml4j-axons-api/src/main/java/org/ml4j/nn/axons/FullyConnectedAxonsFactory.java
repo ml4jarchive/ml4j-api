@@ -8,4 +8,6 @@ import org.ml4j.nn.neurons.Neurons;
 public interface FullyConnectedAxonsFactory extends Serializable {
 
 	FullyConnectedAxons createFullyConnectedAxons(Neurons leftNeurons, Neurons rightNeurons, Matrix connectionWeights, Matrix biases);
+	FullyConnectedAxons createFullyConnectedAxons(Neurons leftNeurons, Neurons rightNeurons, Matrix connectionWeights, Matrix leftToRightBiases, Matrix rightToLeftBiases);
+
 }

@@ -3,15 +3,18 @@ package org.ml4j.nn.components;
 public interface DirectedComponentActivation<I, O> {
 
 	/**
-	 * @param outerGradient
-	 *            The outer gradient to back propagate.
-	 * @param synapsesContext
-	 *            The synapses context.
+	 * Back propagate the gradient from the outer layer through the component that produced this activation.
+	 * 
+	 * 
+	 * @param outerGradient The outer gradient to back propagate.
 	 * @return The back propagated DirectedComponentGradient.
 	 */
-	public DirectedComponentGradient<I> backPropagate(DirectedComponentGradient<O> outerGradient);
+	DirectedComponentGradient<I> backPropagate(DirectedComponentGradient<O> outerGradient);
 
-	public O getOutput();
+	/**
+	 * @return The activation output.
+	 */
+	O getOutput();
 	
 
 }

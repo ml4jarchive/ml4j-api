@@ -1,7 +1,6 @@
 package org.ml4j.nn.datasets;
 
-import org.ml4j.MatrixFactory;
-import org.ml4j.nn.neurons.NeuronsActivation;
+import org.ml4j.nn.datasets.floatarray.FloatArrayLabeledDataBatch;
 
 public interface LabeledDataBatch<E, L> extends LabeledDataSet<E, L> {
 
@@ -12,8 +11,8 @@ public interface LabeledDataBatch<E, L> extends LabeledDataSet<E, L> {
 	void add(E element, L label);
 
 	boolean isEmpty();
+	
+	FloatArrayLabeledDataBatch toFloatArrayLabeledDataBatch(FeatureExtractor<E> featureExtractor, FeatureExtractor<L> labelMapper, FeatureExtractionErrorMode featureExtractionErrorMode);
 
-	LabeledData<NeuronsActivation, NeuronsActivation> toNeuronsActivations(MatrixFactory matrixFactory,
-			FeatureExtractor<E> featureExtractor, LabelMapper<L> labelMapper);
 
 }

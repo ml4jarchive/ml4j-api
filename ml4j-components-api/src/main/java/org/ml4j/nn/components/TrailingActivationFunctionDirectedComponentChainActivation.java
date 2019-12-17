@@ -4,7 +4,7 @@ import org.ml4j.nn.costfunctions.CostFunctionGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 public interface TrailingActivationFunctionDirectedComponentChainActivation
-		extends DirectedComponentChainActivation<NeuronsActivation, ChainableDirectedComponentActivation<NeuronsActivation>> {
+		extends DefaultDirectedComponentChainActivation {
 
 	/**
 	 * @param outerGradient

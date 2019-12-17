@@ -14,7 +14,7 @@
 
 package org.ml4j.nn.layers;
 
-import org.ml4j.nn.components.ChainableDirectedComponentActivation;
+import org.ml4j.nn.components.DefaultChainableDirectedComponentActivation;
 import org.ml4j.nn.components.DirectedComponentGradient;
 import org.ml4j.nn.costfunctions.CostFunctionGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
@@ -25,7 +25,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * 
  * @author Michael Lavelle
  */
-public interface DirectedLayerActivation extends ChainableDirectedComponentActivation<NeuronsActivation> {
+public interface DirectedLayerActivation extends DefaultChainableDirectedComponentActivation {
 
   /**
    * @return The NeuronsActivation output from a propagation 
@@ -37,11 +37,6 @@ public interface DirectedLayerActivation extends ChainableDirectedComponentActiv
    * @return The DirectedLayer that generated this DirectedLayerActivation.
    */
   DirectedLayer<?,?> getLayer();
- 
-  /**
-   * @return All the Synapses activations of this Layer Activation.
-   */
-  //List<DirectedSynapsesActivation> getSynapsesActivations();
   
   /**
    * @param outerGradient The outer gradient to back propagate.
@@ -56,17 +51,5 @@ public interface DirectedLayerActivation extends ChainableDirectedComponentActiv
    * @return The back propagated DirectedLayerGradient.
    */
   DirectedComponentGradient<NeuronsActivation> backPropagate(CostFunctionGradient outerGradient);
-  
-  /**
-   * @param layerContext The layer context.
-   * @return The total regularisation cost of this activation.
-   */
-  double getTotalRegularisationCost(DirectedLayerContext layerContext);
-  
-  /**
-   * @param layerContext The layer context.
-   * @return The average regularisation cost of this activation.
-   */
-  double getAverageRegularistationCost(DirectedLayerContext layerContext);
   
 }

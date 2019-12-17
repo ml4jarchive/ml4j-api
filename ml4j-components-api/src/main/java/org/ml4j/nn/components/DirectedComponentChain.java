@@ -6,4 +6,7 @@ public interface DirectedComponentChain<I, L extends ChainableDirectedComponent<
 		extends DirectedComponent<I, B, DirectedComponentsContext>, ChainableDirectedComponent<I, B, DirectedComponentsContext>{
 
 	public List<L> getComponents();
+	
+	@Override
+	DirectedComponentChain<I, L, A, B> dup();
 }

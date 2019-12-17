@@ -14,9 +14,11 @@
 
 package org.ml4j.nn.layers;
 
+import java.util.List;
+
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons;
-import org.ml4j.nn.components.ChainableDirectedComponent;
+import org.ml4j.nn.components.DefaultChainableDirectedComponent;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -29,7 +31,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @param <L> The type of DirectedLayer
  */
 public interface DirectedLayer<A extends Axons<?,?,?>, L extends DirectedLayer<A, L>>
-    extends Layer<A, ChainableDirectedComponent<NeuronsActivation, ?, ?>, L>, ChainableDirectedComponent<NeuronsActivation, DirectedLayerActivation, DirectedLayerContext> {
+    extends Layer<A, DefaultChainableDirectedComponent<?, ?>, L>, DefaultChainableDirectedComponent<DirectedLayerActivation, DirectedLayerContext> {
 
   /**
    * @return The number of input neurons (including any bias unit) to the left of this 
@@ -74,4 +76,7 @@ public interface DirectedLayer<A extends Axons<?,?,?>, L extends DirectedLayer<A
    */
   NeuronsActivation getOptimalInputForOutputNeuron(int outpuNeuronIndex, 
       DirectedLayerContext directedLayerContext);
+  
+  List<DefaultChainableDirectedComponent<?, ?>> decompose();
+
 }

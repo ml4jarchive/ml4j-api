@@ -15,7 +15,6 @@
 package org.ml4j.nn.synapses;
 
 import org.ml4j.nn.axons.AxonsContext;
-
 import org.ml4j.nn.neurons.NeuronsActivationContext;
 
 /**

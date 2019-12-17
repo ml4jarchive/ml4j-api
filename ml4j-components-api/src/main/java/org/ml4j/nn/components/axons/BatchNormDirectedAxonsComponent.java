@@ -58,4 +58,8 @@ public interface BatchNormDirectedAxonsComponent<L extends Neurons, R extends Ne
    * @return The parameter "beta" used in the calculation of the exponentially weighted averages.
    */
   float getBetaForExponentiallyWeightedAverages();
+  
+  
+  @Override
+  BatchNormDirectedAxonsComponent<L, R> dup();
 }

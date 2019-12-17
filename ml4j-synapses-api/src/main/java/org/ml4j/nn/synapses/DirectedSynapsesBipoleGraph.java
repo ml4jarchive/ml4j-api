@@ -8,5 +8,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
 
 public interface DirectedSynapsesBipoleGraph<S extends DirectedSynapses<?, ?>> extends DirectedComponentBipoleGraph<NeuronsActivation, DirectedComponentsContext, DirectedSynapsesBipoleGraphActivation, DirectedComponentBatch<NeuronsActivation, DirectedSynapsesChain<S>, DirectedComponentBatchActivation<NeuronsActivation, DirectedSynapsesChainActivation>, DirectedSynapsesChainActivation, DirectedComponentsContext, DirectedComponentsContext>> {
 
+	  @Override
+	  DirectedSynapsesBipoleGraph<S> dup();
 	
 }

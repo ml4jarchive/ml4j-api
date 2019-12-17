@@ -9,4 +9,6 @@ import org.ml4j.nn.neurons.NeuronsActivation;
 public interface DefaultDirectedComponentChainBatch<L extends DirectedComponentChain<NeuronsActivation, ?, ? , T>, T extends DirectedComponentChainActivation<NeuronsActivation, ?>> extends
 		DirectedComponentChainBatch<NeuronsActivation, L, T, DirectedComponentBatchActivation<NeuronsActivation, T>> {
 
+	  @Override
+	  DefaultDirectedComponentChainBatch<L, T> dup();
 }

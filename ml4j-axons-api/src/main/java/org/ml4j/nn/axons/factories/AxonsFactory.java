@@ -1,8 +1,13 @@
-package org.ml4j.nn.axons;
+package org.ml4j.nn.axons.factories;
 
 import java.io.Serializable;
 
 import org.ml4j.Matrix;
+import org.ml4j.nn.axons.AveragePoolingAxons;
+import org.ml4j.nn.axons.ConvolutionalAxons;
+import org.ml4j.nn.axons.FullyConnectedAxonsFactory;
+import org.ml4j.nn.axons.MaxPoolingAxons;
+import org.ml4j.nn.axons.ScaleAndShiftAxons;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.Neurons3D;
 

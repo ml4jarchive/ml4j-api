@@ -6,4 +6,8 @@ public interface DirectedComponentBatch<I, L extends DirectedComponent<I, A ,C> 
 		extends DirectedComponent<List<I>, Y, C2> {
 
 	public List<L> getComponents();
+	
+	
+	@Override
+	DirectedComponentBatch<I, L, Y, A, C, C2> dup();
 }

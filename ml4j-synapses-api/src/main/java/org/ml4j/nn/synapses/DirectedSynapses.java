@@ -14,11 +14,11 @@
 
 package org.ml4j.nn.synapses;
 
+import java.util.List;
+
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
-import org.ml4j.nn.axons.Axons;
-import org.ml4j.nn.components.ChainableDirectedComponent;
-import org.ml4j.nn.components.DirectedComponentBipoleGraph;
-import org.ml4j.nn.components.DirectedComponentsBipoleGraphActivation;
+import org.ml4j.nn.components.DefaultChainableDirectedComponent;
+import org.ml4j.nn.components.DefaultDirectedComponentBipoleGraph;
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.NeuronsActivation;
@@ -33,7 +33,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @param <R> The type of Neurons on the right of these DirectedSynapses.
  */
 public interface DirectedSynapses<L extends Neurons, R extends Neurons>
-    extends Synapses<DirectedSynapses<L, R>>, ChainableDirectedComponent<NeuronsActivation, DirectedSynapsesActivation, DirectedComponentsContext> {
+    extends Synapses<DirectedSynapses<L, R>>, DefaultChainableDirectedComponent<DirectedSynapsesActivation, DirectedComponentsContext> {
 
   /**
    * @return The DifferentiableActivationFunction applied
@@ -42,14 +42,9 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons>
   DifferentiableActivationFunction getActivationFunction();
   
   /**
-   * @return The primary Axons within these DirectedSynapses.
-   */
-  Axons<? ,? ,?> getPrimaryAxons();
-  
-  /**
    * @return The Axons graph within these DirectedSynapses.
    */
-  DirectedComponentBipoleGraph<NeuronsActivation, DirectedComponentsContext, DirectedComponentsBipoleGraphActivation<NeuronsActivation>, ?> getAxonsGraph();
+  DefaultDirectedComponentBipoleGraph getAxonsGraph();
   
   /**
    * @return The Neurons on the left hand side of these DirectedSynapses.
@@ -73,5 +68,9 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons>
    */
   DirectedSynapsesActivation forwardPropagate(NeuronsActivation input,
       DirectedComponentsContext synapsesContext);
+
+  
+  List<DefaultChainableDirectedComponent<?, ?>> decompose();
+
  
 }

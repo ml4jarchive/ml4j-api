@@ -14,9 +14,11 @@
 
 package org.ml4j.nn;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.ml4j.nn.components.ChainableDirectedComponent;
+import org.ml4j.nn.components.DefaultChainableDirectedComponent;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -49,5 +51,7 @@ public interface DirectedNeuralNetwork<C extends NeuralNetworkContext,
    *         available.
    */
   C getLastEpochTrainingContext();
+
+  List<DefaultChainableDirectedComponent<?, ?>> decompose();
   
 }

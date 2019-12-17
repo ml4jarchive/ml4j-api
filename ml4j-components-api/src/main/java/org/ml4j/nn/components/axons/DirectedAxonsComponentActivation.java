@@ -1,9 +1,8 @@
 package org.ml4j.nn.components.axons;
 
-import org.ml4j.nn.components.ChainableDirectedComponentActivation;
-import org.ml4j.nn.neurons.NeuronsActivation;
+import org.ml4j.nn.components.DefaultChainableDirectedComponentActivation;
 
-public interface DirectedAxonsComponentActivation extends ChainableDirectedComponentActivation<NeuronsActivation> {
+public interface DirectedAxonsComponentActivation extends DefaultChainableDirectedComponentActivation {
 
 	  public DirectedAxonsComponent<?, ?> getAxonsComponent();
 	  

@@ -1,10 +1,8 @@
 package org.ml4j.nn.datasets;
 
-import org.ml4j.MatrixFactory;
-import org.ml4j.nn.datasets.neuronsactivation.NeuronsActivationLabeledDataSet;
+import org.ml4j.nn.datasets.floatarray.FloatArrayBatchedLabeledDataSet;
 
-public interface BatchedLabeledDataSet<E, L> extends LabeledDataSet<DataBatch<E>, DataBatch<L>> {
+public interface BatchedLabeledDataSet<E, L> extends BatchedDataSet<LabeledData<E, L>> {
 
-	NeuronsActivationLabeledDataSet toNeuronsActivationLabeledDataSet(MatrixFactory matrixFactory,
-			FeatureExtractor<E> featureExtractor, LabelMapper<L> labelMapper);
+	FloatArrayBatchedLabeledDataSet toFloatArrayBatchedLabeledDataSet(FeatureExtractor<E> featureExtractor, FeatureExtractor<L> labelMapper, FeatureExtractionErrorMode featureExtractionErrorMode);
 }

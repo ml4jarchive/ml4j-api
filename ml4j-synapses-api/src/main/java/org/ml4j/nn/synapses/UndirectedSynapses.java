@@ -90,4 +90,6 @@ public interface UndirectedSynapses<L extends Neurons, R extends Neurons>
   UndirectedSynapsesActivation pushRightToLeft(UndirectedSynapsesInput rightHandNeuronsInput, 
       UndirectedSynapsesActivation previousLeftToRightSynapsesActivation,
       UndirectedSynapsesContext synapsesContext);
+  
+  
 }

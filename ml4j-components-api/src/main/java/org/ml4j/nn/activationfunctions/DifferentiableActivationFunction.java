@@ -38,4 +38,5 @@ public interface DifferentiableActivationFunction
   */
   NeuronsActivation activationGradient(DifferentiableActivationFunctionActivation outputActivation, 
       NeuronsActivationContext context);
+  
 }

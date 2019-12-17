@@ -7,6 +7,9 @@ public interface ChainableDirectedComponent<I, A extends ChainableDirectedCompon
 	
 	public C getContext(DirectedComponentsContext directedComponentsContext, int componentIndex);
 	
-	public List<ChainableDirectedComponent<I, ? extends ChainableDirectedComponentActivation<I>, ?>> decompose();
+	public List<? extends ChainableDirectedComponent<I, ? extends ChainableDirectedComponentActivation<I>, ?>> decompose();
 
+	
+	@Override
+	ChainableDirectedComponent<I, A, C> dup();
 }

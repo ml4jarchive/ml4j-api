@@ -6,4 +6,6 @@ import org.ml4j.nn.neurons.NeuronsActivation;
 
 public interface DirectedSynapsesChainBatch<S extends DirectedSynapses<?, ?>> extends DirectedComponentChainBatch<NeuronsActivation, DirectedSynapsesChain<S>, DirectedSynapsesChainActivation, DirectedComponentBatchActivation<NeuronsActivation, DirectedSynapsesChainActivation>> {
 
+	  @Override
+	  DirectedSynapsesChainBatch<S> dup();
 }
