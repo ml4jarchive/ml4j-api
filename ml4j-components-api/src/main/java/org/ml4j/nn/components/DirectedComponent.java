@@ -17,6 +17,8 @@ public interface DirectedComponent<I, A extends DirectedComponentActivation<I, ?
 	 */
 	A forwardPropagate(I input, C context);
 	
+	DirectedComponentType getComponentType();
+	
 	@Override
 	DirectedComponent<I, A, C> dup();
 	

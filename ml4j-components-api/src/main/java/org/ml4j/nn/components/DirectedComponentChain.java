@@ -9,4 +9,7 @@ public interface DirectedComponentChain<I, L extends ChainableDirectedComponent<
 	
 	@Override
 	DirectedComponentChain<I, L, A, B> dup();
+	
+	
+	
 }
