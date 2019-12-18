@@ -12,7 +12,6 @@ public interface NeuronsActivation {
 	int getRows();
 	int getColumns();
 	void setImmutable(boolean immutable);
-	String getStackTrace();
 	boolean isImmutable();
 	Matrix getActivations(MatrixFactory matrixFactory);
 	NeuronsActivationFeatureOrientation getFeatureOrientation();
