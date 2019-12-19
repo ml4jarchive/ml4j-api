@@ -6,7 +6,14 @@ import org.ml4j.nn.components.DirectedComponentChain;
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
-public interface DefaultDirectedComponentChain extends DirectedComponentChain<NeuronsActivation, DefaultChainableDirectedComponent<?, ?>, DefaultChainableDirectedComponentActivation, DefaultDirectedComponentChainActivation>, DefaultChainableDirectedComponent<DefaultDirectedComponentChainActivation, DirectedComponentsContext > {
+/**
+ * Encapsulates a sequential chain of DefaultChainableDirectedComponents
+ * 
+ * @author Michael Lavelle
+ */
+public interface DefaultDirectedComponentChain extends
+		DirectedComponentChain<NeuronsActivation, DefaultChainableDirectedComponent<?, ?>, DefaultChainableDirectedComponentActivation, DefaultDirectedComponentChainActivation>,
+		DefaultChainableDirectedComponent<DefaultDirectedComponentChainActivation, DirectedComponentsContext> {
 
 	@Override
 	DefaultDirectedComponentChain dup();

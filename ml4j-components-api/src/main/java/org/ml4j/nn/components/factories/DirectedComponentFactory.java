@@ -1,13 +1,11 @@
 package org.ml4j.nn.components.factories;
 
 import java.util.List;
+import java.util.function.IntSupplier;
 
 import org.ml4j.Matrix;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons;
-import org.ml4j.nn.components.ChainableDirectedComponent;
-import org.ml4j.nn.components.ChainableDirectedComponentActivation;
-import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.activationfunctions.DifferentiableActivationFunctionComponent;
 import org.ml4j.nn.components.axons.BatchNormDirectedAxonsComponent;
 import org.ml4j.nn.components.axons.DirectedAxonsComponent;
@@ -21,10 +19,26 @@ import org.ml4j.nn.components.onetone.DefaultDirectedComponentChain;
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentChainActivation;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.Neurons3D;
-import org.ml4j.nn.neurons.NeuronsActivation;
 
+/**
+ * 
+ * Factory interface whose implementations are responsible for creating
+ * differentiable components required by DirectedNeuralNetworks
+ * 
+ * @author Michael Lavelle
+ *
+ */
 public interface DirectedComponentFactory {
 
+	/**
+	 * Create a fully-connected axons component, connecting leftNeurons to rightNeurons via connectionWeights.
+	 * 
+	 * @param leftNeurons The neurons on the left of the fully-connected axons component.
+	 * @param rightNeurons The neurons on the right of the fully-connected axons component.
+	 * @param connectionWeights Optionally specify the connection weights of the axons - if not provided the weights will be initialised to defaults.
+	 * @param biases Optionally specify the left-to-right biases of the axons - if not provided the biases will be initialised to defaults.
+	 * @return A fully-connected axons component, connecting leftNeurons to rightNeurons via connectionWeights.
+	 */
 	DirectedAxonsComponent<Neurons, Neurons> createFullyConnectedAxonsComponent(Neurons leftNeurons, Neurons rightNeurons, Matrix connectionWeights, Matrix biases);
 	
 	DirectedAxonsComponent<Neurons3D, Neurons3D> createConvolutionalAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons, int strideWidth, int strideHeight, Integer paddingWidth, Integer paddingHeight, Matrix connectionWeights, Matrix biases);
@@ -45,8 +59,7 @@ public interface DirectedComponentFactory {
 	
 	<N extends Neurons> DirectedAxonsComponent<N, N> createPassThroughAxonsComponent(N leftNeurons, N rightNeurons);
 	
-	OneToManyDirectedComponent<?> createOneToManyDirectedComponent(List<? extends ChainableDirectedComponent<NeuronsActivation, 
-			? extends ChainableDirectedComponentActivation<NeuronsActivation>, DirectedComponentsContext>> targetComponents);
+	OneToManyDirectedComponent<?> createOneToManyDirectedComponent(IntSupplier targetComponentsCount);
 	
 	ManyToOneDirectedComponent<?> createManyToOneDirectedComponent(PathCombinationStrategy pathCombinationStrategy);
 
