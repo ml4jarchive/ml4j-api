@@ -1,6 +1,6 @@
 package org.ml4j.nn.components.axons;
 
-import org.ml4j.nn.components.DefaultChainableDirectedComponentActivation;
+import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponentActivation;
 
 public interface DirectedAxonsComponentActivation extends DefaultChainableDirectedComponentActivation {
 

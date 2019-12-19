@@ -70,4 +70,5 @@ public interface TrainableAxons<L extends Neurons, R extends Neurons,
    * @return A clone of the left to right biases Matrix for these Axons.
    */
   Matrix getDetachedRightToLeftBiases();
+  
 }

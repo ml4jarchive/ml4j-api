@@ -1,4 +1,4 @@
-package org.ml4j.nn.components.defaults;
+package org.ml4j.nn.components.manytomany;
 
 import org.ml4j.nn.components.DirectedComponentBatchActivation;
 import org.ml4j.nn.components.DirectedComponentChain;

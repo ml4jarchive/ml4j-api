@@ -14,8 +14,8 @@
 
 package org.ml4j.nn.layers;
 
-import org.ml4j.nn.components.DefaultChainableDirectedComponentActivation;
 import org.ml4j.nn.components.DirectedComponentGradient;
+import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponentActivation;
 import org.ml4j.nn.costfunctions.CostFunctionGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
 

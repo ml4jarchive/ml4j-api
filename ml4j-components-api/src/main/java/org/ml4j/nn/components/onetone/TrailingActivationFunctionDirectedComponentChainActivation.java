@@ -1,5 +1,6 @@
-package org.ml4j.nn.components;
+package org.ml4j.nn.components.onetone;
 
+import org.ml4j.nn.components.DirectedComponentGradient;
 import org.ml4j.nn.costfunctions.CostFunctionGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -13,5 +14,7 @@ public interface TrailingActivationFunctionDirectedComponentChainActivation
 	 *            The synapses context.
 	 * @return The back propagated DirectedComponentGradient.
 	 */
-	public DirectedComponentGradient<NeuronsActivation> backPropagate(CostFunctionGradient outerGradient);
+	DirectedComponentGradient<NeuronsActivation> backPropagate(CostFunctionGradient outerGradient);
+	
+	
 }

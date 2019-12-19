@@ -8,12 +8,17 @@ import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.components.ChainableDirectedComponent;
 import org.ml4j.nn.components.ChainableDirectedComponentActivation;
 import org.ml4j.nn.components.DirectedComponentsContext;
-import org.ml4j.nn.components.ManyToOneDirectedComponent;
-import org.ml4j.nn.components.OneToManyDirectedComponent;
-import org.ml4j.nn.components.PathCombinationStrategy;
 import org.ml4j.nn.components.activationfunctions.DifferentiableActivationFunctionComponent;
 import org.ml4j.nn.components.axons.BatchNormDirectedAxonsComponent;
 import org.ml4j.nn.components.axons.DirectedAxonsComponent;
+import org.ml4j.nn.components.manytomany.DefaultDirectedComponentChainBatch;
+import org.ml4j.nn.components.manytoone.ManyToOneDirectedComponent;
+import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
+import org.ml4j.nn.components.onetomany.OneToManyDirectedComponent;
+import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
+import org.ml4j.nn.components.onetone.DefaultDirectedComponentBipoleGraph;
+import org.ml4j.nn.components.onetone.DefaultDirectedComponentChain;
+import org.ml4j.nn.components.onetone.DefaultDirectedComponentChainActivation;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.Neurons3D;
 import org.ml4j.nn.neurons.NeuronsActivation;
@@ -46,4 +51,10 @@ public interface DirectedComponentFactory {
 	ManyToOneDirectedComponent<?> createManyToOneDirectedComponent(PathCombinationStrategy pathCombinationStrategy);
 
 	DifferentiableActivationFunctionComponent createDifferentiableActivationFunctionComponent(DifferentiableActivationFunction differentiableActivationFunction);
+	
+	DefaultDirectedComponentChain createDirectedComponentChain(List<DefaultChainableDirectedComponent<?, ?>> sequentialComponents);
+	
+	DefaultDirectedComponentChainBatch<DefaultDirectedComponentChain, DefaultDirectedComponentChainActivation> createDirectedComponentChainBatch(List<DefaultDirectedComponentChain> parallelChains);
+	
+	DefaultDirectedComponentBipoleGraph createDirectedComponentBipoleGraph(DefaultDirectedComponentChainBatch<DefaultDirectedComponentChain, DefaultDirectedComponentChainActivation> batchOfParallelChains, PathCombinationStrategy pathCombinationStrategy);
 }
