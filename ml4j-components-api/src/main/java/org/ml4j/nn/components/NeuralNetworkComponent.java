@@ -17,11 +17,10 @@ package org.ml4j.nn.components;
 import java.io.Serializable;
 
 /**
+ * Base interface for a NeuralNetworkComponent
  * 
  * @author Michael Lavelle
  *
- * @param <S>
- *            The type of Synapses
  */
 public interface NeuralNetworkComponent extends Serializable {
 
