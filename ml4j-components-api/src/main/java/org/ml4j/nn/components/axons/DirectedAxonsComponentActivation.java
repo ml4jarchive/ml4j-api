@@ -4,7 +4,7 @@ import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponentActivatio
 
 public interface DirectedAxonsComponentActivation extends DefaultChainableDirectedComponentActivation {
 
-	  public DirectedAxonsComponent<?, ?> getAxonsComponent();
+	  public DirectedAxonsComponent<?, ?, ?> getAxonsComponent();
 	  
 	  /**
 	   * The total regularisation cost of these synapse.

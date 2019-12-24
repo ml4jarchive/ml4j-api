@@ -16,6 +16,8 @@ package org.ml4j.nn.components.axons;
 
 import org.ml4j.Matrix;
 import org.ml4j.nn.neurons.Neurons;
+import org.ml4j.nn.axons.Axons;
+import org.ml4j.nn.axons.ScaleAndShiftAxons;
 
 /**
  * Batch norm directed synapses are responsible for normalising the *output* of their primary 
@@ -30,8 +32,8 @@ import org.ml4j.nn.neurons.Neurons;
  * @param <L> The type of Neurons on the left of these BatchNormDirectedSynapses.
  * @param <R> The type of Neurons on the right of these BatchNormDirectedSynapses.
  */
-public interface BatchNormDirectedAxonsComponent<L extends Neurons, R extends Neurons>
-    extends DirectedAxonsComponent<L, R> {
+public interface BatchNormDirectedAxonsComponent<L extends Neurons, A extends Axons<L, L, ?>>
+    extends DirectedAxonsComponent<L, L, A> {
 
   /**
    * @return A column vector of the exponentially weighted average input feature means.
@@ -61,5 +63,5 @@ public interface BatchNormDirectedAxonsComponent<L extends Neurons, R extends Ne
   
   
   @Override
-  BatchNormDirectedAxonsComponent<L, R> dup();
+  BatchNormDirectedAxonsComponent<L, A> dup();
 }
