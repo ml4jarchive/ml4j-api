@@ -15,9 +15,8 @@
 package org.ml4j.nn.components.axons;
 
 import org.ml4j.Matrix;
-import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.axons.Axons;
-import org.ml4j.nn.axons.ScaleAndShiftAxons;
+import org.ml4j.nn.neurons.Neurons;
 
 /**
  * Batch norm directed synapses are responsible for normalising the *output* of their primary 

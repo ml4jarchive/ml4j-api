@@ -1,6 +1,9 @@
-package org.ml4j.nn.components;
+package org.ml4j.nn.components.generic;
 
 import java.util.List;
+
+import org.ml4j.nn.components.ChainableDirectedComponentActivation;
+import org.ml4j.nn.components.DirectedComponentActivation;
 
 /**
   * Encapsulates the activation from a DirectedComponentChain after forward propagation.

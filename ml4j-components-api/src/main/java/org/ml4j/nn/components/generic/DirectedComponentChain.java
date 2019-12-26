@@ -1,6 +1,11 @@
-package org.ml4j.nn.components;
+package org.ml4j.nn.components.generic;
 
 import java.util.List;
+
+import org.ml4j.nn.components.ChainableDirectedComponent;
+import org.ml4j.nn.components.ChainableDirectedComponentActivation;
+import org.ml4j.nn.components.DirectedComponent;
+import org.ml4j.nn.components.DirectedComponentsContext;
 
  /**
   * Encapsulates a sequential chain of ChainableDirectedComponents

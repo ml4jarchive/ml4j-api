@@ -1,14 +1,17 @@
 package org.ml4j.nn.components.manytomany;
 
-import org.ml4j.nn.components.DirectedComponentBatchActivation;
-import org.ml4j.nn.components.DirectedComponentChain;
-import org.ml4j.nn.components.DirectedComponentChainActivation;
-import org.ml4j.nn.components.DirectedComponentChainBatch;
+import java.util.List;
+
+import org.ml4j.nn.components.ChainableDirectedComponent;
+import org.ml4j.nn.components.DirectedComponentsContext;
+import org.ml4j.nn.components.onetone.DefaultDirectedComponentChain;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
-public interface DefaultDirectedComponentChainBatch<L extends DirectedComponentChain<NeuronsActivation, ?, ? , T>, T extends DirectedComponentChainActivation<NeuronsActivation, ?>> extends
-		DirectedComponentChainBatch<NeuronsActivation, L, T, DirectedComponentBatchActivation<NeuronsActivation, T>> {
+public interface DefaultDirectedComponentChainBatch extends
+		ChainableDirectedComponent<List<NeuronsActivation>, DefaultDirectedComponentChainBatchActivation, DirectedComponentsContext> {
 
-	  @Override
-	  DefaultDirectedComponentChainBatch<L, T> dup();
+	@Override
+	DefaultDirectedComponentChainBatch dup();
+
+	public List<DefaultDirectedComponentChain> getComponents();
 }

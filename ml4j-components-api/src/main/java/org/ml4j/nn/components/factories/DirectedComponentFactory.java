@@ -16,7 +16,6 @@ import org.ml4j.nn.components.onetomany.OneToManyDirectedComponent;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentBipoleGraph;
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentChain;
-import org.ml4j.nn.components.onetone.DefaultDirectedComponentChainActivation;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.Neurons3D;
 
@@ -67,7 +66,7 @@ public interface DirectedComponentFactory {
 	
 	DefaultDirectedComponentChain createDirectedComponentChain(List<DefaultChainableDirectedComponent<?, ?>> sequentialComponents);
 	
-	DefaultDirectedComponentChainBatch<DefaultDirectedComponentChain, DefaultDirectedComponentChainActivation> createDirectedComponentChainBatch(List<DefaultDirectedComponentChain> parallelChains);
+	DefaultDirectedComponentChainBatch createDirectedComponentChainBatch(List<DefaultDirectedComponentChain> parallelChains);
 	
-	DefaultDirectedComponentBipoleGraph createDirectedComponentBipoleGraph(Neurons inputNeurons, Neurons outputNeurons, DefaultDirectedComponentChainBatch<DefaultDirectedComponentChain, DefaultDirectedComponentChainActivation> batchOfParallelChains, PathCombinationStrategy pathCombinationStrategy);
+	DefaultDirectedComponentBipoleGraph createDirectedComponentBipoleGraph(Neurons inputNeurons, Neurons outputNeurons, DefaultDirectedComponentChainBatch batchOfParallelChains, PathCombinationStrategy pathCombinationStrategy);
 }

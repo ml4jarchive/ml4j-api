@@ -1,7 +1,7 @@
 package org.ml4j.nn.components.onetomany;
 
+import org.ml4j.nn.components.DirectedComponent;
 import org.ml4j.nn.components.DirectedComponentsContext;
-import org.ml4j.nn.components.GenericOneToManyDirectedComponent;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -13,7 +13,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  *
  * @param <A> The type of activation produced by this component on forward-propagation.
  */
-public interface OneToManyDirectedComponent<A extends OneToManyDirectedComponentActivation> extends GenericOneToManyDirectedComponent<NeuronsActivation,DirectedComponentsContext, A > {
+public interface OneToManyDirectedComponent<A extends OneToManyDirectedComponentActivation> extends DirectedComponent<NeuronsActivation, A, DirectedComponentsContext> {
 
 	@Override
 	OneToManyDirectedComponent<A> dup();
