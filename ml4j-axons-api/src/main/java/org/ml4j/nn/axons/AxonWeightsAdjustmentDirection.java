@@ -19,6 +19,6 @@ package org.ml4j.nn.axons;
  * 
  * @author Michael Lavelle
  */
-public enum ConnectionWeightsAdjustmentDirection {
+public enum AxonWeightsAdjustmentDirection {
   ADDITION, SUBTRACTION;
 }

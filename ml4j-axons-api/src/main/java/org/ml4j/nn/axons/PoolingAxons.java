@@ -16,8 +16,6 @@
 
 package org.ml4j.nn.axons;
 
-import org.ml4j.nn.neurons.Neurons3D;
-
 /**
  * Encapsulates the connections between two sets of Neurons which are pooled
  * from left to right.
@@ -26,26 +24,7 @@ import org.ml4j.nn.neurons.Neurons3D;
  *
  */
 public interface PoolingAxons<A extends PoolingAxons<A>>
-    extends Axons<Neurons3D, Neurons3D, A> {
+    extends Axons3D<A> {
 
-  /**
-   * @return The stride.
-   */
-  int getStrideWidth();
-  
-  /**
-   * @return The stride.
-   */
-  int getStrideHeight();
-  
-  /**
-   * @return The filter width.
-   */
-  int getFilterWidth();
-  
-  /**
-   * @return The filter height.
-   */
-  int getFilterHeight();
-  
+ 
 }

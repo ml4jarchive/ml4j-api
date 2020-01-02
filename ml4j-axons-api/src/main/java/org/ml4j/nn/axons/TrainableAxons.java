@@ -14,7 +14,6 @@
 
 package org.ml4j.nn.axons;
 
-import org.ml4j.Matrix;
 import org.ml4j.nn.neurons.Neurons;
 
 /**
@@ -32,43 +31,16 @@ public interface TrainableAxons<L extends Neurons, R extends Neurons,
     extends Axons<L, R, A> {
   
   /**
-   * @param adjustments The adjustment Matrix.
-   * @param adjustmentDirection The adjustment direction.
+   * 
+   * @param adjustments
+   * @param adjustmentDirection
    */
-  public void adjustConnectionWeights(Matrix adjustments, 
-      ConnectionWeightsAdjustmentDirection adjustmentDirection);
-  
+  void adjustAxonWeights(AxonWeightsAdjustment adjustments, 
+      AxonWeightsAdjustmentDirection adjustmentDirection);
   
   /**
-   * @param adjustments The adjustment Matrix.
-   * @param adjustmentDirection The adjustment direction.
+   * @return A clone of the axon weights
    */
-  public void adjustLeftToRightBiases(Matrix adjustments, 
-      ConnectionWeightsAdjustmentDirection adjustmentDirection);
-  
-  /**
-   * @param adjustments The adjustment Matrix.
-   * @param adjustmentDirection The adjustment direction.
-   */
-  public void adjustRightToLeftBiases(Matrix adjustments, 
-      ConnectionWeightsAdjustmentDirection adjustmentDirection);
-  
-  
-  
-  /**
-   * @return A clone of the connection weights Matrix for these Axons.
-   */
-  Matrix getDetachedConnectionWeights();
-  
-  
-  /**
-   * @return A clone of the left to right biases Matrix for these Axons.
-   */
-  Matrix getDetachedLeftToRightBiases();
-  
-  /**
-   * @return A clone of the left to right biases Matrix for these Axons.
-   */
-  Matrix getDetachedRightToLeftBiases();
+  AxonWeights getDetachedAxonWeights();
   
 }

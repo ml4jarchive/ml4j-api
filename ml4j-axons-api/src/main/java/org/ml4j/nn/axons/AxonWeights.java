@@ -11,10 +11,9 @@ public interface AxonWeights extends Serializable {
 	Matrix getRightToLeftBiases();
 	int getInputNeuronCount();
 	int getOutputNeuronsCount();
+	AxonWeights dup();
 	
-	void adjustLeftToRightBiases(Matrix adjustment, ConnectionWeightsAdjustmentDirection adjustmentDirection);
-	void adjustRightToLeftBiases(Matrix adjustment, ConnectionWeightsAdjustmentDirection adjustmentDirection);
-	void adjustConnectionWeights(Matrix adjustment, ConnectionWeightsAdjustmentDirection adjustmentDirection, boolean initialisation);
+	void adjustWeights(AxonWeightsAdjustment axonWeightsAdjustment, AxonWeightsAdjustmentDirection adjustmentDirection);
 	
 	Matrix applyToInput(Matrix input);
 	Matrix applyToGradient(Matrix input);

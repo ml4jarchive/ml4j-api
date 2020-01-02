@@ -27,36 +27,6 @@ import org.ml4j.nn.neurons.Neurons3D;
  *
  */
 public interface ConvolutionalAxons
-    extends TrainableAxons<Neurons3D, Neurons3D, ConvolutionalAxons> {
-
-  /**
-   * @return The stride.
-   */
-  int getStrideWidth();
-  
-  /**
-   * @return The stride.
-   */
-  int getStrideHeight();
-
-  /**
-   * @return The amount of zero padding.
-   */
-  int getZeroPaddingWidth();
-  
-  /**
-   * @return The amount of zero padding.
-   */
-  int getZeroPaddingHeight();
-  
-  /**
-   * @return The filter width.
-   */
-  int getFilterWidth();
-  
-  /**
-   * @return The filter height.
-   */
-  int getFilterHeight();
+    extends TrainableAxons<Neurons3D, Neurons3D, ConvolutionalAxons>, Axons3D<ConvolutionalAxons> {
  
 }
