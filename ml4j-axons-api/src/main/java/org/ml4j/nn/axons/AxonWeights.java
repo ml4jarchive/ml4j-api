@@ -15,8 +15,9 @@ public interface AxonWeights extends Serializable {
 	
 	void adjustWeights(AxonWeightsAdjustment axonWeightsAdjustment, AxonWeightsAdjustmentDirection adjustmentDirection);
 	
-	Matrix applyToInput(Matrix input);
-	Matrix applyToGradient(Matrix input);
+	Matrix applyToLeftToRightInput(Matrix input);
+	
+	Matrix applyToRightToLeftInput(Matrix input);
 
 
 }

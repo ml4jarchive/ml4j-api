@@ -14,6 +14,8 @@
 
 package org.ml4j.nn.axons;
 
+import java.util.function.Supplier;
+
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -30,6 +32,6 @@ public interface AxonsActivation {
   
   NeuronsActivation getPostDropoutOutput();
   
-  NeuronsActivation getPostDropoutInput();
+  Supplier<NeuronsActivation> getPostDropoutInput();
   
 }

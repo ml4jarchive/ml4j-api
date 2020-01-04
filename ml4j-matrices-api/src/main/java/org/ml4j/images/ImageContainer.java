@@ -17,15 +17,23 @@ public interface ImageContainer<I extends ImageContainer<I>> {
 	int getDataLength();
 	void populateData(float[] data, int startIndex);
 	void populateDataSubImage(float[] data, int startIndex, int startHeight, int startWidth, int height, int width, int strideHeight, int strideWidth, boolean forIm2col2);
-	void populateIm2col(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
-	void populateIm2col2(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
+	void populateIm2colConvImport(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
+	void populateIm2colConvExport(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
+
+	void populateIm2colPoolExport(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
+	void populateIm2colPoolImport(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
+
 	I dup();
 	I softDup();
 	void close();
 	
-	Matrix im2col(MatrixFactory matrixFactory, int filterHeight, int filterWidth, int strideHeight, int strideWidth);
+	Matrix im2colConvExport(MatrixFactory matrixFactory, int filterHeight, int filterWidth, int strideHeight, int strideWidth);
 	
-	Matrix im2col2(MatrixFactory matrixFactory, int filterHeight, int filterWidth, int strideHeight, int strideWidth);
+	Matrix im2colPoolExport(MatrixFactory matrixFactory, int filterHeight, int filterWidth, int strideHeight, int strideWidth);
+	
+	void im2colConvImport(MatrixFactory matrixFactory, Matrix matrix, int filterHeight, int filterWidth, int strideHeight, int strideWidth);
+	
+	void im2colPoolImport(MatrixFactory matrixFactory, Matrix matrix, int filterHeight, int filterWidth, int strideHeight, int strideWidth);
 	
 	int getSubImageDataLength(int height, int width);
 	void applyValueModifier(FloatPredicate condition, FloatModifier modifier);
