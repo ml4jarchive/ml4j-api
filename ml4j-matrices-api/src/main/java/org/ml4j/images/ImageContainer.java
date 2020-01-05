@@ -17,6 +17,7 @@ public interface ImageContainer<I extends ImageContainer<I>> {
 	int getDataLength();
 	void populateData(float[] data, int startIndex);
 	void populateDataSubImage(float[] data, int startIndex, int startHeight, int startWidth, int height, int width, int strideHeight, int strideWidth, boolean forIm2col2);
+	void populateDataSubImageReverse(float[] data, int startIndex, int startHeight, int startWidth, int height, int width, int strideHeight, int strideWidth, boolean forIm2col2);
 	void populateIm2colConvImport(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
 	void populateIm2colConvExport(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
 
