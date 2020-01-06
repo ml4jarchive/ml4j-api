@@ -9,6 +9,7 @@ public interface AxonWeights extends Serializable {
 	Matrix getConnectionWeights();
 	Matrix getLeftToRightBiases();
 	Matrix getRightToLeftBiases();
+	AxonWeightsType getType();
 	int getInputNeuronCount();
 	int getOutputNeuronsCount();
 	AxonWeights dup();
