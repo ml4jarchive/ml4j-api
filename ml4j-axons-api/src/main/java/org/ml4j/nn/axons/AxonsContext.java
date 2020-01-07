@@ -26,46 +26,46 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
  */
 public interface AxonsContext extends NeuronsActivationContext {
 
-  /**
-   * @return The keep probability for input dropout on the left hand side of an Axons instance.
-   */
-  float getLeftHandInputDropoutKeepProbability();
-  
-  /**
-   * @return Whether these Axons are frozen out for training.
-   */
-  boolean isWithFreezeOut();
-  
-  /**
-   * @return Whether this context is for training
-   */
-  boolean isTrainingContext();
+	/**
+	 * @return The keep probability for input dropout on the left hand side of an
+	 *         Axons instance.
+	 */
+	float getLeftHandInputDropoutKeepProbability();
 
-  /**
-   * @param withFreezeOut Whether these Axons are frozen out for training.
- * @return the axons context
-   */
-  AxonsContext withFreezeOut(boolean withFreezeOut);
-  
-  /**
-   * @param inputDropoutKeepProbability The keep probability for input dropout 
-   *        on the left hand side of an Axons instance.
- * @return the axons context
-   */
-  AxonsContext withLeftHandInputDropoutKeepProbability(
-      float inputDropoutKeepProbability);
- 
-  /**
-   * @param regularisationLamdba The regularisation lambda to use with the primary axons of
-   *        a DirectedLayer.
-   * @return the axons context
-   */
-  AxonsContext withRegularisationLambda(float regularisationLamdba);
-  
-  /**
-   * @return The regularisation lambda to use with the primary axons of
-   *        a DirectedLayer.
-   */
-  float getRegularisationLambda();
-  
+	/**
+	 * @return Whether these Axons are frozen out for training.
+	 */
+	boolean isWithFreezeOut();
+
+	/**
+	 * @return Whether this context is for training
+	 */
+	boolean isTrainingContext();
+
+	/**
+	 * @param withFreezeOut Whether these Axons are frozen out for training.
+	 * @return the axons context
+	 */
+	AxonsContext withFreezeOut(boolean withFreezeOut);
+
+	/**
+	 * @param inputDropoutKeepProbability The keep probability for input dropout on
+	 *                                    the left hand side of an Axons instance.
+	 * @return the axons context
+	 */
+	AxonsContext withLeftHandInputDropoutKeepProbability(float inputDropoutKeepProbability);
+
+	/**
+	 * @param regularisationLamdba The regularisation lambda to use with the primary
+	 *                             axons of a DirectedLayer.
+	 * @return the axons context
+	 */
+	AxonsContext withRegularisationLambda(float regularisationLamdba);
+
+	/**
+	 * @return The regularisation lambda to use with the primary axons of a
+	 *         DirectedLayer.
+	 */
+	float getRegularisationLambda();
+
 }

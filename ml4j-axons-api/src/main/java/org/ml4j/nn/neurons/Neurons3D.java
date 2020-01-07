@@ -23,47 +23,46 @@ package org.ml4j.nn.neurons;
  */
 public class Neurons3D extends Neurons {
 
-  /**
-   * Default serialization id.
-   */
-  private static final long serialVersionUID = 1L;
-  
-  private int width;
-  private int height;
-  private int depth;
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
 
-  /**
-   * @param width The width.
-   * @param height The height.
-   * @param depth the depth.
-   * @param hasBiasUnit Whether these Neurons also have a bias unit.
-   */
-  public Neurons3D(int width, int height, int depth, boolean hasBiasUnit) {
-    super(width * height * depth, hasBiasUnit);
-    this.width = width;
-    this.height = height;
-    this.depth = depth;
-  }
+	private int width;
+	private int height;
+	private int depth;
 
-  /**
-   * @return The width of the volume of Neurons.
-   */
-  public int getWidth() {
-    return width;
-  }
+	/**
+	 * @param width       The width.
+	 * @param height      The height.
+	 * @param depth       the depth.
+	 * @param hasBiasUnit Whether these Neurons also have a bias unit.
+	 */
+	public Neurons3D(int width, int height, int depth, boolean hasBiasUnit) {
+		super(width * height * depth, hasBiasUnit);
+		this.width = width;
+		this.height = height;
+		this.depth = depth;
+	}
 
-  /**
-   * @return The height of the volume of Neurons.
-   */
-  public int getHeight() {
-    return height;
-  }
+	/**
+	 * @return The width of the volume of Neurons.
+	 */
+	public int getWidth() {
+		return width;
+	}
 
-  /**
-   * @return The depth of the volume of Neurons.
-   */
-  public int getDepth() {
-    return depth;
-  }
+	/**
+	 * @return The height of the volume of Neurons.
+	 */
+	public int getHeight() {
+		return height;
+	}
+
+	/**
+	 * @return The depth of the volume of Neurons.
+	 */
+	public int getDepth() {
+		return depth;
+	}
 }
-

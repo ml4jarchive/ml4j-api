@@ -48,6 +48,9 @@ public interface ChainableDirectedComponent<I, A extends ChainableDirectedCompon
 	 */
 	List<? extends ChainableDirectedComponent<I, ? extends ChainableDirectedComponentActivation<I>, ?>> decompose();
 
+	/**
+	 * @return A deep copy of this component.
+	 */
 	@Override
 	ChainableDirectedComponent<I, A, C> dup();
 }

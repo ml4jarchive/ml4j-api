@@ -23,7 +23,7 @@ import org.ml4j.nn.synapses.UndirectedSynapses;
  * 
  * @author Michael Lavelle
  * 
-
+ * @param <A> The type of Axons within this UndirectedLayer
  * @param <L> The type of UndirectedLayer
  */
 public interface UndirectedLayer<A extends Axons<?,?,?>, L extends UndirectedLayer<A, L>>

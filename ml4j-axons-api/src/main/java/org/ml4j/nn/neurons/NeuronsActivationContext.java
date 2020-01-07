@@ -27,5 +27,5 @@ import org.ml4j.MatrixFactory;
  */
 public interface NeuronsActivationContext extends Serializable {
 
-  MatrixFactory getMatrixFactory();
+	MatrixFactory getMatrixFactory();
 }

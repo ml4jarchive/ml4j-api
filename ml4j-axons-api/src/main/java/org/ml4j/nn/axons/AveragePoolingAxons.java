@@ -17,13 +17,12 @@
 package org.ml4j.nn.axons;
 
 /**
- * Encapsulates the connections between two sets of Neurons which are average-pooled
- * from left to right.
+ * Encapsulates the connections between two sets of Neurons3D which are
+ * average-pooled from left to right.
  * 
  * @author Michael Lavelle
  *
  */
-public interface AveragePoolingAxons
-    extends PoolingAxons<AveragePoolingAxons> {
+public interface AveragePoolingAxons extends PoolingAxons<AveragePoolingAxons> {
 
 }

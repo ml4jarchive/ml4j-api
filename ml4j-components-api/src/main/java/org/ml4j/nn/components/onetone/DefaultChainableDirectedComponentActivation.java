@@ -29,6 +29,10 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  */
 public interface DefaultChainableDirectedComponentActivation extends ChainableDirectedComponentActivation<NeuronsActivation> {
 
+	/**
+	 * @return Decompose this activation into a list of the smallest atomic DefaultChainableDirectedComponentActivation
+	 * that can be chained together to form this activation.
+	 */
 	public List<? extends DefaultChainableDirectedComponentActivation> decompose();
 
 }

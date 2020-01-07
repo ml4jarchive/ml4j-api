@@ -22,7 +22,7 @@ import org.ml4j.nn.axons.FullyConnectedAxons;
  * 
  * @author Michael Lavelle
  *
- * @param <L> The type of FeedForwardLayer
+ * @param <L> The type of RecurrentLayer
  */
 public interface RecurrentLayer<L extends RecurrentLayer<L>>
     extends DirectedLayer<FullyConnectedAxons, L> {

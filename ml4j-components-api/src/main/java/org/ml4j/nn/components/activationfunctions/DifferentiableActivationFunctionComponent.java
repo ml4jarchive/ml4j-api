@@ -19,13 +19,21 @@ import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.neurons.NeuronsActivationContext;
 
 /**
+ * Component adapter for a  DifferentiableActivationFunction, allowing DifferentiableActivationFunctions to be used within a sequential component chain.
  * 
  * @author Michael Lavelle
  */
 public interface DifferentiableActivationFunctionComponent extends DefaultChainableDirectedComponent<DifferentiableActivationFunctionComponentActivation, NeuronsActivationContext> {
 
+	/**
+	 * @return The adapted DifferentiableActivationFunction.
+	 */
 	DifferentiableActivationFunction getActivationFunction();
 	
+
+	/**
+	 * @return A deep copy of this component.
+	 */
 	@Override
 	DifferentiableActivationFunctionComponent dup();
 	

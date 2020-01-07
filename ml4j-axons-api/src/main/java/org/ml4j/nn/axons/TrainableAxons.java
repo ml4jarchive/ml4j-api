@@ -26,21 +26,19 @@ import org.ml4j.nn.neurons.Neurons;
  * @param <R> The type of Neurons on the right hand side of these Axons
  * @param <A> The type of these TrainableAxons
  */
-public interface TrainableAxons<L extends Neurons, R extends Neurons, 
-    A extends TrainableAxons<L, R, A>>
-    extends Axons<L, R, A> {
-  
-  /**
-   * 
-   * @param adjustments
-   * @param adjustmentDirection
-   */
-  void adjustAxonWeights(AxonWeightsAdjustment adjustments, 
-      AxonWeightsAdjustmentDirection adjustmentDirection);
-  
-  /**
-   * @return A clone of the axon weights
-   */
-  AxonWeights getDetachedAxonWeights();
-  
+public interface TrainableAxons<L extends Neurons, R extends Neurons, A extends TrainableAxons<L, R, A>>
+		extends Axons<L, R, A> {
+
+	/**
+	 * 
+	 * @param adjustments
+	 * @param adjustmentDirection
+	 */
+	void adjustAxonWeights(AxonWeightsAdjustment adjustments, AxonWeightsAdjustmentDirection adjustmentDirection);
+
+	/**
+	 * @return A clone of the axon weights
+	 */
+	AxonWeights getDetachedAxonWeights();
+
 }

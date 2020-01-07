@@ -22,8 +22,9 @@ import org.ml4j.nn.axons.PoolingAxons;
  * A PoolingLayer is a DirectedLayer whose primary Axons are PoolingAxons.
  * 
  * @author Michael Lavelle
- *
- * @param <L> The type of PoolingLayer
+ * 
+ * @param <A> The type of PoolingAxons within this PoolingLayer.
+ * @param <L> The type of PoolingLayer.
  */
 public interface PoolingLayer<A extends PoolingAxons<?>, L extends PoolingLayer<A, L>> 
     extends DirectedLayer<A, L> {

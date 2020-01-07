@@ -19,13 +19,13 @@ package org.ml4j.nn.axons;
 import org.ml4j.nn.neurons.Neurons;
 
 /**
- * Encapsulates the connections between two sets of Neurons which are fully connected (ie. each
- * Neuron on the left of the Axons is connected to each Neuron on the right )
+ * Encapsulates the connections between two sets of Neurons which are fully
+ * connected (ie. each Neuron on the left of the Axons is connected to each
+ * Neuron on the right )
  * 
  * @author Michael Lavelle
  *
  */
-public interface FullyConnectedAxons
-    extends TrainableAxons<Neurons, Neurons, FullyConnectedAxons> {
+public interface FullyConnectedAxons extends TrainableAxons<Neurons, Neurons, FullyConnectedAxons> {
 
 }

@@ -23,52 +23,53 @@ import java.io.Serializable;
  */
 public class Neurons implements Serializable {
 
-  /**
-   * Default serialization id.
-   */
-  private static final long serialVersionUID = 1L;
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
 
-  /**
-   * The number of neurons excluding any bias unit.
-   */
-  private int neuronCountExcludingBias;
-  
-  /**
-   * Whether this set of Neurons has an additional bias unit.
-   */
-  private boolean hasBiasUnit;
+	/**
+	 * The number of neurons excluding any bias unit.
+	 */
+	private int neuronCountExcludingBias;
 
-  /**
-   * Construct a new set of Neurons.
-   * 
-   * @param neuronCountExcludingBias The number of neurons excluding any bias unit
-   * @param hasBiasUnit Whether this set of Neurons has an additional bias unit
-   */
-  public Neurons(int neuronCountExcludingBias, boolean hasBiasUnit) {
-    this.neuronCountExcludingBias = neuronCountExcludingBias;
-    this.hasBiasUnit = hasBiasUnit;
-  }
-  
-  /**
-   * Determine whether this set of Neurons has an additional bias unit.
-   * 
-   * @return Whether this set of Neurons has an additional bias unit
-   */
-  public boolean hasBiasUnit() {
-    return hasBiasUnit;
-  }
+	/**
+	 * Whether this set of Neurons has an additional bias unit.
+	 */
+	private boolean hasBiasUnit;
 
-  /**
-   * @return The number of neurons including any bias unit.
-   */
-  public int getNeuronCountIncludingBias() {
-    return neuronCountExcludingBias + (hasBiasUnit() ? 1 : 0);
-  }
+	/**
+	 * Construct a new set of Neurons.
+	 * 
+	 * @param neuronCountExcludingBias The number of neurons excluding any bias unit
+	 * @param hasBiasUnit              Whether this set of Neurons has an additional
+	 *                                 bias unit
+	 */
+	public Neurons(int neuronCountExcludingBias, boolean hasBiasUnit) {
+		this.neuronCountExcludingBias = neuronCountExcludingBias;
+		this.hasBiasUnit = hasBiasUnit;
+	}
 
-  /**
-   * @return The number of neurons excluding any bias unit.
-   */
-  public int getNeuronCountExcludingBias() {
-    return neuronCountExcludingBias;
-  }
+	/**
+	 * Determine whether this set of Neurons has an additional bias unit.
+	 * 
+	 * @return Whether this set of Neurons has an additional bias unit
+	 */
+	public boolean hasBiasUnit() {
+		return hasBiasUnit;
+	}
+
+	/**
+	 * @return The number of neurons including any bias unit.
+	 */
+	public int getNeuronCountIncludingBias() {
+		return neuronCountExcludingBias + (hasBiasUnit() ? 1 : 0);
+	}
+
+	/**
+	 * @return The number of neurons excluding any bias unit.
+	 */
+	public int getNeuronCountExcludingBias() {
+		return neuronCountExcludingBias;
+	}
 }

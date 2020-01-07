@@ -19,14 +19,14 @@ package org.ml4j.nn.axons;
 import org.ml4j.nn.neurons.Neurons3D;
 
 /**
- * Encapsulates the connections between two sets of Neurons which are 
- * convolutionally connected (ie. each Neuron on the right of the Axons 
- * is connected to locally connected region on the left )
+ * Encapsulates the connections between two sets of Neurons which are
+ * convolutionally connected (ie. each Neuron on the right of the Axons is
+ * connected to locally connected region on the left )
  * 
  * @author Michael Lavelle
  *
  */
 public interface ConvolutionalAxons
-    extends TrainableAxons<Neurons3D, Neurons3D, ConvolutionalAxons>, Axons3D<ConvolutionalAxons> {
- 
+		extends TrainableAxons<Neurons3D, Neurons3D, ConvolutionalAxons>, Axons3D<ConvolutionalAxons> {
+
 }

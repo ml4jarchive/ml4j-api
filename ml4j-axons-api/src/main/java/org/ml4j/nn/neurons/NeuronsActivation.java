@@ -19,22 +19,37 @@ import org.ml4j.Matrix;
 import org.ml4j.MatrixFactory;
 
 public interface NeuronsActivation {
-	
+
 	int getFeatureCount();
+
 	int getExampleCount();
+
 	int getRows();
+
 	int getColumns();
+
 	void setImmutable(boolean immutable);
+
 	boolean isImmutable();
+
 	Matrix getActivations(MatrixFactory matrixFactory);
+
 	NeuronsActivationFeatureOrientation getFeatureOrientation();
+
 	void addInline(MatrixFactory matrixFactory, NeuronsActivation other);
+
 	void combineFeaturesInline(NeuronsActivation other, MatrixFactory matrixFactory);
+
 	void close();
-	Neurons getNeurons();	
+
+	Neurons getNeurons();
+
 	void applyValueModifier(FloatPredicate condition, FloatModifier modifier);
+
 	void applyValueModifier(FloatModifier modifier);
+
 	NeuronsActivation dup();
+
 	ImageNeuronsActivation asImageNeuronsActivation(Neurons3D neurons);
 
 }

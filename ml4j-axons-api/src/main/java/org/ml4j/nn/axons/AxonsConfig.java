@@ -25,11 +25,9 @@ import java.io.Serializable;
  */
 public class AxonsConfig implements Serializable {
 
-  /**
-   * Default serialization id.
-   */
-  private static final long serialVersionUID = 1L;
-  
-  
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
 
 }

@@ -18,24 +18,21 @@ import org.ml4j.Matrix;
 
 public interface AxonsGradient {
 
-	
-  TrainableAxons<?, ?, ?> getAxons();	
-	
-  /**
-   * @return The gradient for these TrainableAxons.
-   */
-  Matrix getWeightsGradient();
-  
-  
-  /**
-   * @return The gradient for these TrainableAxons.
-   */
-  Matrix getLeftToRightBiasGradient();
-  
-  
-  /**
-   * @return The gradient for these TrainableAxons.
-   */
-  Matrix getRightToLeftBiasGradient();
-  
+	TrainableAxons<?, ?, ?> getAxons();
+
+	/**
+	 * @return The gradient for these TrainableAxons.
+	 */
+	Matrix getWeightsGradient();
+
+	/**
+	 * @return The gradient for these TrainableAxons.
+	 */
+	Matrix getLeftToRightBiasGradient();
+
+	/**
+	 * @return The gradient for these TrainableAxons.
+	 */
+	Matrix getRightToLeftBiasGradient();
+
 }

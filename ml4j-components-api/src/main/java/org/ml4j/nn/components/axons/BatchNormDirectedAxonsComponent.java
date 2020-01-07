@@ -19,17 +19,17 @@ import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.neurons.Neurons;
 
 /**
- * Batch norm directed synapses are responsible for normalising the *output* of their primary 
+ * Batch norm DirectedAxonsComponents are responsible for normalising the *output* of their primary 
  * Axons before running the activations through an ActivationFunction.
  * 
- * <p>These synapses have the feature mean and variance row vectors as attributes.  These
+ * <p>BatchNormDirectedAxonsComponents have the feature mean and variance column vectors as attributes.  These
  * are built up using exponentially weighted averages on backpropagation and can be serialized
- * along the with Layer for use at test time.
+ * along the with DirectedAxonsComponent for use at test time.
  * 
  * @author Michael Lavelle
  *
- * @param <L> The type of Neurons on the left of these BatchNormDirectedSynapses.
- * @param <R> The type of Neurons on the right of these BatchNormDirectedSynapses.
+ * @param <L> The type of Neurons on the left of these BatchNormDirectedAxonsComponent.
+ * @param <R> The type of Neurons on the right of these BatchNormDirectedAxonsComponent.
  */
 public interface BatchNormDirectedAxonsComponent<L extends Neurons, A extends Axons<L, L, ?>>
     extends DirectedAxonsComponent<L, L, A> {

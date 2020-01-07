@@ -29,9 +29,6 @@ public class Axons3DConfig extends AxonsConfig {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The stride of these Axons.
-	 */
 	private int strideWidth = 1;
 	private int strideHeight = 1;
 	private int paddingWidth = 0;
@@ -135,6 +132,5 @@ public class Axons3DConfig extends AxonsConfig {
 			return false;
 		return true;
 	}
-	
-	
+
 }

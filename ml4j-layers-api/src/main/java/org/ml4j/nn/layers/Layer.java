@@ -27,6 +27,8 @@ import org.ml4j.nn.components.NeuralNetworkComponent;
  * 
  * @author Michael Lavelle
  *
+ * @param <A> The type of axons within this Layer.
+ * @param <C> The type of nested components within this layer
  * @param <L> The type of Layer
  */
 public interface Layer<A extends Axons<?, ?, ?>, C extends NeuralNetworkComponent, 

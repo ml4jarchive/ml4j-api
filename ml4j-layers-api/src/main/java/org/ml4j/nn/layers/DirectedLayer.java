@@ -27,7 +27,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * 
  * @author Michael Lavelle
  * 
-
+ * @param <A> The type of Axons within this DirectedLayer.
  * @param <L> The type of DirectedLayer
  */
 public interface DirectedLayer<A extends Axons<?,?,?>, L extends DirectedLayer<A, L>>
@@ -77,6 +77,7 @@ public interface DirectedLayer<A extends Axons<?,?,?>, L extends DirectedLayer<A
   NeuronsActivation getOptimalInputForOutputNeuron(int outpuNeuronIndex, 
       DirectedLayerContext directedLayerContext);
   
+  @Override
   List<DefaultChainableDirectedComponent<?, ?>> decompose();
 
 }

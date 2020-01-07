@@ -17,13 +17,12 @@
 package org.ml4j.nn.axons;
 
 /**
- * Encapsulates the connections between two sets of Neurons which are max-pooled
+ * Encapsulates the connections between two sets of Neurons3D which are max-pooled
  * from left to right.
  * 
  * @author Michael Lavelle
  *
  */
-public interface MaxPoolingAxons
-    extends PoolingAxons<MaxPoolingAxons> {
+public interface MaxPoolingAxons extends PoolingAxons<MaxPoolingAxons> {
 
 }

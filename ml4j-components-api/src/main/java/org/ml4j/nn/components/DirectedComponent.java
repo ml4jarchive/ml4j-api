@@ -46,6 +46,9 @@ public interface DirectedComponent<I, A extends DirectedComponentActivation<I, ?
 	 */
 	DirectedComponentType getComponentType();
 	
+	/**
+	 * @return A deep copy of this component.
+	 */
 	@Override
 	DirectedComponent<I, A, C> dup();
 	

@@ -17,14 +17,13 @@
 package org.ml4j.nn.axons;
 
 /**
- * Encapsulates the connections between two sets of Neurons which are pooled
+ * Encapsulates the connections between two sets of Neurons3D which are pooled
  * from left to right.
  * 
  * @author Michael Lavelle
  *
+ * @param <A> The specific type of PoolingAxons
  */
-public interface PoolingAxons<A extends PoolingAxons<A>>
-    extends Axons3D<A> {
+public interface PoolingAxons<A extends PoolingAxons<A>> extends Axons3D<A> {
 
- 
 }

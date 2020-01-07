@@ -19,19 +19,31 @@ import java.util.function.Supplier;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Encapsulates the artifacts produced when pushing NeuronsActivations
- * through an Axons instance.
+ * Encapsulates the artifacts produced when pushing NeuronsActivations through
+ * an Axons instance.
  * 
  * @author Michael Lavelle
  */
 public interface AxonsActivation {
 
-  Axons<?, ?, ?> getAxons();
-  
-  AxonsDropoutMask getDropoutMask();
-  
-  NeuronsActivation getPostDropoutOutput();
-  
-  Supplier<NeuronsActivation> getPostDropoutInput();
-  
+	/**
+	 * @return The axons instance from which this activation originated.
+	 */
+	Axons<?, ?, ?> getAxons();
+
+	/**
+	 * @return The dropout mask (if any) used by the axons to create this activation, or null if no dropout mask.
+	 */
+	AxonsDropoutMask getDropoutMask();
+
+	/**
+	 * @return The output from this axons activation, after any output dropout has been applied.
+	 */
+	NeuronsActivation getPostDropoutOutput();
+
+	/**
+	 * @return A supplier of the input of the axons activation, after any input dropout has been applied.
+	 */
+	Supplier<NeuronsActivation> getPostDropoutInput();
+
 }

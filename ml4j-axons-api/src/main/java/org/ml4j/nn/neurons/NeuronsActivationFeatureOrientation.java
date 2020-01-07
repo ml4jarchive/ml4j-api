@@ -17,22 +17,23 @@
 package org.ml4j.nn.neurons;
 
 /**
- * Enum allowing a determination to be made whether the features of a NeuronsActivation instance
- * are represented by the rows or the columns of the NeuronsActivation's Matrix.
+ * Enum allowing a determination to be made whether the features of a
+ * NeuronsActivation instance are represented by the rows or the columns of the
+ * NeuronsActivation's Matrix.
  * 
  * @author Michael Lavelle
  */
 public enum NeuronsActivationFeatureOrientation {
 
-  /**
-   * Indicates that the matrix within a NeuronsActivation instance is oriented so that the columns
-   * span the feature set and the rows hold parallel activations.
-   */
-  COLUMNS_SPAN_FEATURE_SET,
+	/**
+	 * Indicates that the matrix within a NeuronsActivation instance is oriented so
+	 * that the columns span the feature set and the rows hold parallel activations.
+	 */
+	COLUMNS_SPAN_FEATURE_SET,
 
-  /**
-   * Indicates that the matrix within a NeuronsActivation instance is oriented so that the rows span
-   * the feature set and the columns hold parallel activations.
-   */
-  ROWS_SPAN_FEATURE_SET
+	/**
+	 * Indicates that the matrix within a NeuronsActivation instance is oriented so
+	 * that the rows span the feature set and the columns hold parallel activations.
+	 */
+	ROWS_SPAN_FEATURE_SET
 }

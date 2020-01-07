@@ -19,20 +19,33 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * 
  * @author Michael Lavelle
  *
- * @param <I> The type of input and output of the ChainableDirectedComponent
- * @param <A> The type of activation produced by the ChainableDirectedComponent on forward propagation
- * @param <C> The context provided to the ChainableDirectedComponent on forward propagation.
+ * @param <A> The type of activation produced by the DefaultChainableDirectedComponent on forward propagation
+ * @param <C> The context provided to the DefaultChainableDirectedComponent on forward propagation.
  */
 public interface DefaultChainableDirectedComponent<A extends DefaultChainableDirectedComponentActivation, C> extends ChainableDirectedComponent<NeuronsActivation, A, C> {
 
+
+	/**
+	 * @return A deep copy of this component.
+	 */
 	@Override
 	DefaultChainableDirectedComponent<A, C> dup();
 
+	/**
+	 * @return Decompose this component into a list of the smallest atomic ChainableDirectedComponents
+	 * that can be chained together to form this component.
+	 */
 	@Override
 	List<DefaultChainableDirectedComponent<?, ?>> decompose();
 	
+	/**
+	 * @return The neurons on the LHS of this component to which input data activations are applied.
+	 */
 	Neurons getInputNeurons();
 	
+	/**
+	 * @return The neurons on the RHS of this component from which output data activations are generated.
+	 */
 	Neurons getOutputNeurons();
 	
 }
