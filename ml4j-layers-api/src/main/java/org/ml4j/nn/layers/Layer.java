@@ -16,21 +16,23 @@
 
 package org.ml4j.nn.layers;
 
-import org.ml4j.nn.axons.Axons;
-import org.ml4j.nn.synapses.Synapses;
-
 import java.io.Serializable;
 import java.util.List;
+
+import org.ml4j.nn.axons.Axons;
+import org.ml4j.nn.components.NeuralNetworkComponent;
 
 /**
  * Represents a Layer of a NeuralNetwork.
  * 
  * @author Michael Lavelle
  *
+ * @param <A> The type of axons within this Layer.
+ * @param <C> The type of nested components within this layer
  * @param <L> The type of Layer
  */
-public interface Layer<A extends Axons<?, ?, ?>, S extends Synapses<?>, 
-    L extends Layer<A, S, L>> extends Serializable {
+public interface Layer<A extends Axons<?, ?, ?>, C extends NeuralNetworkComponent, 
+    L extends Layer<A, C, L>> extends Serializable {
 
   /**
    * Duplicates this Layer.
@@ -51,7 +53,7 @@ public interface Layer<A extends Axons<?, ?, ?>, S extends Synapses<?>,
   A getPrimaryAxons();
   
   /**
-   * @return A list of all the Synapses in this Layer.
+   * @return A list of all the NeuralNetworkComponents in this Layer.
    */
-  List<S> getSynapses();
+  List<C> getComponents();
 }

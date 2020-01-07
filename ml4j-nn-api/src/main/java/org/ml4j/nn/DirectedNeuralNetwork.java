@@ -14,7 +14,11 @@
 
 package org.ml4j.nn;
 
-import org.ml4j.nn.layers.DirectedLayer;
+import java.util.List;
+import java.util.stream.Stream;
+
+import org.ml4j.nn.components.ChainableDirectedComponent;
+import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -22,13 +26,12 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  *
  * @author Michael Lavelle
  * 
- * @param <L> The type of DirectedLayer used within this NeuralNetwork
  * @param <C> The NeuralNetworkContext used with this NeuralNetwork
  * @param <N> The type of NeuralNetwork
  */
-public interface DirectedNeuralNetwork<L extends DirectedLayer<?, ?>, 
-    C extends NeuralNetworkContext, 
-    N extends DirectedNeuralNetwork<L, C, N>> extends NeuralNetwork<L, C, N> {
+public interface DirectedNeuralNetwork<C extends NeuralNetworkContext, 
+    N extends DirectedNeuralNetwork<C, N>> 
+    extends NeuralNetwork<C, N>, ChainableDirectedComponent<NeuronsActivation, ForwardPropagation, C> {
 
   /**
    * Forward propagate the activation through this DirectedLayer
@@ -42,10 +45,13 @@ public interface DirectedNeuralNetwork<L extends DirectedLayer<?, ?>,
    */
   ForwardPropagation forwardPropagate(NeuronsActivation inputActivation, C context);
   
+  Stream<ForwardPropagation> forwardPropagate(Stream<NeuronsActivation> inputActivation, C context);  
   /**
    * @return The training context used for the last epoch of training, or null if no context
    *         available.
    */
   C getLastEpochTrainingContext();
+
+  List<DefaultChainableDirectedComponent<?, ?>> decompose();
   
 }

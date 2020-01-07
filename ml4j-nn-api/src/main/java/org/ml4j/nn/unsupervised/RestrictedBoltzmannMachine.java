@@ -15,7 +15,7 @@
 package org.ml4j.nn.unsupervised;
 
 import org.ml4j.nn.UndirectedNeuralNetwork;
-import org.ml4j.nn.axons.FullyConnectedAxons;
+import org.ml4j.nn.axons.TrainableAxons;
 import org.ml4j.nn.layers.RestrictedBoltzmannLayer;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -25,9 +25,8 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @author Michael Lavelle
  */
 public interface RestrictedBoltzmannMachine extends UndirectedNeuralNetwork<
-      RestrictedBoltzmannLayer<FullyConnectedAxons>, 
       RestrictedBoltzmannMachineContext, RestrictedBoltzmannMachine>,
-      UnsupervisedNeuralNetwork<RestrictedBoltzmannLayer<FullyConnectedAxons>, 
+      UnsupervisedNeuralNetwork< 
       RestrictedBoltzmannMachineContext, RestrictedBoltzmannMachine> {
   
   /**
@@ -47,6 +46,9 @@ public interface RestrictedBoltzmannMachine extends UndirectedNeuralNetwork<
    *        this RestrictedBoltzmannMachine.
    */
   AutoEncoder createAutoEncoder();
+  
+  
+  RestrictedBoltzmannLayer<TrainableAxons<?, ?, ?>> getLayer();
   
   /**
    * Encode the visible activations into the hidden binary activations.

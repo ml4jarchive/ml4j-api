@@ -16,10 +16,14 @@
 
 package org.ml4j.nn.supervised;
 
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+
 import org.ml4j.nn.CostAndGradients;
 import org.ml4j.nn.FeedForwardNeuralNetwork;
 import org.ml4j.nn.FeedForwardNeuralNetworkContext;
-import org.ml4j.nn.layers.FeedForwardLayer;
+import org.ml4j.nn.datasets.LabeledData;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -28,7 +32,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @author Michael Lavelle
  */
 public interface SupervisedFeedForwardNeuralNetwork extends 
-    SupervisedNeuralNetwork<FeedForwardLayer<?, ?>, FeedForwardNeuralNetworkContext, 
+    SupervisedNeuralNetwork<FeedForwardNeuralNetworkContext, 
         SupervisedFeedForwardNeuralNetwork>,
             FeedForwardNeuralNetwork<FeedForwardNeuralNetworkContext, 
             SupervisedFeedForwardNeuralNetwork> {
@@ -42,7 +46,26 @@ public interface SupervisedFeedForwardNeuralNetwork extends
    */
   public void train(NeuronsActivation trainingDataActivations, 
       NeuronsActivation trainingLabelActivations, FeedForwardNeuralNetworkContext trainingContext);
+  
+  /**
+   * Trains the SupervisedNeuralNetwork.
+   * 
+   * @param trainingDataActivations The NeuronsActivation produced by the training data
+   * @param trainingLabelActivations The NeuronsActivation produced by the training labels
+   * @param trainingContext The NeuralNetworkContext used for training
+   */
+  public void train(Stream<LabeledData<NeuronsActivation, NeuronsActivation>>  labeledTrainingDataActivations, FeedForwardNeuralNetworkContext trainingContext);
 
+  /**
+   * Trains the SupervisedNeuralNetwork.
+   * 
+   * @param trainingDataActivations The NeuronsActivation produced by the training data
+   * @param trainingLabelActivations The NeuronsActivation produced by the training labels
+   * @param trainingContext The NeuralNetworkContext used for training
+   */
+  public void train(Supplier<Stream<LabeledData<NeuronsActivation, NeuronsActivation>>>  labeledTrainingDataActivations, 
+		  FeedForwardNeuralNetworkContext trainingContext, Consumer<Float> onEpochAverageCostHandler);
+  
   /**
    * Obtains the accuracy  of this neural network given the inputs and desired
    * classification activations.
@@ -52,7 +75,7 @@ public interface SupervisedFeedForwardNeuralNetwork extends
    * @param context The NeuralNetworkContext used for classification
    * @return The classification accuracy
    */
-  public double getClassificationAccuracy(NeuronsActivation inputActivations,
+  public float getClassificationAccuracy(NeuronsActivation inputActivations,
       NeuronsActivation desiredClassificationActivations, FeedForwardNeuralNetworkContext context); 
   
   /**

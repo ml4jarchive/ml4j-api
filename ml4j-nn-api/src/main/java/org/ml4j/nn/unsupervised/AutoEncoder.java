@@ -17,8 +17,7 @@
 package org.ml4j.nn.unsupervised;
 
 import org.ml4j.nn.CostAndGradients;
-import org.ml4j.nn.FeedForwardNeuralNetwork;
-import org.ml4j.nn.layers.FeedForwardLayer;
+import org.ml4j.nn.LayeredFeedForwardNeuralNetwork;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -26,9 +25,9 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * 
  * @author Michael Lavelle
  */
-public interface AutoEncoder extends UnsupervisedNeuralNetwork<FeedForwardLayer<?, ?>, 
+public interface AutoEncoder extends UnsupervisedNeuralNetwork< 
     AutoEncoderContext, AutoEncoder>, 
-    FeedForwardNeuralNetwork<AutoEncoderContext, AutoEncoder> {
+    LayeredFeedForwardNeuralNetwork<AutoEncoderContext, AutoEncoder> {
 
   /**
    * Encode the specified activations.

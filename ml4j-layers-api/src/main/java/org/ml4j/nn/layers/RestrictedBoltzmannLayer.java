@@ -14,6 +14,7 @@
 
 package org.ml4j.nn.layers;
 
+import org.ml4j.MatrixFactory;
 import org.ml4j.nn.axons.TrainableAxons;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.NeuronsActivation;
@@ -44,11 +45,12 @@ public interface RestrictedBoltzmannLayer<A extends TrainableAxons<?, ?, ?>>
    * @param hiddenNeuronIndex The index of the hidden neuron we wish to obtain the
    *        hidden-neuron-activation maximising visible activation for.
    * @param undirectedLayerContext The undirected layer context
+   * @param matrixFactory The matrix factory.
    * @return The visible NeuronsActivation which maximises the output of the specified hidden
    *         neuron.
    */
   NeuronsActivation getOptimalVisibleActivationsForHiddenNeuron(int hiddenNeuronIndex,
-      UndirectedLayerContext undirectedLayerContext);
+      UndirectedLayerContext undirectedLayerContext, MatrixFactory matrixFactory);
 
   /**
    * Obtain the artifacts associated with the activation of the hidden Neurons given activations of

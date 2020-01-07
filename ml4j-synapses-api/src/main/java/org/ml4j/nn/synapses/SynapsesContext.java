@@ -15,7 +15,6 @@
 package org.ml4j.nn.synapses;
 
 import org.ml4j.nn.axons.AxonsContext;
-
 import org.ml4j.nn.neurons.NeuronsActivationContext;
 
 /**
@@ -27,10 +26,10 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
 public interface SynapsesContext extends NeuronsActivationContext {
 
   /**
-   * @param axonsIndex The index of the Axons within these Synapse.
-   * @return The context we use for activations travelling through the Axons within these Synapses.
+   * @param pathIndex The index of the path of Axons in these Synapses.
+   * @param axonsIndexInPath The index of the Axons within the path.
    */
-  AxonsContext getAxonsContext(int axonsIndex);
+  AxonsContext getAxonsContext(int pathIndex, int axonsIndexInPath);
   
   /**
    * @return Whether these Synapses are frozen out of training.

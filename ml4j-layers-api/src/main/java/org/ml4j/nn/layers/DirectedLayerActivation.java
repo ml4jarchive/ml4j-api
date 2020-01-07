@@ -14,11 +14,10 @@
 
 package org.ml4j.nn.layers;
 
+import org.ml4j.nn.components.DirectedComponentGradient;
+import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponentActivation;
 import org.ml4j.nn.costfunctions.CostFunctionGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
-import org.ml4j.nn.synapses.DirectedSynapsesActivation;
-
-import java.util.List;
 
 /**
  * Encapsulates the artifacts produced when propagating NeuronsActivations
@@ -26,7 +25,7 @@ import java.util.List;
  * 
  * @author Michael Lavelle
  */
-public interface DirectedLayerActivation {
+public interface DirectedLayerActivation extends DefaultChainableDirectedComponentActivation {
 
   /**
    * @return The NeuronsActivation output from a propagation 
@@ -44,31 +43,13 @@ public interface DirectedLayerActivation {
    * @param layerContext The layer context.
    * @return The back propagated DirectedLayerGradient.
    */
-  DirectedLayerGradient backPropagate(DirectedLayerGradient outerGradient, 
-      DirectedLayerContext layerContext);
+  DirectedComponentGradient<NeuronsActivation> backPropagate(DirectedComponentGradient<NeuronsActivation> outerGradient);
   
   /**
    * @param outerGradient The outer gradient to back propagate.
    * @param layerContext The layer context.
    * @return The back propagated DirectedLayerGradient.
    */
-  DirectedLayerGradient backPropagate(CostFunctionGradient outerGradient, 
-      DirectedLayerContext layerContext);
+  DirectedComponentGradient<NeuronsActivation> backPropagate(CostFunctionGradient outerGradient);
   
-  /**
-   * @param layerContext The layer context.
-   * @return The total regularisation cost of this activation.
-   */
-  double getTotalRegularisationCost(DirectedLayerContext layerContext);
-  
-  /**
-   * @param layerContext The layer context.
-   * @return The average regularisation cost of this activation.
-   */
-  double getAverageRegularistationCost(DirectedLayerContext layerContext);
-  
-  /**
-  * @return All the Synapses activations of this Layer Activation.
-  */
-  List<DirectedSynapsesActivation> getSynapsesActivations();
 }

@@ -22,7 +22,8 @@ import org.ml4j.nn.axons.PoolingAxons;
  * A PoolingFeedForwardLayer is a FeedForwardLayer whose primary Axons are PoolingAxons.
  * 
  * @author Michael Lavelle
- *
+ * 
+ * @param <A> The type of PoolingAxons within this PoolingFeedForwardLayer.
  * @param <L> The type of PoolingFeedForwardLayer
  */
 public interface PoolingFeedForwardLayer<A extends PoolingAxons<?>, 

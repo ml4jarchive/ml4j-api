@@ -16,13 +16,15 @@
 
 package org.ml4j.nn.unsupervised;
 
-import org.ml4j.nn.FeedForwardNeuralNetworkContext;
+import org.ml4j.nn.LayeredFeedForwardNeuralNetworkContext;
 
 /**
  * Encapsulates the runtime context used with an AutoEncoder.
  * 
  * @author Michael Lavelle
  */
-public interface AutoEncoderContext extends FeedForwardNeuralNetworkContext {
+public interface AutoEncoderContext extends LayeredFeedForwardNeuralNetworkContext {
+	
+	boolean isTrainingContext();
 
 }

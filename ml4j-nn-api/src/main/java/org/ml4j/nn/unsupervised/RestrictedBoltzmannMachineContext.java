@@ -17,9 +17,10 @@
 package org.ml4j.nn.unsupervised;
 
 import org.ml4j.nn.UndirectedNeuralNetworkContext;
+import org.ml4j.nn.layers.UndirectedLayerContext;
 
 public interface RestrictedBoltzmannMachineContext extends UndirectedNeuralNetworkContext {
 
-  
+	UndirectedLayerContext getLayerContext();
   
 }

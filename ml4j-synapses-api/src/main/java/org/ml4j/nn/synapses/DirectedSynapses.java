@@ -14,9 +14,14 @@
 
 package org.ml4j.nn.synapses;
 
+import java.util.List;
+
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
-import org.ml4j.nn.axons.Axons;
+import org.ml4j.nn.components.DirectedComponentsContext;
+import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
+import org.ml4j.nn.components.onetone.DefaultDirectedComponentBipoleGraph;
 import org.ml4j.nn.neurons.Neurons;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * DirectedSynapses are containers for Axons with a DifferentiableActivationFunction applied
@@ -28,7 +33,7 @@ import org.ml4j.nn.neurons.Neurons;
  * @param <R> The type of Neurons on the right of these DirectedSynapses.
  */
 public interface DirectedSynapses<L extends Neurons, R extends Neurons>
-    extends Synapses<DirectedSynapses<L, R>> {
+    extends Synapses<DirectedSynapses<L, R>>, DefaultChainableDirectedComponent<DirectedSynapsesActivation, DirectedComponentsContext> {
 
   /**
    * @return The DifferentiableActivationFunction applied
@@ -37,9 +42,9 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons>
   DifferentiableActivationFunction getActivationFunction();
   
   /**
-   * @return The Axons within these DirectedSynapses.
+   * @return The Axons graph within these DirectedSynapses.
    */
-  Axons<? ,? ,?> getAxons();
+  DefaultDirectedComponentBipoleGraph getAxonsGraph();
   
   /**
    * @return The Neurons on the left hand side of these DirectedSynapses.
@@ -61,7 +66,11 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons>
    *        propagation  - including the NeuronsActivation output from the right hand side of these 
    *        DirectedSynapses.
    */
-  DirectedSynapsesActivation forwardPropagate(DirectedSynapsesInput input,
-      DirectedSynapsesContext synapsesContext);
+  DirectedSynapsesActivation forwardPropagate(NeuronsActivation input,
+      DirectedComponentsContext synapsesContext);
+
+  
+  List<DefaultChainableDirectedComponent<?, ?>> decompose();
+
  
 }

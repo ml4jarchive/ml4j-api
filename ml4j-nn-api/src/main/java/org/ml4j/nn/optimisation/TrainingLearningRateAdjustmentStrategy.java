@@ -36,7 +36,7 @@ public interface TrainingLearningRateAdjustmentStrategy extends Serializable {
    * @param iterationIndex The iteration index.
    * @return The adjusted training learning rate.
    */
-  double getTrainingLearningRate(
+  float getTrainingLearningRate(
       DirectedNeuralNetworkContext trainingContext, int epochIndex, int batchIndex,
       int iterationIndex);
   

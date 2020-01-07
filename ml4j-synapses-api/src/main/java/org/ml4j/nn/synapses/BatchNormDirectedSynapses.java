@@ -58,4 +58,8 @@ public interface BatchNormDirectedSynapses<L extends Neurons, R extends Neurons>
    * @return The parameter "beta" used in the calculation of the exponentially weighted averages.
    */
   double getBetaForExponentiallyWeightedAverages();
+  
+  
+  @Override
+  BatchNormDirectedSynapses<L, R> dup();
 }

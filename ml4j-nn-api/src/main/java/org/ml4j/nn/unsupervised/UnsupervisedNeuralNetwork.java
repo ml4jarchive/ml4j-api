@@ -16,19 +16,16 @@ package org.ml4j.nn.unsupervised;
 
 import org.ml4j.nn.NeuralNetwork;
 import org.ml4j.nn.NeuralNetworkContext;
-import org.ml4j.nn.layers.Layer;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * Base interface for classes representing an UnsupervisedNeuralNetwork.
  *
- * @param <L> The type of Layer
  * @param <C> The type of runtime NeuralNetworkContext used with this UnsupervisedNeuralNetwork
  * @param <N> The type of UnsupervisedNeuralNetwork
  */
-public interface UnsupervisedNeuralNetwork<L extends Layer<?, ?, ?>, 
-    C extends NeuralNetworkContext, 
-    N extends UnsupervisedNeuralNetwork<L, C, N>> extends NeuralNetwork<L, C, N> {
+public interface UnsupervisedNeuralNetwork<C extends NeuralNetworkContext, 
+    N extends UnsupervisedNeuralNetwork<C, N>> extends NeuralNetwork<C, N> {
 
   /**
    * Trains the UnsupervisedNeuralNetwork.

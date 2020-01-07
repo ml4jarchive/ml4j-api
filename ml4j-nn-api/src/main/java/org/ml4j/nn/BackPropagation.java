@@ -14,9 +14,8 @@
 
 package org.ml4j.nn;
 
-import org.ml4j.nn.layers.DirectedLayerGradient;
-
-import java.util.List;
+import org.ml4j.nn.components.DirectedComponentGradient;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * Encapsulates the artifacts generated from a back propagation through a DirectedNeuralNetwork.
@@ -25,5 +24,5 @@ import java.util.List;
  */
 public interface BackPropagation {
 
-  List<DirectedLayerGradient> getDirectedLayerGradients();
+  DirectedComponentGradient<NeuronsActivation> getGradient();
 }

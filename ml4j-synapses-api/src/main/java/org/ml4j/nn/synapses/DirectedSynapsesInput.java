@@ -27,4 +27,6 @@ public interface DirectedSynapsesInput {
    * @return The neurons activation input on the left hand side Neurons of the Synapses' Axons.
    */
   NeuronsActivation getInput();
+  
+  NeuronsActivation getResidualInput();
 }

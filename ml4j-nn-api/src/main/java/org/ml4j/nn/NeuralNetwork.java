@@ -14,58 +14,19 @@
 
 package org.ml4j.nn;
 
-import org.ml4j.nn.layers.Layer;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Base interface for classes representing a NeuralNetwork.
  *
  * @author Michael Lavelle
  * 
- * @param <L> The type of Layer used within this NeuralNetwork
  * @param <C> The NeuralNetworkContext used with this NeuralNetwork
  * @param <N> The type of NeuralNetwork
  */
-public interface NeuralNetwork<L extends Layer<?, ?, ?>, C extends NeuralNetworkContext, 
-    N extends NeuralNetwork<L, C, N>> extends Serializable {
-
-  /**
-   * Obtains the list of Layers in this NeuralNetwork.
-   * 
-   * @return the list of Layers in this NeuralNetwork
-   */
-  List<L> getLayers();
-
-  /**
-   * Obtains the number of Layers in this NeuralNetwork.
-   * 
-   * @return the number of Layers in this NeuralNetwork
-   */
-  int getNumberOfLayers();
-
-  /**
-   * Obtains the Layer at the specified index in this NeuralNetwork.
-   * 
-   * @param layerIndex The index of the Layer we wish to obtain
-   * @return the Layer at the specified index in this NeuralNetwork
-   */
-  L getLayer(int layerIndex);
-
-  /**
-   * Obtains the first Layer in the list of Layers in this NeuralNetwork.
-   * 
-   * @return the first Layer in the list of Layers in this NeuralNetwork
-   */
-  L getFirstLayer();
-
-  /**
-   * Obtains the final Layer in the list of Layers in this NeuralNetwork.
-   * 
-   * @return the final Layer in the list of Layers in this NeuralNetwork
-   */
-  L getFinalLayer();
+public interface NeuralNetwork<C extends NeuralNetworkContext, 
+    N extends NeuralNetwork<C, N>> extends Serializable {
 
   /**
    * Duplicates this NeuralNetwork.

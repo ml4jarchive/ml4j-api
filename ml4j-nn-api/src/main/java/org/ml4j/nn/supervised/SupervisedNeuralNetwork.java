@@ -18,7 +18,6 @@ package org.ml4j.nn.supervised;
 
 import org.ml4j.nn.NeuralNetwork;
 import org.ml4j.nn.NeuralNetworkContext;
-import org.ml4j.nn.layers.Layer;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -28,9 +27,9 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @param <C> The type of runtime NeuralNetworkContext used with this UnsupervisedNeuralNetwork
  * @param <N> The type of SupervisedNeuralNetwork
  */
-public interface SupervisedNeuralNetwork<L extends Layer<?, ?, ?>, C extends NeuralNetworkContext, 
-    N extends SupervisedNeuralNetwork<L, C, N>
-    > extends NeuralNetwork<L, C, N> {
+public interface SupervisedNeuralNetwork<C extends NeuralNetworkContext, 
+    N extends SupervisedNeuralNetwork<C, N>
+    > extends NeuralNetwork<C, N> {
 
   /**
    * Trains the SupervisedNeuralNetwork.
