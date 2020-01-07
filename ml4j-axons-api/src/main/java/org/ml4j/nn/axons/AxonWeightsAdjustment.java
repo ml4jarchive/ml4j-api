@@ -19,12 +19,29 @@ import java.util.Optional;
 
 import org.ml4j.Matrix;
 
+/**
+ * Encapsulates an adjustment request to AxonWeights values.
+ * 
+ * @author Michael Lavelle
+ *
+ */
 public interface AxonWeightsAdjustment {
 
+	/**
+	 * @return The AxonWeights connection weights adjustment.
+	 */
 	Matrix getConnectionWeights();
 
+	/**
+	 * 
+	 * @return An optional adjustment to the AxonWeights leftToRightBiases
+	 */
 	Optional<Matrix> getLeftToRightBiases();
 
+	/**
+	 * 
+	 * @return An optional adjustment to the AxonWeights rightToLeftBiases.
+	 */
 	Optional<Matrix> getRightToLeftBiases();
 
 }

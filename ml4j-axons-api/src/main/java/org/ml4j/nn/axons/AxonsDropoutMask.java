@@ -17,9 +17,20 @@ package org.ml4j.nn.axons;
 
 import org.ml4j.Matrix;
 
+/**
+ * A dropout mask used by Axons for dropout regularisation or pooling.
+ * 
+ * @author Michael Lavelle
+ */
 public interface AxonsDropoutMask {
 
+	/**
+	 * @return The type of dropout mask.
+	 */
 	AxonsDropoutMaskType getType();
 
+	/**
+	 * @return The dropout mask as a matrix.
+	 */
 	Matrix getDropoutMask();
 }

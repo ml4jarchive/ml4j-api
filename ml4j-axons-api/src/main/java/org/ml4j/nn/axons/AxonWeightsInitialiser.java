@@ -20,12 +20,37 @@ import java.util.Optional;
 import org.ml4j.Matrix;
 import org.ml4j.MatrixFactory;
 
+/**
+ * Encapsulates an initialisation strategy for AxonWeights.
+ * 
+ * @author Michael Lavelle
+ *
+ */
 public interface AxonWeightsInitialiser {
 
+	/**
+	 * Get the initial connection weights for the AxonWeights.
+	 * 
+	 * @param matrixFactory A MatrixFactory used to construct the matrix.
+	 * @return The initial connection weights as a Matrix.
+	 */
 	Matrix getInitialConnectionWeights(MatrixFactory matrixFactory);
 
+
+	/**
+	 * Get the optional initial left to right biases for the AxonWeights.
+	 * 
+	 * @param matrixFactory A MatrixFactory used to construct the matrix.
+	 * @return The optional initial left to right biases as a Matrix.
+	 */
 	Optional<Matrix> getInitialLeftToRightBiases(MatrixFactory matrixFactory);
 
+	/**
+	 * Get the optional initial right to left biases for the AxonWeights.
+	 * 
+	 * @param matrixFactory A MatrixFactory used to construct the matrix.
+	 * @return The optional initial right to left biases as a Matrix.
+	 */
 	Optional<Matrix> getInitialRightToLeftBiases(MatrixFactory matrixFactory);
 
 }

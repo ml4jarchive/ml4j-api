@@ -16,8 +16,17 @@ package org.ml4j.nn.axons;
 
 import org.ml4j.Matrix;
 
+/**
+ * Encapsulates the gradient of an Axons instance.
+ * 
+ * @author Michael Lavelle
+ *
+ */
 public interface AxonsGradient {
 
+	/**
+	 * @return The axons to which this gradient relates
+	 */
 	TrainableAxons<?, ?, ?> getAxons();
 
 	/**

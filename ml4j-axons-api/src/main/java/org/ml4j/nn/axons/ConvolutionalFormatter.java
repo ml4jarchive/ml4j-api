@@ -20,7 +20,7 @@ import org.ml4j.MatrixFactory;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * 
+ * Encapsulates reformatting logic for a Convolutional component.
  * 
  * @author Michael Lavelle
  */

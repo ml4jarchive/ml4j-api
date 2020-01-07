@@ -15,6 +15,12 @@
  */
 package org.ml4j.nn.axons;
 
+/**
+ * Enum for the different types of AxonWeights.
+ * 
+ * @author Michael Lavelle
+ *
+ */
 public enum AxonWeightsType {
 	FULLY_CONNECTED, SCALE_AND_SHIFT, CUSTOM;
 }

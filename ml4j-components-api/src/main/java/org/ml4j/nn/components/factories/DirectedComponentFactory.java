@@ -1,3 +1,16 @@
+/*
+ * Copyright 2019 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package org.ml4j.nn.components.factories;
 
 import java.util.List;
@@ -88,43 +101,50 @@ public interface DirectedComponentFactory {
 	
 	/**
 	 * 
-	 * @param <N>
-	 * @param leftNeurons
-	 * @param rightNeurons
-	 * @param gamma
-	 * @param beta
-	 * @param mean
-	 * @param stddev
-	 * @return
+	 * @param <N> The type of neurons on the LHS/RHS of these axons.
+	 * @param leftNeurons The left neurons.
+	 * @param rightNeurons The right neurons.
+	 * @param gamma The initial scaling column vector with which to initialise the axons.
+	 * @param beta The initial shift column vector with which to initialise the axons. 
+	 * @param mean The mean with which to initialise the component.
+	 * @param var The variance with which to initialise the component.
+	 * @return The BatchNormDirectedAxonsComponent.
 	 */
-	<N extends Neurons> BatchNormDirectedAxonsComponent<N, ?> createBatchNormAxonsComponent(N leftNeurons, N rightNeurons, Matrix gamma, Matrix beta, Matrix mean, Matrix stddev);
+	<N extends Neurons> BatchNormDirectedAxonsComponent<N, ?> createBatchNormAxonsComponent(N leftNeurons, N rightNeurons, Matrix gamma, Matrix beta, Matrix mean, Matrix var);
 
 	/**
+	 * Create a convolutional batch-norm directed axons component with default initialised weights.
 	 * 
-	 * @param leftNeurons
-	 * @param rightNeurons
-	 * @return
+	 * Convolutional batch-norm axon components have a single mean/variance value for each depth.
+	 * 
+	 * @param leftNeurons The left neurons.
+	 * @param rightNeurons The right neurons.
+	 * @return A convolutional batch-norm directed axons component with default initialised weights.
 	 */
 	BatchNormDirectedAxonsComponent<Neurons3D, ?> createConvolutionalBatchNormAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons);
 	
 	/**
+	 * Create a convolutional batch-norm directed axons component with specified weights.
 	 * 
-	 * @param leftNeurons
-	 * @param rightNeurons
-	 * @param gamma
-	 * @param beta
-	 * @param mean
-	 * @param stddev
-	 * @return
+	 * Convolutional batch-norm axon components have a single mean/variance value for each depth.
+	 * 
+	 * @param leftNeurons The left neurons.
+	 * @param rightNeurons The right neurons
+	 * @param gamma The initial scaling column vector with which to initialise the axons.
+	 * @param beta The initial shift column vector with which to initialise the axons. 
+	 * @param mean The mean with which to initialise the component.
+	 * @param var The variance with which to initialise the component.
+	 * @return The BatchNormDirectedAxonsComponent.
 	 */
-	BatchNormDirectedAxonsComponent<Neurons3D, ?> createConvolutionalBatchNormAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons, Matrix gamma, Matrix beta, Matrix mean, Matrix stddev);
+	BatchNormDirectedAxonsComponent<Neurons3D, ?> createConvolutionalBatchNormAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons, Matrix gamma, Matrix beta, Matrix mean, Matrix var);
 
 	/**
+	 * Construct a DirectedAxonsComponent adapter for the specified Axons.
 	 * 
-	 * @param <L>
-	 * @param <R>
-	 * @param axons
-	 * @return
+	 * @param <L> The type of Neurons on the LHS of this DirectedAxonsComponent
+	 * @param <R> The type of Neurons on the RHS of this DirectedAxonsComponent
+	 * @param axons The Axons to be wrapped inside the DirectedAxonsComponent.
+	 * @return DirectedAxonsComponent wrapping the specified Axons.
 	 */
 	<L extends Neurons, R extends Neurons> DirectedAxonsComponent<L, R, ?> createDirectedAxonsComponent(Axons<L, R, ?> axons);
 	
@@ -132,50 +152,51 @@ public interface DirectedComponentFactory {
 	 * Construct a pass-through (no-op) axons component - used within residual networks for skip-connections.
 	 * 
 	 * @param <N> The type of neurons on the LHS/RHS of the pass-through axons.
-	 * @param leftNeurons
-	 * @param rightNeurons
-	 * @return
+	 * @param leftNeurons The neurons on the LHS of these pass-through axons.
+	 * @param rightNeurons The neurons on the RHS of these pass-through axons.
+	 * @return A pass-through (no-op) axons component
 	 */
 	<N extends Neurons> DirectedAxonsComponent<N, N, ?> createPassThroughAxonsComponent(N leftNeurons, N rightNeurons);
 	
 	/**
 	 * Construct a OneToManyDirectedComponent.
 	 * 
-	 * @param targetComponentsCount
-	 * @return
+	 * @param targetComponentsCount A supplier for the number of target components into which we wish to map the single input - 
+	 * can be a dynamic count.
+	 * @return A OneToManyDirectedComponent
 	 */
 	OneToManyDirectedComponent<?> createOneToManyDirectedComponent(IntSupplier targetComponentsCount);
 	
 	/**
 	 * Construct a ManyToOneDirectedComponent
 	 * 
-	 * @param pathCombinationStrategy
-	 * @return
+	 * @param pathCombinationStrategy The strategy used to combine multiple paths into a single output.
+	 * @return A ManyToOneDirectedComponent for the specified pathCombinationStrategy.
 	 */
 	ManyToOneDirectedComponent<?> createManyToOneDirectedComponent(PathCombinationStrategy pathCombinationStrategy);
 
 	/**
 	 * Construct a DifferentiableActivationFunctionComponent.
 	 * 
-	 * @param neurons
-	 * @param differentiableActivationFunction
-	 * @return
+	 * @param neurons The neurons at which the DifferentiableActivationFunctionComponent will activate.
+	 * @param differentiableActivationFunction The differentiable activation function to be wrapped by this component.
+	 * @return A DifferentiableActivationFunctionComponent.
 	 */
 	DifferentiableActivationFunctionComponent createDifferentiableActivationFunctionComponent(Neurons neurons, DifferentiableActivationFunction differentiableActivationFunction);
 	
 	/**
 	 * Construct a DefaultDirectedComponentChain instance.
 	 * 
-	 * @param sequentialComponents
-	 * @return
+	 * @param sequentialComponents A list of the sequential DefaultChainableDirectedComponents that this chain will contain
+	 * @return The DefaultDirectedComponentChain instance
 	 */
 	DefaultDirectedComponentChain createDirectedComponentChain(List<DefaultChainableDirectedComponent<?, ?>> sequentialComponents);
 	
 	/**
 	 * Construct a DefaultDirectedComponentChainBatch instance.
 	 * 
-	 * @param parallelChains
-	 * @return
+	 * @param parallelChains A list of the parallel DefaultDirectedComponentChain that this batch will contain.
+	 * @return The DefaultDirectedComponentChainBatch instance.
 	 */
 	DefaultDirectedComponentChainBatch createDirectedComponentChainBatch(List<DefaultDirectedComponentChain> parallelChains);
 	
