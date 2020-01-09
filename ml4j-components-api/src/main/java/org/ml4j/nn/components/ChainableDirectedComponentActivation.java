@@ -32,5 +32,8 @@ public interface ChainableDirectedComponentActivation<I> extends DirectedCompone
 	 * that can be chained together to form this activation.
 	 */
 	public List<? extends ChainableDirectedComponentActivation<I>> decompose();
+	
+	
+	void close(DirectedComponentActivationLifecycle completedLifeCycleStage);
 
 }
