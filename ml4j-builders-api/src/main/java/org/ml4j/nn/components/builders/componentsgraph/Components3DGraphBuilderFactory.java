@@ -13,10 +13,11 @@
  */
 package org.ml4j.nn.components.builders.componentsgraph;
 
+import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.neurons.Neurons3D;
 
 public interface Components3DGraphBuilderFactory<T extends NeuralComponent> {
 
-	InitialComponents3DGraphBuilder<T> createInitialComponents3DGraphBuilder(Neurons3D initialNeurons);
+	InitialComponents3DGraphBuilder<T> createInitialComponents3DGraphBuilder(Neurons3D initialNeuron, DirectedComponentsContext directedComponentsContext);
 }
