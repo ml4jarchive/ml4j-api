@@ -14,7 +14,7 @@
 package org.ml4j.nn.components.activationfunctions;
 
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
-import org.ml4j.nn.activationfunctions.DifferentiableActivationFunctionComponentActivation;
+import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.neurons.NeuronsActivationContext;
 
@@ -23,7 +23,8 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
  * 
  * @author Michael Lavelle
  */
-public interface DifferentiableActivationFunctionComponent extends DefaultChainableDirectedComponent<DifferentiableActivationFunctionComponentActivation, NeuronsActivationContext> {
+public interface DifferentiableActivationFunctionComponent extends DefaultChainableDirectedComponent<DifferentiableActivationFunctionComponentActivation, NeuronsActivationContext>,
+NeuralComponent {
 
 	/**
 	 * @return The adapted DifferentiableActivationFunction.

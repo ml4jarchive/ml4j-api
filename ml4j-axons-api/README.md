@@ -1,2 +1,2 @@
-# ml4j-components-api
+# ml4j-axons-api
 

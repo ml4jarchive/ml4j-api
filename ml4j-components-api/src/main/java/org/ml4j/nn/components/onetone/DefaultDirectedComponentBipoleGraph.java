@@ -16,7 +16,8 @@ package org.ml4j.nn.components.onetone;
 import java.util.List;
 
 import org.ml4j.nn.components.DirectedComponentsContext;
-import org.ml4j.nn.components.manytomany.DefaultDirectedComponentChainBatch;
+import org.ml4j.nn.components.NeuralComponent;
+import org.ml4j.nn.components.manytomany.DefaultDirectedComponentBatch;
 
 /**
  * A type of DefaultChainableDirectedComponent consisting of a parallel edges ( DefaultDirectedComponentChainBatch ), with
@@ -25,7 +26,7 @@ import org.ml4j.nn.components.manytomany.DefaultDirectedComponentChainBatch;
  * @author Michael Lavelle
  */
 public interface DefaultDirectedComponentBipoleGraph extends
-		DefaultChainableDirectedComponent<DefaultDirectedComponentBipoleGraphActivation, DirectedComponentsContext> {
+		DefaultChainableDirectedComponent<DefaultDirectedComponentBipoleGraphActivation, DirectedComponentsContext>, NeuralComponent{
 
 	@Override
 	DefaultDirectedComponentBipoleGraph dup();
@@ -36,6 +37,6 @@ public interface DefaultDirectedComponentBipoleGraph extends
 	/**
 	 * @return The batch of edges within this graph.
 	 */
-	DefaultDirectedComponentChainBatch getEdges();
+	DefaultDirectedComponentBatch getEdges();
 
 }
