@@ -16,6 +16,7 @@ package org.ml4j.nn.components.onetone;
 import java.util.List;
 
 import org.ml4j.nn.components.ChainableDirectedComponent;
+import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -35,7 +36,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @param <A> The type of activation produced by the DefaultChainableDirectedComponent on forward propagation
  * @param <C> The context provided to the DefaultChainableDirectedComponent on forward propagation.
  */
-public interface DefaultChainableDirectedComponent<A extends DefaultChainableDirectedComponentActivation, C> extends ChainableDirectedComponent<NeuronsActivation, A, C> {
+public interface DefaultChainableDirectedComponent<A extends DefaultChainableDirectedComponentActivation, C> extends ChainableDirectedComponent<NeuronsActivation, A, C>,  NeuralComponent {
 
 
 	/**

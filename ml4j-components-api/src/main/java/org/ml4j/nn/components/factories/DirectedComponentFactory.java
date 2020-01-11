@@ -23,7 +23,6 @@ import org.ml4j.nn.axons.Axons3DConfig;
 import org.ml4j.nn.components.activationfunctions.DifferentiableActivationFunctionComponent;
 import org.ml4j.nn.components.axons.BatchNormDirectedAxonsComponent;
 import org.ml4j.nn.components.axons.DirectedAxonsComponent;
-import org.ml4j.nn.components.manytomany.DefaultDirectedComponentChainBatch;
 import org.ml4j.nn.components.manytoone.ManyToOneDirectedComponent;
 import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
 import org.ml4j.nn.components.onetomany.OneToManyDirectedComponent;
@@ -41,7 +40,7 @@ import org.ml4j.nn.neurons.Neurons3D;
  * @author Michael Lavelle
  *
  */
-public interface DirectedComponentFactory {
+public interface DirectedComponentFactory extends NeuralComponentFactory<DefaultChainableDirectedComponent<?, ?>> {
 
 	/**
 	 * Create a fully-connected axons component, connecting leftNeurons to rightNeurons via connectionWeights.
@@ -198,7 +197,7 @@ public interface DirectedComponentFactory {
 	 * @param parallelChains A list of the parallel DefaultDirectedComponentChain that this batch will contain.
 	 * @return The DefaultDirectedComponentChainBatch instance.
 	 */
-	DefaultDirectedComponentChainBatch createDirectedComponentChainBatch(List<DefaultDirectedComponentChain> parallelChains);
+	//DefaultDirectedComponentChainBatch createDirectedComponentChainBatch(List<DefaultDirectedComponentChain> parallelChains);
 	
 	/**
 	 * Construct a DefaultDirectedComponentBipoleGraph instance.
@@ -209,5 +208,5 @@ public interface DirectedComponentFactory {
 	 * @param pathCombinationStrategy The strategy specifying how the outputs of the parallel chains are combined to produce the output.
 	 * @return A DefaultDirectedComponentBipoleGraph instance.
 	 */
-	DefaultDirectedComponentBipoleGraph createDirectedComponentBipoleGraph(Neurons inputNeurons, Neurons outputNeurons, DefaultDirectedComponentChainBatch batchOfParallelChains, PathCombinationStrategy pathCombinationStrategy);
+	DefaultDirectedComponentBipoleGraph createDirectedComponentBipoleGraph(Neurons inputNeurons, Neurons outputNeurons, List<DefaultChainableDirectedComponent<?, ?>> batchOfParallelChains, PathCombinationStrategy pathCombinationStrategy);
 }
