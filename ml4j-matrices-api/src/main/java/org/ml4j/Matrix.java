@@ -43,7 +43,8 @@ public interface Matrix extends Tensor<Matrix, EditableMatrix, InterrimMatrix>, 
 	Matrix subRowVector(Matrix other);
 
 	Matrix mmul(Matrix other);
-
+	
+	Matrix softDup();
 
 	float get(int r, int c);
 	Matrix appendHorizontally(Matrix other);

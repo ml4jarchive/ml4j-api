@@ -12,6 +12,7 @@ public interface ImageContainer<I extends ImageContainer<I>> {
 	int getWidth();
 	int getPaddingHeight();
 	int getPaddingWidth();
+	boolean isClosed();
 	void setPaddingHeight(int paddingHeight);
 	void setPaddingWidth(int paddingWidth);
 	int getDataLength();

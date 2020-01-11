@@ -38,6 +38,8 @@ public interface Tensor<T extends Tensor<T, E, I>, E extends T, I extends T> ext
 	T logi();
 	
 	void close();
+	boolean isClosed();
+
 	
 	T dup();
 
