@@ -24,7 +24,8 @@ import org.ml4j.nn.components.builders.common.ParallelPathsPermitted;
 import org.ml4j.nn.components.builders.skipconnection.Components3DGraphSkipConnectionBuilder;
 import org.ml4j.nn.components.builders.skipconnection.SkipConnection3DPermitted;
 import org.ml4j.nn.components.builders.synapses.Synapses3DPermitted;
-import org.ml4j.nn.definitions.Components3DGraphDefinition;
+import org.ml4j.nn.definitions.Component3Dto3DGraphDefinition;
+import org.ml4j.nn.definitions.Component3DtoNon3DGraphDefinition;
 
 public interface Components3DGraphBuilder<C extends Axons3DBuilder<T>, D extends AxonsBuilder<T>, T extends NeuralComponent> extends Axons3DPermitted<C, D, T>, Synapses3DPermitted<C, D, T>, ActivationFunctionPermitted<C>, ParallelPathsPermitted<Components3DSubGraphBuilder<C, D, T>>, SkipConnection3DPermitted<Components3DGraphSkipConnectionBuilder<C, D, T>, T>, 
 	Axons3DBuilder<T> {
@@ -37,8 +38,10 @@ public interface Components3DGraphBuilder<C extends Axons3DBuilder<T>, D extends
 	
 	Components3DGraphBuilder<C, D, T> withComponents(List<T> components);
 	
-	Components3DGraphBuilder<C, D, T> withComponentDefinition(Components3DGraphDefinition componentDefinition);
+	Components3DGraphBuilder<C, D, T> withComponentDefinition(Component3Dto3DGraphDefinition componentDefinition);
 	
-	Components3DGraphBuilder<C, D, T> withComponentDefinition(List<Components3DGraphDefinition> componentDefinitions);
+	Components3DGraphBuilder<C, D, T> withComponentDefinition(List<Component3Dto3DGraphDefinition> componentDefinitions);
+	
+	ComponentsGraphBuilder<D, T> withComponentDefinition(Component3DtoNon3DGraphDefinition componentDefinition);
 
 }
