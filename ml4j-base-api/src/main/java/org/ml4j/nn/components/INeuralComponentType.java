@@ -13,10 +13,26 @@
  */
 package org.ml4j.nn.components;
 
-import org.ml4j.nn.axons.AxonsContext;
-
-public interface AxonsContextAwareNeuralComponent extends NeuralComponent {
-
-	AxonsContext getContext(DirectedComponentsContext directedComponentsContext, int componentIndex);
+interface INeuralComponentType {
+	
+	NeuralComponentBaseType getBaseType();
+	
+	INeuralComponentType getParentType();
+	
+	String getId();
+	
+	String getQualifiedId();
+	
+	static INeuralComponentType customType(NeuralComponentType parentType, String id) {
+		return new NeuralComponentType(parentType, id, false, false);
+	}
+	
+	static NeuralComponentType baseType(NeuralComponentBaseType baseType) {
+		return baseType.asNeuralNetworkType();
+	}
+	
+	boolean isStandardBaseType();
+	
+	boolean isCustomBaseType();
 
 }
