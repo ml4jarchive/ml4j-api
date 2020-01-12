@@ -1,6 +1,7 @@
 package org.ml4j.nn.definitions;
 
 import org.ml4j.nn.components.NeuralComponent;
+import org.ml4j.nn.components.NeuralComponentBaseType;
 import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.builders.componentsgraph.ComponentsGraphBuilder;
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphBuilder;
@@ -16,7 +17,7 @@ public interface Component3DtoNon3DGraphDefinition extends NeuralComponent {
 
 	@Override
 	default NeuralComponentType getComponentType() {
-		return NeuralComponentType.DEFINITION;
+		return NeuralComponentType.getBaseType(NeuralComponentBaseType.DEFINITION);
 	}
 
 }

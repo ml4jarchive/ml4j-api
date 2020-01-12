@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 the original author or authors.
+ * Copyright 2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,8 +13,104 @@
  */
 package org.ml4j.nn.components;
 
-public enum NeuralComponentType {
-	COMPONENT_CHAIN, COMPONENT_BATCH, COMPONENT_BIPOLE_GRAPH, COMPONENT_CHAIN_BATCH, COMPONENT_CHAIN_BIPOLE_GRAPH, AXONS, AXONS_CHAIN, AXONS_GRAPH,
-	SYNAPSES, SYNAPSES_CHAIN, SYNAPSES_GRAPH, LAYER, LAYER_CHAIN, NETWORK, ACTIVATION_FUNCTION,
-	ONE_TO_MANY, MANY_TO_ONE, DEFINITION, CUSTOM;
+import java.util.Arrays;
+
+public final class NeuralComponentType implements INeuralComponentType {
+
+	private final INeuralComponentType parentType;
+	private final String id;
+	private final boolean isStandardBaseType;
+	private final boolean isCustomBaseType;
+
+	public static NeuralComponentType createSubType(NeuralComponentType parentType, String id) {
+		return new NeuralComponentType(parentType, id, false, false);
+	}
+	
+	public static NeuralComponentType createSubType(NeuralComponentBaseType parentType, String id) {
+		return new NeuralComponentType(parentType, id, false, false);
+	}
+
+	public static NeuralComponentType createCustomBaseType(String id) {
+		if (Arrays.asList(NeuralComponentBaseType.values()).stream().anyMatch(v -> v.getId().compareToIgnoreCase(id) == 0)) {
+			throw new IllegalArgumentException("Name clash with existing standard base type:" + id);
+		}
+		return new NeuralComponentType(NeuralComponentBaseType.CUSTOM, id, false, true);
+	}
+	
+	public static NeuralComponentType getBaseType(NeuralComponentBaseType baseType) {
+		if (NeuralComponentBaseType.CUSTOM.equals(baseType)) {
+			throw new IllegalArgumentException("Use createCustomBaseType(String id) method to obtain a custom base type");
+		}
+		return baseType.asNeuralNetworkType();
+	}
+	
+	NeuralComponentType(INeuralComponentType parentType, String id, boolean isStandardBaseType, boolean isCustomBaseType) {
+		this.parentType = parentType;
+		this.id = id;
+		this.isStandardBaseType = isStandardBaseType;
+		this.isCustomBaseType = isCustomBaseType;
+		if (isStandardBaseType && isCustomBaseType) {
+			throw new IllegalArgumentException("A type cannot be both a custom base type and a standard base type");
+		}
+	}
+
+	@Override
+	public NeuralComponentBaseType getBaseType() {
+		return parentType.getBaseType();
+	}
+	
+	@Override
+	public INeuralComponentType getParentType() {
+		return parentType;
+	}
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	@Override
+	public String getQualifiedId() {
+		return isStandardBaseType ? getId() : (NeuralComponentBaseType.CUSTOM.equals(getParentType()) ? getId() : (getParentType().getQualifiedId() + "." + getId()));
+	}
+
+	@Override
+	public boolean isStandardBaseType() {
+		return isStandardBaseType;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((getQualifiedId() == null) ? 0 : getQualifiedId().hashCode());
+		return result;
+	}
+	
+	@Override
+	public String toString() {
+		return getQualifiedId();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NeuralComponentType other = (NeuralComponentType) obj;
+		if (getQualifiedId() == null) {
+			if (other.getQualifiedId() != null)
+				return false;
+		} else if (!getQualifiedId().equals(other.getQualifiedId()))
+			return false;
+		return true;
+	}
+
+	@Override
+	public boolean isCustomBaseType() {
+		return isCustomBaseType;
+	}
 }

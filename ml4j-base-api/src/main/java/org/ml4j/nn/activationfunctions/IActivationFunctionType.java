@@ -11,14 +11,28 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.ml4j.nn.components.builders.axons;
+package org.ml4j.nn.activationfunctions;
 
-import org.ml4j.nn.activationfunctions.ActivationFunctionType;
-import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
-
-public interface ActivationFunctionPermitted<C>{
-
-	C withActivationFunction(DifferentiableActivationFunction activationFunction);
+interface IActivationFunctionType {
 	
-	C withActivationFunction(ActivationFunctionType activationFunctionType);
+	ActivationFunctionBaseType getBaseType();
+	
+	IActivationFunctionType getParentType();
+	
+	String getId();
+	
+	String getQualifiedId();
+	
+	static IActivationFunctionType customType(ActivationFunctionType parentType, String id) {
+		return new ActivationFunctionType(parentType, id, false, false);
+	}
+	
+	static ActivationFunctionType baseType(ActivationFunctionBaseType baseType) {
+		return baseType.asNeuralNetworkType();
+	}
+	
+	boolean isStandardBaseType();
+	
+	boolean isCustomBaseType();
+
 }

@@ -13,6 +13,7 @@
  */
 package org.ml4j.nn.activationfunctions.factories;
 
+import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 
 /**
@@ -42,5 +43,11 @@ public interface DifferentiableActivationFunctionFactory {
 	 * @return A linear (identity) activation function instance.
 	 */
 	DifferentiableActivationFunction createLinearActivationFunction(); 
+	
+	/**
+	 * @param activationFunctionType The type of activation function required.
+	 * @return A DifferentiableActivationFunction given the provided activationFunctionType;
+	 */
+	DifferentiableActivationFunction createActivationFunction(ActivationFunctionType activationFunctionType);
 
 }

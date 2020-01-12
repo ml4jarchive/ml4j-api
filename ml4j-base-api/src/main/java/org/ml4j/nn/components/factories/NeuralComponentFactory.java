@@ -16,6 +16,7 @@ package org.ml4j.nn.components.factories;
 import java.util.List;
 
 import org.ml4j.Matrix;
+import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons3DConfig;
 import org.ml4j.nn.components.NeuralComponent;
@@ -148,6 +149,16 @@ public interface NeuralComponentFactory<T extends NeuralComponent>  {
 	 * @return A DifferentiableActivationFunctionComponent.
 	 */
 	T createDifferentiableActivationFunctionComponent(Neurons neurons, DifferentiableActivationFunction differentiableActivationFunction);
+	
+	
+	/**
+	 * Construct a DifferentiableActivationFunctionComponent.
+	 * 
+	 * @param neurons The neurons at which the DifferentiableActivationFunctionComponent will activate.
+	 * @param activationFunctionType The activation function type.
+	 * @return A DifferentiableActivationFunctionComponent.
+	 */
+	T createDifferentiableActivationFunctionComponent(Neurons neurons, ActivationFunctionType activationFunctionType);
 	
 	/**
 	 * Construct a DefaultDirectedComponentChain instance.
