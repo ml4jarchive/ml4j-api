@@ -36,7 +36,7 @@ import org.ml4j.nn.neurons.Neurons3D;
 public interface NeuralComponentFactory<T extends NeuralComponent>  {
 	
 	
-	T createComponent(Neurons leftNeurons, Neurons rightNeurons, NeuralComponentType<T> neuralComponentType);
+	<S extends T> T createComponent(Neurons leftNeurons, Neurons rightNeurons, NeuralComponentType<S> neuralComponentType);
 	
 	/**
 	 * Create a fully-connected axons component, connecting leftNeurons to rightNeurons via connectionWeights.

@@ -62,10 +62,10 @@ public interface DefaultChainableDirectedComponent<A extends DefaultChainableDir
 	 * @return The neurons on the RHS of this component from which output data activations are generated.
 	 */
 	Neurons getOutputNeurons();
+	
 
 	@Override
-	NeuralComponentType<? extends DefaultChainableDirectedComponent<A, C>> getComponentType();
-	
+	NeuralComponentType<? extends DefaultChainableDirectedComponent<?, ?>> getComponentType();
 	
 	
 }
