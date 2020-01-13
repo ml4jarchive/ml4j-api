@@ -16,6 +16,8 @@
 
 package org.ml4j.nn;
 
+import org.ml4j.nn.components.NeuralComponent;
+
 /**
  * 
  * @author Michael Lavelle
@@ -27,5 +29,5 @@ package org.ml4j.nn;
  */
 public interface FeedForwardNeuralNetwork<C extends FeedForwardNeuralNetworkContext, 
     N extends FeedForwardNeuralNetwork<C, N>> extends 
-    DirectedNeuralNetwork<C, N> {
+    DirectedNeuralNetwork<C, N>, NeuralComponent {
 }

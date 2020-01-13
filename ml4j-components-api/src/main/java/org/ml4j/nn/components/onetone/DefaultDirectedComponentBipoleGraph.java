@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
+import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.manytomany.DefaultDirectedComponentBatch;
 
 /**
@@ -38,5 +39,8 @@ public interface DefaultDirectedComponentBipoleGraph extends
 	 * @return The batch of edges within this graph.
 	 */
 	DefaultDirectedComponentBatch getEdges();
+
+	@Override
+	NeuralComponentType<? extends DefaultDirectedComponentBipoleGraph> getComponentType();
 
 }

@@ -17,7 +17,7 @@ import org.ml4j.nn.neurons.Neurons;
 
 public interface NeuralComponent  {
 
-	NeuralComponentType getComponentType();
+	NeuralComponentType<?> getComponentType();
 
 	Neurons getInputNeurons();
 	

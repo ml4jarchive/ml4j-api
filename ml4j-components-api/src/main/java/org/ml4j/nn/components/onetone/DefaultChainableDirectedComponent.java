@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.ml4j.nn.components.ChainableDirectedComponent;
 import org.ml4j.nn.components.NeuralComponent;
+import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -61,5 +62,10 @@ public interface DefaultChainableDirectedComponent<A extends DefaultChainableDir
 	 * @return The neurons on the RHS of this component from which output data activations are generated.
 	 */
 	Neurons getOutputNeurons();
+
+	@Override
+	NeuralComponentType<? extends DefaultChainableDirectedComponent<A, C>> getComponentType();
+	
+	
 	
 }
