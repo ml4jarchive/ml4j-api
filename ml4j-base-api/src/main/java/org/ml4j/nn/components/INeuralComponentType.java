@@ -18,16 +18,16 @@ interface INeuralComponentType {
 	NeuralComponentBaseType getBaseType();
 	
 	INeuralComponentType getParentType();
-	
+		
 	String getId();
 	
 	String getQualifiedId();
 	
-	static INeuralComponentType customType(NeuralComponentType parentType, String id) {
-		return new NeuralComponentType(parentType, id, false, false);
+	static <S extends NeuralComponent> INeuralComponentType customType(NeuralComponentType<?> parentType, String id) {
+		return new NeuralComponentType<>(parentType, id, false, false);
 	}
 	
-	static NeuralComponentType baseType(NeuralComponentBaseType baseType) {
+	static NeuralComponentType<NeuralComponent> baseType(NeuralComponentBaseType baseType) {
 		return baseType.asNeuralNetworkType();
 	}
 	

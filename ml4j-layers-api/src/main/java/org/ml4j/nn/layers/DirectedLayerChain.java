@@ -14,6 +14,7 @@
 
 package org.ml4j.nn.layers;
 
+import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.generic.DirectedComponentChain;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -24,6 +25,6 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  *
  * @param <L> The type of DirectedLayer within this DirectedLayerChain
  */
-public interface DirectedLayerChain<L extends DirectedLayer<?, ?>> extends DirectedComponentChain<NeuronsActivation, L, DirectedLayerActivation, DirectedLayerChainActivation> {
+public interface DirectedLayerChain<L extends DirectedLayer<?, ?>> extends DirectedComponentChain<NeuronsActivation, L, DirectedLayerActivation, DirectedLayerChainActivation>, NeuralComponent {
 
 }

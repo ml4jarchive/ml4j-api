@@ -21,5 +21,9 @@ public interface Axons3DPermitted<C extends Axons3DBuilder<T>, A extends AxonsBu
 	UncompletedPoolingAxonsBuilder<C> withMaxPoolingAxons();
 	UncompletedPoolingAxonsBuilder<C> withAveragePoolingAxons();
 	UncompletedBatchNormAxonsBuilder<C> withBatchNormAxons();
+	
+	
+	
+	//<B extends UncompletedAxonsBuilder<Neurons3D, C>> B withAxons();
 
 }

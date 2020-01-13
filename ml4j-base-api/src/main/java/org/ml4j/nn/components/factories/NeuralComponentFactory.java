@@ -20,6 +20,7 @@ import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons3DConfig;
 import org.ml4j.nn.components.NeuralComponent;
+import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.Neurons3D;
@@ -33,7 +34,10 @@ import org.ml4j.nn.neurons.Neurons3D;
  *
  */
 public interface NeuralComponentFactory<T extends NeuralComponent>  {
-
+	
+	
+	T createComponent(Neurons leftNeurons, Neurons rightNeurons, NeuralComponentType<T> neuralComponentType);
+	
 	/**
 	 * Create a fully-connected axons component, connecting leftNeurons to rightNeurons via connectionWeights.
 	 * 
