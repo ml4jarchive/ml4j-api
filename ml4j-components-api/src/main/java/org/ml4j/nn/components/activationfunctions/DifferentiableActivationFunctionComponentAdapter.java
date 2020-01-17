@@ -13,28 +13,25 @@
  */
 package org.ml4j.nn.components.activationfunctions;
 
-import org.ml4j.nn.activationfunctions.ActivationFunctionType;
-import org.ml4j.nn.components.NeuralComponent;
-import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
-import org.ml4j.nn.neurons.NeuronsActivationContext;
+import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 
 /**
  * Component adapter for a  DifferentiableActivationFunction, allowing DifferentiableActivationFunctions to be used within a sequential component chain.
  * 
  * @author Michael Lavelle
  */
-public interface DifferentiableActivationFunctionComponent extends DefaultChainableDirectedComponent<DifferentiableActivationFunctionComponentActivation, NeuronsActivationContext>,
-NeuralComponent {
+public interface DifferentiableActivationFunctionComponentAdapter extends DifferentiableActivationFunctionComponent {
 
 	/**
-	 * @return The activation function type.
+	 * @return The adapted DifferentiableActivationFunction.
 	 */
-	ActivationFunctionType getActivationFunctionType();
+	DifferentiableActivationFunction getActivationFunction();
 	
+
 	/**
 	 * @return A deep copy of this component.
 	 */
 	@Override
-	DifferentiableActivationFunctionComponent dup();
+	DifferentiableActivationFunctionComponentAdapter dup();
 	
 }

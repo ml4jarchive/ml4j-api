@@ -13,9 +13,11 @@
  */
 package org.ml4j.nn.components;
 
+import java.io.Serializable;
+
 import org.ml4j.nn.neurons.Neurons;
 
-public interface NeuralComponent  {
+public interface NeuralComponent extends Serializable  {
 
 	NeuralComponentType<?> getComponentType();
 

@@ -16,7 +16,7 @@
 
 package org.ml4j.nn.costfunctions;
 
-import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
+import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.components.DirectedComponentGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -36,10 +36,10 @@ public interface CostFunctionGradient {
   
   /**
    * 
-   * @param finalActivationFunction The last activation function of a forward propagation chain.
+   * @param finalActivationFunctionType The type of the last activation function of a forward propagation chain.
    * @return The cost function gradient back propagated through the final activation function.
    */
   DirectedComponentGradient<NeuronsActivation> backPropagateThroughFinalActivationFunction(
-      DifferentiableActivationFunction finalActivationFunction);
+      ActivationFunctionType finalActivationFunctionType);
    
 }

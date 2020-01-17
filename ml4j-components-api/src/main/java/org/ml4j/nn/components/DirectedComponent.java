@@ -27,7 +27,7 @@ package org.ml4j.nn.components;
  * 		
  */
 public interface DirectedComponent<I, A extends DirectedComponentActivation<I, ?>, C>
-		extends NeuralNetworkComponent {
+		extends NeuralNetworkComponent, NeuronsActivationComponent {
 
 	/**
 	 * Forward Propagates the activations through the Synapses via the Axons and
@@ -51,5 +51,7 @@ public interface DirectedComponent<I, A extends DirectedComponentActivation<I, ?
 	 */
 	@Override
 	DirectedComponent<I, A, C> dup();
+	
+	
 	
 }

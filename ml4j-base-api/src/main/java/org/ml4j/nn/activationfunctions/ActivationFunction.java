@@ -16,6 +16,7 @@ package org.ml4j.nn.activationfunctions;
 
 import java.io.Serializable;
 
+import org.ml4j.nn.components.NeuronsActivationComponent;
 import org.ml4j.nn.neurons.NeuronsActivation;
 import org.ml4j.nn.neurons.NeuronsActivationContext;
 
@@ -31,7 +32,7 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
  */
 public interface ActivationFunction<F extends ActivationFunction<F, G>, 
     G extends ActivationFunctionActivation<F, G>>
-    extends Serializable {
+    extends NeuronsActivationComponent, Serializable {
 
   /**
    * Create an output ActivationFunctionActivation from input activations.
@@ -46,5 +47,6 @@ public interface ActivationFunction<F extends ActivationFunction<F, G>,
    * @return The ActivationFunctionType.
    */
   ActivationFunctionType getActivationFunctionType();
+
 
 }
