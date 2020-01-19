@@ -21,7 +21,7 @@ import java.io.Serializable;
  * 
  * @author Michael Lavelle
  */
-public class Neurons implements Serializable {
+public abstract class Neurons implements Serializable {
 
 	/**
 	 * Default serialization id.
@@ -36,7 +36,7 @@ public class Neurons implements Serializable {
 	/**
 	 * Whether this set of Neurons has an additional bias unit.
 	 */
-	private boolean hasBiasUnit;
+	protected boolean hasBiasUnit;
 
 	/**
 	 * Construct a new set of Neurons.
@@ -49,7 +49,7 @@ public class Neurons implements Serializable {
 		this.neuronCountExcludingBias = neuronCountExcludingBias;
 		this.hasBiasUnit = hasBiasUnit;
 	}
-
+	
 	/**
 	 * Determine whether this set of Neurons has an additional bias unit.
 	 * 
@@ -78,4 +78,28 @@ public class Neurons implements Serializable {
 		return "Neurons [neuronCountExcludingBias=" + neuronCountExcludingBias + ", hasBiasUnit=" + hasBiasUnit + "]";
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (hasBiasUnit ? 1231 : 1237);
+		result = prime * result + neuronCountExcludingBias;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Neurons other = (Neurons) obj;
+		if (hasBiasUnit != other.hasBiasUnit)
+			return false;
+		if (neuronCountExcludingBias != other.neuronCountExcludingBias)
+			return false;
+		return true;
+	}
 }

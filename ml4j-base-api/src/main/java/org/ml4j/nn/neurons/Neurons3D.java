@@ -22,7 +22,7 @@ package org.ml4j.nn.neurons;
  * @author Michael Lavelle
  */
 public class Neurons3D extends Neurons {
-
+	
 	/**
 	 * Default serialization id.
 	 */
@@ -44,7 +44,7 @@ public class Neurons3D extends Neurons {
 		this.height = height;
 		this.depth = depth;
 	}
-
+	
 	/**
 	 * @return The width of the volume of Neurons.
 	 */
@@ -69,5 +69,36 @@ public class Neurons3D extends Neurons {
 	@Override
 	public String toString() {
 		return "Neurons3D [width=" + width + ", height=" + height + ", depth=" + depth + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Boolean.valueOf(hasBiasUnit).hashCode();
+		result = prime * result + depth;
+		result = prime * result + height;
+		result = prime * result + width;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Neurons3D other = (Neurons3D) obj;
+		if (depth != other.depth)
+			return false;
+		if (hasBiasUnit != other.hasBiasUnit)
+			return false;
+		if (height != other.height)
+			return false;
+		if (width != other.width)
+			return false;
+		return true;
 	}
 }

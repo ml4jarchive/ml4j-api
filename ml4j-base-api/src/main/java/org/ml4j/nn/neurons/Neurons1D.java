@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 the original author or authors.
+ * Copyright 2017 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,8 +11,25 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.ml4j.nn.components.manytoone;
 
-public enum PathCombinationStrategy {
-	ADDITION, FILTER_CONCAT
+package org.ml4j.nn.neurons;
+
+import java.io.Serializable;
+
+/**
+ * Represents a set of Neurons in a NeuralNetwork.
+ * 
+ * @author Michael Lavelle
+ */
+public class Neurons1D extends Neurons implements Serializable {
+
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	public Neurons1D(int neuronCountExcludingBias, boolean hasBiasUnit) {
+		super(neuronCountExcludingBias, hasBiasUnit);
+	}
 }

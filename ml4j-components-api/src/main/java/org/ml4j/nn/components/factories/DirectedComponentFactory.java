@@ -31,6 +31,7 @@ import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentBipoleGraph;
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentChain;
 import org.ml4j.nn.neurons.Neurons;
+import org.ml4j.nn.neurons.Neurons1D;
 import org.ml4j.nn.neurons.Neurons3D;
 
 /**
@@ -53,6 +54,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * have a bias unit.
 	 * @return A fully-connected axons component, connecting leftNeurons to rightNeurons via connectionWeights.
 	 */
+	@Override
 	DirectedAxonsComponent<Neurons, Neurons, ?> createFullyConnectedAxonsComponent(Neurons leftNeurons, Neurons rightNeurons, Matrix connectionWeights, Matrix biases);
 	
 	/**
@@ -66,6 +68,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param biases Optionally specify the left-to-right biases of the axons - if not provided the biases will be initialised to defaults if the LHS neurons have a bias unit.
 	 * @return A fully-connected axons component, connecting leftNeurons to rightNeurons convolutionally via convolutional connectionWeights.
 	 */
+	@Override
 	DirectedAxonsComponent<Neurons3D, Neurons3D, ?> createConvolutionalAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config, Matrix connectionWeights, Matrix biases);
 
 	/**
@@ -77,6 +80,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param scaleOutputs Whether to scale the output of the max pooling axons by a scaling factor to compensate for the max-pooling dropout.
 	 * @return A max-pooling axons component.
 	 */
+	@Override
 	DirectedAxonsComponent<Neurons3D, Neurons3D, ?> createMaxPoolingAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config, boolean scaleOutputs);
 
 	/**
@@ -87,6 +91,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param config The Axons3DConfig.
 	 * @return An average-pooling axons component.
 	 */
+	@Override
 	DirectedAxonsComponent<Neurons3D, Neurons3D, ?> createAveragePoolingAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config);
 
 	/**
@@ -97,6 +102,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param rightNeurons The right neurons.
 	 * @return A batch-norm directed axons component with default initialised weights.
 	 */
+	@Override
 	<N extends Neurons> BatchNormDirectedAxonsComponent<N, ?> createBatchNormAxonsComponent(N leftNeurons, N rightNeurons);
 	
 	/**
@@ -110,6 +116,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param var The variance with which to initialise the component.
 	 * @return The BatchNormDirectedAxonsComponent.
 	 */
+	@Override
 	<N extends Neurons> BatchNormDirectedAxonsComponent<N, ?> createBatchNormAxonsComponent(N leftNeurons, N rightNeurons, Matrix gamma, Matrix beta, Matrix mean, Matrix var);
 
 	/**
@@ -121,6 +128,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param rightNeurons The right neurons.
 	 * @return A convolutional batch-norm directed axons component with default initialised weights.
 	 */
+	@Override
 	BatchNormDirectedAxonsComponent<Neurons3D, ?> createConvolutionalBatchNormAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons);
 	
 	/**
@@ -136,6 +144,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param var The variance with which to initialise the component.
 	 * @return The BatchNormDirectedAxonsComponent.
 	 */
+	@Override
 	BatchNormDirectedAxonsComponent<Neurons3D, ?> createConvolutionalBatchNormAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons, Matrix gamma, Matrix beta, Matrix mean, Matrix var);
 
 	/**
@@ -156,6 +165,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param rightNeurons The neurons on the RHS of these pass-through axons.
 	 * @return A pass-through (no-op) axons component
 	 */
+	@Override
 	<N extends Neurons> DirectedAxonsComponent<N, N, ?> createPassThroughAxonsComponent(N leftNeurons, N rightNeurons);
 	
 	/**
@@ -173,8 +183,17 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param pathCombinationStrategy The strategy used to combine multiple paths into a single output.
 	 * @return A ManyToOneDirectedComponent for the specified pathCombinationStrategy.
 	 */
-	ManyToOneDirectedComponent<?> createManyToOneDirectedComponent(PathCombinationStrategy pathCombinationStrategy);
+	
+	ManyToOneDirectedComponent<?> createManyToOneDirectedComponent(Neurons1D outputNeurons, PathCombinationStrategy pathCombinationStrategy);
 
+	/**
+	 * Construct a ManyToOneDirectedComponent
+	 * 
+	 * @param pathCombinationStrategy The strategy used to combine multiple paths into a single output.
+	 * @return A ManyToOneDirectedComponent for the specified pathCombinationStrategy.
+	 */
+	ManyToOneDirectedComponent<?> createManyToOneDirectedComponent(Neurons3D outputNeurons, PathCombinationStrategy pathCombinationStrategy);
+	
 	/**
 	 * Construct a DifferentiableActivationFunctionComponent.
 	 * 
@@ -182,6 +201,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param differentiableActivationFunction The differentiable activation function to be wrapped by this component.
 	 * @return A DifferentiableActivationFunctionComponent.
 	 */
+	@Override
 	DifferentiableActivationFunctionComponent createDifferentiableActivationFunctionComponent(Neurons neurons, DifferentiableActivationFunction differentiableActivationFunction);
 	
 
@@ -192,6 +212,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param activationFunctionType The differentiable activation function type to be wrapped by this component.
 	 * @return A DifferentiableActivationFunctionComponent.
 	 */
+	@Override
 	DifferentiableActivationFunctionComponent createDifferentiableActivationFunctionComponent(Neurons neurons, ActivationFunctionType activationFunctionType);
 	
 	
@@ -201,6 +222,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param sequentialComponents A list of the sequential DefaultChainableDirectedComponents that this chain will contain
 	 * @return The DefaultDirectedComponentChain instance
 	 */
+	@Override
 	DefaultDirectedComponentChain createDirectedComponentChain(List<DefaultChainableDirectedComponent<?, ?>> sequentialComponents);
 	
 	/**
@@ -220,5 +242,9 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param pathCombinationStrategy The strategy specifying how the outputs of the parallel chains are combined to produce the output.
 	 * @return A DefaultDirectedComponentBipoleGraph instance.
 	 */
+	@Override
 	DefaultDirectedComponentBipoleGraph createDirectedComponentBipoleGraph(Neurons inputNeurons, Neurons outputNeurons, List<DefaultChainableDirectedComponent<?, ?>> batchOfParallelChains, PathCombinationStrategy pathCombinationStrategy);
+
+
+
 }
