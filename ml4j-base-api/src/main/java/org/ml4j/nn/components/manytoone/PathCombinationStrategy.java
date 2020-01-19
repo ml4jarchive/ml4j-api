@@ -13,21 +13,7 @@
  */
 package org.ml4j.nn.components.manytoone;
 
-import org.ml4j.nn.neurons.Neurons;
-import org.ml4j.nn.neurons.Neurons3D;
-
-public class PathCombinationStrategy {
+public enum PathCombinationStrategy {
 	
-	public static final PathCombinationStrategy ADDITION = new PathCombinationStrategy(Neurons.class);
-	public static final PathCombinationStrategy FILTER_CONCAT = new PathCombinationStrategy(Neurons3D.class);
-	
-	private Class<?> supportedOutputNeuronsClass;
-	
-	private PathCombinationStrategy(Class<?> supportedOutputNeuronsClass) {
-		this.supportedOutputNeuronsClass = supportedOutputNeuronsClass;
-	}
-
-	public Class<?> getSupportedOutputNeuronsClass() {
-		return supportedOutputNeuronsClass;
-	}
+	ADDITION, FILTER_CONCAT;
 }
