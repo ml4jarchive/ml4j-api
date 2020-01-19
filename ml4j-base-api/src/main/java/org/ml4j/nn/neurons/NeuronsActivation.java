@@ -56,7 +56,7 @@ public interface NeuronsActivation {
 	
 	void reshape(int featureCount, int exampleCount);
 
-
 	ImageNeuronsActivation asImageNeuronsActivation(Neurons3D neurons);
+	
 
 }

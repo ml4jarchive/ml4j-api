@@ -182,6 +182,5 @@ public interface NeuralComponentFactory<T extends NeuralComponent>  {
 	 * @return A DefaultDirectedComponentBipoleGraph instance.
 	 */
 	T createDirectedComponentBipoleGraph(Neurons inputNeurons, Neurons outputNeurons, List<T> parallelComponents, PathCombinationStrategy pathCombinationStrategy);
-
 	
 }
