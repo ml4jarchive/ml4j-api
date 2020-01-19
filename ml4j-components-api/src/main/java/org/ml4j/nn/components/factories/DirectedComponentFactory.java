@@ -31,7 +31,6 @@ import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentBipoleGraph;
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentChain;
 import org.ml4j.nn.neurons.Neurons;
-import org.ml4j.nn.neurons.Neurons1D;
 import org.ml4j.nn.neurons.Neurons3D;
 
 /**
@@ -184,7 +183,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @return A ManyToOneDirectedComponent for the specified pathCombinationStrategy.
 	 */
 	
-	ManyToOneDirectedComponent<?> createManyToOneDirectedComponent(Neurons1D outputNeurons, PathCombinationStrategy pathCombinationStrategy);
+	ManyToOneDirectedComponent<?> createManyToOneDirectedComponent(Neurons outputNeurons, PathCombinationStrategy pathCombinationStrategy);
 
 	/**
 	 * Construct a ManyToOneDirectedComponent
@@ -192,7 +191,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param pathCombinationStrategy The strategy used to combine multiple paths into a single output.
 	 * @return A ManyToOneDirectedComponent for the specified pathCombinationStrategy.
 	 */
-	ManyToOneDirectedComponent<?> createManyToOneDirectedComponent(Neurons3D outputNeurons, PathCombinationStrategy pathCombinationStrategy);
+	ManyToOneDirectedComponent<?> createManyToOneDirectedComponent3D(Neurons3D outputNeurons, PathCombinationStrategy pathCombinationStrategy);
 	
 	/**
 	 * Construct a DifferentiableActivationFunctionComponent.

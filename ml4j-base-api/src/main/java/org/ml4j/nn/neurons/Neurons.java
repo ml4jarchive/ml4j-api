@@ -21,7 +21,7 @@ import java.io.Serializable;
  * 
  * @author Michael Lavelle
  */
-public abstract class Neurons implements Serializable {
+public  class Neurons implements Serializable {
 
 	/**
 	 * Default serialization id.
