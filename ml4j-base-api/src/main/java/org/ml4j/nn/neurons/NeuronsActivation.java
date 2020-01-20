@@ -21,7 +21,7 @@ import org.ml4j.MatrixFactory;
 public interface NeuronsActivation {
 
 	// Shape
-	
+
 	int getFeatureCount();
 
 	int getExampleCount();
@@ -31,7 +31,7 @@ public interface NeuronsActivation {
 	int getColumns();
 
 	Neurons getNeurons();
-	
+
 	NeuronsActivationFeatureOrientation getFeatureOrientation();
 
 	Matrix getActivations(MatrixFactory matrixFactory);
@@ -41,7 +41,7 @@ public interface NeuronsActivation {
 	void applyValueModifier(FloatPredicate condition, FloatModifier modifier);
 
 	void applyValueModifier(FloatModifier modifier);
-	
+
 	void addInline(MatrixFactory matrixFactory, NeuronsActivation other);
 
 	void combineFeaturesInline(NeuronsActivation other, MatrixFactory matrixFactory);
@@ -51,12 +51,11 @@ public interface NeuronsActivation {
 	boolean isImmutable();
 
 	void close();
-		
+
 	NeuronsActivation dup();
-	
+
 	void reshape(int featureCount, int exampleCount);
 
 	ImageNeuronsActivation asImageNeuronsActivation(Neurons3D neurons);
-	
 
 }

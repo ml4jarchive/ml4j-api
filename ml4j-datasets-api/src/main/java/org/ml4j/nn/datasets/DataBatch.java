@@ -41,15 +41,22 @@ public interface DataBatch<E> extends DataSet<E> {
 	 * @return Whether this DataBatch is empty.
 	 */
 	boolean isEmpty();
-	
+
 	/**
-	 * Convert to a FloatArrayDataBatch (DataBatch of float arrays), using the specified FeatureExtractor to extract the float arrays.
+	 * Convert to a FloatArrayDataBatch (DataBatch of float arrays), using the
+	 * specified FeatureExtractor to extract the float arrays.
 	 * 
-	 * @param featureExtractor The feature extractor used to obtain the float array for each element.
-	 * @param featureExtractionErrorMode How to handle any errors occurring during feature extraction.
+	 * @param featureExtractor           The feature extractor used to obtain the
+	 *                                   float array for each element.
+	 * @param featureExtractionErrorMode How to handle any errors occurring during
+	 *                                   feature extraction.
 	 * @return The FloatArrayDataBatch.
-	 * @throws FeatureExtractionException In the event an error occurs during feature extraction and FeatureExtractionErrorMode.RAISE_EXCEPTION is specified
+	 * @throws FeatureExtractionException In the event an error occurs during
+	 *                                    feature extraction and
+	 *                                    FeatureExtractionErrorMode.RAISE_EXCEPTION
+	 *                                    is specified
 	 */
-	FloatArrayDataBatch toFloatArrayDataBatch(FeatureExtractor<E> featureExtractor, FeatureExtractionErrorMode featureExtractionErrorMode) throws FeatureExtractionException;
+	FloatArrayDataBatch toFloatArrayDataBatch(FeatureExtractor<E> featureExtractor,
+			FeatureExtractionErrorMode featureExtractionErrorMode) throws FeatureExtractionException;
 
 }

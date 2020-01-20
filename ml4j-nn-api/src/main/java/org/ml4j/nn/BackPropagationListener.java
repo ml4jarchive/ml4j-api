@@ -17,17 +17,17 @@ package org.ml4j.nn;
 import java.io.Serializable;
 
 /**
- *  A listener for back propagations through the network.
+ * A listener for back propagations through the network.
  * 
  * @author Michael Lavelle
  */
 public interface BackPropagationListener extends Serializable {
 
-  /**
-   * Callback for a back propagation event.
-   * 
-   * @param backPropagation The back propagation.
-   * 
-   */
-  void onBackPropagation(BackPropagation backPropagation);
+	/**
+	 * Callback for a back propagation event.
+	 * 
+	 * @param backPropagation The back propagation.
+	 * 
+	 */
+	void onBackPropagation(BackPropagation backPropagation);
 }

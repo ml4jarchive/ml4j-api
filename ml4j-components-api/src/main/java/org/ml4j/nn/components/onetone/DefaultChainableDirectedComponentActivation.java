@@ -21,17 +21,20 @@ import org.ml4j.nn.neurons.NeuronsActivation;
 /**
  * Interface for an activation from a DefaultChainableDirectedComponent.
  * 
- * Encapsulates the activations from a forward propagation through a DefaultChainableDirectedComponent including the
- * output NeuronsActivation from the RHS of the DefaultChainableDirectedComponent
+ * Encapsulates the activations from a forward propagation through a
+ * DefaultChainableDirectedComponent including the output NeuronsActivation from
+ * the RHS of the DefaultChainableDirectedComponent
  * 
  * @author Michael Lavelle
  *
  */
-public interface DefaultChainableDirectedComponentActivation extends ChainableDirectedComponentActivation<NeuronsActivation> {
+public interface DefaultChainableDirectedComponentActivation
+		extends ChainableDirectedComponentActivation<NeuronsActivation> {
 
 	/**
-	 * @return Decompose this activation into a list of the smallest atomic DefaultChainableDirectedComponentActivation
-	 * that can be chained together to form this activation.
+	 * @return Decompose this activation into a list of the smallest atomic
+	 *         DefaultChainableDirectedComponentActivation that can be chained
+	 *         together to form this activation.
 	 */
 	public List<? extends DefaultChainableDirectedComponentActivation> decompose();
 

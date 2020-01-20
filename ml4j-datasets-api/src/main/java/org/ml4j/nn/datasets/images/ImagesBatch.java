@@ -19,7 +19,8 @@ import org.ml4j.images.Image;
 import org.ml4j.nn.datasets.DataBatch;
 
 /**
- * Convenience interface for a DataBatch of suppliers of Image instances - allowing for lazy-read of images.
+ * Convenience interface for a DataBatch of suppliers of Image instances -
+ * allowing for lazy-read of images.
  * 
  * @author Michael Lavelle
  */

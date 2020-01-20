@@ -19,32 +19,32 @@ import org.ml4j.nn.axons.AxonsGradient;
 import java.util.List;
 
 /**
- * Encapsulates the total and average costs and gradients associated with a forward propagation
- * through a FeedForwardNeuralNetwork.
+ * Encapsulates the total and average costs and gradients associated with a
+ * forward propagation through a FeedForwardNeuralNetwork.
  * 
  * @author Michael Lavelle
  */
 public interface CostAndGradients {
 
-  /**
-   * @return The total cost.
-   */
-  float getTotalCost();
-  
-  /**
-   * @return The average cost.
-   */
-  float getAverageCost();
+	/**
+	 * @return The total cost.
+	 */
+	float getTotalCost();
 
-  /**
-   * @return The total gradients.
-   */
-  List<AxonsGradient> getTotalTrainableAxonsGradients();
-  
-  /**
-   * @return The average gradients.
-   */
-  List<AxonsGradient> getAverageTrainableAxonsGradients();
-  
-  void close();
+	/**
+	 * @return The average cost.
+	 */
+	float getAverageCost();
+
+	/**
+	 * @return The total gradients.
+	 */
+	List<AxonsGradient> getTotalTrainableAxonsGradients();
+
+	/**
+	 * @return The average gradients.
+	 */
+	List<AxonsGradient> getAverageTrainableAxonsGradients();
+
+	void close();
 }

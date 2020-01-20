@@ -23,8 +23,8 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  */
 public interface UndirectedSynapsesInput {
 
-  /**
-   * @return The neurons activation input.
-   */
-  NeuronsActivation getInput();
+	/**
+	 * @return The neurons activation input.
+	 */
+	NeuronsActivation getInput();
 }

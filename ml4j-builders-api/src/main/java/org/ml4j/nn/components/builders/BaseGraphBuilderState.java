@@ -24,9 +24,11 @@ public interface BaseGraphBuilderState {
 	ComponentsGraphNeurons<Neurons> getComponentsGraphNeurons();
 
 	Matrix getConnectionWeights();
+
 	Matrix getBiases();
 
 	void setConnectionWeights(Matrix connectionWeights);
+
 	void setBiases(Matrix biases);
 
 	UncompletedFullyConnectedAxonsBuilder<?> getFullyConnectedAxonsBuilder();
@@ -34,7 +36,7 @@ public interface BaseGraphBuilderState {
 	void setFullyConnectedAxonsBuilder(UncompletedFullyConnectedAxonsBuilder<?> object);
 
 	void setSynapsesBuilder(SynapsesAxonsGraphBuilder<?, ?> synapsesBuilder);
-	
+
 	SynapsesAxonsGraphBuilder<?, ?> getSynapsesBuilder();
 
 }

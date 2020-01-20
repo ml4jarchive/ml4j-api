@@ -14,7 +14,8 @@
 package org.ml4j.nn.datasets;
 
 /**
- * Container for labeled data - associating elements of type E with a label of type L.
+ * Container for labeled data - associating elements of type E with a label of
+ * type L.
  * 
  * @author Michael Lavelle
  *

@@ -14,25 +14,25 @@
 package org.ml4j.nn.components;
 
 interface INeuralComponentType {
-	
+
 	NeuralComponentBaseType getBaseType();
-	
+
 	INeuralComponentType getParentType();
-		
+
 	String getId();
-	
+
 	String getQualifiedId();
-	
+
 	static <S extends NeuralComponent> INeuralComponentType customType(NeuralComponentType<?> parentType, String id) {
 		return new NeuralComponentType<>(parentType, id, false, false);
 	}
-	
+
 	static NeuralComponentType<NeuralComponent> baseType(NeuralComponentBaseType baseType) {
 		return baseType.asNeuralNetworkType();
 	}
-	
+
 	boolean isStandardBaseType();
-	
+
 	boolean isCustomBaseType();
 
 }

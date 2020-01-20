@@ -19,15 +19,15 @@ package org.ml4j.nn.costfunctions;
 import org.ml4j.Matrix;
 
 /**
- * Interface for a cost function which calculates cost of generating an output Matrix
- * given a desired output Matrix. 
+ * Interface for a cost function which calculates cost of generating an output
+ * Matrix given a desired output Matrix.
  * 
  * @author Michael Lavelle
  */
 public interface CostFunction {
 
-  float getTotalCost(Matrix desiredOutputs, Matrix actualOutputs);
-  
-  float getAverageCost(Matrix desiredOutputs, Matrix actualOutputs);
+	float getTotalCost(Matrix desiredOutputs, Matrix actualOutputs);
+
+	float getAverageCost(Matrix desiredOutputs, Matrix actualOutputs);
 
 }

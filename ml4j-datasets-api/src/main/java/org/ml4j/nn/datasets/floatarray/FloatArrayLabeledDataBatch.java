@@ -17,6 +17,7 @@ import org.ml4j.MatrixFactory;
 import org.ml4j.nn.datasets.LabeledData;
 import org.ml4j.nn.datasets.LabeledDataBatch;
 import org.ml4j.nn.neurons.NeuronsActivation;
+import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
 
 /**
  * Convenience interface for a LabeledDataBatch of float arrays.
@@ -26,22 +27,26 @@ import org.ml4j.nn.neurons.NeuronsActivation;
 public interface FloatArrayLabeledDataBatch extends LabeledDataBatch<float[], float[]> {
 
 	/**
-     * Obtain the elements of this FloatArrayLabeledDataBatch ( without labels) as a FloatArrayDataBatch
+	 * Obtain the elements of this FloatArrayLabeledDataBatch ( without labels) as a
+	 * FloatArrayDataBatch
 	 */
 	FloatArrayDataBatch getDataSet();
 
 	/**
-     * Obtain the labels of this FloatArrayLabeledDataBatch as a FloatArrayDataBatch
+	 * Obtain the labels of this FloatArrayLabeledDataBatch as a FloatArrayDataBatch
 	 */
 	FloatArrayDataBatch getLabelsSet();
-	
+
 	/**
-	 * Convert this FloatArrayLabeledDataBatch to a pair of NeuronsActivations - one NeuronsActivation containing
-	 * the elements and another for the labels.
+	 * Convert this FloatArrayLabeledDataBatch to a pair of NeuronsActivations - one
+	 * NeuronsActivation containing the elements and another for the labels.
 	 * 
 	 * @param matrixFactory
+	 * @param featureOrientation The desired feature orientation of
+	 *                           NeuronsActivations in the result
 	 * @return
 	 */
-	LabeledData<NeuronsActivation, NeuronsActivation> toNeuronsActivations(MatrixFactory matrixFactory);
+	LabeledData<NeuronsActivation, NeuronsActivation> toNeuronsActivations(MatrixFactory matrixFactory,
+			NeuronsActivationFeatureOrientation featureOrientation);
 
 }

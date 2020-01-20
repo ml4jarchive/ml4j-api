@@ -21,17 +21,19 @@ import org.ml4j.nn.neurons.NeuronsActivation;
 /**
  * Base interface for classes representing an UnsupervisedNeuralNetwork.
  *
- * @param <C> The type of runtime NeuralNetworkContext used with this UnsupervisedNeuralNetwork
+ * @param <C> The type of runtime NeuralNetworkContext used with this
+ *            UnsupervisedNeuralNetwork
  * @param <N> The type of UnsupervisedNeuralNetwork
  */
-public interface UnsupervisedNeuralNetwork<C extends NeuralNetworkContext, 
-    N extends UnsupervisedNeuralNetwork<C, N>> extends NeuralNetwork<C, N> {
+public interface UnsupervisedNeuralNetwork<C extends NeuralNetworkContext, N extends UnsupervisedNeuralNetwork<C, N>>
+		extends NeuralNetwork<C, N> {
 
-  /**
-   * Trains the UnsupervisedNeuralNetwork.
-   * 
-   * @param trainingDataActivations The NeuronsActivation produced by the training data
-   * @param trainingContext The NeuralNetworkContext used for training
-   */
-  public void train(NeuronsActivation trainingDataActivations, C trainingContext);
+	/**
+	 * Trains the UnsupervisedNeuralNetwork.
+	 * 
+	 * @param trainingDataActivations The NeuronsActivation produced by the training
+	 *                                data
+	 * @param trainingContext         The NeuralNetworkContext used for training
+	 */
+	public void train(NeuronsActivation trainingDataActivations, C trainingContext);
 }

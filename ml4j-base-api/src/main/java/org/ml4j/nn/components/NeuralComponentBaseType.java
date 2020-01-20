@@ -14,10 +14,10 @@
 package org.ml4j.nn.components;
 
 public enum NeuralComponentBaseType implements INeuralComponentType {
-	
-	COMPONENT_CHAIN, COMPONENT_BATCH, COMPONENT_BIPOLE_GRAPH, COMPONENT_CHAIN_BATCH, COMPONENT_CHAIN_BIPOLE_GRAPH, AXONS, AXONS_CHAIN, AXONS_GRAPH,
-	SYNAPSES, SYNAPSES_CHAIN, SYNAPSES_GRAPH, LAYER, LAYER_CHAIN, NETWORK, ACTIVATION_FUNCTION,
-	ONE_TO_MANY, MANY_TO_ONE, DEFINITION, CUSTOM;
+
+	COMPONENT_CHAIN, COMPONENT_BATCH, COMPONENT_BIPOLE_GRAPH, COMPONENT_CHAIN_BATCH, COMPONENT_CHAIN_BIPOLE_GRAPH,
+	AXONS, AXONS_CHAIN, AXONS_GRAPH, SYNAPSES, SYNAPSES_CHAIN, SYNAPSES_GRAPH, LAYER, LAYER_CHAIN, NETWORK,
+	ACTIVATION_FUNCTION, ONE_TO_MANY, MANY_TO_ONE, DEFINITION, CUSTOM;
 
 	@Override
 	public INeuralComponentType getParentType() {
@@ -33,7 +33,7 @@ public enum NeuralComponentBaseType implements INeuralComponentType {
 	public NeuralComponentBaseType getBaseType() {
 		return this;
 	}
-	
+
 	NeuralComponentType<NeuralComponent> asNeuralNetworkType() {
 		return new NeuralComponentType<>(this, getId(), isStandardBaseType(), isCustomBaseType());
 	}

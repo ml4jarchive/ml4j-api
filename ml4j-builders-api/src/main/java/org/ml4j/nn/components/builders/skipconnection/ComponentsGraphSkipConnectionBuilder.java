@@ -16,8 +16,9 @@ package org.ml4j.nn.components.builders.skipconnection;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.componentsgraph.ComponentsGraphBuilder;
 
-public interface ComponentsGraphSkipConnectionBuilder<P, T extends NeuralComponent> extends ComponentsGraphBuilder<ComponentsGraphSkipConnectionBuilder<P, T>, T>  {
+public interface ComponentsGraphSkipConnectionBuilder<P, T extends NeuralComponent>
+		extends ComponentsGraphBuilder<ComponentsGraphSkipConnectionBuilder<P, T>, T> {
 
 	P endSkipConnection();
-	
+
 }

@@ -16,21 +16,24 @@ package org.ml4j.nn.datasets;
 import org.ml4j.nn.datasets.floatarray.FloatArrayBatchedDataSet;
 
 /**
- * Encapsulates a DataSet consisting of DataBatch instances containing elements of a defined type.
+ * Encapsulates a DataSet consisting of DataBatch instances containing elements
+ * of a defined type.
  * 
  * @author Michael Lavelle
  *
  * @param <E> The type of element within each DataBatch within this DataSet
  */
 public interface BatchedDataSet<E> extends DataSet<DataBatch<E>> {
-	
+
 	/**
-	 * Convert this BatchedDataSet to a FloatArrayBatchedDataSet using the specified FeatureExtractor.
+	 * Convert this BatchedDataSet to a FloatArrayBatchedDataSet using the specified
+	 * FeatureExtractor.
 	 * 
 	 * @param featureExtractor
 	 * @param featureExtractionErrorMode
 	 * @return
 	 */
-	FloatArrayBatchedDataSet toFloatArrayBatchedDataSet(FeatureExtractor<E> featureExtractor, FeatureExtractionErrorMode featureExtractionErrorMode);
+	FloatArrayBatchedDataSet toFloatArrayBatchedDataSet(FeatureExtractor<E> featureExtractor,
+			FeatureExtractionErrorMode featureExtractionErrorMode);
 
 }

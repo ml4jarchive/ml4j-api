@@ -21,7 +21,7 @@ package org.ml4j.nn;
  *
  * @param <N> The type of this RecurrentNeuralNetwork.
  */
-public interface RecurrentNeuralNetwork<N extends RecurrentNeuralNetwork<N>> extends 
-    DirectedNeuralNetwork<RecurrentNeuralNetworkContext, N> {
+public interface RecurrentNeuralNetwork<N extends RecurrentNeuralNetwork<N>>
+		extends DirectedNeuralNetwork<RecurrentNeuralNetworkContext, N> {
 
 }

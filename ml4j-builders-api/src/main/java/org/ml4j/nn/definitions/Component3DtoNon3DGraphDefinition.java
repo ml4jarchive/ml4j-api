@@ -7,7 +7,7 @@ import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphB
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponentsGraphBuilder;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.neurons.Neurons3D;
-import org.ml4j.nn.sessions.Session;
+import org.ml4j.nn.sessions.ComponentGraphBuilderSession;
 
 public interface Component3DtoNon3DGraphDefinition extends NeuralComponent {
 
@@ -16,9 +16,9 @@ public interface Component3DtoNon3DGraphDefinition extends NeuralComponent {
 
 	<T extends NeuralComponent> InitialComponentsGraphBuilder<T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory);
-	
+
 	default <T extends NeuralComponent> InitialComponentsGraphBuilder<T> createComponentGraph(
-			Session<T> session) {
+			ComponentGraphBuilderSession<T> session) {
 		return createComponentGraph(session.startWith3DNeurons(getInputNeurons()), session.getNeuralComponentFactory());
 	}
 

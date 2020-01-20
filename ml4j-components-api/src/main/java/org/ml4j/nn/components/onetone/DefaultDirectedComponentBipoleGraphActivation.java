@@ -18,8 +18,9 @@ import java.util.List;
 /**
  * Interface for an activation from a DefaultDirectedComponentBipoleGraph.
  * 
- * Encapsulates the activations from a forward propagation through a DefaultDirectedComponentBipoleGraph including the
- * output NeuronsActivation from the RHS of the DefaultDirectedComponentBipoleGraph.
+ * Encapsulates the activations from a forward propagation through a
+ * DefaultDirectedComponentBipoleGraph including the output NeuronsActivation
+ * from the RHS of the DefaultDirectedComponentBipoleGraph.
  * 
  * @author Michael Lavelle
  *
@@ -28,5 +29,5 @@ public interface DefaultDirectedComponentBipoleGraphActivation extends DefaultCh
 
 	@Override
 	List<DefaultChainableDirectedComponentActivation> decompose();
-	
+
 }

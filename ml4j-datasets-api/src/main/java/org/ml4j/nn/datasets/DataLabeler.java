@@ -25,9 +25,9 @@ public interface DataLabeler<E, L> {
 
 	/**
 	 * Obtain a label for the specified element index and element.
-	 *  
+	 * 
 	 * @param elementIndex The index of the element in the parent batch.
-	 * @param element The element to obtain the label for.
+	 * @param element      The element to obtain the label for.
 	 * @return The label of the element.
 	 */
 	public L getLabel(long elementIndex, E element);

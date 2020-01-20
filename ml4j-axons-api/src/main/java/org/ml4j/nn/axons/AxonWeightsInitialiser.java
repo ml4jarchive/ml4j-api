@@ -36,7 +36,6 @@ public interface AxonWeightsInitialiser {
 	 */
 	Matrix getInitialConnectionWeights(MatrixFactory matrixFactory);
 
-
 	/**
 	 * Get the optional initial left to right biases for the AxonWeights.
 	 * 

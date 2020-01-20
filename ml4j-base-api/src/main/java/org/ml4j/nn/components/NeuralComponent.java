@@ -17,12 +17,12 @@ import java.io.Serializable;
 
 import org.ml4j.nn.neurons.Neurons;
 
-public interface NeuralComponent extends Serializable  {
+public interface NeuralComponent extends Serializable {
 
 	NeuralComponentType<?> getComponentType();
 
 	Neurons getInputNeurons();
-	
+
 	Neurons getOutputNeurons();
 
 }

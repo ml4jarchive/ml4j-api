@@ -19,7 +19,8 @@ import org.ml4j.images.Image;
 import org.ml4j.nn.datasets.DataSet;
 
 /**
- * Convenience interface for a DataSet of suppliers of Image instances - allowing for lazy-read of images.
+ * Convenience interface for a DataSet of suppliers of Image instances -
+ * allowing for lazy-read of images.
  * 
  * @author Michael Lavelle
  */

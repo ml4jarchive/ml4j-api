@@ -17,6 +17,7 @@ import org.ml4j.Matrix;
 import org.ml4j.MatrixFactory;
 import org.ml4j.nn.datasets.DataBatch;
 import org.ml4j.nn.neurons.NeuronsActivation;
+import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
 
 /**
  * Convenience interface for a DataBatch of float arrays.
@@ -26,8 +27,8 @@ import org.ml4j.nn.neurons.NeuronsActivation;
 public interface FloatArrayDataBatch extends DataBatch<float[]> {
 
 	/**
-	 * Obtain the data within this FloatArrayDataBatch as a Matrix, with each float array element forming a row
-	 * in the matrix.
+	 * Obtain the data within this FloatArrayDataBatch as a Matrix, with each float
+	 * array element forming a row in the matrix.
 	 * 
 	 * @param matrixFactory The matrix factory used to construct the Matrix.
 	 * @return The Matrix.
@@ -35,11 +36,16 @@ public interface FloatArrayDataBatch extends DataBatch<float[]> {
 	Matrix getAsMatrix(MatrixFactory matrixFactory);
 
 	/**
-	 * Obtain the data  within this FloatArrayDataBatch as a NeuronsActivation instance.
+	 * Obtain the data within this FloatArrayDataBatch as a NeuronsActivation
+	 * instance.
 	 * 
-	 * @param matrixFactory The matrix factory used to construct the NeuronsActivation.
+	 * @param matrixFactory      The matrix factory used to construct the
+	 *                           NeuronsActivation.
+	 * @param featureOrientation The desired feature orientation of the resulting
+	 *                           NeuronsActivationLabeledDataSet
 	 * @return The NeuronsActivation.
 	 */
-	NeuronsActivation toNeuronsActivation(MatrixFactory matrixFactory);
+	NeuronsActivation toNeuronsActivation(MatrixFactory matrixFactory,
+			NeuronsActivationFeatureOrientation featureOrientation);
 
 }

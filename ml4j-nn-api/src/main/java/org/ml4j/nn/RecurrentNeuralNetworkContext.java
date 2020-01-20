@@ -23,5 +23,4 @@ package org.ml4j.nn;
  */
 public interface RecurrentNeuralNetworkContext extends DirectedNeuralNetworkContext {
 
- 
 }

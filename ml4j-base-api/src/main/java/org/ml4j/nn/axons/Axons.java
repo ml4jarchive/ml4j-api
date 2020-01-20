@@ -29,7 +29,8 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @param <R> The type of Neurons on the right hand side of these Axons
  * @param <A> The type of these Axons
  */
-public interface Axons<L extends Neurons, R extends Neurons, A extends Axons<L, R, A>> extends NeuronsActivationComponent, Serializable {
+public interface Axons<L extends Neurons, R extends Neurons, A extends Axons<L, R, A>>
+		extends NeuronsActivationComponent, Serializable {
 
 	/**
 	 * Get the Neurons on the left hand side of these Axons.

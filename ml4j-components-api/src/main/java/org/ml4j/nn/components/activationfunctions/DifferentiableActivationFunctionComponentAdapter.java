@@ -16,7 +16,9 @@ package org.ml4j.nn.components.activationfunctions;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 
 /**
- * Component adapter for a  DifferentiableActivationFunction, allowing DifferentiableActivationFunctions to be used within a sequential component chain.
+ * Component adapter for a DifferentiableActivationFunction, allowing
+ * DifferentiableActivationFunctions to be used within a sequential component
+ * chain.
  * 
  * @author Michael Lavelle
  */
@@ -26,12 +28,11 @@ public interface DifferentiableActivationFunctionComponentAdapter extends Differ
 	 * @return The adapted DifferentiableActivationFunction.
 	 */
 	DifferentiableActivationFunction getActivationFunction();
-	
 
 	/**
 	 * @return A deep copy of this component.
 	 */
 	@Override
 	DifferentiableActivationFunctionComponentAdapter dup();
-	
+
 }

@@ -22,5 +22,5 @@ import org.ml4j.nn.layers.UndirectedLayerContext;
 public interface RestrictedBoltzmannMachineContext extends UndirectedNeuralNetworkContext {
 
 	UndirectedLayerContext getLayerContext();
-  
+
 }

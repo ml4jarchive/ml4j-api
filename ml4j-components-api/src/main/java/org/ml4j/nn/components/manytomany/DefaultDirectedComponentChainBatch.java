@@ -21,7 +21,8 @@ import org.ml4j.nn.components.onetone.DefaultDirectedComponentChain;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Container for a batch of DefaultDirectedComponentChain instances that can be activated in parallel.
+ * Container for a batch of DefaultDirectedComponentChain instances that can be
+ * activated in parallel.
  * 
  * @author Michael Lavelle
  */
@@ -32,7 +33,8 @@ public interface DefaultDirectedComponentChainBatch extends
 	DefaultDirectedComponentChainBatch dup();
 
 	/**
-	 * @return A list of the parallel DefaultDirectedComponentChain instances within this batch.
+	 * @return A list of the parallel DefaultDirectedComponentChain instances within
+	 *         this batch.
 	 */
 	public List<DefaultDirectedComponentChain> getComponents();
 }

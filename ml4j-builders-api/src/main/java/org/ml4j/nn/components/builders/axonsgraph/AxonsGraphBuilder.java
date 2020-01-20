@@ -19,6 +19,8 @@ import org.ml4j.nn.components.builders.axons.AxonsPermitted;
 import org.ml4j.nn.components.builders.common.ParallelPathsPermitted;
 import org.ml4j.nn.components.builders.skipconnection.SkipConnectionPermitted;
 
-public interface AxonsGraphBuilder<C, T extends NeuralComponent> extends AxonsPermitted<C>, AxonsBuilder<T>, ParallelPathsPermitted<AxonsSubGraphBuilder<C, T>>, SkipConnectionPermitted<AxonsGraphSkipConnectionBuilder<C, T>, T> {
+public interface AxonsGraphBuilder<C, T extends NeuralComponent>
+		extends AxonsPermitted<C>, AxonsBuilder<T>, ParallelPathsPermitted<AxonsSubGraphBuilder<C, T>>,
+		SkipConnectionPermitted<AxonsGraphSkipConnectionBuilder<C, T>, T> {
 
 }

@@ -17,8 +17,8 @@
 package org.ml4j.nn.axons;
 
 /**
- * Encapsulates the connections between two sets of Neurons3D which are max-pooled
- * from left to right.
+ * Encapsulates the connections between two sets of Neurons3D which are
+ * max-pooled from left to right.
  * 
  * @author Michael Lavelle
  *

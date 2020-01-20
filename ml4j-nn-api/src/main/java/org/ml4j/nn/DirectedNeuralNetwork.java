@@ -29,29 +29,31 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @param <C> The NeuralNetworkContext used with this NeuralNetwork
  * @param <N> The type of NeuralNetwork
  */
-public interface DirectedNeuralNetwork<C extends NeuralNetworkContext, 
-    N extends DirectedNeuralNetwork<C, N>> 
-    extends NeuralNetwork<C, N>, ChainableDirectedComponent<NeuronsActivation, ForwardPropagation, C> {
+public interface DirectedNeuralNetwork<C extends NeuralNetworkContext, N extends DirectedNeuralNetwork<C, N>>
+		extends NeuralNetwork<C, N>, ChainableDirectedComponent<NeuronsActivation, ForwardPropagation, C> {
 
-  /**
-   * Forward propagate the activation through this DirectedLayer
-   * 
-   * @param inputActivation The NeuronsActivation input on the left hand side of this 
-   *        DirectedLayer.
-   * @param context The context in which we are performing the forward propagation
-   * @return A ForwardPropagation instance encapsulating the artifacts generated during the
-   *         forward propagation through this DirectedLayer, including the NeuronsActivation output
-   *         on the right hand side of the DirectedLayer
-   */
-  ForwardPropagation forwardPropagate(NeuronsActivation inputActivation, C context);
-  
-  Stream<ForwardPropagation> forwardPropagate(Stream<NeuronsActivation> inputActivation, C context);  
-  /**
-   * @return The training context used for the last epoch of training, or null if no context
-   *         available.
-   */
-  C getLastEpochTrainingContext();
+	/**
+	 * Forward propagate the activation through this DirectedLayer
+	 * 
+	 * @param inputActivation The NeuronsActivation input on the left hand side of
+	 *                        this DirectedLayer.
+	 * @param context         The context in which we are performing the forward
+	 *                        propagation
+	 * @return A ForwardPropagation instance encapsulating the artifacts generated
+	 *         during the forward propagation through this DirectedLayer, including
+	 *         the NeuronsActivation output on the right hand side of the
+	 *         DirectedLayer
+	 */
+	ForwardPropagation forwardPropagate(NeuronsActivation inputActivation, C context);
 
-  List<DefaultChainableDirectedComponent<?, ?>> decompose();
-  
+	Stream<ForwardPropagation> forwardPropagate(Stream<NeuronsActivation> inputActivation, C context);
+
+	/**
+	 * @return The training context used for the last epoch of training, or null if
+	 *         no context available.
+	 */
+	C getLastEpochTrainingContext();
+
+	List<DefaultChainableDirectedComponent<?, ?>> decompose();
+
 }

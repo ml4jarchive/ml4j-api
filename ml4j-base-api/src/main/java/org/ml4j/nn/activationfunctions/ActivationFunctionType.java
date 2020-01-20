@@ -25,26 +25,29 @@ public final class ActivationFunctionType implements IActivationFunctionType {
 	public static ActivationFunctionType createSubType(ActivationFunctionType parentType, String id) {
 		return new ActivationFunctionType(parentType, id, false, false);
 	}
-	
+
 	public static ActivationFunctionType createSubType(ActivationFunctionBaseType parentType, String id) {
 		return new ActivationFunctionType(parentType, id, false, false);
 	}
 
 	public static ActivationFunctionType createCustomBaseType(String id) {
-		if (Arrays.asList(ActivationFunctionBaseType.values()).stream().anyMatch(v -> v.getId().compareToIgnoreCase(id) == 0)) {
+		if (Arrays.asList(ActivationFunctionBaseType.values()).stream()
+				.anyMatch(v -> v.getId().compareToIgnoreCase(id) == 0)) {
 			throw new IllegalArgumentException("Name clash with existing standard base type:" + id);
 		}
 		return new ActivationFunctionType(ActivationFunctionBaseType.CUSTOM, id, false, true);
 	}
-	
+
 	public static ActivationFunctionType getBaseType(ActivationFunctionBaseType baseType) {
 		if (ActivationFunctionBaseType.CUSTOM.equals(baseType)) {
-			throw new IllegalArgumentException("Use createCustomBaseType(String id) method to obtain a custom base type");
+			throw new IllegalArgumentException(
+					"Use createCustomBaseType(String id) method to obtain a custom base type");
 		}
 		return baseType.asNeuralNetworkType();
 	}
-	
-	ActivationFunctionType(IActivationFunctionType parentType, String id, boolean isStandardBaseType, boolean isCustomBaseType) {
+
+	ActivationFunctionType(IActivationFunctionType parentType, String id, boolean isStandardBaseType,
+			boolean isCustomBaseType) {
 		this.parentType = parentType;
 		this.id = id;
 		this.isStandardBaseType = isStandardBaseType;
@@ -58,7 +61,7 @@ public final class ActivationFunctionType implements IActivationFunctionType {
 	public ActivationFunctionBaseType getBaseType() {
 		return parentType.getBaseType();
 	}
-	
+
 	@Override
 	public IActivationFunctionType getParentType() {
 		return parentType;
@@ -71,14 +74,16 @@ public final class ActivationFunctionType implements IActivationFunctionType {
 
 	@Override
 	public String getQualifiedId() {
-		return isStandardBaseType ? getId() : (ActivationFunctionBaseType.CUSTOM.equals(getParentType()) ? getId() : (getParentType().getQualifiedId() + "." + getId()));
+		return isStandardBaseType ? getId()
+				: (ActivationFunctionBaseType.CUSTOM.equals(getParentType()) ? getId()
+						: (getParentType().getQualifiedId() + "." + getId()));
 	}
 
 	@Override
 	public boolean isStandardBaseType() {
 		return isStandardBaseType;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,7 +91,7 @@ public final class ActivationFunctionType implements IActivationFunctionType {
 		result = prime * result + ((getQualifiedId() == null) ? 0 : getQualifiedId().hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public String toString() {
 		return getQualifiedId();

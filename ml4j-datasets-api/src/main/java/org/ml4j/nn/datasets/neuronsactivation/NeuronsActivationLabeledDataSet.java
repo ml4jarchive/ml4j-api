@@ -17,7 +17,8 @@ import org.ml4j.nn.datasets.LabeledDataSet;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Convenience interface for a LabeledDataSet of NeuronsActivation instances with NeuronsActivation labels
+ * Convenience interface for a LabeledDataSet of NeuronsActivation instances
+ * with NeuronsActivation labels
  * 
  * @author Michael Lavelle
  */

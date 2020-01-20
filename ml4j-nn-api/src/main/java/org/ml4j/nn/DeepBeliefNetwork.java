@@ -16,8 +16,7 @@ package org.ml4j.nn;
 
 import org.ml4j.nn.layers.RestrictedBoltzmannLayer;
 
-public interface DeepBeliefNetwork<
-    N extends DeepBeliefNetwork<N, C>, C extends LayeredNeuralNetworkContext>
-    extends LayeredNeuralNetwork<RestrictedBoltzmannLayer<?>, C, N> {
+public interface DeepBeliefNetwork<N extends DeepBeliefNetwork<N, C>, C extends LayeredNeuralNetworkContext>
+		extends LayeredNeuralNetwork<RestrictedBoltzmannLayer<?>, C, N> {
 
 }

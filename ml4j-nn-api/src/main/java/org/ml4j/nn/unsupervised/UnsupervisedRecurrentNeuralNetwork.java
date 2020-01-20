@@ -24,9 +24,8 @@ import org.ml4j.nn.RecurrentNeuralNetworkContext;
  * 
  * @author Michael Lavelle
  */
-public interface UnsupervisedRecurrentNeuralNetwork extends 
-        UnsupervisedNeuralNetwork<RecurrentNeuralNetworkContext, 
-        UnsupervisedRecurrentNeuralNetwork>,
-            RecurrentNeuralNetwork<UnsupervisedRecurrentNeuralNetwork> {
+public interface UnsupervisedRecurrentNeuralNetwork
+		extends UnsupervisedNeuralNetwork<RecurrentNeuralNetworkContext, UnsupervisedRecurrentNeuralNetwork>,
+		RecurrentNeuralNetwork<UnsupervisedRecurrentNeuralNetwork> {
 
 }

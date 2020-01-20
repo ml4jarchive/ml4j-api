@@ -18,7 +18,8 @@ import java.util.function.Consumer;
 import org.ml4j.nn.axons.AxonsContext;
 import org.ml4j.nn.neurons.Neurons;
 
-public interface UncompletedFullyConnectedAxonsBuilder<C> extends UncompletedTrainableAxonsBuilder<Neurons, C, UncompletedFullyConnectedAxonsBuilder<C>> {
+public interface UncompletedFullyConnectedAxonsBuilder<C>
+		extends UncompletedTrainableAxonsBuilder<Neurons, C, UncompletedFullyConnectedAxonsBuilder<C>> {
 
 	UncompletedFullyConnectedAxonsBuilder<C> withAxonsContextConfigurer(Consumer<AxonsContext> axonsContextConfigurer);
 

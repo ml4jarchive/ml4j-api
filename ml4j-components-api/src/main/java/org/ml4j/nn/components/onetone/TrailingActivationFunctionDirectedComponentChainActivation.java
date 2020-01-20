@@ -21,13 +21,10 @@ public interface TrailingActivationFunctionDirectedComponentChainActivation
 		extends DefaultDirectedComponentChainActivation {
 
 	/**
-	 * @param outerGradient
-	 *            The outer gradient to back propagate.
-	 * @param synapsesContext
-	 *            The synapses context.
+	 * @param outerGradient   The outer gradient to back propagate.
+	 * @param synapsesContext The synapses context.
 	 * @return The back propagated DirectedComponentGradient.
 	 */
 	DirectedComponentGradient<NeuronsActivation> backPropagate(CostFunctionGradient outerGradient);
-	
-	
+
 }

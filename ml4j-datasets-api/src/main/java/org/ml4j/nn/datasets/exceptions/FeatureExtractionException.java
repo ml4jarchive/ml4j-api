@@ -14,7 +14,8 @@
 package org.ml4j.nn.datasets.exceptions;
 
 /**
- * A checked exception occurring during Feature extraction using a FeatureExtractor.
+ * A checked exception occurring during Feature extraction using a
+ * FeatureExtractor.
  * 
  * @author Michael Lavelle
  *

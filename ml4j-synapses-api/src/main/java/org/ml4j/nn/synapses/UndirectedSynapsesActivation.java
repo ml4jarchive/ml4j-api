@@ -18,23 +18,25 @@ import org.ml4j.nn.axons.AxonsActivation;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Encapsulates the artifacts generated for an activation through UndirectedSynapses.
+ * Encapsulates the artifacts generated for an activation through
+ * UndirectedSynapses.
  * 
  * @author Michael Lavelle
  */
 public interface UndirectedSynapsesActivation {
 
-  /**
-   * @return The NeuronsActivation output from the UndirectedSynapses.
-   */
-  public NeuronsActivation getOutput();
-  
-  /**
-   * @return The UndirectedSynapses that generated this UndirectedSynapsesActivation.
-   */
-  public UndirectedSynapses<?, ?> getSynapses();
+	/**
+	 * @return The NeuronsActivation output from the UndirectedSynapses.
+	 */
+	public NeuronsActivation getOutput();
 
-  public AxonsActivation getAxonsActivation();
-  
-  public NeuronsActivation getInput();
+	/**
+	 * @return The UndirectedSynapses that generated this
+	 *         UndirectedSynapsesActivation.
+	 */
+	public UndirectedSynapses<?, ?> getSynapses();
+
+	public AxonsActivation getAxonsActivation();
+
+	public NeuronsActivation getInput();
 }

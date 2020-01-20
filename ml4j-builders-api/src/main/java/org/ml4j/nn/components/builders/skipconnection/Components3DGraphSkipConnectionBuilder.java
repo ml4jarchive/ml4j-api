@@ -17,8 +17,10 @@ import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.axons.Axons3DBuilder;
 import org.ml4j.nn.components.builders.componentsgraph.Components3DGraphBuilder;
 
-public interface Components3DGraphSkipConnectionBuilder<P, Q, T extends NeuralComponent> extends Components3DGraphBuilder<Components3DGraphSkipConnectionBuilder<P, Q, T>, ComponentsGraphSkipConnectionBuilder<Q, T>, T>, Axons3DBuilder<T> {
+public interface Components3DGraphSkipConnectionBuilder<P, Q, T extends NeuralComponent> extends
+		Components3DGraphBuilder<Components3DGraphSkipConnectionBuilder<P, Q, T>, ComponentsGraphSkipConnectionBuilder<Q, T>, T>,
+		Axons3DBuilder<T> {
 
 	P endSkipConnection();
-	
+
 }

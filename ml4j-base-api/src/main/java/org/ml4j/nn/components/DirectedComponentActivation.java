@@ -16,7 +16,8 @@ package org.ml4j.nn.components;
 /**
  * Interface for an activation from a DirectedComponent.
  * 
- * Encapsulates the activations from a forward propagation through a DirectedComponent
+ * Encapsulates the activations from a forward propagation through a
+ * DirectedComponent
  * 
  * @author Michael Lavelle
  *
@@ -26,7 +27,8 @@ package org.ml4j.nn.components;
 public interface DirectedComponentActivation<I, O> {
 
 	/**
-	 * Back propagate the gradient from the outer layer through the component that produced this activation.
+	 * Back propagate the gradient from the outer layer through the component that
+	 * produced this activation.
 	 * 
 	 * 
 	 * @param outerGradient The outer gradient to back propagate.

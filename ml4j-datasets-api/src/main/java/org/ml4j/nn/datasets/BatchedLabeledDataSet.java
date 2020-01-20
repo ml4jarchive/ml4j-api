@@ -16,22 +16,28 @@ package org.ml4j.nn.datasets;
 import org.ml4j.nn.datasets.floatarray.FloatArrayBatchedLabeledDataSet;
 
 /**
- * Encapsulates a BatchedDataSet consisting of DataBatch instances containing LabeledData instances of a defined type.
+ * Encapsulates a BatchedDataSet consisting of DataBatch instances containing
+ * LabeledData instances of a defined type.
  * 
  * @author Michael Lavelle
  *
- * @param <E> The type of element within each LabeledData instance within each DataBatch.
- * @param <L> The type of label within each LabeledData instance withinin each DataBatch.
+ * @param <E> The type of element within each LabeledData instance within each
+ *            DataBatch.
+ * @param <L> The type of label within each LabeledData instance withinin each
+ *            DataBatch.
  */
 public interface BatchedLabeledDataSet<E, L> extends BatchedDataSet<LabeledData<E, L>> {
 
 	/**
 	 * Convert this BatchedLabeledDataSet to a FloatArrayBatchedLabeledDataSet
 	 * 
-	 * @param featureExtractor The feature extractor used to obtain the float arrays.
-	 * @param labelMapper The mapper used to obtain the float array labels.
+	 * @param featureExtractor           The feature extractor used to obtain the
+	 *                                   float arrays.
+	 * @param labelMapper                The mapper used to obtain the float array
+	 *                                   labels.
 	 * @param featureExtractionErrorMode The error mode.
 	 * @return a FloatArrayBatchedLabeledDataSet.
 	 */
-	FloatArrayBatchedLabeledDataSet toFloatArrayBatchedLabeledDataSet(FeatureExtractor<E> featureExtractor, FeatureExtractor<L> labelMapper, FeatureExtractionErrorMode featureExtractionErrorMode);
+	FloatArrayBatchedLabeledDataSet toFloatArrayBatchedLabeledDataSet(FeatureExtractor<E> featureExtractor,
+			FeatureExtractor<L> labelMapper, FeatureExtractionErrorMode featureExtractionErrorMode);
 }

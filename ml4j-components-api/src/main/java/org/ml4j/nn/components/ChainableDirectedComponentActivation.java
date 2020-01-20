@@ -18,22 +18,24 @@ import java.util.List;
 /**
  * Interface for an activation from a ChainableDirectedComponent.
  * 
- * Encapsulates the activations from a forward propagation through a ChainableDirectedComponent
+ * Encapsulates the activations from a forward propagation through a
+ * ChainableDirectedComponent
  * 
  * @author Michael Lavelle
  *
- * @param <I> The type of the input applied to the LHS of the ChainableDirectedComponent and output from the RHS of 
- * the ChainableDirectedComponent.
+ * @param <I> The type of the input applied to the LHS of the
+ *            ChainableDirectedComponent and output from the RHS of the
+ *            ChainableDirectedComponent.
  */
 public interface ChainableDirectedComponentActivation<I> extends DirectedComponentActivation<I, I> {
 
 	/**
-	 * @return Decompose this activation into a list of the smallest atomic ChainableDirectedComponentActivations
-	 * that can be chained together to form this activation.
+	 * @return Decompose this activation into a list of the smallest atomic
+	 *         ChainableDirectedComponentActivations that can be chained together to
+	 *         form this activation.
 	 */
 	public List<? extends ChainableDirectedComponentActivation<I>> decompose();
-	
-	
+
 	void close(DirectedComponentActivationLifecycle completedLifeCycleStage);
 
 }

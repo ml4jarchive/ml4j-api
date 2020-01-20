@@ -15,6 +15,7 @@ package org.ml4j.nn.components.builders.synapses;
 
 import org.ml4j.nn.components.NeuralComponent;
 
-public interface InitialSynapsesAxonsGraphBuilder<T extends NeuralComponent> extends SynapsesAxonsGraphBuilder<InitialSynapsesAxonsGraphBuilder<T>, T> {
+public interface InitialSynapsesAxonsGraphBuilder<T extends NeuralComponent>
+		extends SynapsesAxonsGraphBuilder<InitialSynapsesAxonsGraphBuilder<T>, T> {
 
 }

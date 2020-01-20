@@ -22,7 +22,7 @@ package org.ml4j.nn.neurons;
  * @author Michael Lavelle
  */
 public class Neurons3D extends Neurons {
-	
+
 	/**
 	 * Default serialization id.
 	 */
@@ -44,7 +44,7 @@ public class Neurons3D extends Neurons {
 		this.height = height;
 		this.depth = depth;
 	}
-	
+
 	/**
 	 * @return The width of the volume of Neurons.
 	 */

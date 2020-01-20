@@ -19,7 +19,8 @@ import org.ml4j.images.Image;
 import org.ml4j.nn.datasets.LabeledDataBatch;
 
 /**
- * Convenience interface for a LabeledDataBatch of suppliers of Image instances with labels of type L - allowing for lazy-read of images.
+ * Convenience interface for a LabeledDataBatch of suppliers of Image instances
+ * with labels of type L - allowing for lazy-read of images.
  * 
  * @author Michael Lavelle
  * 

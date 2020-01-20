@@ -16,12 +16,15 @@ package org.ml4j.nn.datasets;
 import org.ml4j.nn.datasets.floatarray.FloatArrayLabeledDataBatch;
 
 /**
- * Encapsulates a finite dynamic-size batch of LabeledData instances containing elements and labels of a defined type
+ * Encapsulates a finite dynamic-size batch of LabeledData instances containing
+ * elements and labels of a defined type
  * 
  * @author Michael Lavelle
  *
- * @param <E> The type of element within each LabeledData instance within this DataSet
- * @param <L> The type of label within each LabeledData instance within this DataSet
+ * @param <E> The type of element within each LabeledData instance within this
+ *            DataSet
+ * @param <L> The type of label within each LabeledData instance within this
+ *            DataSet
  */
 public interface LabeledDataBatch<E, L> extends LabeledDataSet<E, L> {
 
@@ -40,7 +43,7 @@ public interface LabeledDataBatch<E, L> extends LabeledDataSet<E, L> {
 	 * Add an element and associated label to this LabeledDataBatch
 	 * 
 	 * @param element The element/
-	 * @param label The label.
+	 * @param label   The label.
 	 */
 	void add(E element, L label);
 
@@ -48,18 +51,21 @@ public interface LabeledDataBatch<E, L> extends LabeledDataSet<E, L> {
 	 * @return Whether this LabeledDataBatch is empty.
 	 */
 	boolean isEmpty();
-	
+
 	/**
-	 * Convert to a FloatArrayLabeledDataBatch, using the specified featureExtractor and labelMapper to map elements and labels
-	 * to float arrays.
+	 * Convert to a FloatArrayLabeledDataBatch, using the specified featureExtractor
+	 * and labelMapper to map elements and labels to float arrays.
 	 * 
 	 * 
-	 * @param featureExtractor The feature extractor used to convert each element of type E to a float array.
-	 * @param labelMapper The label mapper used to convert each element of type L to a float array.
-	 * @param featureExtractionErrorMode How to handle exceptions occuring during the feature extraction process.
+	 * @param featureExtractor           The feature extractor used to convert each
+	 *                                   element of type E to a float array.
+	 * @param labelMapper                The label mapper used to convert each
+	 *                                   element of type L to a float array.
+	 * @param featureExtractionErrorMode How to handle exceptions occuring during
+	 *                                   the feature extraction process.
 	 * @return A FloatArrayLabeledDataBatch
 	 */
-	FloatArrayLabeledDataBatch toFloatArrayLabeledDataBatch(FeatureExtractor<E> featureExtractor, FeatureExtractor<L> labelMapper, FeatureExtractionErrorMode featureExtractionErrorMode);
-
+	FloatArrayLabeledDataBatch toFloatArrayLabeledDataBatch(FeatureExtractor<E> featureExtractor,
+			FeatureExtractor<L> labelMapper, FeatureExtractionErrorMode featureExtractionErrorMode);
 
 }

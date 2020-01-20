@@ -16,7 +16,8 @@ package org.ml4j.nn.datasets;
 import org.ml4j.nn.datasets.exceptions.FeatureExtractionException;
 
 /**
- * Interface for a feature extractor which extracts numerical features from elements of type E.
+ * Interface for a feature extractor which extracts numerical features from
+ * elements of type E.
  * 
  * @author Michael Lavelle
  *
@@ -35,7 +36,8 @@ public interface FeatureExtractor<E> {
 
 	/**
 	 * 
-	 * @return The number of elements in the float array representations produced by this extractor.
+	 * @return The number of elements in the float array representations produced by
+	 *         this extractor.
 	 */
 	int getFeatureCount();
 

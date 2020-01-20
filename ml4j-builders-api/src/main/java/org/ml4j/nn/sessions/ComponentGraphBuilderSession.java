@@ -13,9 +13,14 @@
  */
 package org.ml4j.nn.sessions;
 
-import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
+import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphBuilder;
+import org.ml4j.nn.components.builders.componentsgraph.InitialComponentsGraphBuilder;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
+import org.ml4j.nn.definitions.Component3Dto3DGraphDefinition;
+import org.ml4j.nn.definitions.Component3DtoNon3DGraphDefinition;
+import org.ml4j.nn.neurons.Neurons;
+import org.ml4j.nn.neurons.Neurons3D;
 
 /**
  * Session interface for the creation of Neural Component graphs.
@@ -24,11 +29,19 @@ import org.ml4j.nn.components.factories.NeuralComponentFactory;
  *
  * @param <T> The type of NeuralComponent within the session.
  */
-public interface Session<T extends NeuralComponent> {
+public interface ComponentGraphBuilderSession<T extends NeuralComponent> {
 
 	NeuralComponentFactory<T> getNeuralComponentFactory();
 
-	ComponentGraphBuilderSession<T> buildComponentGraph();
-	
-	DirectedComponentsContext getDirectedComponentsContext();
+	InitialComponents3DGraphBuilder<T> startWith3DNeurons(Neurons3D neurons);
+
+	InitialComponentsGraphBuilder<T> startWithNeurons(Neurons neurons);
+
+	default InitialComponentsGraphBuilder<T> startWith(Component3DtoNon3DGraphDefinition definition) {
+		return definition.createComponentGraph(this);
+	}
+
+	default InitialComponents3DGraphBuilder<T> startWith(Component3Dto3DGraphDefinition definition) {
+		return definition.createComponentGraph(this);
+	}
 }

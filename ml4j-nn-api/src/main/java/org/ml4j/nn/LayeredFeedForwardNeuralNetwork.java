@@ -22,11 +22,9 @@ import org.ml4j.nn.layers.FeedForwardLayer;
  * 
  * @author Michael Lavelle
  *
- * @param <C> The specific type of FeedForwardNeuralNetworkContext 
- *          used to train this FeedForwardNeuralNetwork.
+ * @param <C> The specific type of FeedForwardNeuralNetworkContext used to train
+ *            this FeedForwardNeuralNetwork.
  */
-public interface LayeredFeedForwardNeuralNetwork<C extends LayeredFeedForwardNeuralNetworkContext, 
-    N extends LayeredFeedForwardNeuralNetwork<C, N>> extends 
-    FeedForwardNeuralNetwork<C, N>, 
-    LayeredNeuralNetwork<FeedForwardLayer<?, ?>, C, N> {
+public interface LayeredFeedForwardNeuralNetwork<C extends LayeredFeedForwardNeuralNetworkContext, N extends LayeredFeedForwardNeuralNetwork<C, N>>
+		extends FeedForwardNeuralNetwork<C, N>, LayeredNeuralNetwork<FeedForwardLayer<?, ?>, C, N> {
 }

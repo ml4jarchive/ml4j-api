@@ -20,48 +20,56 @@ import org.ml4j.nn.components.AxonsContextAwareNeuralComponent;
 import org.ml4j.nn.neurons.Neurons;
 
 /**
- * Batch norm DirectedAxonsComponents are responsible for normalising the *output* of their primary 
- * Axons before running the activations through an ActivationFunction.
+ * Batch norm DirectedAxonsComponents are responsible for normalising the
+ * *output* of their primary Axons before running the activations through an
+ * ActivationFunction.
  * 
- * <p>BatchNormDirectedAxonsComponents have the feature mean and variance column vectors as attributes.  These
- * are built up using exponentially weighted averages on backpropagation and can be serialized
- * along the with DirectedAxonsComponent for use at test time.
+ * <p>
+ * BatchNormDirectedAxonsComponents have the feature mean and variance column
+ * vectors as attributes. These are built up using exponentially weighted
+ * averages on backpropagation and can be serialized along the with
+ * DirectedAxonsComponent for use at test time.
  * 
  * @author Michael Lavelle
  *
- * @param <L> The type of Neurons on the left of these BatchNormDirectedAxonsComponent.
- * @param <R> The type of Neurons on the right of these BatchNormDirectedAxonsComponent.
+ * @param <L> The type of Neurons on the left of these
+ *            BatchNormDirectedAxonsComponent.
+ * @param <R> The type of Neurons on the right of these
+ *            BatchNormDirectedAxonsComponent.
  */
 public interface BatchNormDirectedAxonsComponent<L extends Neurons, A extends Axons<L, L, ?>>
-    extends DirectedAxonsComponent<L, L, A>, AxonsContextAwareNeuralComponent {
+		extends DirectedAxonsComponent<L, L, A>, AxonsContextAwareNeuralComponent {
 
-  /**
-   * @return A column vector of the exponentially weighted average input feature means.
-   */
-  Matrix getExponentiallyWeightedAverageInputFeatureMeans();
+	/**
+	 * @return A column vector of the exponentially weighted average input feature
+	 *         means.
+	 */
+	Matrix getExponentiallyWeightedAverageInputFeatureMeans();
 
-  /**
-   * @return A column vector of the exponentially weighted average input feature variances.
-   */
-  Matrix getExponentiallyWeightedAverageInputFeatureVariances();
-  
-  /**
-   * @param meansColumnVector  A column vector of the exponentially weighted average input feature means.
-   */
-  void setExponentiallyWeightedAverageInputFeatureMeans(Matrix meansColumnVector);
+	/**
+	 * @return A column vector of the exponentially weighted average input feature
+	 *         variances.
+	 */
+	Matrix getExponentiallyWeightedAverageInputFeatureVariances();
 
-  /**
-   * @param variancesColumnVector A row vector of the exponentially weighted average 
-   *        input feature variances.
-   */
-  void setExponentiallyWeightedAverageInputFeatureVariances(Matrix variancesColumnVector);
+	/**
+	 * @param meansColumnVector A column vector of the exponentially weighted
+	 *                          average input feature means.
+	 */
+	void setExponentiallyWeightedAverageInputFeatureMeans(Matrix meansColumnVector);
 
-  /**
-   * @return The parameter "beta" used in the calculation of the exponentially weighted averages.
-   */
-  float getBetaForExponentiallyWeightedAverages();
-  
-  
-  @Override
-  BatchNormDirectedAxonsComponent<L, A> dup();
+	/**
+	 * @param variancesColumnVector A row vector of the exponentially weighted
+	 *                              average input feature variances.
+	 */
+	void setExponentiallyWeightedAverageInputFeatureVariances(Matrix variancesColumnVector);
+
+	/**
+	 * @return The parameter "beta" used in the calculation of the exponentially
+	 *         weighted averages.
+	 */
+	float getBetaForExponentiallyWeightedAverages();
+
+	@Override
+	BatchNormDirectedAxonsComponent<L, A> dup();
 }

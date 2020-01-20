@@ -17,16 +17,18 @@ package org.ml4j.nn.synapses;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Encapsulates the input artifacts for forward propagation through a DirectedSynapses instance.
+ * Encapsulates the input artifacts for forward propagation through a
+ * DirectedSynapses instance.
  * 
  * @author Michael Lavelle
  */
 public interface DirectedSynapsesInput {
 
-  /**
-   * @return The neurons activation input on the left hand side Neurons of the Synapses' Axons.
-   */
-  NeuronsActivation getInput();
-  
-  NeuronsActivation getResidualInput();
+	/**
+	 * @return The neurons activation input on the left hand side Neurons of the
+	 *         Synapses' Axons.
+	 */
+	NeuronsActivation getInput();
+
+	NeuronsActivation getResidualInput();
 }

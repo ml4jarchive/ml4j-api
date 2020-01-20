@@ -17,8 +17,9 @@ package org.ml4j.nn.graph;
 import java.util.List;
 
 /**
- * Data structure consisting of parallel paths of edges of type E, with all parallel paths starting
- * at the same point in the Network, and ending at the same point in the Network.
+ * Data structure consisting of parallel paths of edges of type E, with all
+ * parallel paths starting at the same point in the Network, and ending at the
+ * same point in the Network.
  * 
  * @author Michael Lavelle
  *
@@ -26,7 +27,7 @@ import java.util.List;
  */
 public interface DirectedDipoleGraph<E> {
 
-  List<DirectedPath<E>> getParallelPaths();
- 
-  void addParallelPath(DirectedPath<E> parallelPath);
+	List<DirectedPath<E>> getParallelPaths();
+
+	void addParallelPath(DirectedPath<E> parallelPath);
 }
