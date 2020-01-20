@@ -14,25 +14,25 @@
 package org.ml4j.nn.activationfunctions;
 
 interface IActivationFunctionType {
-	
+
 	ActivationFunctionBaseType getBaseType();
-	
+
 	IActivationFunctionType getParentType();
-	
+
 	String getId();
-	
+
 	String getQualifiedId();
-	
+
 	static IActivationFunctionType customType(ActivationFunctionType parentType, String id) {
 		return new ActivationFunctionType(parentType, id, false, false);
 	}
-	
+
 	static ActivationFunctionType baseType(ActivationFunctionBaseType baseType) {
 		return baseType.asNeuralNetworkType();
 	}
-	
+
 	boolean isStandardBaseType();
-	
+
 	boolean isCustomBaseType();
 
 }

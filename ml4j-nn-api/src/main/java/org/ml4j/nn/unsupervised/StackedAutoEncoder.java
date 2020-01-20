@@ -26,17 +26,15 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * 
  * @author Michael Lavelle
  */
-public interface StackedAutoEncoder extends UnsupervisedNeuralNetwork< 
-    StackedAutoEncoderContext, StackedAutoEncoder>, 
-    LayeredFeedForwardNeuralNetwork<StackedAutoEncoderContext, StackedAutoEncoder> {
+public interface StackedAutoEncoder extends UnsupervisedNeuralNetwork<StackedAutoEncoderContext, StackedAutoEncoder>,
+		LayeredFeedForwardNeuralNetwork<StackedAutoEncoderContext, StackedAutoEncoder> {
 
-  /**
-   *@param inputActivations The input activations
-   *@param context The context.
-   */
-  public void trainGreedilyLayerwise(NeuronsActivation inputActivations,
-      StackedAutoEncoderContext context);
-  
-  List<AutoEncoder> getAutoEncoderStack();
+	/**
+	 * @param inputActivations The input activations
+	 * @param context          The context.
+	 */
+	public void trainGreedilyLayerwise(NeuronsActivation inputActivations, StackedAutoEncoderContext context);
+
+	List<AutoEncoder> getAutoEncoderStack();
 
 }

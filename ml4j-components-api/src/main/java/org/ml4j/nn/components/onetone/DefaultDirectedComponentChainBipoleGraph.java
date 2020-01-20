@@ -20,13 +20,16 @@ import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.manytomany.DefaultDirectedComponentChainBatch;
 
 /**
- * A type of DefaultChainableDirectedComponent consisting of a parallel edges ( DefaultDirectedComponentChainBatch ), with
- * the paths through those parallel edges all starting at the same point in the network and ending at the same point in the network.
+ * A type of DefaultChainableDirectedComponent consisting of a parallel edges (
+ * DefaultDirectedComponentChainBatch ), with the paths through those parallel
+ * edges all starting at the same point in the network and ending at the same
+ * point in the network.
  * 
  * @author Michael Lavelle
  */
 public interface DefaultDirectedComponentChainBipoleGraph extends
-		DefaultChainableDirectedComponent<DefaultDirectedComponentChainBipoleGraphActivation, DirectedComponentsContext>, NeuralComponent{
+		DefaultChainableDirectedComponent<DefaultDirectedComponentChainBipoleGraphActivation, DirectedComponentsContext>,
+		NeuralComponent {
 
 	@Override
 	DefaultDirectedComponentChainBipoleGraph dup();

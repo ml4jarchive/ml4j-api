@@ -22,11 +22,10 @@ import org.ml4j.nn.layers.UndirectedLayer;
  * @author Michael Lavelle
  * 
  * @param <L> The type of UndirectedLayer used within this NeuralNetwork
- * @param <C> The type of NeuralNetworkContext used with this UndirectedNeuralNetwork
+ * @param <C> The type of NeuralNetworkContext used with this
+ *            UndirectedNeuralNetwork
  * @param <N> The type of UndirectedNeuralNetwork
  */
-public interface LayeredUndirectedNeuralNetwork<L extends UndirectedLayer<?, ?>, 
-    C extends LayeredNeuralNetworkContext, 
-    N extends LayeredUndirectedNeuralNetwork<L, C, N>> extends UndirectedNeuralNetwork<C, N>,
-    LayeredNeuralNetwork<L, C, N> {
+public interface LayeredUndirectedNeuralNetwork<L extends UndirectedLayer<?, ?>, C extends LayeredNeuralNetworkContext, N extends LayeredUndirectedNeuralNetwork<L, C, N>>
+		extends UndirectedNeuralNetwork<C, N>, LayeredNeuralNetwork<L, C, N> {
 }

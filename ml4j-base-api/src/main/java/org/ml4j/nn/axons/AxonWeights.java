@@ -66,7 +66,7 @@ public interface AxonWeights extends Serializable {
 	 * Adjust these AxonWeights using the specified adjustment and direction.
 	 * 
 	 * @param axonWeightsAdjustment The adjustment.
-	 * @param adjustmentDirection The adjustment direction.
+	 * @param adjustmentDirection   The adjustment direction.
 	 */
 	void adjustWeights(AxonWeightsAdjustment axonWeightsAdjustment, AxonWeightsAdjustmentDirection adjustmentDirection);
 

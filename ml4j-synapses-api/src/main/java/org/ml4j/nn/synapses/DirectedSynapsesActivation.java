@@ -32,6 +32,7 @@ public interface DirectedSynapsesActivation extends DefaultChainableDirectedComp
 	 * @return The DirectedSynapses that generated this DirectedSynapsesActivation.
 	 */
 	public DirectedSynapses<?, ?> getSynapses();
+
 	/**
 	 * @param outerGradient   The outer gradient to back propagate.
 	 * @param synapsesContext The synapses context.

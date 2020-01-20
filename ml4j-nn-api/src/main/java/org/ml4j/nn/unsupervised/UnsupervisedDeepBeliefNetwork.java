@@ -25,12 +25,9 @@ import org.ml4j.nn.DeepBeliefNetworkContext;
  * @author Michael Lavelle
  */
 public interface UnsupervisedDeepBeliefNetwork
-    extends
-    DeepBeliefNetwork<UnsupervisedDeepBeliefNetwork, 
-        DeepBeliefNetworkContext>,
-        UnsupervisedNeuralNetwork< 
-        DeepBeliefNetworkContext, UnsupervisedDeepBeliefNetwork> {
+		extends DeepBeliefNetwork<UnsupervisedDeepBeliefNetwork, DeepBeliefNetworkContext>,
+		UnsupervisedNeuralNetwork<DeepBeliefNetworkContext, UnsupervisedDeepBeliefNetwork> {
 
-  StackedAutoEncoder createStackedAutoEncoder(); 
+	StackedAutoEncoder createStackedAutoEncoder();
 
 }

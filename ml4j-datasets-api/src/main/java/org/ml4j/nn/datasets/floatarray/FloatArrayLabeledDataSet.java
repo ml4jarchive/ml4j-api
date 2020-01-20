@@ -16,16 +16,19 @@ package org.ml4j.nn.datasets.floatarray;
 import org.ml4j.nn.datasets.LabeledDataSet;
 
 /**
- * Convenience interface for a LabeledDataSet of float arrays elements with float array labels
+ * Convenience interface for a LabeledDataSet of float arrays elements with
+ * float array labels
  * 
  * @author Michael Lavelle
  */
 public interface FloatArrayLabeledDataSet extends LabeledDataSet<float[], float[]> {
 
 	/**
-	 * Convert to a FloatArrayBatchedLabeledDataSet, with each batch containing at most batchSize float array elements with their float array labels.
+	 * Convert to a FloatArrayBatchedLabeledDataSet, with each batch containing at
+	 * most batchSize float array elements with their float array labels.
 	 * 
-	 * @param batchSize The maximum size of each batch in the returned FloatArrayBatchedLabeledDataSet.
+	 * @param batchSize The maximum size of each batch in the returned
+	 *                  FloatArrayBatchedLabeledDataSet.
 	 * @return A FloatArrayBatchedLabeledDataSet.
 	 */
 	@Override

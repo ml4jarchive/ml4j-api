@@ -21,7 +21,7 @@ import java.io.Serializable;
  * 
  * @author Michael Lavelle
  */
-public  class Neurons implements Serializable {
+public class Neurons implements Serializable {
 
 	/**
 	 * Default serialization id.
@@ -49,7 +49,7 @@ public  class Neurons implements Serializable {
 		this.neuronCountExcludingBias = neuronCountExcludingBias;
 		this.hasBiasUnit = hasBiasUnit;
 	}
-	
+
 	/**
 	 * Determine whether this set of Neurons has an additional bias unit.
 	 * 

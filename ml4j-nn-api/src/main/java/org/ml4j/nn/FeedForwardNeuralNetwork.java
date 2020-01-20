@@ -22,12 +22,11 @@ import org.ml4j.nn.components.NeuralComponent;
  * 
  * @author Michael Lavelle
  *
- * @param <C> The specific type of FeedForwardNeuralNetworkContext 
- *          used to train this FeedForwardNeuralNetwork.
+ * @param <C> The specific type of FeedForwardNeuralNetworkContext used to train
+ *            this FeedForwardNeuralNetwork.
  * @param <N> The type of NeuralNetwork
-
+ * 
  */
-public interface FeedForwardNeuralNetwork<C extends FeedForwardNeuralNetworkContext, 
-    N extends FeedForwardNeuralNetwork<C, N>> extends 
-    DirectedNeuralNetwork<C, N>, NeuralComponent {
+public interface FeedForwardNeuralNetwork<C extends FeedForwardNeuralNetworkContext, N extends FeedForwardNeuralNetwork<C, N>>
+		extends DirectedNeuralNetwork<C, N>, NeuralComponent {
 }

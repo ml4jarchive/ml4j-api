@@ -19,5 +19,6 @@ import org.ml4j.nn.neurons.Neurons3D;
 
 public interface Components3DGraphBuilderFactory<T extends NeuralComponent> {
 
-	InitialComponents3DGraphBuilder<T> createInitialComponents3DGraphBuilder(Neurons3D initialNeuron, DirectedComponentsContext directedComponentsContext);
+	InitialComponents3DGraphBuilder<T> createInitialComponents3DGraphBuilder(Neurons3D initialNeuron,
+			DirectedComponentsContext directedComponentsContext);
 }

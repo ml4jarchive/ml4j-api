@@ -37,5 +37,5 @@ public interface SessionFactory<T extends NeuralComponent> {
 	 * @return The neural component factory used by this session factory.
 	 */
 	NeuralComponentFactory<T> getNeuralComponentFactory();
-	
+
 }

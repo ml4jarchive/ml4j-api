@@ -25,19 +25,19 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
  */
 public interface SynapsesContext extends NeuronsActivationContext {
 
-  /**
-   * @param pathIndex The index of the path of Axons in these Synapses.
-   * @param axonsIndexInPath The index of the Axons within the path.
-   */
-  AxonsContext getAxonsContext(int pathIndex, int axonsIndexInPath);
-  
-  /**
-   * @return Whether these Synapses are frozen out of training.
-   */
-  boolean isWithFreezeOut();
-  
-  /**
-   * @param withFreezeOut Whether these Synapses are frozen out of training.
-   */
-  public void setWithFreezeOut(boolean withFreezeOut);
+	/**
+	 * @param pathIndex        The index of the path of Axons in these Synapses.
+	 * @param axonsIndexInPath The index of the Axons within the path.
+	 */
+	AxonsContext getAxonsContext(int pathIndex, int axonsIndexInPath);
+
+	/**
+	 * @return Whether these Synapses are frozen out of training.
+	 */
+	boolean isWithFreezeOut();
+
+	/**
+	 * @param withFreezeOut Whether these Synapses are frozen out of training.
+	 */
+	public void setWithFreezeOut(boolean withFreezeOut);
 }

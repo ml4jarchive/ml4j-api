@@ -28,25 +28,26 @@ public interface DifferentiableActivationFunctionFactory {
 	 * @return A RELU activation function instance.
 	 */
 	DifferentiableActivationFunction createReluActivationFunction();
-	
+
 	/**
 	 * @return A sigmoid activation function instance.
 	 */
-	DifferentiableActivationFunction createSigmoidActivationFunction(); 
-	
+	DifferentiableActivationFunction createSigmoidActivationFunction();
+
 	/**
 	 * @return A softmax activation function instance.
 	 */
-	DifferentiableActivationFunction createSoftmaxActivationFunction(); 
-	
+	DifferentiableActivationFunction createSoftmaxActivationFunction();
+
 	/**
 	 * @return A linear (identity) activation function instance.
 	 */
-	DifferentiableActivationFunction createLinearActivationFunction(); 
-	
+	DifferentiableActivationFunction createLinearActivationFunction();
+
 	/**
 	 * @param activationFunctionType The type of activation function required.
-	 * @return A DifferentiableActivationFunction given the provided activationFunctionType;
+	 * @return A DifferentiableActivationFunction given the provided
+	 *         activationFunctionType;
 	 */
 	DifferentiableActivationFunction createActivationFunction(ActivationFunctionType activationFunctionType);
 

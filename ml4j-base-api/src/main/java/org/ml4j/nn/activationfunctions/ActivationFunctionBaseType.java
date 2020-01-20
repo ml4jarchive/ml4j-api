@@ -14,8 +14,8 @@
 package org.ml4j.nn.activationfunctions;
 
 public enum ActivationFunctionBaseType implements IActivationFunctionType {
-	
-	CUSTOM, LINEAR, RELU, SIGMOID, SOFTMAX;	
+
+	CUSTOM, LINEAR, RELU, SIGMOID, SOFTMAX;
 
 	@Override
 	public IActivationFunctionType getParentType() {
@@ -31,7 +31,7 @@ public enum ActivationFunctionBaseType implements IActivationFunctionType {
 	public ActivationFunctionBaseType getBaseType() {
 		return this;
 	}
-	
+
 	ActivationFunctionType asNeuralNetworkType() {
 		return new ActivationFunctionType(this, getId(), isStandardBaseType(), isCustomBaseType());
 	}

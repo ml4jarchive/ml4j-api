@@ -22,11 +22,18 @@ import org.ml4j.nn.neurons.Neurons;
 public interface ComponentsContainer<N extends Neurons, T extends NeuralComponent> {
 
 	List<T> getComponents();
+
 	ComponentsGraphNeurons<N> getComponentsGraphNeurons();
+
 	ComponentsContainer<Neurons, T> getAxonsBuilder();
+
 	List<T> getChains();
+
 	List<N> getEndNeurons();
+
 	void addAxonsIfApplicable();
+
 	void addComponents(List<T> components);
+
 	void addComponent(T component);
 }

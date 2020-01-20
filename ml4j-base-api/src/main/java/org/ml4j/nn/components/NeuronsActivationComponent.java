@@ -19,7 +19,8 @@ import java.util.Optional;
 import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
 
 /**
- * A component with NeuronsActivation input. Provides methods to indicate the type of NeuronsActivation supported/preferred.
+ * A component with NeuronsActivation input. Provides methods to indicate the
+ * type of NeuronsActivation supported/preferred.
  * 
  * @author Michael Lavelle
  *
@@ -27,14 +28,17 @@ import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
 public interface NeuronsActivationComponent {
 
 	/**
-	 * @return A list of NeuronsActivationFeatureOrientations supported as input by this component.
+	 * @return A list of NeuronsActivationFeatureOrientations supported as input by
+	 *         this component.
 	 */
 	List<NeuronsActivationFeatureOrientation> supports();
-	
+
 	/**
-	 * @return Whether this component has been optionally optimised for (or prefers) a particular NeuronsActivationFeatureOrientation. 
-	 * If Optional.empty() is returned, clients can assume that there is no significant performance difference between the different
-	 * representations of input data
+	 * @return Whether this component has been optionally optimised for (or prefers)
+	 *         a particular NeuronsActivationFeatureOrientation. If Optional.empty()
+	 *         is returned, clients can assume that there is no significant
+	 *         performance difference between the different representations of input
+	 *         data
 	 */
 	Optional<NeuronsActivationFeatureOrientation> optimisedFor();
 }

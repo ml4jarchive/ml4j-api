@@ -19,25 +19,24 @@ import org.ml4j.nn.DirectedNeuralNetworkContext;
 import java.io.Serializable;
 
 /**
- * Encapsulates a strategy for adjusting 
- * the learning rate at a particular point in training.
+ * Encapsulates a strategy for adjusting the learning rate at a particular point
+ * in training.
  * 
  * @author Michael Lavelle
  *
  */
 public interface TrainingLearningRateAdjustmentStrategy extends Serializable {
 
-  /**
-   * Adjusts the training learning rate at a particular point in training.
-   * 
-   * @param trainingContext The training context.
-   * @param epochIndex The epoch index.
-   * @param batchIndex The batch index within this epoch.
-   * @param iterationIndex The iteration index.
-   * @return The adjusted training learning rate.
-   */
-  float getTrainingLearningRate(
-      DirectedNeuralNetworkContext trainingContext, int epochIndex, int batchIndex,
-      int iterationIndex);
-  
+	/**
+	 * Adjusts the training learning rate at a particular point in training.
+	 * 
+	 * @param trainingContext The training context.
+	 * @param epochIndex      The epoch index.
+	 * @param batchIndex      The batch index within this epoch.
+	 * @param iterationIndex  The iteration index.
+	 * @return The adjusted training learning rate.
+	 */
+	float getTrainingLearningRate(DirectedNeuralNetworkContext trainingContext, int epochIndex, int batchIndex,
+			int iterationIndex);
+
 }

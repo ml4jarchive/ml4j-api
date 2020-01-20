@@ -16,35 +16,41 @@ package org.ml4j.nn.components;
 import java.util.List;
 
 /**
- * A chainable component within a DirectedNeuralNetwork where data flows in a left-to-right direction
- * through forward propagation.  Error information is then flowed right-to-left through the
- * resulting DirectedComponentActivation instances via back propagation.
+ * A chainable component within a DirectedNeuralNetwork where data flows in a
+ * left-to-right direction through forward propagation. Error information is
+ * then flowed right-to-left through the resulting DirectedComponentActivation
+ * instances via back propagation.
  * 
- * ChainableDirectedComponent instances can be composed together in a sequential chain, as the
- * type of input and output is the same.
+ * ChainableDirectedComponent instances can be composed together in a sequential
+ * chain, as the type of input and output is the same.
  * 
  * @author Michael Lavelle
  *
  * @param <I> The type of input and output of the ChainableDirectedComponent
- * @param <A> The type of activation produced by the ChainableDirectedComponent on forward propagation
- * @param <C> The context provided to the ChainableDirectedComponent on forward propagation.
+ * @param <A> The type of activation produced by the ChainableDirectedComponent
+ *            on forward propagation
+ * @param <C> The context provided to the ChainableDirectedComponent on forward
+ *            propagation.
  */
 public interface ChainableDirectedComponent<I, A extends ChainableDirectedComponentActivation<I>, C>
 		extends DirectedComponent<I, A, C> {
-	
+
 	/**
-	 * Obtain the context of this ChainableDirectedComponent from the provided DirectedComponentsContext given the
-	 * index of this ChainableDirectedComponent in the parent chain.
+	 * Obtain the context of this ChainableDirectedComponent from the provided
+	 * DirectedComponentsContext given the index of this ChainableDirectedComponent
+	 * in the parent chain.
 	 * 
 	 * @param directedComponentsContext The DirectedComponentsContext
-	 * @param componentIndex The index of this ChainableDirectedComponent in the parent chain.
+	 * @param componentIndex            The index of this ChainableDirectedComponent
+	 *                                  in the parent chain.
 	 * @return A component-specific context for this component.
 	 */
 	C getContext(DirectedComponentsContext directedComponentsContext, int componentIndex);
-	
+
 	/**
-	 * @return Decompose this component into a list of the smallest atomic ChainableDirectedComponents
-	 * that can be chained together to form this component.
+	 * @return Decompose this component into a list of the smallest atomic
+	 *         ChainableDirectedComponents that can be chained together to form this
+	 *         component.
 	 */
 	List<? extends ChainableDirectedComponent<I, ? extends ChainableDirectedComponentActivation<I>, ?>> decompose();
 

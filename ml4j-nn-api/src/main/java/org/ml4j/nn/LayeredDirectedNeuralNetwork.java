@@ -25,9 +25,7 @@ import org.ml4j.nn.layers.DirectedLayer;
  * @param <C> The NeuralNetworkContext used with this NeuralNetwork
  * @param <N> The type of NeuralNetwork
  */
-public interface LayeredDirectedNeuralNetwork<L extends DirectedLayer<?, ?>, 
-    C extends LayeredDirectedNeuralNetworkContext, 
-    N extends LayeredDirectedNeuralNetwork<L, C, N>> extends DirectedNeuralNetwork<C, N>,
-    LayeredNeuralNetwork<L, C, N>{
-  
+public interface LayeredDirectedNeuralNetwork<L extends DirectedLayer<?, ?>, C extends LayeredDirectedNeuralNetworkContext, N extends LayeredDirectedNeuralNetwork<L, C, N>>
+		extends DirectedNeuralNetwork<C, N>, LayeredNeuralNetwork<L, C, N> {
+
 }

@@ -41,23 +41,25 @@ public enum NeuronsActivationFeatureOrientation {
 	 * that the rows span the feature set and the columns hold parallel activations.
 	 */
 	ROWS_SPAN_FEATURE_SET;
-	
-	public static Optional<NeuronsActivationFeatureOrientation> intersectOptionals(List<Optional<NeuronsActivationFeatureOrientation>> values) {
+
+	public static Optional<NeuronsActivationFeatureOrientation> intersectOptionals(
+			List<Optional<NeuronsActivationFeatureOrientation>> values) {
 		return values.stream().reduce(Optional.empty(), (u, t) -> intersectOptionals(u, t));
 	}
-	
-	public static Optional<NeuronsActivationFeatureOrientation> intersectOptionals(Optional<NeuronsActivationFeatureOrientation> first, 
-			Optional<NeuronsActivationFeatureOrientation> second) {
-		return first.isPresent() && second.isPresent() ? (first.get().equals(second.get()) ? first : Optional.empty()) : 
-			first.isPresent() ? first : (second.isPresent() ? second : Optional.empty());
+
+	public static Optional<NeuronsActivationFeatureOrientation> intersectOptionals(
+			Optional<NeuronsActivationFeatureOrientation> first, Optional<NeuronsActivationFeatureOrientation> second) {
+		return first.isPresent() && second.isPresent() ? (first.get().equals(second.get()) ? first : Optional.empty())
+				: first.isPresent() ? first : (second.isPresent() ? second : Optional.empty());
 	}
 
 	public static List<NeuronsActivationFeatureOrientation> intersectLists(
 			List<NeuronsActivationFeatureOrientation> first, List<NeuronsActivationFeatureOrientation> second) {
 		return first.stream().filter(f -> second.contains(f)).collect(Collectors.toList());
 	}
-	
-	public static List<NeuronsActivationFeatureOrientation> intersectLists(List<List<NeuronsActivationFeatureOrientation>> values) {
+
+	public static List<NeuronsActivationFeatureOrientation> intersectLists(
+			List<List<NeuronsActivationFeatureOrientation>> values) {
 		return values.stream().reduce(Arrays.asList(), (u, t) -> intersectLists(u, t));
-	}	
+	}
 }

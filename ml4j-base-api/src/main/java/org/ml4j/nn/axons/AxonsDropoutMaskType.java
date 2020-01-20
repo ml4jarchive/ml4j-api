@@ -16,7 +16,7 @@
 package org.ml4j.nn.axons;
 
 /**
- * Type type of a AxonsDropoutMask. 
+ * Type type of a AxonsDropoutMask.
  * 
  * @author Michael Lavelle
  */

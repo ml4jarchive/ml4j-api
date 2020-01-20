@@ -21,9 +21,13 @@ import org.ml4j.nn.axons.AxonsContext;
 public interface UncompletedTrainableAxonsBuilder<N, C, B extends UncompletedTrainableAxonsBuilder<N, C, B>> {
 
 	C withConnectionToNeurons(N neurons);
+
 	B withConnectionWeights(Matrix connectionWeights);
+
 	B withBiasUnit();
+
 	B withBiases(Matrix biases);
+
 	Consumer<AxonsContext> getAxonsContextConfigurer();
 
 }

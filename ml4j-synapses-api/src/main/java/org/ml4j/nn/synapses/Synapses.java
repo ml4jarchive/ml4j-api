@@ -19,8 +19,8 @@ import java.io.Serializable;
 import org.ml4j.nn.components.NeuralNetworkComponent;
 
 /**
- * Synapses are containers for Axons with optional surrounding
- * transformations such as ActivationFunctions.
+ * Synapses are containers for Axons with optional surrounding transformations
+ * such as ActivationFunctions.
  * 
  * @author Michael Lavelle
  *
@@ -28,8 +28,8 @@ import org.ml4j.nn.components.NeuralNetworkComponent;
  */
 public interface Synapses<S extends Synapses<S>> extends NeuralNetworkComponent, Serializable {
 
-  /**
-   * @return A deep copy of these Synapses.
-   */
-  S dup();
+	/**
+	 * @return A deep copy of these Synapses.
+	 */
+	S dup();
 }

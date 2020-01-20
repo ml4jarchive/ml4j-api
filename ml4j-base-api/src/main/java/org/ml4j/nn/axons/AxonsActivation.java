@@ -32,17 +32,20 @@ public interface AxonsActivation {
 	Axons<?, ?, ?> getAxons();
 
 	/**
-	 * @return The dropout mask (if any) used by the axons to create this activation, or null if no dropout mask.
+	 * @return The dropout mask (if any) used by the axons to create this
+	 *         activation, or null if no dropout mask.
 	 */
 	AxonsDropoutMask getDropoutMask();
 
 	/**
-	 * @return The output from this axons activation, after any output dropout has been applied.
+	 * @return The output from this axons activation, after any output dropout has
+	 *         been applied.
 	 */
 	NeuronsActivation getPostDropoutOutput();
 
 	/**
-	 * @return A supplier of the input of the axons activation, after any input dropout has been applied.
+	 * @return A supplier of the input of the axons activation, after any input
+	 *         dropout has been applied.
 	 */
 	Supplier<NeuronsActivation> getPostDropoutInput();
 

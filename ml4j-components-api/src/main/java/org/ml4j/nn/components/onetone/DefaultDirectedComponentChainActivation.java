@@ -19,12 +19,15 @@ import org.ml4j.nn.components.generic.DirectedComponentChainActivation;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Encapsulates the activation from a DefaultDirectedComponentChain after forward propagation.
+ * Encapsulates the activation from a DefaultDirectedComponentChain after
+ * forward propagation.
  * 
  * @author Michael Lavelle
  *
  */
-public interface DefaultDirectedComponentChainActivation extends DirectedComponentChainActivation<NeuronsActivation, DefaultChainableDirectedComponentActivation>, DefaultChainableDirectedComponentActivation {
+public interface DefaultDirectedComponentChainActivation
+		extends DirectedComponentChainActivation<NeuronsActivation, DefaultChainableDirectedComponentActivation>,
+		DefaultChainableDirectedComponentActivation {
 
 	@Override
 	List<DefaultChainableDirectedComponentActivation> decompose();

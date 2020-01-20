@@ -21,25 +21,26 @@ import org.ml4j.nn.components.DirectedComponentGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Encapsulates the gradient of a cost function which can be back propagated 
- * through a final activation function
- * (eg. using the delta rule)
+ * Encapsulates the gradient of a cost function which can be back propagated
+ * through a final activation function (eg. using the delta rule)
  * 
  * @author Michael Lavelle
  */
 public interface CostFunctionGradient {
 
-  /**
-   * @return The cost function.
-   */
-  CostFunction getCostFunction();
-  
-  /**
-   * 
-   * @param finalActivationFunctionType The type of the last activation function of a forward propagation chain.
-   * @return The cost function gradient back propagated through the final activation function.
-   */
-  DirectedComponentGradient<NeuronsActivation> backPropagateThroughFinalActivationFunction(
-      ActivationFunctionType finalActivationFunctionType);
-   
+	/**
+	 * @return The cost function.
+	 */
+	CostFunction getCostFunction();
+
+	/**
+	 * 
+	 * @param finalActivationFunctionType The type of the last activation function
+	 *                                    of a forward propagation chain.
+	 * @return The cost function gradient back propagated through the final
+	 *         activation function.
+	 */
+	DirectedComponentGradient<NeuronsActivation> backPropagateThroughFinalActivationFunction(
+			ActivationFunctionType finalActivationFunctionType);
+
 }

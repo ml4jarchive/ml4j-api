@@ -35,7 +35,6 @@ public interface EditableMatrix extends Matrix {
 	EditableMatrix addi(Matrix other);
 	EditableMatrix divi(Matrix other);
 	EditableMatrix subi(Matrix other);
-
 	EditableMatrix expi();
 	void reshape(int r, int c);
 

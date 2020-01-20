@@ -14,7 +14,6 @@
 
 package org.ml4j.nn;
 
-
 import java.io.Serializable;
 
 /**
@@ -25,13 +24,12 @@ import java.io.Serializable;
  * @param <C> The NeuralNetworkContext used with this NeuralNetwork
  * @param <N> The type of NeuralNetwork
  */
-public interface NeuralNetwork<C extends NeuralNetworkContext, 
-    N extends NeuralNetwork<C, N>> extends Serializable {
+public interface NeuralNetwork<C extends NeuralNetworkContext, N extends NeuralNetwork<C, N>> extends Serializable {
 
-  /**
-   * Duplicates this NeuralNetwork.
-   * 
-   * @return A deep copy of this NeuralNetwork
-   */
-  N dup();
+	/**
+	 * Duplicates this NeuralNetwork.
+	 * 
+	 * @return A deep copy of this NeuralNetwork
+	 */
+	N dup();
 }

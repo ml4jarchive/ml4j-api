@@ -21,46 +21,48 @@ package org.ml4j.nn;
  */
 public interface UndirectedNeuralNetworkContext extends NeuralNetworkContext {
 
-  /**
-   * Create the UndirectedLayerContext for the UndirectedLayer specified
-   * by the layerIndex.
-   * 
-   * @param layerIndex The index of the UndirectedLayer in this
-   *        UndirectedNeuralNetwork to create the context for.
-   * @return The UndirectedLayerContext for the UndirectedLayer specified
-   *        by the layerIndex.
-   */
-  //UndirectedLayerContext getLayerContext(int layerIndex);
-  
-  /**
-   * @return The learning rate used during training.
-   */
-  float getTrainingLearningRate();
-  
-  /**
-   * @return The number of iterations through the entire data set during training.
-   */
-  int getTrainingEpochs();
-  
-  /**
-   * @return The size of the mini batch if training in batch mode... or null if non-batch mode.
-   */
-  Integer getTrainingMiniBatchSize();
-  
-  /**
-   * @param trainingLearningRate The learning rate used during training.
-   */
-  void setTrainingLearningRate(float trainingLearningRate);
-  
-  /**
-   * @param trainingEpochs The number of iterations through the entire data set during training.
-   */
-  void setTrainingEpochs(int trainingEpochs);
-  
-  /**
-   * @param batchSize The size of the mini batch if training in batch mode... or null if non-batch
-   *        mode.
-   */
-  void setTrainingMiniBatchSize(Integer batchSize);
- 
+	/**
+	 * Create the UndirectedLayerContext for the UndirectedLayer specified by the
+	 * layerIndex.
+	 * 
+	 * @param layerIndex The index of the UndirectedLayer in this
+	 *                   UndirectedNeuralNetwork to create the context for.
+	 * @return The UndirectedLayerContext for the UndirectedLayer specified by the
+	 *         layerIndex.
+	 */
+	// UndirectedLayerContext getLayerContext(int layerIndex);
+
+	/**
+	 * @return The learning rate used during training.
+	 */
+	float getTrainingLearningRate();
+
+	/**
+	 * @return The number of iterations through the entire data set during training.
+	 */
+	int getTrainingEpochs();
+
+	/**
+	 * @return The size of the mini batch if training in batch mode... or null if
+	 *         non-batch mode.
+	 */
+	Integer getTrainingMiniBatchSize();
+
+	/**
+	 * @param trainingLearningRate The learning rate used during training.
+	 */
+	void setTrainingLearningRate(float trainingLearningRate);
+
+	/**
+	 * @param trainingEpochs The number of iterations through the entire data set
+	 *                       during training.
+	 */
+	void setTrainingEpochs(int trainingEpochs);
+
+	/**
+	 * @param batchSize The size of the mini batch if training in batch mode... or
+	 *                  null if non-batch mode.
+	 */
+	void setTrainingMiniBatchSize(Integer batchSize);
+
 }

@@ -26,47 +26,48 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * 
  * @author Michael Lavelle
  */
-public interface LayeredSupervisedFeedForwardNeuralNetwork extends 
-    SupervisedNeuralNetwork<LayeredFeedForwardNeuralNetworkContext, 
-        LayeredSupervisedFeedForwardNeuralNetwork>,
-            LayeredFeedForwardNeuralNetwork<LayeredFeedForwardNeuralNetworkContext, 
-            LayeredSupervisedFeedForwardNeuralNetwork> {
+public interface LayeredSupervisedFeedForwardNeuralNetwork extends
+		SupervisedNeuralNetwork<LayeredFeedForwardNeuralNetworkContext, LayeredSupervisedFeedForwardNeuralNetwork>,
+		LayeredFeedForwardNeuralNetwork<LayeredFeedForwardNeuralNetworkContext, LayeredSupervisedFeedForwardNeuralNetwork> {
 
-  /**
-   * Trains the SupervisedNeuralNetwork.
-   * 
-   * @param trainingDataActivations The NeuronsActivation produced by the training data
-   * @param trainingLabelActivations The NeuronsActivation produced by the training labels
-   * @param trainingContext The NeuralNetworkContext used for training
-   */
-  public void train(NeuronsActivation trainingDataActivations, 
-      NeuronsActivation trainingLabelActivations, LayeredFeedForwardNeuralNetworkContext trainingContext);
+	/**
+	 * Trains the SupervisedNeuralNetwork.
+	 * 
+	 * @param trainingDataActivations  The NeuronsActivation produced by the
+	 *                                 training data
+	 * @param trainingLabelActivations The NeuronsActivation produced by the
+	 *                                 training labels
+	 * @param trainingContext          The NeuralNetworkContext used for training
+	 */
+	public void train(NeuronsActivation trainingDataActivations, NeuronsActivation trainingLabelActivations,
+			LayeredFeedForwardNeuralNetworkContext trainingContext);
 
-  /**
-   * Obtains the accuracy  of this neural network given the inputs and desired
-   * classification activations.
-   * 
-   * @param inputActivations The input activations
-   * @param desiredClassificationActivations The desired classification activations
-   * @param context The NeuralNetworkContext used for classification
-   * @return The classification accuracy
-   */
-  public float getClassificationAccuracy(NeuronsActivation inputActivations,
-      NeuronsActivation desiredClassificationActivations, LayeredFeedForwardNeuralNetworkContext context); 
-  
-  /**
-   * Obtains the cost and weight gradients calculated for the outputs of this 
-   * FeedForwardNeuralNetwork
-   * 
-   * @param inputActivations The NeuronsActivation produced
-   *       by the input data
-   * @param desiredOutputActivations The NeuronsActivation produced
-   *       by the desired output data.
-   *       
-   * @param trainingContext The NeuralNetworkContext used for training
-   * @return The CostAndGradients for the provided parameters.
-   */
-  public CostAndGradients getCostAndGradients(NeuronsActivation inputActivations, 
-          NeuronsActivation desiredOutputActivations, 
-          LayeredFeedForwardNeuralNetworkContext trainingContext);
+	/**
+	 * Obtains the accuracy of this neural network given the inputs and desired
+	 * classification activations.
+	 * 
+	 * @param inputActivations                 The input activations
+	 * @param desiredClassificationActivations The desired classification
+	 *                                         activations
+	 * @param context                          The NeuralNetworkContext used for
+	 *                                         classification
+	 * @return The classification accuracy
+	 */
+	public float getClassificationAccuracy(NeuronsActivation inputActivations,
+			NeuronsActivation desiredClassificationActivations, LayeredFeedForwardNeuralNetworkContext context);
+
+	/**
+	 * Obtains the cost and weight gradients calculated for the outputs of this
+	 * FeedForwardNeuralNetwork
+	 * 
+	 * @param inputActivations         The NeuronsActivation produced by the input
+	 *                                 data
+	 * @param desiredOutputActivations The NeuronsActivation produced by the desired
+	 *                                 output data.
+	 * 
+	 * @param trainingContext          The NeuralNetworkContext used for training
+	 * @return The CostAndGradients for the provided parameters.
+	 */
+	public CostAndGradients getCostAndGradients(NeuronsActivation inputActivations,
+			NeuronsActivation desiredOutputActivations, LayeredFeedForwardNeuralNetworkContext trainingContext);
 }

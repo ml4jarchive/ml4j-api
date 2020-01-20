@@ -18,11 +18,12 @@ import org.ml4j.nn.components.DirectedComponentGradient;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * Encapsulates the artifacts generated from a back propagation through a DirectedNeuralNetwork.
+ * Encapsulates the artifacts generated from a back propagation through a
+ * DirectedNeuralNetwork.
  * 
  * @author Michael Lavelle
  */
 public interface BackPropagation {
 
-  DirectedComponentGradient<NeuronsActivation> getGradient();
+	DirectedComponentGradient<NeuronsActivation> getGradient();
 }

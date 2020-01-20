@@ -23,6 +23,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * 
  * @author Michael Lavelle
  */
-public interface OneToManyDirectedComponentActivation extends DirectedComponentActivation<NeuronsActivation, List<NeuronsActivation>> {
+public interface OneToManyDirectedComponentActivation
+		extends DirectedComponentActivation<NeuronsActivation, List<NeuronsActivation>> {
 
 }

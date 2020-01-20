@@ -22,10 +22,11 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * Base interface for classes representing a GenerativeNeuralNetwork.
  *
  * @param <N> The type of GenerativeNeuralNetwork
- * @param <C> The type of runtime NeuralNetworkContext used with this GenerativeNeuralNetwork
+ * @param <C> The type of runtime NeuralNetworkContext used with this
+ *            GenerativeNeuralNetwork
  */
-public interface GenerativeNeuralNetwork<C extends NeuralNetworkContext, 
-    N extends GenerativeNeuralNetwork<C, N>> extends NeuralNetwork<C, N> {
+public interface GenerativeNeuralNetwork<C extends NeuralNetworkContext, N extends GenerativeNeuralNetwork<C, N>>
+		extends NeuralNetwork<C, N> {
 
-  NeuronsActivation generate(NeuronsActivation seed, C generativeContext);
+	NeuronsActivation generate(NeuronsActivation seed, C generativeContext);
 }

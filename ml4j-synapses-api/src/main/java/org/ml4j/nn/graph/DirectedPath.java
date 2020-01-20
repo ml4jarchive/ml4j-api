@@ -17,7 +17,8 @@ package org.ml4j.nn.graph;
 import java.util.List;
 
 /**
- * Data structure consisting of a path of edges of type E between two points in the Network.
+ * Data structure consisting of a path of edges of type E between two points in
+ * the Network.
  * 
  * @author Michael Lavelle
  *
@@ -25,8 +26,8 @@ import java.util.List;
  */
 public interface DirectedPath<E> {
 
-  List<E> getEdges();
-  
-  void addEdge(E edge);
-  
+	List<E> getEdges();
+
+	void addEdge(E edge);
+
 }

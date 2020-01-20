@@ -19,9 +19,10 @@ package org.ml4j.nn;
  *
  * @author Michael Lavelle
  * 
- * @param <C> The type of NeuralNetworkContext used with this UndirectedNeuralNetwork
+ * @param <C> The type of NeuralNetworkContext used with this
+ *            UndirectedNeuralNetwork
  * @param <N> The type of UndirectedNeuralNetwork
  */
-public interface UndirectedNeuralNetwork<C extends NeuralNetworkContext, 
-    N extends UndirectedNeuralNetwork<C, N>> extends NeuralNetwork<C, N> {
+public interface UndirectedNeuralNetwork<C extends NeuralNetworkContext, N extends UndirectedNeuralNetwork<C, N>>
+		extends NeuralNetwork<C, N> {
 }

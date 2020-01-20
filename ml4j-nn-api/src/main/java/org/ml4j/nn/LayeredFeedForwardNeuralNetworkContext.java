@@ -5,6 +5,7 @@ package org.ml4j.nn;
  * 
  * @author Michael Lavelle
  */
-public interface LayeredFeedForwardNeuralNetworkContext extends LayeredDirectedNeuralNetworkContext, FeedForwardNeuralNetworkContext {
+public interface LayeredFeedForwardNeuralNetworkContext
+		extends LayeredDirectedNeuralNetworkContext, FeedForwardNeuralNetworkContext {
 
 }

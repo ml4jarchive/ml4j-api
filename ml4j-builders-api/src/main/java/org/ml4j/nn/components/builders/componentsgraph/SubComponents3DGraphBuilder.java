@@ -18,9 +18,11 @@ import org.ml4j.nn.components.builders.axons.Axons3DBuilder;
 import org.ml4j.nn.components.builders.axons.AxonsBuilder;
 import org.ml4j.nn.components.builders.common.PathEnder;
 
-public interface SubComponents3DGraphBuilder<C extends Axons3DBuilder<T>, D extends AxonsBuilder<T>, T extends NeuralComponent> extends Components3DGraphBuilder<C, D, T> {
+public interface SubComponents3DGraphBuilder<C extends Axons3DBuilder<T>, D extends AxonsBuilder<T>, T extends NeuralComponent>
+		extends Components3DGraphBuilder<C, D, T> {
 
 	PathEnder<C, SubComponents3DGraphBuilder<C, D, T>> endPath();
+
 	SubComponents3DGraphBuilder<C, D, T> withPath();
 
 }

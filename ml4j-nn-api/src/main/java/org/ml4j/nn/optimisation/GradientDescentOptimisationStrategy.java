@@ -20,26 +20,26 @@ import org.ml4j.nn.DirectedNeuralNetworkContext;
 import org.ml4j.nn.axons.AxonsGradient;
 
 /**
- * Encapsulates a strategy for adjusting the gradient to optimise gradient descent.
+ * Encapsulates a strategy for adjusting the gradient to optimise gradient
+ * descent.
  * 
  * @author Michael Lavelle
  */
 public interface GradientDescentOptimisationStrategy extends Serializable {
 
-  /**
-   * Allows an optimisation strategy such as Momentum, RMSProp, Adam to adjust the axons gradient
-   * before it is used for weight updates.
-   * 
-   * @param axonsGradient The pre-adjusted AxonsGradient.
-   * @param axonsIndex The index of these Axons in the NeuralNetwork.
-   * @param trainingContext The training context.
-   * @param epochIndex The epoch index.
-   * @param batchIndex The batch index within this epoch.
-   * @param iterationIndex The iteration index.
-   * @return The adjusted axons gradient
-   */
-  AxonsGradient getAdjustedAxonsGradient(AxonsGradient axonsGradient, int axonsIndex,
-       DirectedNeuralNetworkContext trainingContext, 
-       int epochIndex, int batchIndex, int iterationIndex);
+	/**
+	 * Allows an optimisation strategy such as Momentum, RMSProp, Adam to adjust the
+	 * axons gradient before it is used for weight updates.
+	 * 
+	 * @param axonsGradient   The pre-adjusted AxonsGradient.
+	 * @param axonsIndex      The index of these Axons in the NeuralNetwork.
+	 * @param trainingContext The training context.
+	 * @param epochIndex      The epoch index.
+	 * @param batchIndex      The batch index within this epoch.
+	 * @param iterationIndex  The iteration index.
+	 * @return The adjusted axons gradient
+	 */
+	AxonsGradient getAdjustedAxonsGradient(AxonsGradient axonsGradient, int axonsIndex,
+			DirectedNeuralNetworkContext trainingContext, int epochIndex, int batchIndex, int iterationIndex);
 
 }

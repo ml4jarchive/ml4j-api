@@ -14,7 +14,8 @@
 package org.ml4j.nn.datasets.exceptions;
 
 /**
- * A runtime exception occurring during Feature extraction using a FeatureExtractor.
+ * A runtime exception occurring during Feature extraction using a
+ * FeatureExtractor.
  * 
  * @author Michael Lavelle
  *
@@ -29,6 +30,5 @@ public class FeatureExtractionRuntimeException extends RuntimeException {
 	public FeatureExtractionRuntimeException(String message, Exception featureExtractionException) {
 		super(message, featureExtractionException);
 	}
-	
 
 }

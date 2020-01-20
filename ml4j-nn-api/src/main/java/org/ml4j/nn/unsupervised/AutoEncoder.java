@@ -21,42 +21,40 @@ import org.ml4j.nn.LayeredFeedForwardNeuralNetwork;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * An AutoEncoder is an UnsupervisedNeuralNetwork consisting of FeedForwardLayers.
+ * An AutoEncoder is an UnsupervisedNeuralNetwork consisting of
+ * FeedForwardLayers.
  * 
  * @author Michael Lavelle
  */
-public interface AutoEncoder extends UnsupervisedNeuralNetwork< 
-    AutoEncoderContext, AutoEncoder>, 
-    LayeredFeedForwardNeuralNetwork<AutoEncoderContext, AutoEncoder> {
+public interface AutoEncoder extends UnsupervisedNeuralNetwork<AutoEncoderContext, AutoEncoder>,
+		LayeredFeedForwardNeuralNetwork<AutoEncoderContext, AutoEncoder> {
 
-  /**
-   * Encode the specified activations.
-   * 
-   * @param unencoded The activations we wish to encode.
-   * @param context The AutoEncoder context under which we perform this encode.
-   * @return The encoded activations.
-   */
-  NeuronsActivation encode(NeuronsActivation unencoded, AutoEncoderContext context);
-  
-  /**
-   * Decode the specified activations.
-   * 
-   * @param encoded The activations we wish to decode.
-   * @param context The AutoEncoder context under which we perform this decode.
-   * @return The decoded activations.
-   */
-  NeuronsActivation decode(NeuronsActivation encoded, AutoEncoderContext context);
-  
-  /**
-   * Obtains the cost and weight gradients calculated for the outputs of this 
-   * AutoEncoder.
-   * 
-   * @param inputActivations The NeuronsActivation produced
-   *       by the input data
-   *  
-   * @param trainingContext The NeuralNetworkContext used for training
-   * @return The CostAndGradients for the provided parameters.
-   */
-  public CostAndGradients getCostAndGradients(NeuronsActivation inputActivations,  
-          AutoEncoderContext trainingContext);
+	/**
+	 * Encode the specified activations.
+	 * 
+	 * @param unencoded The activations we wish to encode.
+	 * @param context   The AutoEncoder context under which we perform this encode.
+	 * @return The encoded activations.
+	 */
+	NeuronsActivation encode(NeuronsActivation unencoded, AutoEncoderContext context);
+
+	/**
+	 * Decode the specified activations.
+	 * 
+	 * @param encoded The activations we wish to decode.
+	 * @param context The AutoEncoder context under which we perform this decode.
+	 * @return The decoded activations.
+	 */
+	NeuronsActivation decode(NeuronsActivation encoded, AutoEncoderContext context);
+
+	/**
+	 * Obtains the cost and weight gradients calculated for the outputs of this
+	 * AutoEncoder.
+	 * 
+	 * @param inputActivations The NeuronsActivation produced by the input data
+	 * 
+	 * @param trainingContext  The NeuralNetworkContext used for training
+	 * @return The CostAndGradients for the provided parameters.
+	 */
+	public CostAndGradients getCostAndGradients(NeuronsActivation inputActivations, AutoEncoderContext trainingContext);
 }
