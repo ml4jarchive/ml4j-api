@@ -38,11 +38,6 @@ public interface AxonsContext extends NeuronsActivationContext {
 	boolean isWithFreezeOut();
 
 	/**
-	 * @return Whether this context is for training
-	 */
-	boolean isTrainingContext();
-
-	/**
 	 * @param withFreezeOut Whether these Axons are frozen out for training.
 	 * @return the axons context
 	 */

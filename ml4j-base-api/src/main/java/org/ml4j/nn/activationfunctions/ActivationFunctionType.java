@@ -74,8 +74,8 @@ public final class ActivationFunctionType implements IActivationFunctionType {
 
 	@Override
 	public String getQualifiedId() {
-		return isStandardBaseType ? getId()
-				: (ActivationFunctionBaseType.CUSTOM.equals(getParentType()) ? getId()
+		return isStandardBaseType ? ActivationFunctionBaseType.class.getName() + "." + getId()
+				: (ActivationFunctionBaseType.CUSTOM.equals(getParentType()) ? ActivationFunctionBaseType.class.getName() + "." + getId()
 						: (getParentType().getQualifiedId() + "." + getId()));
 	}
 

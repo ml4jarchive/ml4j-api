@@ -14,9 +14,8 @@
 
 package org.ml4j.nn;
 
-import org.ml4j.nn.components.ChainableDirectedComponentActivation;
+import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponentActivation;
 import org.ml4j.nn.costfunctions.CostFunctionGradient;
-import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * Encapsulates the artifacts generated from a forward propagation through a
@@ -24,7 +23,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * 
  * @author Michael Lavelle
  */
-public interface ForwardPropagation extends ChainableDirectedComponentActivation<NeuronsActivation> {
+public interface ForwardPropagation extends DefaultChainableDirectedComponentActivation {
 
 	/**
 	 * @return The output activations at the right hand side of a

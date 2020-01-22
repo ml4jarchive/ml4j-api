@@ -14,9 +14,9 @@
 
 package org.ml4j.nn;
 
-import org.ml4j.nn.axons.AxonsGradient;
-
 import java.util.List;
+
+import org.ml4j.nn.axons.AxonsGradient;
 
 /**
  * Encapsulates the total and average costs and gradients associated with a

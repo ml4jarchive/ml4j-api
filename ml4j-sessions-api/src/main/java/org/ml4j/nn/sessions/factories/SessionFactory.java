@@ -11,24 +11,36 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.ml4j.nn.sessions;
+package org.ml4j.nn.sessions.factories;
 
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
+import org.ml4j.nn.sessions.Session;
 
 /**
- * Session interface for the creation of Neural Component graphs.
+ * Factory for Sessions
  * 
  * @author Michael Lavelle
  *
- * @param <T> The type of NeuralComponent within the session.
+ * @param <T> The type of NeuralComponent within the Session.
  */
-public interface Session<T extends NeuralComponent> {
+public interface SessionFactory<T extends NeuralComponent> {
 
+	/**
+	 * @param directedComponentsContext
+	 * @return A new session.
+	 */
+	Session<T> createSession(DirectedComponentsContext directedComponentsContext);
+	
+	/**
+	 * @return A new session.
+	 */
+	Session<T> createSession();
+
+	/**
+	 * @return The neural component factory used by this session factory.
+	 */
 	NeuralComponentFactory<T> getNeuralComponentFactory();
 
-	ComponentGraphBuilderSession<T> buildComponentGraph();
-	
-	DirectedComponentsContext getDirectedComponentsContext();
 }

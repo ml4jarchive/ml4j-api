@@ -14,28 +14,33 @@
 package org.ml4j.nn.sessions.factories;
 
 import org.ml4j.nn.components.DirectedComponentsContext;
-import org.ml4j.nn.components.NeuralComponent;
-import org.ml4j.nn.components.factories.NeuralComponentFactory;
-import org.ml4j.nn.sessions.Session;
+import org.ml4j.nn.components.factories.DirectedComponentFactory;
+import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
+import org.ml4j.nn.sessions.DefaultSession;
 
 /**
- * Factory for Sessions
+ * Convenience interface for a SessionFactory for DefaultChainableDirectedComponent<?, ?>
  * 
  * @author Michael Lavelle
- *
- * @param <T> The type of NeuralComponent within the Session.
  */
-public interface SessionFactory<T extends NeuralComponent> {
+public interface DefaultSessionFactory extends SessionFactory<DefaultChainableDirectedComponent<?, ?>> {
 
 	/**
 	 * @param directedComponentsContext
 	 * @return A new session.
 	 */
-	Session<T> createSession(DirectedComponentsContext directedComponentsContext);
+	@Override
+	DefaultSession createSession(DirectedComponentsContext directedComponentsContext);
+	
+	/**
+	 * @return A new session.
+	 */
+	@Override
+	DefaultSession createSession();
 
 	/**
 	 * @return The neural component factory used by this session factory.
 	 */
-	NeuralComponentFactory<T> getNeuralComponentFactory();
-
+	@Override
+	DirectedComponentFactory getNeuralComponentFactory();
 }

@@ -14,8 +14,10 @@
 package org.ml4j.nn.components.activationfunctions;
 
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
+import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
+import org.ml4j.nn.neurons.NeuronsActivation;
 import org.ml4j.nn.neurons.NeuronsActivationContext;
 
 /**
@@ -40,4 +42,9 @@ public interface DifferentiableActivationFunctionComponent extends
 	@Override
 	DifferentiableActivationFunctionComponent dup();
 
+	@Override
+	default DifferentiableActivationFunctionComponentActivation forwardPropagate(NeuronsActivation input,
+			DirectedComponentsContext context) {
+		return forwardPropagate(input, getContext(context));
+	}
 }

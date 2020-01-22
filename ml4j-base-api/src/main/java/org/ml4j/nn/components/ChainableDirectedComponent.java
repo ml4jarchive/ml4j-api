@@ -37,15 +37,12 @@ public interface ChainableDirectedComponent<I, A extends ChainableDirectedCompon
 
 	/**
 	 * Obtain the context of this ChainableDirectedComponent from the provided
-	 * DirectedComponentsContext given the index of this ChainableDirectedComponent
-	 * in the parent chain.
+	 * DirectedComponentsContext.
 	 * 
 	 * @param directedComponentsContext The DirectedComponentsContext
-	 * @param componentIndex            The index of this ChainableDirectedComponent
-	 *                                  in the parent chain.
 	 * @return A component-specific context for this component.
 	 */
-	C getContext(DirectedComponentsContext directedComponentsContext, int componentIndex);
+	C getContext(DirectedComponentsContext directedComponentsContext);
 
 	/**
 	 * @return Decompose this component into a list of the smallest atomic

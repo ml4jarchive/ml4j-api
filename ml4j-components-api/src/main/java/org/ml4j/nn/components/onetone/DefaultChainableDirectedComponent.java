@@ -14,10 +14,13 @@
 package org.ml4j.nn.components.onetone;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.ml4j.nn.components.ChainableDirectedComponent;
+import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentType;
+import org.ml4j.nn.components.NeuronsActivationComponent;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -42,7 +45,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  *            forward propagation.
  */
 public interface DefaultChainableDirectedComponent<A extends DefaultChainableDirectedComponentActivation, C>
-		extends ChainableDirectedComponent<NeuronsActivation, A, C>, NeuralComponent {
+		extends ChainableDirectedComponent<NeuronsActivation, A, C>, NeuralComponent, NeuronsActivationComponent {
 
 	/**
 	 * @return A deep copy of this component.
@@ -72,5 +75,29 @@ public interface DefaultChainableDirectedComponent<A extends DefaultChainableDir
 
 	@Override
 	NeuralComponentType<? extends DefaultChainableDirectedComponent<?, ?>> getComponentType();
-
+	
+	
+	/**
+	 * Forward Propagates the activations through component.
+	 * 
+	 * @param input   The input to the DirectedComponent
+	 * @param context The context within which we forward propagate the activations
+	 * @return A DirectedComponentActivation encapsulating the artifacts generated
+	 *         by this forward propagation - including the output from the right
+	 *         hand side of this DirectedComponent.
+	 */
+	A forwardPropagate(NeuronsActivation input, DirectedComponentsContext context);
+	
+	/**
+	 * Forward Propagates the activations through the component
+	 * 
+	 * @param input   The input to the DirectedComponent
+	 * @param context The context within which we forward propagate the activations
+	 * @return A DirectedComponentActivation encapsulating the artifacts generated
+	 *         by this forward propagation - including the output from the right
+	 *         hand side of this DirectedComponent.
+	 */
+	default Stream<A> forwardPropagate(Stream<NeuronsActivation> inputs, DirectedComponentsContext context) {
+		return inputs.map(n -> forwardPropagate(n, context));
+	}
 }

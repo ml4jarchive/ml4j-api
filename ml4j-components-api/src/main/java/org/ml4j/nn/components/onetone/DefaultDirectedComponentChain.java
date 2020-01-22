@@ -31,6 +31,12 @@ public interface DefaultDirectedComponentChain extends
 		NeuralComponent {
 
 	@Override
+	default DefaultDirectedComponentChainActivation forwardPropagate(NeuronsActivation input,
+			DirectedComponentsContext context) {
+		return forwardPropagate(input, getContext(context));
+	}
+
+	@Override
 	DefaultDirectedComponentChain dup();
 
 	@Override
@@ -38,5 +44,6 @@ public interface DefaultDirectedComponentChain extends
 
 	@Override
 	List<DefaultChainableDirectedComponent<?, ?>> getComponents();
+
 
 }

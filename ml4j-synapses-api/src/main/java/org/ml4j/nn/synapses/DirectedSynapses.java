@@ -71,7 +71,7 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons> extends 
 	 *         from the right hand side of these DirectedSynapses.
 	 */
 	DirectedSynapsesActivation forwardPropagate(NeuronsActivation input, DirectedComponentsContext synapsesContext);
-
+	
 	List<DefaultChainableDirectedComponent<?, ?>> decompose();
 
 	@Override
