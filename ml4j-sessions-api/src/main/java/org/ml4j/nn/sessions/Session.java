@@ -30,8 +30,6 @@ public interface Session<T extends NeuralComponent> {
 	NeuralComponentFactory<T> getNeuralComponentFactory();
 
 	ComponentGraphBuilderSession<T> buildComponentGraph();
-	
-	NeuralNetworkBuilderSession<T> buildNeuralNetwork();
 
 	DirectedComponentsContext getDirectedComponentsContext();
 	
