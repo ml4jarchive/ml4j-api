@@ -13,6 +13,7 @@
  */
 package org.ml4j.nn.sessions;
 
+import org.ml4j.MatrixFactory;
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
@@ -30,5 +31,9 @@ public interface Session<T extends NeuralComponent> {
 
 	ComponentGraphBuilderSession<T> buildComponentGraph();
 	
+	NeuralNetworkBuilderSession<T> buildNeuralNetwork();
+
 	DirectedComponentsContext getDirectedComponentsContext();
+	
+	MatrixFactory getMatrixFactory();
 }

@@ -17,10 +17,11 @@ import java.util.List;
 
 import org.ml4j.nn.components.DirectedComponent;
 import org.ml4j.nn.components.DirectedComponentsContext;
+import org.ml4j.nn.components.NeuronsActivationComponent;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 public interface ManyToOneDirectedComponent<A extends ManyToOneDirectedComponentActivation>
-		extends DirectedComponent<List<NeuronsActivation>, A, DirectedComponentsContext> {
+		extends DirectedComponent<List<NeuronsActivation>, A, DirectedComponentsContext>, NeuronsActivationComponent {
 
 	@Override
 	ManyToOneDirectedComponent<A> dup();

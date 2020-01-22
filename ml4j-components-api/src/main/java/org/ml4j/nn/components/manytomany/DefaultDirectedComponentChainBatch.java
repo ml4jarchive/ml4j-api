@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.ml4j.nn.components.ChainableDirectedComponent;
 import org.ml4j.nn.components.DirectedComponentsContext;
+import org.ml4j.nn.components.NeuronsActivationComponent;
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentChain;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -27,7 +28,8 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @author Michael Lavelle
  */
 public interface DefaultDirectedComponentChainBatch extends
-		ChainableDirectedComponent<List<NeuronsActivation>, DefaultDirectedComponentChainBatchActivation, DirectedComponentsContext> {
+		ChainableDirectedComponent<List<NeuronsActivation>, DefaultDirectedComponentChainBatchActivation, DirectedComponentsContext>,
+		NeuronsActivationComponent {
 
 	@Override
 	DefaultDirectedComponentChainBatch dup();
@@ -37,4 +39,10 @@ public interface DefaultDirectedComponentChainBatch extends
 	 *         this batch.
 	 */
 	public List<DefaultDirectedComponentChain> getComponents();
+
+	@Override
+	default DefaultDirectedComponentChainBatchActivation forwardPropagate(List<NeuronsActivation> input,
+			DirectedComponentsContext context) {
+		return forwardPropagate(input, getContext(context, 0));
+	}
 }

@@ -14,9 +14,9 @@
 
 package org.ml4j.nn.optimisation;
 
-import org.ml4j.nn.DirectedNeuralNetworkContext;
-
 import java.io.Serializable;
+
+import org.ml4j.nn.DirectedNeuralNetworkContext;
 
 /**
  * Encapsulates a strategy for adjusting the learning rate at a particular point

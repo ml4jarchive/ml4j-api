@@ -32,5 +32,4 @@ public interface TrailingActivationFunctionDirectedComponentChain extends Defaul
 	@Override
 	TrailingActivationFunctionDirectedComponentChainActivation forwardPropagate(NeuronsActivation input,
 			DirectedComponentsContext context);
-
 }

@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 
 import org.ml4j.MatrixFactory;
 
-public interface DirectedComponentsContext {
+public interface DirectedComponentsContext extends Serializable {
 
 	/**
 	 * @param synapsesIndex The index of the synapses within this DirectedLayer.
@@ -35,4 +35,9 @@ public interface DirectedComponentsContext {
 	 * @return Whether this context is for training
 	 */
 	boolean isTrainingContext();
+	
+	
+	DirectedComponentsContext asTrainingContext();
+	
+	DirectedComponentsContext asNonTrainingContext();
 }

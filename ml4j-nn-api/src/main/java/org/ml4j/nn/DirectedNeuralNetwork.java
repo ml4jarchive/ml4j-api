@@ -17,7 +17,7 @@ package org.ml4j.nn;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.ml4j.nn.components.ChainableDirectedComponent;
+import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -30,7 +30,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @param <N> The type of NeuralNetwork
  */
 public interface DirectedNeuralNetwork<C extends NeuralNetworkContext, N extends DirectedNeuralNetwork<C, N>>
-		extends NeuralNetwork<C, N>, ChainableDirectedComponent<NeuronsActivation, ForwardPropagation, C> {
+		extends NeuralNetwork<C, N>, DefaultChainableDirectedComponent<ForwardPropagation, C> {
 
 	/**
 	 * Forward propagate the activation through this DirectedLayer
@@ -45,6 +45,11 @@ public interface DirectedNeuralNetwork<C extends NeuralNetworkContext, N extends
 	 *         DirectedLayer
 	 */
 	ForwardPropagation forwardPropagate(NeuronsActivation inputActivation, C context);
+
+	@Override
+	default ForwardPropagation forwardPropagate(NeuronsActivation input, DirectedComponentsContext context) {
+		return forwardPropagate(input, getContext(context, 0));
+	}
 
 	Stream<ForwardPropagation> forwardPropagate(Stream<NeuronsActivation> inputActivation, C context);
 

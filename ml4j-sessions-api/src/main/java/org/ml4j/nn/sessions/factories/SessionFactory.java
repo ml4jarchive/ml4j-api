@@ -32,6 +32,11 @@ public interface SessionFactory<T extends NeuralComponent> {
 	 * @return A new session.
 	 */
 	Session<T> createSession(DirectedComponentsContext directedComponentsContext);
+	
+	/**
+	 * @return A new session.
+	 */
+	Session<T> createSession();
 
 	/**
 	 * @return The neural component factory used by this session factory.

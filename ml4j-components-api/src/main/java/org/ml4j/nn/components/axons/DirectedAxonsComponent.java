@@ -16,8 +16,10 @@ package org.ml4j.nn.components.axons;
 import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.axons.AxonsContext;
 import org.ml4j.nn.components.AxonsContextAwareNeuralComponent;
+import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.neurons.Neurons;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * DefaultChainableDirectedComponent adapter for an Axons instance.
@@ -40,4 +42,10 @@ public interface DirectedAxonsComponent<L extends Neurons, R extends Neurons, A 
 
 	@Override
 	DirectedAxonsComponent<L, R, A> dup();
+
+	@Override
+	default DirectedAxonsComponentActivation forwardPropagate(NeuronsActivation input,
+			DirectedComponentsContext context) {
+		return forwardPropagate(input, getContext(context, 0));
+	}
 }

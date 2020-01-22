@@ -27,7 +27,28 @@ import org.ml4j.MatrixFactory;
  */
 public interface NeuronsActivationContext extends Serializable {
 
-	MatrixFactory getMatrixFactory();
+	ThreadLocal<MatrixFactory> getThreadLocalMatrixFactory();
 
-	boolean isTrainingContext();
+	ThreadLocal<Boolean> getThreadLocalIsTrainingContext();
+	
+	void setMatrixFactory(MatrixFactory matrixFactory);
+	
+	void setTrainingContext(Boolean trainingContext);
+	
+	default MatrixFactory getMatrixFactory() {
+		MatrixFactory matrixFactory = getThreadLocalMatrixFactory().get();
+		if (matrixFactory == null) {
+			throw new IllegalStateException("MatrixFactory has not been set on NeuronsActivationContext");
+		}
+		return matrixFactory;
+	}
+	
+	default boolean isTrainingContext() {
+		Boolean trainingContext = getThreadLocalIsTrainingContext().get();
+		if (trainingContext == null) {
+			throw new IllegalStateException("isTrainingContext has not been set on NeuronsActivationContext");
+		}
+		return trainingContext;
+	}
+
 }

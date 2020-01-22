@@ -18,6 +18,7 @@ import java.util.List;
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.manytomany.DefaultDirectedComponentChainBatch;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * A type of DefaultChainableDirectedComponent consisting of a parallel edges (
@@ -41,5 +42,11 @@ public interface DefaultDirectedComponentChainBipoleGraph extends
 	 * @return The batch of edges within this graph.
 	 */
 	DefaultDirectedComponentChainBatch getEdges();
-
+	
+	
+	@Override
+	default DefaultDirectedComponentChainBipoleGraphActivation forwardPropagate(NeuronsActivation input,
+			DirectedComponentsContext context) {
+		return forwardPropagate(input, getContext(context, 0));
+	}
 }

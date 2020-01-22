@@ -19,6 +19,7 @@ import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.manytomany.DefaultDirectedComponentBatch;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * A type of DefaultChainableDirectedComponent consisting of a parallel edges (
@@ -46,4 +47,10 @@ public interface DefaultDirectedComponentBipoleGraph extends
 	@Override
 	NeuralComponentType<? extends DefaultDirectedComponentBipoleGraph> getComponentType();
 
+	
+	@Override
+	default DefaultDirectedComponentBipoleGraphActivation forwardPropagate(NeuronsActivation input,
+			DirectedComponentsContext context) {
+		return forwardPropagate(input, getContext(context, 0));
+	}
 }

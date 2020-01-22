@@ -17,6 +17,7 @@
 		<module>ml4j-synapses-api</module>
 		<module>ml4j-layers-api</module>
 		<module>ml4j-nn-api</module>
+		<module>ml4j-sessions-api</module>
 	</modules>
 	<reporting>
 		<plugins>

@@ -35,8 +35,6 @@ public interface DirectedLayerContext extends LayerContext {
    */
   boolean isWithFreezeOut();
   
-  boolean isTrainingContext();
-  
   /**
    * @param withFreezeOut Whether to freeze out this Layer for training.
    */
