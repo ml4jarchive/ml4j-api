@@ -48,7 +48,7 @@ public interface DirectedNeuralNetwork<C extends NeuralNetworkContext, N extends
 
 	@Override
 	default ForwardPropagation forwardPropagate(NeuronsActivation input, DirectedComponentsContext context) {
-		return forwardPropagate(input, getContext(context, 0));
+		return forwardPropagate(input, getContext(context));
 	}
 
 	Stream<ForwardPropagation> forwardPropagate(Stream<NeuronsActivation> inputActivation, C context);

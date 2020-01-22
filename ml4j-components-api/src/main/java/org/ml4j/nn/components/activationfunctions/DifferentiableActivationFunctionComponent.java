@@ -45,6 +45,6 @@ public interface DifferentiableActivationFunctionComponent extends
 	@Override
 	default DifferentiableActivationFunctionComponentActivation forwardPropagate(NeuronsActivation input,
 			DirectedComponentsContext context) {
-		return forwardPropagate(input, getContext(context, 0));
+		return forwardPropagate(input, getContext(context));
 	}
 }

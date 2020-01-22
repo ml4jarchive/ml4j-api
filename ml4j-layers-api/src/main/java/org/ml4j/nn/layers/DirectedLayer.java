@@ -83,6 +83,6 @@ public interface DirectedLayer<A extends Axons<?,?,?>, L extends DirectedLayer<A
 
   @Override
   default DirectedLayerActivation forwardPropagate(NeuronsActivation input, DirectedComponentsContext context) {
-	return forwardPropagate(input, getContext(context, 0));
+	return forwardPropagate(input, getContext(context));
   }
 }

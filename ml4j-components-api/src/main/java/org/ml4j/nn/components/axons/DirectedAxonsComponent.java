@@ -46,6 +46,6 @@ public interface DirectedAxonsComponent<L extends Neurons, R extends Neurons, A 
 	@Override
 	default DirectedAxonsComponentActivation forwardPropagate(NeuronsActivation input,
 			DirectedComponentsContext context) {
-		return forwardPropagate(input, getContext(context, 0));
+		return forwardPropagate(input, getContext(context));
 	}
 }

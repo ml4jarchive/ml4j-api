@@ -43,6 +43,6 @@ public interface DefaultDirectedComponentBatch extends
 	@Override
 	default DefaultDirectedComponentBatchActivation forwardPropagate(List<NeuronsActivation> input,
 			DirectedComponentsContext context) {
-		return forwardPropagate(input, getContext(context, 0));
+		return forwardPropagate(input, getContext(context));
 	}
 }
