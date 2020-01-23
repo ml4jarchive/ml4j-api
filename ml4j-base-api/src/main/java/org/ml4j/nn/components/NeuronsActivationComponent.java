@@ -15,7 +15,7 @@ package org.ml4j.nn.components;
 
 import java.util.Optional;
 
-import org.ml4j.nn.neurons.NeuronsActivationFormat;
+import org.ml4j.nn.neurons.format.NeuronsActivationFormat;
 
 /**
  * A component with NeuronsActivation input. Provides methods to indicate the

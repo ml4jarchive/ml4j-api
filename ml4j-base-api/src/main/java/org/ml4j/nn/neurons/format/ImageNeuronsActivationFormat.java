@@ -13,7 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ml4j.nn.neurons;
+package org.ml4j.nn.neurons.format;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
+import org.ml4j.nn.neurons.format.features.Dimension;
+import org.ml4j.nn.neurons.format.features.ImageFeaturesFormat;
 
 /**
  * Format specification for a ImageNeuronsActivation, encapsulating the ImageFeaturesFormat, and
@@ -27,26 +34,34 @@ public class ImageNeuronsActivationFormat extends NeuronsActivationFormat<ImageF
 
 	public final static ImageNeuronsActivationFormat ML4J_DEFAULT_IMAGE_FORMAT
 	 	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET, 
-	 			ImageFeaturesFormat.DEPTH_HEIGHT_WIDTH);
+	 			ImageFeaturesFormat.DEPTH_HEIGHT_WIDTH, Arrays.asList(Dimension.EXAMPLE));
+	
+	public final static ImageNeuronsActivationFormat ML4J_IM_TO_COL_CONV_FORMAT
+ 	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET, 
+ 			ImageFeaturesFormat.IM_TO_COL_CONV, Arrays.asList(Dimension.FILTER_POSITIONS, Dimension.EXAMPLE));
+
+	public final static ImageNeuronsActivationFormat ML4J_IM_TO_COL_POOL_FORMAT
+ 	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET, 
+ 			ImageFeaturesFormat.IM_TO_COL_POOL, Arrays.asList(Dimension.FILTER_POSITIONS, Dimension.DEPTH, Dimension.EXAMPLE));
 	
 	public final static ImageNeuronsActivationFormat DL4J_DEFAULT_IMAGE_FORMAT
  	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET, 
- 			ImageFeaturesFormat.DEPTH_HEIGHT_WIDTH);
+ 			ImageFeaturesFormat.DEPTH_HEIGHT_WIDTH, Arrays.asList(Dimension.EXAMPLE));
 	
 	public final static ImageNeuronsActivationFormat KERAS_CHANNELS_FIRST_IMAGE_FORMAT
  	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET, 
- 			ImageFeaturesFormat.DEPTH_HEIGHT_WIDTH);
+ 			ImageFeaturesFormat.DEPTH_HEIGHT_WIDTH, Arrays.asList(Dimension.EXAMPLE));
 	
 	public final static ImageNeuronsActivationFormat KERAS_CHANNELS_LAST_IMAGE_FORMAT
  	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET, 
- 			ImageFeaturesFormat.HEIGHT_WIDTH_DEPTH);
+ 			ImageFeaturesFormat.HEIGHT_WIDTH_DEPTH, Arrays.asList(Dimension.EXAMPLE));
 	
 	public final static ImageNeuronsActivationFormat TENSORFLOW_IMAGE_FORMAT
  	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET, 
- 			ImageFeaturesFormat.HEIGHT_WIDTH_DEPTH);
+ 			ImageFeaturesFormat.HEIGHT_WIDTH_DEPTH, Arrays.asList(Dimension.EXAMPLE));
 	
 	public ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation featureOrientation,
-			ImageFeaturesFormat featuresFormat) {
-		super(featureOrientation, featuresFormat);
+			ImageFeaturesFormat featuresFormat, List<Dimension> exampleDimensions) {
+		super(featureOrientation, featuresFormat, exampleDimensions);
 	}
 }

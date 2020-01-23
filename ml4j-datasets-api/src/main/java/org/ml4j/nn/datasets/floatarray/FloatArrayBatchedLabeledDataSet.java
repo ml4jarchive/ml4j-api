@@ -16,7 +16,7 @@ package org.ml4j.nn.datasets.floatarray;
 import org.ml4j.MatrixFactory;
 import org.ml4j.nn.datasets.BatchedLabeledDataSet;
 import org.ml4j.nn.datasets.neuronsactivation.NeuronsActivationLabeledDataSet;
-import org.ml4j.nn.neurons.NeuronsActivationFormat;
+import org.ml4j.nn.neurons.format.NeuronsActivationFormat;
 
 /**
  * Convenience interface for a DataSet of DataBatches of LabeledData instances

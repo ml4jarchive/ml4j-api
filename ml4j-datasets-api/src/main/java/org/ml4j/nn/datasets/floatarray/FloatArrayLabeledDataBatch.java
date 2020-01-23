@@ -17,7 +17,7 @@ import org.ml4j.MatrixFactory;
 import org.ml4j.nn.datasets.LabeledData;
 import org.ml4j.nn.datasets.LabeledDataBatch;
 import org.ml4j.nn.neurons.NeuronsActivation;
-import org.ml4j.nn.neurons.NeuronsActivationFormat;
+import org.ml4j.nn.neurons.format.NeuronsActivationFormat;
 
 /**
  * Convenience interface for a LabeledDataBatch of float arrays.

@@ -13,22 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ml4j.nn.neurons;
+package org.ml4j.nn.neurons.format.features;
+
+import java.util.List;
 
 /**
- * FeaturesFormat for a flat array of data without specified dimensions.
+ * Interface for a format for data features (eg. "D,H,W" or "H,W,D" for images ).
  * 
  * @author Michael Lavelle
  */
-public class FlatFeaturesFormat implements FeaturesFormat {
+public interface FeaturesFormat {
+	
+	public static FeaturesFormat FLAT = new FlatFeaturesFormat();
 
-	@Override
-	public String getId() {
-		return "F";
-	}
-
-	@Override
-	public String toString() {
-		return getId();
-	}
+	/**
+	 * @return The dimensions of this format
+	 */
+	List<Dimension> getDimensions();
 }

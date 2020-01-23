@@ -13,12 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ml4j.nn.neurons;
+package org.ml4j.nn.neurons.format;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
+import org.ml4j.nn.neurons.format.features.Dimension;
+import org.ml4j.nn.neurons.format.features.FeaturesFormat;
+import org.ml4j.nn.neurons.format.features.FlatFeaturesFormat;
 
 /**
  * Format specification for a NeuronsActivation, encapsulating the FeaturesFormat, and
@@ -31,25 +37,61 @@ import java.util.stream.Collectors;
 public class NeuronsActivationFormat<F extends FeaturesFormat> {
 
 	public static final NeuronsActivationFormat<?> ROWS_SPAN_FEATURE_SET = new NeuronsActivationFormat<>(NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET, 
-			new FlatFeaturesFormat());
+			new FlatFeaturesFormat(), Arrays.asList(Dimension.EXAMPLE));
 	
 	public static final NeuronsActivationFormat<?> COLUMNS_SPAN_FEATURE_SET = new NeuronsActivationFormat<>(NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET, 
-			new FlatFeaturesFormat());
+			new FlatFeaturesFormat(), Arrays.asList(Dimension.EXAMPLE));
 	
 	protected NeuronsActivationFeatureOrientation featureOrientation;
 	protected F featuresFormat;
+	protected List<Dimension> exampleDimensions;
 	
 	public NeuronsActivationFormat(NeuronsActivationFeatureOrientation featureOrientation,
-			F featuresFormat) {
+			F featuresFormat, List<Dimension> exampleDimensions) {
 		this.featureOrientation = featureOrientation;
 		this.featuresFormat = featuresFormat;
+		this.exampleDimensions = exampleDimensions;
 	}
 	
 	public NeuronsActivationFeatureOrientation getFeatureOrientation() {
 		return featureOrientation;
 	}
 
+	public List<Dimension> getExampleDimensions() {
+		return exampleDimensions;
+	}
 
+	public List<Dimension> getRowDimensions() {
+		if (featureOrientation == NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET) {
+			return featuresFormat.getDimensions();
+		} else {
+			return exampleDimensions;
+		}
+	}
+	
+	public List<Dimension> getColumnDimensions() {
+		if (featureOrientation == NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET) {
+			return featuresFormat.getDimensions();
+		} else {
+			return exampleDimensions;
+		}
+	}
+	
+	public String getRowDimensionsName() {
+		if (featureOrientation == NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET) {
+			return featuresFormat.getDimensions().stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+		} else {
+			return exampleDimensions.stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+		}
+	}
+	
+	public String getColumnDimensionsName() {
+		if (featureOrientation == NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET) {
+			return featuresFormat.getDimensions().stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+		} else {
+			return exampleDimensions.stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+		}
+	}
 
 	public F getFeaturesFormat() {
 		return featuresFormat;
@@ -58,9 +100,15 @@ public class NeuronsActivationFormat<F extends FeaturesFormat> {
 	@Override
 	public String toString() {
 		if (featureOrientation == NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET) {
-			return featuresFormat.toString() + ",E";
+			List<Dimension> dimensions = new ArrayList<>();
+			dimensions.addAll(featuresFormat.getDimensions());
+			dimensions.addAll(getExampleDimensions());
+			return dimensions.stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
 		} else {
-			return "E," + featuresFormat.getId();
+			List<Dimension> dimensions = new ArrayList<>();
+			dimensions.addAll(getExampleDimensions());
+			dimensions.addAll(featuresFormat.getDimensions());
+			return dimensions.stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
 		}
 	}
 
@@ -69,7 +117,7 @@ public class NeuronsActivationFormat<F extends FeaturesFormat> {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((featureOrientation == null) ? 0 : featureOrientation.hashCode());
-		result = prime * result + ((featuresFormat == null || featuresFormat.getId() == null) ? 0 : featuresFormat.getId().hashCode());
+		result = prime * result + ((featuresFormat == null || featuresFormat.getDimensions()== null) ? 0 : featuresFormat.getDimensions().hashCode());
 		return result;
 	}
 
@@ -87,9 +135,9 @@ public class NeuronsActivationFormat<F extends FeaturesFormat> {
 		if (featuresFormat == null) {
 			if (other.featuresFormat != null)
 				return false;
-		} else if (featuresFormat.getId() == null || other.featuresFormat.getId() == null) {
+		} else if (featuresFormat.getDimensions() == null || other.featuresFormat.getDimensions() == null) {
 			return false;
-		} else if (!featuresFormat.getId().equals(other.featuresFormat.getId())) {
+		} else if (!featuresFormat.getDimensions().equals(other.featuresFormat.getDimensions())) {
 			return false;
 		}
 		return true;
