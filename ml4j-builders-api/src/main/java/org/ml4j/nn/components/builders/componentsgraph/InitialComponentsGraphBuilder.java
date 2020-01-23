@@ -19,5 +19,9 @@ public interface InitialComponentsGraphBuilder<T extends NeuralComponent>
 		extends ComponentsGraphBuilder<InitialComponentsGraphBuilder<T>, T> {
 
 	T getComponentChain();
+	
+	default T build() {
+		return getComponentChain();
+	}
 
 }
