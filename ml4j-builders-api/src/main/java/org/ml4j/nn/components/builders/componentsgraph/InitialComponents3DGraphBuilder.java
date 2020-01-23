@@ -19,4 +19,8 @@ public interface InitialComponents3DGraphBuilder<T extends NeuralComponent>
 		extends Components3DGraphBuilder<InitialComponents3DGraphBuilder<T>, InitialComponentsGraphBuilder<T>, T> {
 
 	T getComponentChain();
+	
+	default T build() {
+		return getComponentChain();
+	}
 }
