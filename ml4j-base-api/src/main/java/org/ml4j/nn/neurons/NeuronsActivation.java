@@ -17,6 +17,7 @@ import org.ml4j.FloatModifier;
 import org.ml4j.FloatPredicate;
 import org.ml4j.Matrix;
 import org.ml4j.MatrixFactory;
+import org.ml4j.nn.neurons.format.NeuronsActivationFormat;
 
 public interface NeuronsActivation {
 
@@ -33,6 +34,8 @@ public interface NeuronsActivation {
 	Neurons getNeurons();
 
 	NeuronsActivationFeatureOrientation getFeatureOrientation();
+	
+	NeuronsActivationFormat<?> getFormat();
 
 	Matrix getActivations(MatrixFactory matrixFactory);
 

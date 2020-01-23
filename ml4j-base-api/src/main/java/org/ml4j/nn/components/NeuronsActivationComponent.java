@@ -13,10 +13,9 @@
  */
 package org.ml4j.nn.components;
 
-import java.util.List;
 import java.util.Optional;
 
-import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
+import org.ml4j.nn.neurons.format.NeuronsActivationFormat;
 
 /**
  * A component with NeuronsActivation input. Provides methods to indicate the
@@ -28,10 +27,9 @@ import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
 public interface NeuronsActivationComponent {
 
 	/**
-	 * @return A list of NeuronsActivationFeatureOrientations supported as input by
-	 *         this component.
+	 * @return Whether a given neurons activation format is supported by this component
 	 */
-	List<NeuronsActivationFeatureOrientation> supports();
+	boolean isSupported(NeuronsActivationFormat<?> format);
 
 	/**
 	 * @return Whether this component has been optionally optimised for (or prefers)
@@ -40,5 +38,5 @@ public interface NeuronsActivationComponent {
 	 *         performance difference between the different representations of input
 	 *         data
 	 */
-	Optional<NeuronsActivationFeatureOrientation> optimisedFor();
+	Optional<NeuronsActivationFormat<?>> optimisedFor();
 }
