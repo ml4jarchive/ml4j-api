@@ -16,7 +16,7 @@ package org.ml4j.nn.datasets.floatarray;
 import org.ml4j.MatrixFactory;
 import org.ml4j.nn.datasets.BatchedLabeledDataSet;
 import org.ml4j.nn.datasets.neuronsactivation.NeuronsActivationLabeledDataSet;
-import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
+import org.ml4j.nn.neurons.NeuronsActivationFormat;
 
 /**
  * Convenience interface for a DataSet of DataBatches of LabeledData instances
@@ -30,14 +30,14 @@ public interface FloatArrayBatchedLabeledDataSet extends BatchedLabeledDataSet<f
 	 * Convert this FloatArrayBatchedLabeledDataSet to a
 	 * NeuronsActivationLabeledDataSet
 	 * 
-	 * @param matrixFactory      The matrix factory used to construct the matrices
-	 *                           contained within each NeuronsActivation in the
-	 *                           result NeuronsActivationLabeledDataSet
-	 * @param featureOrientation The desired feature orientation of the resulting
-	 *                           NeuronsActivationLabeledDataSet
+	 * @param matrixFactory The matrix factory used to construct the matrices
+	 *                      contained within each NeuronsActivation in the result
+	 *                      NeuronsActivationLabeledDataSet
+	 * @param format        The desired format of the resulting
+	 *                      NeuronsActivationLabeledDataSet
 	 * @return The NeuronsActivationLabeledDataSet.
 	 */
 	NeuronsActivationLabeledDataSet toNeuronsActivationLabeledDataSet(MatrixFactory matrixFactory,
-			NeuronsActivationFeatureOrientation featureOrientation);
+			NeuronsActivationFormat<?> format);
 
 }

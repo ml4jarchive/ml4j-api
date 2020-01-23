@@ -33,6 +33,8 @@ public interface NeuronsActivation {
 	Neurons getNeurons();
 
 	NeuronsActivationFeatureOrientation getFeatureOrientation();
+	
+	NeuronsActivationFormat<?> getFormat();
 
 	Matrix getActivations(MatrixFactory matrixFactory);
 
