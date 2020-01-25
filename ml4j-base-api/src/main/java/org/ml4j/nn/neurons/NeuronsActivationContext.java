@@ -27,9 +27,9 @@ import org.ml4j.MatrixFactory;
  */
 public interface NeuronsActivationContext extends Serializable {
 
-	ThreadLocal<MatrixFactory> getThreadLocalMatrixFactory();
+	InheritableThreadLocal<MatrixFactory> getThreadLocalMatrixFactory();
 
-	ThreadLocal<Boolean> getThreadLocalIsTrainingContext();
+	InheritableThreadLocal<Boolean> getThreadLocalIsTrainingContext();
 	
 	void setMatrixFactory(MatrixFactory matrixFactory);
 	
