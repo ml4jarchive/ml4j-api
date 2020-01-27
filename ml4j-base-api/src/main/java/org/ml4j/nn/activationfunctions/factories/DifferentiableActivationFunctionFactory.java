@@ -13,6 +13,7 @@
  */
 package org.ml4j.nn.activationfunctions.factories;
 
+import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 
@@ -28,6 +29,11 @@ public interface DifferentiableActivationFunctionFactory {
 	 * @return A RELU activation function instance.
 	 */
 	DifferentiableActivationFunction createReluActivationFunction();
+
+	/**
+	 * @return A RELU activation function instance.
+	 */
+	DifferentiableActivationFunction createLeakyReluActivationFunction(float alpha);
 
 	/**
 	 * @return A sigmoid activation function instance.
@@ -49,6 +55,6 @@ public interface DifferentiableActivationFunctionFactory {
 	 * @return A DifferentiableActivationFunction given the provided
 	 *         activationFunctionType;
 	 */
-	DifferentiableActivationFunction createActivationFunction(ActivationFunctionType activationFunctionType);
+	DifferentiableActivationFunction createActivationFunction(ActivationFunctionType activationFunctionType, ActivationFunctionProperties activationFunctionProperties);
 
 }

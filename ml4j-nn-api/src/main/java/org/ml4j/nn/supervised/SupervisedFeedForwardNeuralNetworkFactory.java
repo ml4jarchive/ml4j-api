@@ -6,6 +6,6 @@ import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 
 public interface SupervisedFeedForwardNeuralNetworkFactory {
 
-	SupervisedFeedForwardNeuralNetwork createSupervisedFeedForwardNeuralNetwork(
+	SupervisedFeedForwardNeuralNetwork createSupervisedFeedForwardNeuralNetwork(String name,
 			List<DefaultChainableDirectedComponent<?, ?>> componentChain);
 }

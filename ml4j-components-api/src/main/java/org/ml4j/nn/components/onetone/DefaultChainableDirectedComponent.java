@@ -72,6 +72,11 @@ public interface DefaultChainableDirectedComponent<A extends DefaultChainableDir
 	 *         activations are generated.
 	 */
 	Neurons getOutputNeurons();
+	
+	/**
+	 * @return An assigned name for the component.
+	 */
+	String getName();
 
 	@Override
 	NeuralComponentType<? extends DefaultChainableDirectedComponent<?, ?>> getComponentType();

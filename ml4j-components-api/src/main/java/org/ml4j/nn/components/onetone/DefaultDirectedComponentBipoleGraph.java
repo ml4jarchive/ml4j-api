@@ -53,4 +53,6 @@ public interface DefaultDirectedComponentBipoleGraph extends
 			DirectedComponentsContext context) {
 		return forwardPropagate(input, getContext(context));
 	}
+	
+	
 }

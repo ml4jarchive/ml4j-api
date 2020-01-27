@@ -20,4 +20,6 @@ public interface UncompletedAxonsBuilder<N extends Neurons, C> {
 	C withConnectionToNeurons(N neurons);
 
 	N getLeftNeurons();
+	
+	String getName();
 }

@@ -15,7 +15,7 @@ package org.ml4j.nn.activationfunctions;
 
 public enum ActivationFunctionBaseType implements IActivationFunctionType {
 
-	CUSTOM, LINEAR, RELU, SIGMOID, SOFTMAX;
+	CUSTOM, LINEAR, RELU, SIGMOID, SOFTMAX, LEAKYRELU;
 
 	@Override
 	public IActivationFunctionType getParentType() {
