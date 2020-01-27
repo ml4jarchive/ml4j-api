@@ -16,6 +16,7 @@ package org.ml4j.nn.components.factories;
 import java.util.List;
 
 import org.ml4j.Matrix;
+import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons3DConfig;
@@ -35,13 +36,14 @@ import org.ml4j.nn.neurons.Neurons3D;
  */
 public interface NeuralComponentFactory<T extends NeuralComponent> {
 
-	<S extends T> T createComponent(Neurons leftNeurons, Neurons rightNeurons,
+	<S extends T> T createComponent(String name, Neurons leftNeurons, Neurons rightNeurons,
 			NeuralComponentType<S> neuralComponentType);
 
 	/**
 	 * Create a fully-connected axons component, connecting leftNeurons to
 	 * rightNeurons via connectionWeights.
 	 * 
+	 * @param name 				The name of the component.
 	 * @param leftNeurons       The neurons on the left of the fully-connected axons
 	 *                          component.
 	 * @param rightNeurons      The neurons on the right of the fully-connected
@@ -56,13 +58,14 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 * @return A fully-connected axons component, connecting leftNeurons to
 	 *         rightNeurons via connectionWeights.
 	 */
-	T createFullyConnectedAxonsComponent(Neurons leftNeurons, Neurons rightNeurons, Matrix connectionWeights,
+	T createFullyConnectedAxonsComponent(String name, Neurons leftNeurons, Neurons rightNeurons, Matrix connectionWeights,
 			Matrix biases);
 
 	/**
 	 * 
 	 * Create a convolutional axons component.
 	 * 
+	 * @param name 				The name of the component.
 	 * @param leftNeurons       The neurons on the left of the convolutional axons
 	 *                          component.
 	 * @param rightNeurons      The neurons on the right of the convolutional axons
@@ -78,12 +81,13 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 * @return A fully-connected axons component, connecting leftNeurons to
 	 *         rightNeurons convolutionally via convolutional connectionWeights.
 	 */
-	T createConvolutionalAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config,
+	T createConvolutionalAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config,
 			Matrix connectionWeights, Matrix biases);
 
 	/**
 	 * Create a max-pooling axons component.
 	 * 
+	 * @param name 		   The name of the component.
 	 * @param leftNeurons  The neurons on the left of the max pooling axons
 	 *                     component.
 	 * @param rightNeurons The neurons on the right of the max pooling axons
@@ -93,12 +97,14 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 *                     scaling factor to compensate for the max-pooling dropout.
 	 * @return A max-pooling axons component.
 	 */
-	T createMaxPoolingAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config,
+	T createMaxPoolingAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config,
 			boolean scaleOutputs);
 
 	/**
+
 	 * Create an average-pooling axons component.
 	 * 
+	 * @param name 		   The name of the component.
 	 * @param leftNeurons  The neurons on the left of the average pooling axons
 	 *                     component.
 	 * @param rightNeurons The neurons on the right of the average pooling axons
@@ -106,23 +112,26 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 * @param config       The Axons3DConfig.
 	 * @return An average-pooling axons component.
 	 */
-	T createAveragePoolingAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config);
+	T createAveragePoolingAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config);
 
 	/**
 	 * Create a batch-norm directed axons component with default initialised
 	 * weights.
 	 * 
 	 * @param <N>          The type of neurons on the LHS/RHS of these axons.
+	 * @param name 		   The name of the component.
 	 * @param leftNeurons  The left neurons.
 	 * @param rightNeurons The right neurons.
 	 * @return A batch-norm directed axons component with default initialised
 	 *         weights.
 	 */
-	<N extends Neurons> T createBatchNormAxonsComponent(N leftNeurons, N rightNeurons);
+	<N extends Neurons> T createBatchNormAxonsComponent(String name, N leftNeurons, N rightNeurons);
 
 	/**
 	 * 
 	 * @param <N>          The type of neurons on the LHS/RHS of these axons.
+	 * 
+	 * @param name 				The name of the component.
 	 * @param leftNeurons  The left neurons.
 	 * @param rightNeurons The right neurons.
 	 * @param gamma        The initial scaling column vector with which to
@@ -133,7 +142,7 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 * @param var          The variance with which to initialise the component.
 	 * @return The BatchNormDirectedAxonsComponent.
 	 */
-	<N extends Neurons> T createBatchNormAxonsComponent(N leftNeurons, N rightNeurons, Matrix gamma, Matrix beta,
+	<N extends Neurons> T createBatchNormAxonsComponent(String name, N leftNeurons, N rightNeurons, Matrix gamma, Matrix beta,
 			Matrix mean, Matrix var);
 
 	/**
@@ -143,12 +152,13 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 * Convolutional batch-norm axon components have a single mean/variance value
 	 * for each depth.
 	 * 
+	 * @param name 				The name of the component.
 	 * @param leftNeurons  The left neurons.
 	 * @param rightNeurons The right neurons.
 	 * @return A convolutional batch-norm directed axons component with default
 	 *         initialised weights.
 	 */
-	T createConvolutionalBatchNormAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons);
+	T createConvolutionalBatchNormAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons);
 
 	/**
 	 * Create a convolutional batch-norm directed axons component with specified
@@ -157,6 +167,7 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 * Convolutional batch-norm axon components have a single mean/variance value
 	 * for each depth.
 	 * 
+	 * @param name 		   The name of the component.
 	 * @param leftNeurons  The left neurons.
 	 * @param rightNeurons The right neurons
 	 * @param gamma        The initial scaling column vector with which to
@@ -167,7 +178,7 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 * @param var          The variance with which to initialise the component.
 	 * @return The BatchNormDirectedAxonsComponent.
 	 */
-	T createConvolutionalBatchNormAxonsComponent(Neurons3D leftNeurons, Neurons3D rightNeurons, Matrix gamma,
+	T createConvolutionalBatchNormAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons, Matrix gamma,
 			Matrix beta, Matrix mean, Matrix var);
 
 	/**
@@ -176,15 +187,18 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 * 
 	 * @param <N>          The type of neurons on the LHS/RHS of the pass-through
 	 *                     axons.
+	 *                     
+	 * @param name 		   The name of the component.            
 	 * @param leftNeurons  The neurons on the LHS of these pass-through axons.
 	 * @param rightNeurons The neurons on the RHS of these pass-through axons.
 	 * @return A pass-through (no-op) axons component
 	 */
-	<N extends Neurons> T createPassThroughAxonsComponent(N leftNeurons, N rightNeurons);
+	<N extends Neurons> T createPassThroughAxonsComponent(String name, N leftNeurons, N rightNeurons);
 
 	/**
 	 * Construct a DifferentiableActivationFunctionComponent.
 	 * 
+	 * @param name 								The name of the component.
 	 * @param neurons                          The neurons at which the
 	 *                                         DifferentiableActivationFunctionComponent
 	 *                                         will activate.
@@ -193,19 +207,20 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 *                                         component.
 	 * @return A DifferentiableActivationFunctionComponent.
 	 */
-	T createDifferentiableActivationFunctionComponent(Neurons neurons,
+	T createDifferentiableActivationFunctionComponent(String name, Neurons neurons,
 			DifferentiableActivationFunction differentiableActivationFunction);
 
 	/**
 	 * Construct a DifferentiableActivationFunctionComponent.
 	 * 
+	 * @param name 				     The name of the component.
 	 * @param neurons                The neurons at which the
 	 *                               DifferentiableActivationFunctionComponent will
 	 *                               activate.
 	 * @param activationFunctionType The activation function type.
 	 * @return A DifferentiableActivationFunctionComponent.
 	 */
-	T createDifferentiableActivationFunctionComponent(Neurons neurons, ActivationFunctionType activationFunctionType);
+	T createDifferentiableActivationFunctionComponent(String name, Neurons neurons, ActivationFunctionType activationFunctionType, ActivationFunctionProperties activationFunctionProperties);
 
 	/**
 	 * Construct a DefaultDirectedComponentChain instance.

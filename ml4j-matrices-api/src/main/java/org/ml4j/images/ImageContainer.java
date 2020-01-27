@@ -24,10 +24,20 @@ public interface ImageContainer<I extends ImageContainer<I>> {
 
 	void populateIm2colPoolExport(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
 	void populateIm2colPoolImport(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
+	
+	
+	void populateSpaceToDepthExport(float[] data, int startIndex, int heightFactor, int widthFactor);
+	void populateSpaceToDepthImport(float[] data, int startIndex, int heightFactor, int widthFactor);
+
+	
 
 	I dup();
 	I softDup();
 	void close();
+	
+	Matrix spaceToDepthExport(MatrixFactory matrixFactory, int heightFactor, int widthFactor);
+	
+	void spaceToDepthImport(MatrixFactory matrixFactory, Matrix matrix, int heightFactor, int widthFactor);
 	
 	Matrix im2colConvExport(MatrixFactory matrixFactory, int filterHeight, int filterWidth, int strideHeight, int strideWidth);
 	

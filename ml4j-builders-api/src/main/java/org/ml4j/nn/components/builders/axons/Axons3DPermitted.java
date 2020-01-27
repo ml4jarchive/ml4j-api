@@ -18,12 +18,12 @@ import org.ml4j.nn.components.NeuralComponent;
 public interface Axons3DPermitted<C extends Axons3DBuilder<T>, A extends AxonsBuilder<T>, T extends NeuralComponent>
 		extends AxonsPermitted<A> {
 
-	UncompletedConvolutionalAxonsBuilder<C> withConvolutionalAxons();
+	UncompletedConvolutionalAxonsBuilder<C> withConvolutionalAxons(String name);
 
-	UncompletedPoolingAxonsBuilder<C> withMaxPoolingAxons();
+	UncompletedPoolingAxonsBuilder<C> withMaxPoolingAxons(String name);
 
-	UncompletedPoolingAxonsBuilder<C> withAveragePoolingAxons();
+	UncompletedPoolingAxonsBuilder<C> withAveragePoolingAxons(String name);
 
-	UncompletedBatchNormAxonsBuilder<C> withBatchNormAxons();
+	UncompletedBatchNormAxonsBuilder<C> withBatchNormAxons(String name);
 
 }

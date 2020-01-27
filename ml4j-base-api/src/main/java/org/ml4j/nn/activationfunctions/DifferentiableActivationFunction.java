@@ -44,5 +44,11 @@ public interface DifferentiableActivationFunction
 	 */
 	NeuronsActivation activationGradient(DifferentiableActivationFunctionActivation outputActivation,
 			NeuronsActivationContext context);
+	
+	
+	/**
+	 * @return The properties of this activation function.
+	 */
+	ActivationFunctionProperties getActivationFunctionProperties();
 
 }

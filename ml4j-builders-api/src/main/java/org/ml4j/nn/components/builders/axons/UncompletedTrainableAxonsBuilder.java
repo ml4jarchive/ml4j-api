@@ -29,5 +29,7 @@ public interface UncompletedTrainableAxonsBuilder<N, C, B extends UncompletedTra
 	B withBiases(Matrix biases);
 
 	Consumer<AxonsContext> getAxonsContextConfigurer();
+	
+	String getName();
 
 }

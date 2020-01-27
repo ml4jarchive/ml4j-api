@@ -24,5 +24,7 @@ public interface NeuralComponent extends Serializable {
 	Neurons getInputNeurons();
 
 	Neurons getOutputNeurons();
+	
+	String getName();
 
 }
