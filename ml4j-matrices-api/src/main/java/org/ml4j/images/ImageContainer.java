@@ -26,8 +26,8 @@ public interface ImageContainer<I extends ImageContainer<I>> {
 	void populateIm2colPoolImport(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
 	
 	
-	void populateSpaceToDepthExport(float[] data, int startIndex, int heightFactor, int widthFactor);
-	void populateSpaceToDepthImport(float[] data, int startIndex, int heightFactor, int widthFactor);
+	void populateSpaceToDepthExport(float[] data, int startIndex, int blockHeight, int blockWidth);
+	void populateSpaceToDepthImport(float[] data, int startIndex, int blockHeight, int blockWidth);
 
 	
 
