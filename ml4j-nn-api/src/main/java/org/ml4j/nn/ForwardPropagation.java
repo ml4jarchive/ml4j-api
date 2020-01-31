@@ -16,6 +16,7 @@ package org.ml4j.nn;
 
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponentActivation;
 import org.ml4j.nn.costfunctions.CostFunctionGradient;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * Encapsulates the artifacts generated from a forward propagation through a
@@ -41,5 +42,11 @@ public interface ForwardPropagation extends DefaultChainableDirectedComponentAct
 	 * @return The regularisation cost of this forward propagation.
 	 */
 	float getTotalRegularisationCost(DirectedNeuralNetworkContext context);
+	
+	
+	/**
+	 * @return The activation input on the LHS of the forward propagation.
+	 */
+	NeuronsActivation getInput();
 
 }
