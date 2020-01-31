@@ -19,6 +19,7 @@ import java.util.stream.Stream;
 
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
+import org.ml4j.nn.datasets.LabeledData;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -52,6 +53,8 @@ public interface DirectedNeuralNetwork<C extends NeuralNetworkContext, N extends
 	}
 
 	Stream<ForwardPropagation> forwardPropagate(Stream<NeuronsActivation> inputActivation, C context);
+	
+	<L> Stream<LabeledData<ForwardPropagation, L>> forwardPropagateWithLabels(Stream<LabeledData<NeuronsActivation, L>> inputActivation, C context);
 
 	/**
 	 * @return The training context used for the last epoch of training, or null if
