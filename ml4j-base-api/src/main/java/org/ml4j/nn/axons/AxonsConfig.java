@@ -29,5 +29,9 @@ public class AxonsConfig implements Serializable {
 	 * Default serialization id.
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	AxonsConfig dup() {
+		return new AxonsConfig();
+	}
 
 }

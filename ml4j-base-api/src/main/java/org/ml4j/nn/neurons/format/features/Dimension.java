@@ -15,8 +15,11 @@
  */
 package org.ml4j.nn.neurons.format.features;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -28,47 +31,150 @@ import java.util.stream.Collectors;
 public class Dimension {
 	
 	private final static String HEIGHT_ID = "H";
+	private final static String INPUT_HEIGHT_ID = "IH";
+	private final static String OUTPUT_HEIGHT_ID = "OH";
 	private final static String WIDTH_ID = "W";
+	private final static String INPUT_WIDTH_ID = "IW";
+	private final static String OUTPUT_WIDTH_ID = "OW";
 	private final static String DEPTH_ID = "D";
+	private final static String INPUT_DEPTH_ID = "ID";
+	private final static String OUTPUT_DEPTH_ID = "OD";
 	private final static String CHANNEL_ID = "C";
 	private final static String EXAMPLE_ID = "E";
 	private final static String SAMPLE_ID = "S";
 	private final static String BATCH_ID = "B";
 	private final static String INSTANCE_ID = "I";
 	private final static String FEATURE_ID = "F";
+	private final static String INPUT_FEATURE_ID = "IF";
+	private final static String OUTPUT_FEATURE_ID = "OF";
 	private final static String FILTER_HEIGHT_ID = "FH";
 	private final static String FILTER_WIDTH_ID = "FW";
 	private final static String FILTER_POSITION_ID = "FP";
 	
-	public final static Dimension HEIGHT = new Dimension(HEIGHT_ID, "Height");
-	public final static Dimension WIDTH = new Dimension(WIDTH_ID, "Width");
-	public final static Dimension DEPTH = new Dimension(DEPTH_ID, "Depth");
-	public final static Dimension CHANNEL = new Dimension(CHANNEL_ID, "Channel", DEPTH);
-	public final static Dimension EXAMPLE = new Dimension(EXAMPLE_ID, "Example");
-	public final static Dimension SAMPLE = new Dimension(SAMPLE_ID, "Example", EXAMPLE);
-	public final static Dimension BATCH = new Dimension(BATCH_ID, "Batch", EXAMPLE, SAMPLE);
-	public final static Dimension INSTANCE = new Dimension(INSTANCE_ID, "Instance", EXAMPLE, SAMPLE, BATCH);
-	public final static Dimension FEATURE = new Dimension(FEATURE_ID, "Feature", EXAMPLE, SAMPLE, BATCH);
-	public final static Dimension FILTER_HEIGHT = new Dimension(FILTER_HEIGHT_ID, "Filter Height");
-	public final static Dimension FILTER_WIDTH = new Dimension(FILTER_WIDTH_ID, "Filter Width");
-	public final static Dimension FILTER_POSITIONS = new Dimension(FILTER_POSITION_ID, "Filter Positions");
+	public final static Dimension HEIGHT = new Dimension(HEIGHT_ID, "Height", DimensionScope.ANY);
+	public final static Dimension WIDTH = new Dimension(WIDTH_ID, "Width", DimensionScope.ANY);
+	public final static Dimension DEPTH = new Dimension(DEPTH_ID, "Depth", DimensionScope.ANY);
+	public final static Dimension INPUT_HEIGHT = new Dimension(INPUT_HEIGHT_ID, "InputHeight", DimensionScope.INPUT, HEIGHT);
+	public final static Dimension INPUT_WIDTH = new Dimension(INPUT_WIDTH_ID, "InputWidth", DimensionScope.INPUT, WIDTH);
+	public final static Dimension INPUT_DEPTH = new Dimension(INPUT_DEPTH_ID, "InputDepth", DimensionScope.INPUT, DEPTH);
+	public final static Dimension OUTPUT_HEIGHT = new Dimension(OUTPUT_HEIGHT_ID, "OutputHeight", DimensionScope.OUTPUT, HEIGHT);
+	public final static Dimension OUTPUT_WIDTH = new Dimension(OUTPUT_WIDTH_ID, "OutputWidth", DimensionScope.OUTPUT, WIDTH);
+	public final static Dimension OUTPUT_DEPTH = new Dimension(OUTPUT_DEPTH_ID, "OutputDepth", DimensionScope.OUTPUT, DEPTH);
+	public final static Dimension CHANNEL = new Dimension(CHANNEL_ID, "Channel", DimensionScope.ANY, DEPTH);
+	public final static Dimension EXAMPLE = new Dimension(EXAMPLE_ID, "Example", DimensionScope.ANY);
+	public final static Dimension SAMPLE = new Dimension(SAMPLE_ID, "Example", DimensionScope.ANY, EXAMPLE);
+	public final static Dimension BATCH = new Dimension(BATCH_ID, "Batch", DimensionScope.ANY, EXAMPLE, SAMPLE);
+	public final static Dimension INSTANCE = new Dimension(INSTANCE_ID, "Instance", DimensionScope.ANY, EXAMPLE, SAMPLE, BATCH);
+	public final static Dimension FEATURE = new Dimension(FEATURE_ID, "Feature", DimensionScope.ANY, EXAMPLE, SAMPLE, BATCH);
+	public final static Dimension INPUT_FEATURE = new Dimension(INPUT_FEATURE_ID, "InputFeature", DimensionScope.INPUT, FEATURE);
+	public final static Dimension OUTPUT_FEATURE = new Dimension(OUTPUT_FEATURE_ID, "OutputFeature", DimensionScope.OUTPUT, FEATURE);
+	public final static Dimension FILTER_HEIGHT = new Dimension(FILTER_HEIGHT_ID, "Filter Height", DimensionScope.ANY);
+	public final static Dimension FILTER_WIDTH = new Dimension(FILTER_WIDTH_ID, "Filter Width", DimensionScope.ANY);
+	public final static Dimension FILTER_POSITIONS = new Dimension(FILTER_POSITION_ID, "Filter Positions", DimensionScope.ANY,
+			new CompositeDimension(Arrays.asList(OUTPUT_HEIGHT, OUTPUT_WIDTH), DimensionScope.OUTPUT));
 	
 	private String id;
 	private String name;
 	private Set<Dimension> aliases;
+	private DimensionScope scope;
 	
-	public Dimension(String id, String name, Dimension... aliases) {
+	public Dimension(String id, String name, DimensionScope scope, Dimension... aliases) {
 		this.id = id;
 		this.name = name;
+		this.scope = scope;
 		this.aliases = new HashSet<>(Arrays.asList(aliases));
 		this.aliases.forEach(d -> d.aliases.add(this));
 	}
 	
 	public Set<Dimension> getAliases() {
-		Set<Dimension> aliasDimensions = new HashSet<>();
-		aliasDimensions.addAll(aliases.stream().flatMap(a -> a.aliases.stream()).collect(Collectors.toSet()));
-		aliasDimensions.addAll(aliases);
-		return aliasDimensions;
+		Set<Dimension> aliases = new HashSet<>(this.aliases);
+		populateAliases(aliases);
+		return aliases;
+	}
+	
+	public boolean isEquivalent(Dimension other, DimensionScope dimensionScope) {
+		return isEquivalent(this.decompose(), other.decompose(), dimensionScope);
+	}
+	
+	public static boolean isEquivalent(List<Dimension> decomposedFirst, List<Dimension> decomposedSecond, DimensionScope dimensionScope) {
+		
+		if (decomposedFirst.isEmpty() && decomposedSecond.isEmpty()) {
+			return true;
+		} else if (decomposedFirst.isEmpty() || decomposedSecond.isEmpty()) {
+			return false;
+		} else {
+			Dimension first = decomposedFirst.get(0);
+			Dimension second = decomposedSecond.get(0);
+			List<Dimension> remainingFirstAfterMatch = new ArrayList<>();
+			List<Dimension> remainingSecondAfterMatch = new ArrayList<>();
+
+			boolean firstMatchesSecond = false;
+			if (first.equals(second) && first.scope.isValidWithin(dimensionScope) && second.scope.isValidWithin(dimensionScope)
+					&& first.scope.equals(second.scope)) {
+				firstMatchesSecond = true;
+				remainingFirstAfterMatch = new ArrayList<>();
+				remainingFirstAfterMatch.addAll(decomposedFirst);
+				remainingFirstAfterMatch.remove(0);
+				remainingSecondAfterMatch = new ArrayList<>();
+				remainingSecondAfterMatch.addAll(decomposedSecond);
+				remainingSecondAfterMatch.remove(0);
+			} else {
+				// Consider the aliases
+				Set<List<Dimension>> firstDecomposedAliases = first.getAllDecomposedAliases(dimensionScope);
+				firstDecomposedAliases.add(Arrays.asList(first));
+				Set<List<Dimension>> secondDecomposedAliases = second.getAllDecomposedAliases(dimensionScope);
+				secondDecomposedAliases.add(Arrays.asList(second));
+
+				for (List<Dimension> firstDecomposedAlias : firstDecomposedAliases) {
+					for (List<Dimension> secondDecomposedAlias : secondDecomposedAliases) {
+						if (firstDecomposedAlias.isEmpty() || secondDecomposedAlias.isEmpty()) {
+							return false;
+						}
+
+						if (firstMatchesSecond || (firstDecomposedAlias.get(0).equals(secondDecomposedAlias.get(0)) 
+								&& firstDecomposedAlias.get(0).scope == secondDecomposedAlias.get(0).scope)) {
+							if (!firstMatchesSecond) {
+								remainingFirstAfterMatch = new ArrayList<>();
+								remainingFirstAfterMatch.addAll(firstDecomposedAlias);
+								remainingFirstAfterMatch.remove(0);
+								remainingFirstAfterMatch.addAll(decomposedFirst.subList(1, decomposedFirst.size()));
+								remainingSecondAfterMatch = new ArrayList<>();
+								remainingSecondAfterMatch.addAll(secondDecomposedAlias);
+								remainingSecondAfterMatch.remove(0);
+								remainingSecondAfterMatch.addAll(decomposedSecond.subList(1, decomposedSecond.size()));
+							}
+							firstMatchesSecond = true;
+						}
+					}
+				}
+			}
+		
+			if (!firstMatchesSecond) {
+				return false;
+			} else {
+				return isEquivalent(remainingFirstAfterMatch, remainingSecondAfterMatch, dimensionScope);
+			}
+		}
+	}
+	
+	public Set<List<Dimension>> getAllDecomposedAliases(DimensionScope dimensionScope) {
+		Set<List<Dimension>> allDecomposedAliases = new HashSet<>();
+		allDecomposedAliases.add(decompose().stream().collect(Collectors.toList()));
+		allDecomposedAliases.addAll(getAliases().stream().map(a -> a.decompose().stream().collect(Collectors.toList())).collect(Collectors.toSet()));
+		return allDecomposedAliases.stream().filter(a -> a.stream().allMatch(d -> d.scope.isValidWithin(dimensionScope))).collect(Collectors.toSet());
+	}
+	
+	public void populateAliases(Set<Dimension> processedAliases) {
+		Set<Dimension> unprocessedAliases = new HashSet<>(aliases);
+		unprocessedAliases.removeAll(processedAliases);
+		for (Dimension alias : unprocessedAliases) {
+			processedAliases.add(alias);
+			alias.populateAliases(processedAliases);
+		}	
+	}
+	
+	public List<Dimension> decompose() {
+		return Arrays.asList(this);
 	}
 
 	@Override
@@ -110,10 +216,42 @@ public class Dimension {
 		return name;
 	}	
 	
-
 	@Override
 	public String toString() {
-		return "Dimension [id=" + id + ", name=" + name + "]";
+		return "Dimension [id=" + id + ", name=" + name + ", scope=" + scope + "]";
+	}
+
+	public static class CompositeDimension extends Dimension {
+
+		private List<Dimension> components;
+		
+		public CompositeDimension(List<Dimension> components, DimensionScope dimensionScope, Dimension... aliases) {
+			super(getCompositeString(components.stream().map(d -> d.getId()).collect(Collectors.toList())), 
+					getCompositeString(components.stream().map(d -> d.getName()).collect(Collectors.toList())), dimensionScope, aliases);
+			components.forEach(d -> {
+				if (!d.scope.isValidWithin(dimensionScope)) {
+					throw new IllegalArgumentException("Dimension:" + d + " is not valid for scope:" + dimensionScope);
+				}
+			});
+			this.components = components;
+		}
+		
+		public List<Dimension> decompose() {
+			return components.stream().flatMap(c -> c.decompose().stream()).collect(Collectors.toList());
+		}
+		
+		private static String getCompositeString(List<String> strings) {
+			StringBuffer composite = new StringBuffer();
+			Iterator<String> it = strings.iterator();
+			while (it.hasNext()) {
+				composite.append(it.next());
+				if (it.hasNext()) {
+					composite.append(", ");
+				}
+			}
+			return composite.toString();
+		}
+		
 	}
 
 }

@@ -60,6 +60,14 @@ public class NeuronsActivationFormat<F extends FeaturesFormat> {
 	public List<Dimension> getExampleDimensions() {
 		return exampleDimensions;
 	}
+	
+	public List<Dimension> getDimensions() {
+		List<Dimension> allDimensions = new ArrayList<>();
+		allDimensions.addAll(getRowDimensions());
+		allDimensions.addAll(getColumnDimensions());
+		return allDimensions;
+		
+	}
 
 	public List<Dimension> getRowDimensions() {
 		if (featureOrientation == NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET) {

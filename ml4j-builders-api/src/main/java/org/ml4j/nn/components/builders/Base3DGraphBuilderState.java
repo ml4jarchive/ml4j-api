@@ -13,7 +13,8 @@
  */
 package org.ml4j.nn.components.builders;
 
-import org.ml4j.Matrix;
+import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.builders.axons.UncompletedBatchNormAxonsBuilder;
 import org.ml4j.nn.components.builders.axons.UncompletedConvolutionalAxonsBuilder;
 import org.ml4j.nn.components.builders.axons.UncompletedFullyConnectedAxonsBuilder;
@@ -26,9 +27,9 @@ public interface Base3DGraphBuilderState {
 
 	ComponentsGraphNeurons<Neurons3D> getComponentsGraphNeurons();
 
-	Matrix getConnectionWeights();
+	WeightsMatrix getConnectionWeights();
 
-	void setConnectionWeights(Matrix connectionWeights);
+	void setConnectionWeights(WeightsMatrix connectionWeights);
 
 	UncompletedConvolutionalAxonsBuilder<?> getConvolutionalAxonsBuilder();
 
@@ -56,8 +57,8 @@ public interface Base3DGraphBuilderState {
 
 	UncompletedBatchNormAxonsBuilder<?> getBatchNormAxonsBuilder();
 
-	void setBiases(Matrix biases);
+	void setBiases(BiasMatrix biases);
 
-	Matrix getBiases();
+	BiasMatrix getBiases();
 
 }

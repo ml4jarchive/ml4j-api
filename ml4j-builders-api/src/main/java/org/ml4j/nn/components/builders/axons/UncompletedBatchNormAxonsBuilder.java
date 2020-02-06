@@ -17,6 +17,8 @@ import java.util.function.Consumer;
 
 import org.ml4j.Matrix;
 import org.ml4j.nn.axons.AxonsContext;
+import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.neurons.Neurons3D;
 
 public interface UncompletedBatchNormAxonsBuilder<C>
@@ -24,17 +26,17 @@ public interface UncompletedBatchNormAxonsBuilder<C>
 
 	UncompletedBatchNormAxonsBuilder<C> withAxonsContextConfigurer(Consumer<AxonsContext> axonsContextConfigurer);
 
-	UncompletedBatchNormAxonsBuilder<C> withGamma(Matrix gamma);
+	UncompletedBatchNormAxonsBuilder<C> withGamma(WeightsMatrix gamma);
 
-	UncompletedBatchNormAxonsBuilder<C> withBeta(Matrix beta);
+	UncompletedBatchNormAxonsBuilder<C> withBeta(BiasMatrix beta);
 
 	UncompletedBatchNormAxonsBuilder<C> withMean(Matrix mean);
 
 	UncompletedBatchNormAxonsBuilder<C> withVariance(Matrix variance);
 
-	Matrix getGamma();
+	WeightsMatrix getGamma();
 
-	Matrix getBeta();
+	BiasMatrix getBeta();
 
 	Matrix getMean();
 

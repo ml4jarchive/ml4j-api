@@ -22,6 +22,8 @@ import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.axons.Axons3DConfig;
+import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.activationfunctions.DifferentiableActivationFunctionComponent;
 import org.ml4j.nn.components.axons.BatchNormDirectedAxonsComponent;
 import org.ml4j.nn.components.axons.DirectedAxonsComponent;
@@ -64,7 +66,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 */
 	@Override
 	DirectedAxonsComponent<Neurons, Neurons, ?> createFullyConnectedAxonsComponent(String name, Neurons leftNeurons,
-			Neurons rightNeurons, Matrix connectionWeights, Matrix biases);
+			Neurons rightNeurons, WeightsMatrix connectionWeights, BiasMatrix biases);
 
 	/**
 	 * 
@@ -88,7 +90,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 */
 	@Override
 	DirectedAxonsComponent<Neurons3D, Neurons3D, ?> createConvolutionalAxonsComponent(String name, Neurons3D leftNeurons,
-			Neurons3D rightNeurons, Axons3DConfig config, Matrix connectionWeights, Matrix biases);
+			Neurons3D rightNeurons, Axons3DConfig config, WeightsMatrix connectionWeights, BiasMatrix biases);
 
 	/**
 	 * Create a max-pooling axons component.
@@ -153,7 +155,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 */
 	@Override
 	<N extends Neurons> BatchNormDirectedAxonsComponent<N, ?> createBatchNormAxonsComponent(String name, N leftNeurons,
-			N rightNeurons, Matrix gamma, Matrix beta, Matrix mean, Matrix var);
+			N rightNeurons, WeightsMatrix gamma, BiasMatrix beta, Matrix mean, Matrix var);
 
 	/**
 	 * Create a convolutional batch-norm directed axons component with default
@@ -192,7 +194,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 */
 	@Override
 	BatchNormDirectedAxonsComponent<Neurons3D, ?> createConvolutionalBatchNormAxonsComponent(String name, Neurons3D leftNeurons,
-			Neurons3D rightNeurons, Matrix gamma, Matrix beta, Matrix mean, Matrix var);
+			Neurons3D rightNeurons, WeightsMatrix gamma, BiasMatrix beta, Matrix mean, Matrix var);
 
 	/**
 	 * Construct a DirectedAxonsComponent adapter for the specified Axons.

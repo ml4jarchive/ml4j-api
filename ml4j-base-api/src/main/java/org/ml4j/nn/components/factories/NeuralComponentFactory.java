@@ -20,6 +20,8 @@ import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons3DConfig;
+import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
@@ -58,8 +60,8 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 * @return A fully-connected axons component, connecting leftNeurons to
 	 *         rightNeurons via connectionWeights.
 	 */
-	T createFullyConnectedAxonsComponent(String name, Neurons leftNeurons, Neurons rightNeurons, Matrix connectionWeights,
-			Matrix biases);
+	T createFullyConnectedAxonsComponent(String name, Neurons leftNeurons, Neurons rightNeurons, WeightsMatrix connectionWeights,
+			BiasMatrix biases);
 
 	/**
 	 * 
@@ -82,7 +84,7 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 *         rightNeurons convolutionally via convolutional connectionWeights.
 	 */
 	T createConvolutionalAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config,
-			Matrix connectionWeights, Matrix biases);
+			WeightsMatrix connectionWeights, BiasMatrix biases);
 
 	/**
 	 * Create a max-pooling axons component.
@@ -142,7 +144,7 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 * @param var          The variance with which to initialise the component.
 	 * @return The BatchNormDirectedAxonsComponent.
 	 */
-	<N extends Neurons> T createBatchNormAxonsComponent(String name, N leftNeurons, N rightNeurons, Matrix gamma, Matrix beta,
+	<N extends Neurons> T createBatchNormAxonsComponent(String name, N leftNeurons, N rightNeurons, WeightsMatrix gamma, BiasMatrix beta,
 			Matrix mean, Matrix var);
 
 	/**
@@ -178,8 +180,8 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 * @param var          The variance with which to initialise the component.
 	 * @return The BatchNormDirectedAxonsComponent.
 	 */
-	T createConvolutionalBatchNormAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons, Matrix gamma,
-			Matrix beta, Matrix mean, Matrix var);
+	T createConvolutionalBatchNormAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons, WeightsMatrix gamma,
+			BiasMatrix beta, Matrix mean, Matrix var);
 
 	/**
 	 * Construct a pass-through (no-op) axons component - used within residual

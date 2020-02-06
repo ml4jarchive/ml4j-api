@@ -13,7 +13,8 @@
  */
 package org.ml4j.nn.components.builders;
 
-import org.ml4j.Matrix;
+import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.builders.axons.UncompletedFullyConnectedAxonsBuilder;
 import org.ml4j.nn.components.builders.componentsgraph.ComponentsGraphNeurons;
 import org.ml4j.nn.components.builders.synapses.SynapsesAxonsGraphBuilder;
@@ -23,13 +24,13 @@ public interface BaseGraphBuilderState {
 
 	ComponentsGraphNeurons<Neurons> getComponentsGraphNeurons();
 
-	Matrix getConnectionWeights();
+	WeightsMatrix getConnectionWeights();
 
-	Matrix getBiases();
+	BiasMatrix getBiases();
 
-	void setConnectionWeights(Matrix connectionWeights);
+	void setConnectionWeights(WeightsMatrix connectionWeights);
 
-	void setBiases(Matrix biases);
+	void setBiases(BiasMatrix biases);
 
 	UncompletedFullyConnectedAxonsBuilder<?> getFullyConnectedAxonsBuilder();
 

@@ -15,13 +15,14 @@ package org.ml4j.nn.axons.factories;
 
 import java.io.Serializable;
 
-import org.ml4j.Matrix;
 import org.ml4j.nn.axons.AveragePoolingAxons;
 import org.ml4j.nn.axons.Axons3DConfig;
+import org.ml4j.nn.axons.BiasMatrix;
 import org.ml4j.nn.axons.ConvolutionalAxons;
 import org.ml4j.nn.axons.FullyConnectedAxonsFactory;
 import org.ml4j.nn.axons.MaxPoolingAxons;
 import org.ml4j.nn.axons.ScaleAndShiftAxons;
+import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.Neurons3D;
 
@@ -43,7 +44,7 @@ public interface AxonsFactory extends FullyConnectedAxonsFactory, Serializable {
 	 * @return A ConvolutionalAxons instance.
 	 */
 	ConvolutionalAxons createConvolutionalAxons(Neurons3D leftNeurons, Neurons3D rightNeurons,
-			Axons3DConfig axons3DConfig, Matrix connectionWeights, Matrix biases);
+			Axons3DConfig axons3DConfig, WeightsMatrix connectionWeights, BiasMatrix biases);
 
 	/**
 	 * Construct a MaxPoolingAxons instance.
@@ -80,6 +81,6 @@ public interface AxonsFactory extends FullyConnectedAxonsFactory, Serializable {
 	 * @param beta         The shifting beta vector.
 	 * @return A scale-and-shift Axons instance.
 	 */
-	<N extends Neurons> ScaleAndShiftAxons<N> createScaleAndShiftAxons(N leftNeurons, N rightNeurons, Matrix gamma,
-			Matrix beta);
+	<N extends Neurons> ScaleAndShiftAxons<N> createScaleAndShiftAxons(N leftNeurons, N rightNeurons,
+			WeightsMatrix gamma, BiasMatrix beta);
 }

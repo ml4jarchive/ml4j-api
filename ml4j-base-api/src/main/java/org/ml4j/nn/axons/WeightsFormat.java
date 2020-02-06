@@ -13,18 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ml4j.nn.neurons.format.features;
+package org.ml4j.nn.axons;
 
-import java.util.Arrays;
+import java.util.List;
+
+import org.ml4j.nn.neurons.format.features.Dimension;
 
 /**
- * FeaturesFormat for a flat array of data without specified dimensions.
+ * Interface for a format for data features (eg. "D,H,W" or "H,W,D" for images ).
  * 
  * @author Michael Lavelle
  */
-public class FlatFeaturesFormat extends FeaturesFormatImpl implements FeaturesFormat {
-
-	public FlatFeaturesFormat() {
-		super(Arrays.asList(Dimension.FEATURE));
-	}
+public interface WeightsFormat {
+	/**
+	 * @return The input dimensions of this format
+	 */
+	List<Dimension> getInputDimensions();
+	
+	/**
+	 * @return The output dimensions of this format
+	 */
+	List<Dimension> getOutputDimensions();
+	
+	/**
+	 * @return The orientation of any associated matrix
+	 */
+	WeightsMatrixOrientation getOrientation();
+	
+	/**
+	 * @return The dimensions of this format, according to the orientation.
+	 */
+	List<Dimension> getDimensions();
 }

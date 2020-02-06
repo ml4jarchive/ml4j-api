@@ -15,7 +15,6 @@ package org.ml4j.nn.axons;
 
 import java.io.Serializable;
 
-import org.ml4j.Matrix;
 import org.ml4j.nn.neurons.Neurons;
 
 /**
@@ -38,8 +37,8 @@ public interface FullyConnectedAxonsFactory extends Serializable {
 	 *                          FullyConnectedAxons.
 	 * @return The FullyConnectedAxons instance.
 	 */
-	FullyConnectedAxons createFullyConnectedAxons(Neurons leftNeurons, Neurons rightNeurons, Matrix connectionWeights,
-			Matrix biases);
+	FullyConnectedAxons createFullyConnectedAxons(Neurons leftNeurons, Neurons rightNeurons, WeightsMatrix connectionWeights,
+	BiasMatrix biases);
 
 	/**
 	 * Construct an undirected FullyConnectedAxons instance, with connection weights
@@ -55,7 +54,7 @@ public interface FullyConnectedAxonsFactory extends Serializable {
 	 *                          FullyConnectedAxons.
 	 * @return The FullyConnectedAxons instance.
 	 */
-	FullyConnectedAxons createFullyConnectedAxons(Neurons leftNeurons, Neurons rightNeurons, Matrix connectionWeights,
-			Matrix leftToRightBiases, Matrix rightToLeftBiases);
+	FullyConnectedAxons createFullyConnectedAxons(Neurons leftNeurons, Neurons rightNeurons, WeightsMatrix connectionWeights,
+			BiasMatrix leftToRightBiases, BiasMatrix rightToLeftBiases);
 
 }

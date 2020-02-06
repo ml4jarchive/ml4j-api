@@ -17,7 +17,7 @@ package org.ml4j.nn.axons;
 
 import java.io.Serializable;
 
-import org.ml4j.Matrix;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
  * Encapsulates the weights within an Axons instance.
@@ -30,17 +30,17 @@ public interface AxonWeights extends Serializable {
 	/**
 	 * @return The weights connecting the input neurons to the output neurons.
 	 */
-	Matrix getConnectionWeights();
+	WeightsMatrix getConnectionWeights();
 
 	/**
 	 * @return A column vector of left to right biases.
 	 */
-	Matrix getLeftToRightBiases();
+	BiasMatrix getLeftToRightBiases();
 
 	/**
 	 * @return A column vector of right to left biases.
 	 */
-	Matrix getRightToLeftBiases();
+	BiasMatrix getRightToLeftBiases();
 
 	/**
 	 * @return The type of these AxonWeights.
@@ -76,7 +76,7 @@ public interface AxonWeights extends Serializable {
 	 * @param input The left to right input.
 	 * @return The left to right output after applying these axon weights.
 	 */
-	Matrix applyToLeftToRightInput(Matrix input);
+	NeuronsActivation applyToLeftToRightInput(NeuronsActivation input, AxonsContext axonsContext);
 
 	/**
 	 * Apply these AxonWeights to the right to left input of an Axons instance
@@ -84,6 +84,6 @@ public interface AxonWeights extends Serializable {
 	 * @param input The right to left input.
 	 * @return The right to left output after applying these axon weights.
 	 */
-	Matrix applyToRightToLeftInput(Matrix input);
+	NeuronsActivation applyToRightToLeftInput(NeuronsActivation input, AxonsContext axonsContext);
 
 }

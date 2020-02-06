@@ -22,5 +22,5 @@ package org.ml4j.nn.axons;
  *
  */
 public enum AxonWeightsType {
-	FULLY_CONNECTED, SCALE_AND_SHIFT, CUSTOM;
+	FULLY_CONNECTED, CONVOLUTIONAL, SCALE_AND_SHIFT, CUSTOM;
 }

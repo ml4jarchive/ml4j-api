@@ -89,6 +89,21 @@ public class Axons3DConfig extends AxonsConfig {
 		this.paddingHeight = paddingHeight;
 		return this;
 	}
+	
+	
+
+	@Override
+	Axons3DConfig dup() {
+		Axons3DConfig dupConfig = new Axons3DConfig().withStrideHeight(strideHeight)
+				.withStrideWidth(strideWidth).withPaddingHeight(paddingHeight).withPaddingWidth(paddingWidth);
+		if (filterHeight != null) {
+			dupConfig = dupConfig.withFilterHeight(filterHeight);
+		}
+		if (filterWidth != null) {
+			dupConfig = dupConfig.withFilterWidth(filterWidth);
+		}
+		return dupConfig;
+	}
 
 	@Override
 	public int hashCode() {
