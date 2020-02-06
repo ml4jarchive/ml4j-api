@@ -18,6 +18,7 @@ import org.ml4j.FloatPredicate;
 import org.ml4j.Matrix;
 import org.ml4j.MatrixFactory;
 import org.ml4j.nn.neurons.format.NeuronsActivationFormat;
+import org.ml4j.nn.neurons.format.features.DimensionScope;
 
 public interface NeuronsActivation {
 
@@ -59,6 +60,6 @@ public interface NeuronsActivation {
 
 	void reshape(int featureCount, int exampleCount);
 
-	ImageNeuronsActivation asImageNeuronsActivation(Neurons3D neurons);
+	ImageNeuronsActivation asImageNeuronsActivation(Neurons3D neurons, DimensionScope dimensionScope);
 
 }

@@ -15,7 +15,7 @@ package org.ml4j.nn.components.builders.axons;
 
 import java.util.List;
 
-import org.ml4j.Matrix;
+import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.BaseGraphBuilderState;
 import org.ml4j.nn.components.builders.common.ComponentsContainer;
@@ -24,7 +24,7 @@ import org.ml4j.nn.neurons.Neurons;
 
 public interface AxonsBuilder<T extends NeuralComponent> extends ComponentsContainer<Neurons, T>, AxonsStateBuilder<T> {
 
-	Matrix getConnectionWeights();
+	WeightsMatrix getConnectionWeights();
 
 	ComponentsGraphNeurons<Neurons> getComponentsGraphNeurons();
 

@@ -15,33 +15,29 @@
  */
 package org.ml4j.nn.neurons.format.features;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * FeaturesFormat for images.
+ * FeaturesFormat built from a list of dimensions.
  * 
  * @author Michael Lavelle
  */
-public enum ImageFeaturesFormat implements FeaturesFormat {
-	HEIGHT_WIDTH_DEPTH(Arrays.asList(Dimension.HEIGHT, Dimension.WIDTH, Dimension.DEPTH)), 
-	DEPTH_HEIGHT_WIDTH(Arrays.asList(Dimension.DEPTH, Dimension.HEIGHT, Dimension.WIDTH)),
-	IM_TO_COL_POOL(Arrays.asList(Dimension.FILTER_HEIGHT, Dimension.FILTER_WIDTH)),
-	IM_TO_COL_CONV(Arrays.asList(Dimension.DEPTH, Dimension.FILTER_HEIGHT, Dimension.FILTER_WIDTH));
+public class FeaturesFormatImpl implements FeaturesFormat {
+
+	private List<Dimension> dimensions;
 	
-	List<Dimension> dims;
-	
-	ImageFeaturesFormat(List<Dimension> dims) {
-		this.dims = dims;
-	}
-	
-	public String toString() {
-		return getDimensions().stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+	public FeaturesFormatImpl(List<Dimension> dimensions) {
+		this.dimensions = dimensions;
 	}
 	
 	@Override
+	public String toString() {
+		return getDimensions().stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+	}
+
+	@Override
 	public List<Dimension> getDimensions() {
-		return dims;
+		return dimensions;
 	}
 }

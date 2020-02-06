@@ -17,9 +17,11 @@ package org.ml4j.nn.neurons.format;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
 import org.ml4j.nn.neurons.format.features.Dimension;
+import org.ml4j.nn.neurons.format.features.DimensionScope;
 import org.ml4j.nn.neurons.format.features.ImageFeaturesFormat;
 
 /**
@@ -42,7 +44,7 @@ public class ImageNeuronsActivationFormat extends NeuronsActivationFormat<ImageF
 
 	public final static ImageNeuronsActivationFormat ML4J_IM_TO_COL_POOL_FORMAT
  	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET, 
- 			ImageFeaturesFormat.IM_TO_COL_POOL, Arrays.asList(Dimension.FILTER_POSITIONS, Dimension.DEPTH, Dimension.EXAMPLE));
+ 			ImageFeaturesFormat.IM_TO_COL_POOL, Arrays.asList(Dimension.DEPTH, Dimension.FILTER_POSITIONS, Dimension.EXAMPLE));
 	
 	public final static ImageNeuronsActivationFormat DL4J_DEFAULT_IMAGE_FORMAT
  	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET, 
@@ -63,5 +65,15 @@ public class ImageNeuronsActivationFormat extends NeuronsActivationFormat<ImageF
 	public ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation featureOrientation,
 			ImageFeaturesFormat featuresFormat, List<Dimension> exampleDimensions) {
 		super(featureOrientation, featuresFormat, exampleDimensions);
+	}
+	
+	public boolean isEquivalentFormat(NeuronsActivationFormat<?> activationFormat, DimensionScope dimensionScope) {
+		if (activationFormat.equals(this)) {
+			return true;
+		} else {
+			return Dimension.isEquivalent(getDimensions().stream().flatMap(d -> d.decompose().stream()).collect(Collectors.toList()),
+					activationFormat.getDimensions().stream().flatMap(d -> d.decompose().stream()).collect(Collectors.toList()), dimensionScope);
+
+		}
 	}
 }

@@ -36,6 +36,11 @@ public interface AxonsActivation {
 	 *         activation, or null if no dropout mask.
 	 */
 	AxonsDropoutMask getDropoutMask();
+	
+	/**
+	 * @param axonsDropoutMask Set the dropout mask (if any) used by the axons to create this activation.
+	 */
+	void setDropoutMask(AxonsDropoutMask axonsDropoutMask);
 
 	/**
 	 * @return The output from this axons activation, after any output dropout has
