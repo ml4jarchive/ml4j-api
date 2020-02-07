@@ -182,26 +182,6 @@ public class Dimension {
 		return visited;
 	}
 	
-	private Set<Dimension> populateAliases(Set<Dimension> unprocessedAliases, Set<Dimension> processedAliases) {
-		Set<Dimension> unprocessedAliasesCopy = new HashSet<>(unprocessedAliases);
-		if (unprocessedAliasesCopy.isEmpty()) {
-			return processedAliases;
-		}
-		List<Dimension> additionalAliases = new ArrayList<>();
-		for (Dimension alias : unprocessedAliasesCopy) {
-			if (true || alias.scope.isValidWithin(scope)) {
-				additionalAliases.add(alias);
-			}
-		}	
-		unprocessedAliasesCopy.removeAll(additionalAliases);
-		for (Dimension additionalAlias : additionalAliases) {
-			additionalAlias.populateAliases(unprocessedAliasesCopy, processedAliases);
-		}
-		processedAliases.addAll(additionalAliases);
-
-		return processedAliases.stream().collect(Collectors.toSet());
-	}
-	
 	public List<Dimension> decompose() {
 		return Arrays.asList(this);
 	}
