@@ -86,9 +86,14 @@ public class Dimension {
 		this.aliases.forEach(d -> d.aliases.add(this));
 	}
 	
-	public Set<Dimension> getAliases() {
-		Set<Dimension> aliases = new HashSet<>(this.aliases);
-		populateAliases(aliases);
+	public Set<Dimension> getAliases(DimensionScope scope) {
+		Set<Dimension> aliases = getAliases(this, new HashSet<>());
+		if (scope == DimensionScope.ANY || this.scope.isValidWithin(scope)) {
+			aliases = aliases.stream().filter(a -> a.scope == this.scope || a.scope == DimensionScope.ANY || a.scope == scope).collect(Collectors.toSet());
+		} else {
+			aliases = aliases.stream().filter(a -> a.scope == this.scope).collect(Collectors.toSet());
+		}
+		aliases.remove(this);
 		return aliases;
 	}
 	
@@ -131,8 +136,7 @@ public class Dimension {
 							return false;
 						}
 
-						if (firstMatchesSecond || (firstDecomposedAlias.get(0).equals(secondDecomposedAlias.get(0)) 
-								&& firstDecomposedAlias.get(0).scope == secondDecomposedAlias.get(0).scope)) {
+						if (firstMatchesSecond || (firstDecomposedAlias.get(0).equals(secondDecomposedAlias.get(0)))) {
 							if (!firstMatchesSecond) {
 								remainingFirstAfterMatch = new ArrayList<>();
 								remainingFirstAfterMatch.addAll(firstDecomposedAlias);
@@ -142,7 +146,7 @@ public class Dimension {
 								remainingSecondAfterMatch.addAll(secondDecomposedAlias);
 								remainingSecondAfterMatch.remove(0);
 								remainingSecondAfterMatch.addAll(decomposedSecond.subList(1, decomposedSecond.size()));
-							}
+							} 
 							firstMatchesSecond = true;
 						}
 					}
@@ -160,17 +164,42 @@ public class Dimension {
 	public Set<List<Dimension>> getAllDecomposedAliases(DimensionScope dimensionScope) {
 		Set<List<Dimension>> allDecomposedAliases = new HashSet<>();
 		allDecomposedAliases.add(decompose().stream().collect(Collectors.toList()));
-		allDecomposedAliases.addAll(getAliases().stream().map(a -> a.decompose().stream().collect(Collectors.toList())).collect(Collectors.toSet()));
+		allDecomposedAliases.addAll(getAliases(dimensionScope).stream().map(a -> a.decompose().stream().collect(Collectors.toList())).collect(Collectors.toSet()));
 		return allDecomposedAliases.stream().filter(a -> a.stream().allMatch(d -> d.scope.isValidWithin(dimensionScope))).collect(Collectors.toSet());
 	}
 	
-	public void populateAliases(Set<Dimension> processedAliases) {
-		Set<Dimension> unprocessedAliases = new HashSet<>(aliases);
-		unprocessedAliases.removeAll(processedAliases);
-		for (Dimension alias : unprocessedAliases) {
-			processedAliases.add(alias);
-			alias.populateAliases(processedAliases);
+	
+	private Set<Dimension> getAliases(Dimension dimension, Set<Dimension> visited) {
+		if (visited.isEmpty()) {
+			visited = new HashSet<>(Arrays.asList(this));
+		}
+		for (Dimension alias : dimension.aliases) {
+			if (!visited.contains(alias)) {
+				visited.add(alias);
+				getAliases(alias, visited);
+			}
+		}
+		return visited;
+	}
+	
+	private Set<Dimension> populateAliases(Set<Dimension> unprocessedAliases, Set<Dimension> processedAliases) {
+		Set<Dimension> unprocessedAliasesCopy = new HashSet<>(unprocessedAliases);
+		if (unprocessedAliasesCopy.isEmpty()) {
+			return processedAliases;
+		}
+		List<Dimension> additionalAliases = new ArrayList<>();
+		for (Dimension alias : unprocessedAliasesCopy) {
+			if (true || alias.scope.isValidWithin(scope)) {
+				additionalAliases.add(alias);
+			}
 		}	
+		unprocessedAliasesCopy.removeAll(additionalAliases);
+		for (Dimension additionalAlias : additionalAliases) {
+			additionalAlias.populateAliases(unprocessedAliasesCopy, processedAliases);
+		}
+		processedAliases.addAll(additionalAliases);
+
+		return processedAliases.stream().collect(Collectors.toSet());
 	}
 	
 	public List<Dimension> decompose() {
