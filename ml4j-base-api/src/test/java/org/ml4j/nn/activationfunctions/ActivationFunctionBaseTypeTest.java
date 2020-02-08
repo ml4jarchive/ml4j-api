@@ -17,8 +17,8 @@ public class ActivationFunctionBaseTypeTest {
 			Assert.assertEquals(baseType, baseType.getBaseType());
 			Assert.assertFalse(baseType.isCustomBaseType());
 			Assert.assertTrue(baseType.isStandardBaseType());
-			Assert.assertNotNull(baseType.asNeuralNetworkType());
-			ActivationFunctionType activationFunctionType = baseType.asNeuralNetworkType();
+			Assert.assertNotNull(baseType.asActivationFunctionType());
+			ActivationFunctionType activationFunctionType = baseType.asActivationFunctionType();
 			Assert.assertNotEquals(baseType, activationFunctionType);
 			Assert.assertEquals(baseType, activationFunctionType.getBaseType());
 			Assert.assertEquals(baseType, activationFunctionType.getParentType());
