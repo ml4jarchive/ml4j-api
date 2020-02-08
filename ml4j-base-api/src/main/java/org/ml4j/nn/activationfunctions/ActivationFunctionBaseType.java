@@ -32,6 +32,7 @@ public enum ActivationFunctionBaseType implements IActivationFunctionType {
 		return this;
 	}
 
+	// TODO - Change to asActivationFunctionType
 	ActivationFunctionType asNeuralNetworkType() {
 		return new ActivationFunctionType(this, getId(), isStandardBaseType(), isCustomBaseType());
 	}
