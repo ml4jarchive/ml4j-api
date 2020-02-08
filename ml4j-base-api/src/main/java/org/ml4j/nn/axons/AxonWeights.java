@@ -17,6 +17,7 @@ package org.ml4j.nn.axons;
 
 import java.io.Serializable;
 
+import org.ml4j.nn.components.NeuronsActivationComponent;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -25,7 +26,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @author Michael Lavelle
  *
  */
-public interface AxonWeights extends Serializable {
+public interface AxonWeights extends NeuronsActivationComponent, Serializable {
 
 	/**
 	 * @return The weights connecting the input neurons to the output neurons.

@@ -43,7 +43,7 @@ public final class ActivationFunctionType implements IActivationFunctionType {
 			throw new IllegalArgumentException(
 					"Use createCustomBaseType(String id) method to obtain a custom base type");
 		}
-		return baseType.asNeuralNetworkType();
+		return baseType.asActivationFunctionType();
 	}
 
 	ActivationFunctionType(IActivationFunctionType parentType, String id, boolean isStandardBaseType,

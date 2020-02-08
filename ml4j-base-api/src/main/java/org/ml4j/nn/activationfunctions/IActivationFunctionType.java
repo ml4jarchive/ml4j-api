@@ -28,7 +28,7 @@ interface IActivationFunctionType {
 	}
 
 	static ActivationFunctionType baseType(ActivationFunctionBaseType baseType) {
-		return baseType.asNeuralNetworkType();
+		return baseType.asActivationFunctionType();
 	}
 
 	boolean isStandardBaseType();
