@@ -40,4 +40,31 @@ public class FeaturesFormatImpl implements FeaturesFormat {
 	public List<Dimension> getDimensions() {
 		return dimensions;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dimensions == null) ? 0 : dimensions.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FeaturesFormatImpl other = (FeaturesFormatImpl) obj;
+		if (dimensions == null) {
+			if (other.dimensions != null)
+				return false;
+		} else if (!dimensions.equals(other.dimensions))
+			return false;
+		return true;
+	}
+	
+	
 }
