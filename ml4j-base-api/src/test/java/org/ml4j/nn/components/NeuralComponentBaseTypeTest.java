@@ -18,7 +18,7 @@ public class NeuralComponentBaseTypeTest {
 			Assert.assertFalse(baseType.isCustomBaseType());
 			Assert.assertTrue(baseType.isStandardBaseType());
 			Assert.assertNotNull(baseType.asNeuralNetworkType());
-			NeuralComponentType<NeuralComponent> neuralComponentType = baseType.asNeuralNetworkType();
+			NeuralComponentType neuralComponentType = baseType.asNeuralNetworkType();
 			Assert.assertNotEquals(baseType, neuralComponentType);
 			Assert.assertEquals(baseType, neuralComponentType.getBaseType());
 			Assert.assertEquals(baseType, neuralComponentType.getParentType());

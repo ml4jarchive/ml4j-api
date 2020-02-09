@@ -23,6 +23,11 @@
 	</repositories>
 	<dependencies>
 		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
 			<groupId>org.ml4j</groupId>
 			<artifactId>ml4j-matrices-api</artifactId>
 			<version>2.0.0-SNAPSHOT</version>
@@ -57,7 +62,7 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>1.10.19</version>
+			<version>3.2.4</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -74,8 +79,8 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-    			<version>0.8.5</version>			
-    			<executions>
+				<version>0.8.5</version>
+				<executions>
 					<execution>
 						<goals>
 							<goal>prepare-agent</goal>
@@ -92,14 +97,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.3</version>
-			</plugin>
-		</plugins>
-	</reporting>
 </project>
 

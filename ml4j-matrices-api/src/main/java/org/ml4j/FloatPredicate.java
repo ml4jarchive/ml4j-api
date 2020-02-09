@@ -19,12 +19,12 @@ import java.util.Objects;
 /**
  * Represents a predicate (boolean-valued function) of one {@code float}-valued
  * argument. This is the {@code float}-consuming primitive type specialization of
- * {@link Predicate}.
+ * {@link java.util.function.Predicate}.
  *
  * <p>This is a functional interface
  * whose functional method is {@link #test(float)}.
  *
- * @see Predicate
+ * @see java.util.function.Predicate
  */
 @FunctionalInterface
 public interface FloatPredicate {

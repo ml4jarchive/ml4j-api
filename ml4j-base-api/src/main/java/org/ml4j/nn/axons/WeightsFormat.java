@@ -15,6 +15,7 @@
  */
 package org.ml4j.nn.axons;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.ml4j.nn.neurons.format.features.Dimension;
@@ -24,7 +25,7 @@ import org.ml4j.nn.neurons.format.features.Dimension;
  * 
  * @author Michael Lavelle
  */
-public interface WeightsFormat {
+public interface WeightsFormat extends Serializable {
 	/**
 	 * @return The input dimensions of this format
 	 */

@@ -13,8 +13,8 @@
  */
 package org.ml4j.nn.components.factories;
 
+import java.io.Serializable;
 import java.util.List;
-import java.util.function.IntSupplier;
 
 import org.ml4j.Matrix;
 import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
@@ -30,6 +30,7 @@ import org.ml4j.nn.components.axons.DirectedAxonsComponent;
 import org.ml4j.nn.components.manytoone.ManyToOneDirectedComponent;
 import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
 import org.ml4j.nn.components.onetomany.OneToManyDirectedComponent;
+import org.ml4j.nn.components.onetomany.SerializableIntSupplier;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentBipoleGraph;
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentChain;
@@ -44,7 +45,7 @@ import org.ml4j.nn.neurons.Neurons3D;
  * @author Michael Lavelle
  *
  */
-public interface DirectedComponentFactory extends NeuralComponentFactory<DefaultChainableDirectedComponent<?, ?>> {
+public interface DirectedComponentFactory extends NeuralComponentFactory<DefaultChainableDirectedComponent<?, ?>>, Serializable {
 
 	/**
 	 * Create a fully-connected axons component, connecting leftNeurons to
@@ -230,11 +231,12 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 *                              be a dynamic count.
 	 * @return A OneToManyDirectedComponent
 	 */
-	OneToManyDirectedComponent<?> createOneToManyDirectedComponent(IntSupplier targetComponentsCount);
+	OneToManyDirectedComponent<?> createOneToManyDirectedComponent(SerializableIntSupplier targetComponentsCount);
 
 	/**
 	 * Construct a ManyToOneDirectedComponent
 	 * 
+	 * @param outputNeurons. The neurons at the output of this component.
 	 * @param pathCombinationStrategy The strategy used to combine multiple paths
 	 *                                into a single output.
 	 * @return A ManyToOneDirectedComponent for the specified
@@ -247,6 +249,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	/**
 	 * Construct a ManyToOneDirectedComponent
 	 * 
+	 * @param outputNeurons. The neurons at the output of this component.
 	 * @param pathCombinationStrategy The strategy used to combine multiple paths
 	 *                                into a single output.
 	 * @return A ManyToOneDirectedComponent for the specified
@@ -297,17 +300,6 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	@Override
 	DefaultDirectedComponentChain createDirectedComponentChain(
 			List<DefaultChainableDirectedComponent<?, ?>> sequentialComponents);
-
-	/**
-	 * Construct a DefaultDirectedComponentChainBatch instance.
-	 * 
-	 * @param parallelChains A list of the parallel DefaultDirectedComponentChain
-	 *                       that this batch will contain.
-	 * @return The DefaultDirectedComponentChainBatch instance.
-	 */
-	// DefaultDirectedComponentChainBatch
-	// createDirectedComponentChainBatch(List<DefaultDirectedComponentChain>
-	// parallelChains);
 
 	/**
 	 * Construct a DefaultDirectedComponentBipoleGraph instance.

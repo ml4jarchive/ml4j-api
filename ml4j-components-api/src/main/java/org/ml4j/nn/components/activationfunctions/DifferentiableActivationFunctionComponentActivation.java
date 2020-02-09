@@ -32,16 +32,14 @@ public interface DifferentiableActivationFunctionComponentActivation
 
 	/**
 	 * 
-	 * @param da      The outer gradient.
-	 * @param context The synapses context.
+	 * @param da  The outer gradient.
 	 * @return The backpropagated gradient.
 	 */
 	DirectedComponentGradient<NeuronsActivation> backPropagate(DirectedComponentGradient<NeuronsActivation> da);
 
 	/**
 	 * 
-	 * @param da      The outer gradient.
-	 * @param context The synapses context.
+	 * @param da  The outer gradient.
 	 * @return The backpropagated gradient.
 	 */
 	DirectedComponentGradient<NeuronsActivation> backPropagate(CostFunctionGradient da);

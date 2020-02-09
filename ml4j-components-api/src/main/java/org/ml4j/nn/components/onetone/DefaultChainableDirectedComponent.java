@@ -79,7 +79,7 @@ public interface DefaultChainableDirectedComponent<A extends DefaultChainableDir
 	String getName();
 
 	@Override
-	NeuralComponentType<? extends DefaultChainableDirectedComponent<?, ?>> getComponentType();
+	NeuralComponentType getComponentType();
 	
 	
 	/**
@@ -96,9 +96,9 @@ public interface DefaultChainableDirectedComponent<A extends DefaultChainableDir
 	/**
 	 * Forward Propagates the activations through the component
 	 * 
-	 * @param input   The input to the DirectedComponent
+	 * @param inputs   A stream of inputs to the DirectedComponent.
 	 * @param context The context within which we forward propagate the activations
-	 * @return A DirectedComponentActivation encapsulating the artifacts generated
+	 * @return A stream of activations encapsulating the artifacts generated
 	 *         by this forward propagation - including the output from the right
 	 *         hand side of this DirectedComponent.
 	 */

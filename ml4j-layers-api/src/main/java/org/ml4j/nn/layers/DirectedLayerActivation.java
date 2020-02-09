@@ -40,14 +40,12 @@ public interface DirectedLayerActivation extends DefaultChainableDirectedCompone
   
   /**
    * @param outerGradient The outer gradient to back propagate.
-   * @param layerContext The layer context.
    * @return The back propagated DirectedLayerGradient.
    */
   DirectedComponentGradient<NeuronsActivation> backPropagate(DirectedComponentGradient<NeuronsActivation> outerGradient);
   
   /**
    * @param outerGradient The outer gradient to back propagate.
-   * @param layerContext The layer context.
    * @return The back propagated DirectedLayerGradient.
    */
   DirectedComponentGradient<NeuronsActivation> backPropagate(CostFunctionGradient outerGradient);

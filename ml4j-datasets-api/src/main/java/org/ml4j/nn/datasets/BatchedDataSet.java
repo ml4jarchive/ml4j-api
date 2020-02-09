@@ -29,9 +29,11 @@ public interface BatchedDataSet<E> extends DataSet<DataBatch<E>> {
 	 * Convert this BatchedDataSet to a FloatArrayBatchedDataSet using the specified
 	 * FeatureExtractor.
 	 * 
-	 * @param featureExtractor
-	 * @param featureExtractionErrorMode
-	 * @return
+	 * @param featureExtractor The feature extractor we use to convert elements of type E
+	 * to float arrays.
+	 * @param featureExtractionErrorMode A mode specifying how feature extraction errors should
+	 * be handled.
+	 * @return A FloatArrayBatchedDataSet instance containing the extracted data from this BatchedDataSet
 	 */
 	FloatArrayBatchedDataSet toFloatArrayBatchedDataSet(FeatureExtractor<E> featureExtractor,
 			FeatureExtractionErrorMode featureExtractionErrorMode);

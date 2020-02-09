@@ -33,7 +33,7 @@ public interface DataBatch<E> extends DataSet<E> {
 	/**
 	 * Add an element to this DataBatch.
 	 * 
-	 * @param element
+	 * @param element The element to add.
 	 */
 	void add(E element);
 

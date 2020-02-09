@@ -21,12 +21,18 @@ import org.ml4j.MatrixFactory;
 public interface DirectedComponentsContext extends Serializable {
 
 	/**
-	 * @param synapsesIndex The index of the synapses within this DirectedLayer.
-	 * @return The context we use to propagate data through the directed synapses of
-	 *         this Layer.
+	 * @param <C> The type of context we wish to obtain.
+	 * @param component The component for which we wish to retrieve the context.
+	 * @param defaultContextSupplier A supplier of a default context should there be no pre-existing context available.
+	 * @return The context for the component.
 	 */
 	<C extends Serializable> C getContext(DirectedComponent<?, ?, C> component, Supplier<C> defaultContextSupplier);
 
+	/**
+	 * @param <C> The type of context we wish to set.
+	 * @param component The component whose context we wish to set.
+	 * @param context The context we wish to set.
+	 */
 	<C extends Serializable> void setContext(DirectedComponent<?, ?, C> component, C context);
 
 	MatrixFactory getMatrixFactory();
@@ -36,8 +42,14 @@ public interface DirectedComponentsContext extends Serializable {
 	 */
 	boolean isTrainingContext();
 	
-	
+	/**
+	 * @return This context as a training context.
+	 */
 	DirectedComponentsContext asTrainingContext();
 	
+	/**
+	 * 
+	 * @return This context as a non-training context.
+	 */
 	DirectedComponentsContext asNonTrainingContext();
 }

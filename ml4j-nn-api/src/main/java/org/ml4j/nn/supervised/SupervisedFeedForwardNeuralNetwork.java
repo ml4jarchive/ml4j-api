@@ -50,10 +50,8 @@ public interface SupervisedFeedForwardNeuralNetwork
 	/**
 	 * Trains the SupervisedNeuralNetwork.
 	 * 
-	 * @param trainingDataActivations  The NeuronsActivation produced by the
+	 * @param labeledTrainingDataActivations A stream of labelled NeuronsActivations produced by the
 	 *                                 training data
-	 * @param trainingLabelActivations The NeuronsActivation produced by the
-	 *                                 training labels
 	 * @param trainingContext          The NeuralNetworkContext used for training
 	 */
 	public void train(Stream<LabeledData<NeuronsActivation, NeuronsActivation>> labeledTrainingDataActivations,
@@ -62,11 +60,11 @@ public interface SupervisedFeedForwardNeuralNetwork
 	/**
 	 * Trains the SupervisedNeuralNetwork.
 	 * 
-	 * @param trainingDataActivations  The NeuronsActivation produced by the
+	 * @param labeledTrainingDataActivations A stream of labelled NeuronsActivations produced by the
 	 *                                 training data
-	 * @param trainingLabelActivations The NeuronsActivation produced by the
-	 *                                 training labels
 	 * @param trainingContext          The NeuralNetworkContext used for training
+	 * @param onEpochAverageCostHandler A handler to be called on each epoch, passed the average cost for
+	 * that epoch.
 	 */
 	public void train(
 			Supplier<Stream<LabeledData<NeuronsActivation, NeuronsActivation>>> labeledTrainingDataActivations,

@@ -28,13 +28,13 @@ import org.ml4j.nn.sessions.Session;
 public interface SessionFactory<T extends NeuralComponent> {
 
 	/**
-	 * @param directedComponentsContext
-	 * @return A new session.
+	 * @param directedComponentsContext The specific directed components context within which to create the session.
+	 * @return The new session.
 	 */
 	Session<T> createSession(DirectedComponentsContext directedComponentsContext);
 	
 	/**
-	 * @return A new session.
+	 * @return The new session.
 	 */
 	Session<T> createSession();
 

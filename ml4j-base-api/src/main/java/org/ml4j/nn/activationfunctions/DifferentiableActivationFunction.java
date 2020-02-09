@@ -25,9 +25,6 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
  * 
  * @author Michael Lavelle
  *
- * @param <F> The specific class of this DifferentiableActivationFunction.
- * @param <G> The specific class of DifferentiableActivationFunctionActivation
- *            produced on activation.
  */
 public interface DifferentiableActivationFunction
 		extends ActivationFunction<DifferentiableActivationFunction, DifferentiableActivationFunctionActivation> {

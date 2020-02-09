@@ -4,6 +4,11 @@ import org.ml4j.Matrix;
 
 public class WeightsMatrixImpl implements WeightsMatrix {
 
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Matrix weights;
 	private WeightsFormat format;
 	

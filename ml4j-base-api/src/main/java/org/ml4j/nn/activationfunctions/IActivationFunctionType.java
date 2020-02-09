@@ -13,7 +13,9 @@
  */
 package org.ml4j.nn.activationfunctions;
 
-interface IActivationFunctionType {
+import java.io.Serializable;
+
+interface IActivationFunctionType extends Serializable {
 
 	ActivationFunctionBaseType getBaseType();
 

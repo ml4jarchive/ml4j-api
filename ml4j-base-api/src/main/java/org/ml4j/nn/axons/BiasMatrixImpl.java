@@ -4,6 +4,10 @@ import org.ml4j.Matrix;
 
 public class BiasMatrixImpl implements BiasMatrix {
 
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
 	private Matrix biasWeights;
 	private BiasFormat biasFormat;
 	

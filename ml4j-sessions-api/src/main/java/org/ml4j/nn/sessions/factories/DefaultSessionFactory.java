@@ -19,21 +19,21 @@ import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.sessions.DefaultSession;
 
 /**
- * Convenience interface for a SessionFactory for DefaultChainableDirectedComponent<?, ?>
+ * Convenience interface for a SessionFactory for DefaultChainableDirectedComponent
  * 
  * @author Michael Lavelle
  */
 public interface DefaultSessionFactory extends SessionFactory<DefaultChainableDirectedComponent<?, ?>> {
 
 	/**
-	 * @param directedComponentsContext
-	 * @return A new session.
+	 * @param directedComponentsContext The specific directed components context within which to create the session.
+	 * @return The new session.
 	 */
 	@Override
 	DefaultSession createSession(DirectedComponentsContext directedComponentsContext);
 	
 	/**
-	 * @return A new session.
+	 * @return The new session.
 	 */
 	@Override
 	DefaultSession createSession();

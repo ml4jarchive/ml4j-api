@@ -13,6 +13,8 @@
  */
 package org.ml4j.nn.activationfunctions.factories;
 
+import java.io.Serializable;
+
 import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
@@ -23,15 +25,16 @@ import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
  * @author Michael Lavelle
  *
  */
-public interface DifferentiableActivationFunctionFactory {
+public interface DifferentiableActivationFunctionFactory extends Serializable {
 
 	/**
 	 * @return A RELU activation function instance.
 	 */
 	DifferentiableActivationFunction createReluActivationFunction();
-
+	
 	/**
-	 * @return A RELU activation function instance.
+	 * @param alpha The alpha parameter for the leaky relu.
+	 * @return A leakyrelu activation function instance.
 	 */
 	DifferentiableActivationFunction createLeakyReluActivationFunction(float alpha);
 
@@ -52,6 +55,7 @@ public interface DifferentiableActivationFunctionFactory {
 
 	/**
 	 * @param activationFunctionType The type of activation function required.
+	 * @param activationFunctionProperties The properties to be set on the activation function.
 	 * @return A DifferentiableActivationFunction given the provided
 	 *         activationFunctionType;
 	 */

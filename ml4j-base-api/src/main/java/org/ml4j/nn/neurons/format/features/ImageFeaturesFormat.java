@@ -35,9 +35,10 @@ public enum ImageFeaturesFormat implements FeaturesFormat {
 	ImageFeaturesFormat(List<Dimension> dims) {
 		this.dims = dims;
 	}
-	
+
+	@Override
 	public String toString() {
-		return getDimensions().stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+		return getDimensions().stream().map(Dimension::getName).collect(Collectors.toList()).toString();
 	}
 	
 	@Override

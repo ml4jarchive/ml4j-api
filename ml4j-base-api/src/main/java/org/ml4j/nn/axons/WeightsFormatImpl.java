@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.ml4j.nn.neurons.format.features.Dimension;
 
 /**
@@ -28,6 +30,10 @@ import org.ml4j.nn.neurons.format.features.Dimension;
  */
 public class WeightsFormatImpl implements WeightsFormat {
 
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<Dimension> inputDimensions;
 	private List<Dimension> outputDimensions;
 	private WeightsMatrixOrientation weightsMatrixOrientation;
@@ -66,7 +72,17 @@ public class WeightsFormatImpl implements WeightsFormat {
 	}
 	
 	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
+	}
+
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+	
+	@Override
 	public String toString() {
-		return getDimensions().stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+		return getDimensions().stream().map(Dimension::getName).collect(Collectors.toList()).toString();
 	}
 }

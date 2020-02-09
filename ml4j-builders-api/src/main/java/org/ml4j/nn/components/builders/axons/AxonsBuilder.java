@@ -22,7 +22,7 @@ import org.ml4j.nn.components.builders.common.ComponentsContainer;
 import org.ml4j.nn.components.builders.componentsgraph.ComponentsGraphNeurons;
 import org.ml4j.nn.neurons.Neurons;
 
-public interface AxonsBuilder<T extends NeuralComponent> extends ComponentsContainer<Neurons, T>, AxonsStateBuilder<T> {
+public interface AxonsBuilder<T extends NeuralComponent> extends ComponentsContainer<Neurons, T>, AxonsStateBuilder {
 
 	WeightsMatrix getConnectionWeights();
 

@@ -19,7 +19,7 @@ import org.ml4j.nn.neurons.Neurons;
 
 public interface NeuralComponent extends Serializable {
 
-	NeuralComponentType<?> getComponentType();
+	NeuralComponentType getComponentType();
 
 	Neurons getInputNeurons();
 

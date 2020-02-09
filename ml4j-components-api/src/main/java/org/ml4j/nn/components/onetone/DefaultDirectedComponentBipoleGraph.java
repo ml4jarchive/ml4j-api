@@ -45,7 +45,7 @@ public interface DefaultDirectedComponentBipoleGraph extends
 	DefaultDirectedComponentBatch getEdges();
 
 	@Override
-	NeuralComponentType<? extends DefaultDirectedComponentBipoleGraph> getComponentType();
+	NeuralComponentType getComponentType();
 
 	
 	@Override

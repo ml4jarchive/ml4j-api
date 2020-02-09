@@ -45,7 +45,7 @@ public interface DirectedComponent<I, A extends DirectedComponentActivation<I, ?
 	/**
 	 * @return The type of the directed component
 	 */
-	NeuralComponentType<?> getComponentType();
+	NeuralComponentType getComponentType();
 
 	/**
 	 * @return A deep copy of this component.

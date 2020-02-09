@@ -15,8 +15,16 @@ package org.ml4j.nn.activationfunctions;
 
 import java.util.Arrays;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 public final class ActivationFunctionType implements IActivationFunctionType {
 
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private final IActivationFunctionType parentType;
 	private final String id;
 	private final boolean isStandardBaseType;
@@ -74,22 +82,17 @@ public final class ActivationFunctionType implements IActivationFunctionType {
 
 	@Override
 	public String getQualifiedId() {
-		return isStandardBaseType ? ActivationFunctionBaseType.class.getName() + "." + getId()
-				: (ActivationFunctionBaseType.CUSTOM.equals(getParentType()) ? ActivationFunctionBaseType.class.getName() + "." + getId()
-						: (getParentType().getQualifiedId() + "." + getId()));
+		if (isStandardBaseType) {
+			return ActivationFunctionBaseType.class.getName() + "." + getId();
+		} else {
+			return ActivationFunctionBaseType.CUSTOM.equals(getParentType()) ? ActivationFunctionBaseType.class.getName() + "." + getId()
+					: (getParentType().getQualifiedId() + "." + getId());
+		}
 	}
 
 	@Override
 	public boolean isStandardBaseType() {
 		return isStandardBaseType;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((getQualifiedId() == null) ? 0 : getQualifiedId().hashCode());
-		return result;
 	}
 
 	@Override
@@ -99,21 +102,14 @@ public final class ActivationFunctionType implements IActivationFunctionType {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ActivationFunctionType other = (ActivationFunctionType) obj;
-		if (getQualifiedId() == null) {
-			if (other.getQualifiedId() != null)
-				return false;
-		} else if (!getQualifiedId().equals(other.getQualifiedId()))
-			return false;
-		return true;
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+	
 	@Override
 	public boolean isCustomBaseType() {
 		return isCustomBaseType;

@@ -19,6 +19,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
 import org.ml4j.nn.neurons.format.features.Dimension;
 import org.ml4j.nn.neurons.format.features.DimensionScope;
@@ -30,35 +32,34 @@ import org.ml4j.nn.neurons.format.features.ImageFeaturesFormat;
  * 
  * @author Michael Lavelle
  *
- * @param <F> The type of FeaturesFormat representing the data features.
  */
 public class ImageNeuronsActivationFormat extends NeuronsActivationFormat<ImageFeaturesFormat> {
 
-	public final static ImageNeuronsActivationFormat ML4J_DEFAULT_IMAGE_FORMAT
+	public static final ImageNeuronsActivationFormat ML4J_DEFAULT_IMAGE_FORMAT
 	 	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET, 
 	 			ImageFeaturesFormat.DEPTH_HEIGHT_WIDTH, Arrays.asList(Dimension.EXAMPLE));
 	
-	public final static ImageNeuronsActivationFormat ML4J_IM_TO_COL_CONV_FORMAT
+	public static final ImageNeuronsActivationFormat ML4J_IM_TO_COL_CONV_FORMAT
  	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET, 
  			ImageFeaturesFormat.IM_TO_COL_CONV, Arrays.asList(Dimension.FILTER_POSITIONS, Dimension.EXAMPLE));
 
-	public final static ImageNeuronsActivationFormat ML4J_IM_TO_COL_POOL_FORMAT
+	public static final ImageNeuronsActivationFormat ML4J_IM_TO_COL_POOL_FORMAT
  	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET, 
  			ImageFeaturesFormat.IM_TO_COL_POOL, Arrays.asList(Dimension.DEPTH, Dimension.FILTER_POSITIONS, Dimension.EXAMPLE));
 	
-	public final static ImageNeuronsActivationFormat DL4J_DEFAULT_IMAGE_FORMAT
+	public static final ImageNeuronsActivationFormat DL4J_DEFAULT_IMAGE_FORMAT
  	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET, 
  			ImageFeaturesFormat.DEPTH_HEIGHT_WIDTH, Arrays.asList(Dimension.EXAMPLE));
 	
-	public final static ImageNeuronsActivationFormat KERAS_CHANNELS_FIRST_IMAGE_FORMAT
+	public static final ImageNeuronsActivationFormat KERAS_CHANNELS_FIRST_IMAGE_FORMAT
  	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET, 
  			ImageFeaturesFormat.DEPTH_HEIGHT_WIDTH, Arrays.asList(Dimension.EXAMPLE));
 	
-	public final static ImageNeuronsActivationFormat KERAS_CHANNELS_LAST_IMAGE_FORMAT
+	public static final ImageNeuronsActivationFormat KERAS_CHANNELS_LAST_IMAGE_FORMAT
  	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET, 
  			ImageFeaturesFormat.HEIGHT_WIDTH_DEPTH, Arrays.asList(Dimension.EXAMPLE));
 	
-	public final static ImageNeuronsActivationFormat TENSORFLOW_IMAGE_FORMAT
+	public static final ImageNeuronsActivationFormat TENSORFLOW_IMAGE_FORMAT
  	= new ImageNeuronsActivationFormat(NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET, 
  			ImageFeaturesFormat.HEIGHT_WIDTH_DEPTH, Arrays.asList(Dimension.EXAMPLE));
 	
@@ -73,7 +74,16 @@ public class ImageNeuronsActivationFormat extends NeuronsActivationFormat<ImageF
 		} else {
 			return Dimension.isEquivalent(getDimensions().stream().flatMap(d -> d.decompose().stream()).collect(Collectors.toList()),
 					activationFormat.getDimensions().stream().flatMap(d -> d.decompose().stream()).collect(Collectors.toList()), dimensionScope);
-
 		}
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
+	}
+
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
 	}
 }

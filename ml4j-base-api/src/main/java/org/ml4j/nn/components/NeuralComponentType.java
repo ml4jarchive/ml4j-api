@@ -15,32 +15,40 @@ package org.ml4j.nn.components;
 
 import java.util.Arrays;
 
-public final class NeuralComponentType<T extends NeuralComponent> implements INeuralComponentType {
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
+public final class NeuralComponentType implements INeuralComponentType {
+
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private final INeuralComponentType parentType;
 	private final String id;
 	private final boolean isStandardBaseType;
 	private final boolean isCustomBaseType;
 
-	public static <S extends NeuralComponent> NeuralComponentType<S> createSubType(NeuralComponentType<?> parentType,
-			String id) {
-		return new NeuralComponentType<S>(parentType, id, false, false);
+	public static NeuralComponentType createSubType(NeuralComponentType parentType,
+													String id) {
+		return new NeuralComponentType(parentType, id, false, false);
 	}
 
-	public static <S extends NeuralComponent> NeuralComponentType<S> createSubType(NeuralComponentBaseType parentType,
-			String id) {
-		return new NeuralComponentType<>(parentType, id, false, false);
+	public static NeuralComponentType createSubType(NeuralComponentBaseType parentType,
+													String id) {
+		return new NeuralComponentType(parentType, id, false, false);
 	}
 
-	public static NeuralComponentType<NeuralComponent> createCustomBaseType(String id) {
+	public static NeuralComponentType createCustomBaseType(String id) {
 		if (Arrays.asList(NeuralComponentBaseType.values()).stream()
 				.anyMatch(v -> v.getId().compareToIgnoreCase(id) == 0)) {
 			throw new IllegalArgumentException("Name clash with existing standard base type:" + id);
 		}
-		return new NeuralComponentType<>(NeuralComponentBaseType.CUSTOM, id, false, true);
+		return new NeuralComponentType(NeuralComponentBaseType.CUSTOM, id, false, true);
 	}
 
-	public static NeuralComponentType<NeuralComponent> getBaseType(NeuralComponentBaseType baseType) {
+	public static NeuralComponentType getBaseType(NeuralComponentBaseType baseType) {
 		if (NeuralComponentBaseType.CUSTOM.equals(baseType)) {
 			throw new IllegalArgumentException(
 					"Use createCustomBaseType(String id) method to obtain a custom base type");
@@ -87,34 +95,20 @@ public final class NeuralComponentType<T extends NeuralComponent> implements INe
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((getQualifiedId() == null) ? 0 : getQualifiedId().hashCode());
-		return result;
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+	
 	@Override
 	public String toString() {
 		return getQualifiedId();
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		NeuralComponentType<?> other = (NeuralComponentType<?>) obj;
-		if (getQualifiedId() == null) {
-			if (other.getQualifiedId() != null)
-				return false;
-		} else if (!getQualifiedId().equals(other.getQualifiedId()))
-			return false;
-		return true;
-	}
 
 	@Override
 	public boolean isCustomBaseType() {

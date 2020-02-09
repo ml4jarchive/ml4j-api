@@ -32,13 +32,11 @@ import org.ml4j.nn.neurons.Neurons;
  * 
  * @author Michael Lavelle
  *
- * @param <L> The type of Neurons on the left of these
- *            BatchNormDirectedAxonsComponent.
- * @param <R> The type of Neurons on the right of these
+ * @param <N> The type of Neurons on the left and right of these
  *            BatchNormDirectedAxonsComponent.
  */
-public interface BatchNormDirectedAxonsComponent<L extends Neurons, A extends Axons<L, L, ?>>
-		extends DirectedAxonsComponent<L, L, A>, AxonsContextAwareNeuralComponent {
+public interface BatchNormDirectedAxonsComponent<N extends Neurons, A extends Axons<N, N, ?>>
+		extends DirectedAxonsComponent<N, N, A>, AxonsContextAwareNeuralComponent {
 
 	/**
 	 * @return A column vector of the exponentially weighted average input feature
@@ -71,5 +69,5 @@ public interface BatchNormDirectedAxonsComponent<L extends Neurons, A extends Ax
 	float getBetaForExponentiallyWeightedAverages();
 
 	@Override
-	BatchNormDirectedAxonsComponent<L, A> dup();
+	BatchNormDirectedAxonsComponent<N, A> dup();
 }

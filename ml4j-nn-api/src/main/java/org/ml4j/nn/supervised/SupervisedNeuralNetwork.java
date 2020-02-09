@@ -23,7 +23,6 @@ import org.ml4j.nn.neurons.NeuronsActivation;
 /**
  * Base interface for classes representing a SupervisedNeuralNetwork.
  *
- * @param <L> The type of Layer
  * @param <C> The type of runtime NeuralNetworkContext used with this
  *            UnsupervisedNeuralNetwork
  * @param <N> The type of SupervisedNeuralNetwork

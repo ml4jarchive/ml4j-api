@@ -28,9 +28,9 @@ public interface FeatureExtractor<E> {
 	/**
 	 * Obtain the features of an element as a float array.
 	 * 
-	 * @param data
-	 * @return
-	 * @throws FeatureExtractionException
+	 * @param data The instance of E from which we wish to extract features.
+	 * @return A float array consisting of the extracted features.
+	 * @throws FeatureExtractionException In the event of a problem extracting the features from the data.
 	 */
 	float[] getFeatures(E data) throws FeatureExtractionException;
 

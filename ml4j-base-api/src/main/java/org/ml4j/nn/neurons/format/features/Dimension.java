@@ -15,6 +15,7 @@
  */
 package org.ml4j.nn.neurons.format.features;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -23,54 +24,64 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 /**
  * Represents a named Dimension.
  * 
  * @author Michael Lavelle
  */
-public class Dimension {
+public class Dimension implements Serializable {
 	
-	private final static String HEIGHT_ID = "H";
-	private final static String INPUT_HEIGHT_ID = "IH";
-	private final static String OUTPUT_HEIGHT_ID = "OH";
-	private final static String WIDTH_ID = "W";
-	private final static String INPUT_WIDTH_ID = "IW";
-	private final static String OUTPUT_WIDTH_ID = "OW";
-	private final static String DEPTH_ID = "D";
-	private final static String INPUT_DEPTH_ID = "ID";
-	private final static String OUTPUT_DEPTH_ID = "OD";
-	private final static String CHANNEL_ID = "C";
-	private final static String EXAMPLE_ID = "E";
-	private final static String SAMPLE_ID = "S";
-	private final static String BATCH_ID = "B";
-	private final static String INSTANCE_ID = "I";
-	private final static String FEATURE_ID = "F";
-	private final static String INPUT_FEATURE_ID = "IF";
-	private final static String OUTPUT_FEATURE_ID = "OF";
-	private final static String FILTER_HEIGHT_ID = "FH";
-	private final static String FILTER_WIDTH_ID = "FW";
-	private final static String FILTER_POSITION_ID = "FP";
 	
-	public final static Dimension HEIGHT = new Dimension(HEIGHT_ID, "Height", DimensionScope.ANY);
-	public final static Dimension WIDTH = new Dimension(WIDTH_ID, "Width", DimensionScope.ANY);
-	public final static Dimension DEPTH = new Dimension(DEPTH_ID, "Depth", DimensionScope.ANY);
-	public final static Dimension INPUT_HEIGHT = new Dimension(INPUT_HEIGHT_ID, "InputHeight", DimensionScope.INPUT, HEIGHT);
-	public final static Dimension INPUT_WIDTH = new Dimension(INPUT_WIDTH_ID, "InputWidth", DimensionScope.INPUT, WIDTH);
-	public final static Dimension INPUT_DEPTH = new Dimension(INPUT_DEPTH_ID, "InputDepth", DimensionScope.INPUT, DEPTH);
-	public final static Dimension OUTPUT_HEIGHT = new Dimension(OUTPUT_HEIGHT_ID, "OutputHeight", DimensionScope.OUTPUT, HEIGHT);
-	public final static Dimension OUTPUT_WIDTH = new Dimension(OUTPUT_WIDTH_ID, "OutputWidth", DimensionScope.OUTPUT, WIDTH);
-	public final static Dimension OUTPUT_DEPTH = new Dimension(OUTPUT_DEPTH_ID, "OutputDepth", DimensionScope.OUTPUT, DEPTH);
-	public final static Dimension CHANNEL = new Dimension(CHANNEL_ID, "Channel", DimensionScope.ANY, DEPTH);
-	public final static Dimension EXAMPLE = new Dimension(EXAMPLE_ID, "Example", DimensionScope.ANY);
-	public final static Dimension SAMPLE = new Dimension(SAMPLE_ID, "Example", DimensionScope.ANY, EXAMPLE);
-	public final static Dimension BATCH = new Dimension(BATCH_ID, "Batch", DimensionScope.ANY, EXAMPLE, SAMPLE);
-	public final static Dimension INSTANCE = new Dimension(INSTANCE_ID, "Instance", DimensionScope.ANY, EXAMPLE, SAMPLE, BATCH);
-	public final static Dimension FEATURE = new Dimension(FEATURE_ID, "Feature", DimensionScope.ANY, EXAMPLE, SAMPLE, BATCH);
-	public final static Dimension INPUT_FEATURE = new Dimension(INPUT_FEATURE_ID, "InputFeature", DimensionScope.INPUT, FEATURE);
-	public final static Dimension OUTPUT_FEATURE = new Dimension(OUTPUT_FEATURE_ID, "OutputFeature", DimensionScope.OUTPUT, FEATURE);
-	public final static Dimension FILTER_HEIGHT = new Dimension(FILTER_HEIGHT_ID, "Filter Height", DimensionScope.ANY);
-	public final static Dimension FILTER_WIDTH = new Dimension(FILTER_WIDTH_ID, "Filter Width", DimensionScope.ANY);
-	public final static Dimension FILTER_POSITIONS = new Dimension(FILTER_POSITION_ID, "Filter Positions", DimensionScope.ANY,
+	
+	/**
+	 * Default serialization id
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private static final String HEIGHT_ID = "H";
+	private static final String INPUT_HEIGHT_ID = "IH";
+	private static final String OUTPUT_HEIGHT_ID = "OH";
+	private static final String WIDTH_ID = "W";
+	private static final String INPUT_WIDTH_ID = "IW";
+	private static final String OUTPUT_WIDTH_ID = "OW";
+	private static final String DEPTH_ID = "D";
+	private static final String INPUT_DEPTH_ID = "ID";
+	private static final String OUTPUT_DEPTH_ID = "OD";
+	private static final String CHANNEL_ID = "C";
+	private static final String EXAMPLE_ID = "E";
+	private static final String SAMPLE_ID = "S";
+	private static final String BATCH_ID = "B";
+	private static final String INSTANCE_ID = "I";
+	private static final String FEATURE_ID = "F";
+	private static final String INPUT_FEATURE_ID = "IF";
+	private static final String OUTPUT_FEATURE_ID = "OF";
+	private static final String FILTER_HEIGHT_ID = "FH";
+	private static final String FILTER_WIDTH_ID = "FW";
+	private static final String FILTER_POSITION_ID = "FP";
+	
+	public static final Dimension HEIGHT = new Dimension(HEIGHT_ID, "Height", DimensionScope.ANY);
+	public static final Dimension WIDTH = new Dimension(WIDTH_ID, "Width", DimensionScope.ANY);
+	public static final Dimension DEPTH = new Dimension(DEPTH_ID, "Depth", DimensionScope.ANY);
+	public static final Dimension INPUT_HEIGHT = new Dimension(INPUT_HEIGHT_ID, "InputHeight", DimensionScope.INPUT, HEIGHT);
+	public static final Dimension INPUT_WIDTH = new Dimension(INPUT_WIDTH_ID, "InputWidth", DimensionScope.INPUT, WIDTH);
+	public static final Dimension INPUT_DEPTH = new Dimension(INPUT_DEPTH_ID, "InputDepth", DimensionScope.INPUT, DEPTH);
+	public static final Dimension OUTPUT_HEIGHT = new Dimension(OUTPUT_HEIGHT_ID, "OutputHeight", DimensionScope.OUTPUT, HEIGHT);
+	public static final Dimension OUTPUT_WIDTH = new Dimension(OUTPUT_WIDTH_ID, "OutputWidth", DimensionScope.OUTPUT, WIDTH);
+	public static final Dimension OUTPUT_DEPTH = new Dimension(OUTPUT_DEPTH_ID, "OutputDepth", DimensionScope.OUTPUT, DEPTH);
+	public static final Dimension CHANNEL = new Dimension(CHANNEL_ID, "Channel", DimensionScope.ANY, DEPTH);
+	public static final Dimension EXAMPLE = new Dimension(EXAMPLE_ID, "Example", DimensionScope.ANY);
+	public static final Dimension SAMPLE = new Dimension(SAMPLE_ID, "Example", DimensionScope.ANY, EXAMPLE);
+	public static final Dimension BATCH = new Dimension(BATCH_ID, "Batch", DimensionScope.ANY, EXAMPLE, SAMPLE);
+	public static final Dimension INSTANCE = new Dimension(INSTANCE_ID, "Instance", DimensionScope.ANY, EXAMPLE, SAMPLE, BATCH);
+	public static final Dimension FEATURE = new Dimension(FEATURE_ID, "Feature", DimensionScope.ANY, EXAMPLE, SAMPLE, BATCH);
+	public static final Dimension INPUT_FEATURE = new Dimension(INPUT_FEATURE_ID, "InputFeature", DimensionScope.INPUT, FEATURE);
+	public static final Dimension OUTPUT_FEATURE = new Dimension(OUTPUT_FEATURE_ID, "OutputFeature", DimensionScope.OUTPUT, FEATURE);
+	public static final Dimension FILTER_HEIGHT = new Dimension(FILTER_HEIGHT_ID, "Filter Height", DimensionScope.ANY);
+	public static final Dimension FILTER_WIDTH = new Dimension(FILTER_WIDTH_ID, "Filter Width", DimensionScope.ANY);
+	public static final Dimension FILTER_POSITIONS = new Dimension(FILTER_POSITION_ID, "Filter Positions", DimensionScope.ANY,
 			new CompositeDimension(Arrays.asList(OUTPUT_HEIGHT, OUTPUT_WIDTH), DimensionScope.OUTPUT));
 	
 	private String id;
@@ -87,14 +98,14 @@ public class Dimension {
 	}
 	
 	public Set<Dimension> getAliases(DimensionScope scope) {
-		Set<Dimension> aliases = getAliases(this, new HashSet<>());
+		Set<Dimension> allAliases = getAliases(this, new HashSet<>());
 		if (scope == DimensionScope.ANY || this.scope.isValidWithin(scope)) {
-			aliases = aliases.stream().filter(a -> a.scope == this.scope || a.scope == DimensionScope.ANY || a.scope == scope).collect(Collectors.toSet());
+			allAliases = allAliases.stream().filter(a -> a.scope == this.scope || a.scope == DimensionScope.ANY || a.scope == scope).collect(Collectors.toSet());
 		} else {
-			aliases = aliases.stream().filter(a -> a.scope == this.scope).collect(Collectors.toSet());
+			allAliases = allAliases.stream().filter(a -> a.scope == this.scope).collect(Collectors.toSet());
 		}
-		aliases.remove(this);
-		return aliases;
+		allAliases.remove(this);
+		return allAliases;
 	}
 	
 	public boolean isEquivalent(Dimension other, DimensionScope dimensionScope) {
@@ -185,36 +196,15 @@ public class Dimension {
 	public List<Dimension> decompose() {
 		return Arrays.asList(this);
 	}
-
+	
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Dimension other = (Dimension) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
 	}
 
 	public String getId() {
@@ -232,11 +222,15 @@ public class Dimension {
 
 	public static class CompositeDimension extends Dimension {
 
+		/**
+		 * Default serilization id.
+		 */
+		private static final long serialVersionUID = 1L;
 		private List<Dimension> components;
 		
 		public CompositeDimension(List<Dimension> components, DimensionScope dimensionScope, Dimension... aliases) {
-			super(getCompositeString(components.stream().map(d -> d.getId()).collect(Collectors.toList())), 
-					getCompositeString(components.stream().map(d -> d.getName()).collect(Collectors.toList())), dimensionScope, aliases);
+			super(getCompositeString(components.stream().map(Dimension::getId).collect(Collectors.toList())),
+					getCompositeString(components.stream().map(Dimension::getName).collect(Collectors.toList())), dimensionScope, aliases);
 			components.forEach(d -> {
 				if (!d.scope.isValidWithin(dimensionScope)) {
 					throw new IllegalArgumentException("Dimension:" + d + " is not valid for scope:" + dimensionScope);
@@ -245,12 +239,13 @@ public class Dimension {
 			this.components = components;
 		}
 		
+		@Override
 		public List<Dimension> decompose() {
 			return components.stream().flatMap(c -> c.decompose().stream()).collect(Collectors.toList());
 		}
 		
 		private static String getCompositeString(List<String> strings) {
-			StringBuffer composite = new StringBuffer();
+			StringBuilder composite = new StringBuilder();
 			Iterator<String> it = strings.iterator();
 			while (it.hasNext()) {
 				composite.append(it.next());
@@ -259,6 +254,16 @@ public class Dimension {
 				}
 			}
 			return composite.toString();
+		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			return EqualsBuilder.reflectionEquals(this, obj);
+		}
+
+		@Override
+		public int hashCode() {
+			return HashCodeBuilder.reflectionHashCode(this);
 		}
 		
 	}
