@@ -6,7 +6,7 @@ import org.junit.Test;
 public class NeuronsTest {
 
 	@Test
-	public void testA() {
+	public void testProperties() {
 		
 		Neurons neurons1 = new Neurons(5, false);
 		

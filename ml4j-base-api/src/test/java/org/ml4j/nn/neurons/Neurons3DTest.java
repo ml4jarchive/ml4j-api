@@ -6,7 +6,7 @@ import org.junit.Test;
 public class Neurons3DTest {
 
 	@Test
-	public void testA() {
+	public void testProperties() {
 		
 		Neurons3D neurons1 = new Neurons3D(2, 3, 5, false);
 		
