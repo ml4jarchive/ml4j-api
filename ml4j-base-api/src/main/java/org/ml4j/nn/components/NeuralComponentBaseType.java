@@ -34,8 +34,8 @@ public enum NeuralComponentBaseType implements INeuralComponentType {
 		return this;
 	}
 
-	NeuralComponentType<NeuralComponent> asNeuralNetworkType() {
-		return new NeuralComponentType<>(this, getId(), isStandardBaseType(), isCustomBaseType());
+	NeuralComponentType asNeuralNetworkType() {
+		return new NeuralComponentType(this, getId(), isStandardBaseType(), isCustomBaseType());
 	}
 
 	@Override

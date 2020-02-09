@@ -13,7 +13,12 @@ public interface BiasFormat extends WeightsFormat {
 		return WeightsMatrixOrientation.ROWS_SPAN_OUTPUT_DIMENSIONS;
 	}
 
-	public static BiasFormat DEFAULT_BIAS_FORMAT = new BiasFormat() {};
+	BiasFormat DEFAULT_BIAS_FORMAT = new BiasFormat() {
+
+		/**
+		 * Default serialization id.
+		 */
+		private static final long serialVersionUID = 1L;};
 	
 	@Override
 	default List<Dimension> getInputDimensions() {

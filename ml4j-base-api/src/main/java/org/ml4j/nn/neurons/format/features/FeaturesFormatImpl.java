@@ -18,6 +18,9 @@ package org.ml4j.nn.neurons.format.features;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 /**
  * FeaturesFormat built from a list of dimensions.
  * 
@@ -33,7 +36,7 @@ public class FeaturesFormatImpl implements FeaturesFormat {
 	
 	@Override
 	public String toString() {
-		return getDimensions().stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+		return getDimensions().stream().map(Dimension::getName).collect(Collectors.toList()).toString();
 	}
 
 	@Override
@@ -42,29 +45,13 @@ public class FeaturesFormatImpl implements FeaturesFormat {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((dimensions == null) ? 0 : dimensions.hashCode());
-		return result;
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		FeaturesFormatImpl other = (FeaturesFormatImpl) obj;
-		if (dimensions == null) {
-			if (other.dimensions != null)
-				return false;
-		} else if (!dimensions.equals(other.dimensions))
-			return false;
-		return true;
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
 	}
-	
 	
 }

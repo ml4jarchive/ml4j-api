@@ -38,8 +38,8 @@ import org.ml4j.nn.neurons.Neurons3D;
  */
 public interface NeuralComponentFactory<T extends NeuralComponent> {
 
-	<S extends T> T createComponent(String name, Neurons leftNeurons, Neurons rightNeurons,
-			NeuralComponentType<S> neuralComponentType);
+	T createComponent(String name, Neurons leftNeurons, Neurons rightNeurons,
+			NeuralComponentType neuralComponentType);
 
 	/**
 	 * Create a fully-connected axons component, connecting leftNeurons to
@@ -220,6 +220,7 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 *                               DifferentiableActivationFunctionComponent will
 	 *                               activate.
 	 * @param activationFunctionType The activation function type.
+	 * @param activationFunctionProperties The properties we wish to set on the activation function.
 	 * @return A DifferentiableActivationFunctionComponent.
 	 */
 	T createDifferentiableActivationFunctionComponent(String name, Neurons neurons, ActivationFunctionType activationFunctionType, ActivationFunctionProperties activationFunctionProperties);
@@ -239,7 +240,7 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 * 
 	 * @param inputNeurons            The neurons on the LHS of the bipole graph.
 	 * @param outputNeurons           The neurons on the RHS of the bipole graph.
-	 * @param batchOfParallelChains   The batch of parallel chains, connecting the
+	 * @param parallelComponents      The list of parallel components, connecting the
 	 *                                input neurons to the output neurons.
 	 * @param pathCombinationStrategy The strategy specifying how the outputs of the
 	 *                                parallel chains are combined to produce the

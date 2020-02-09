@@ -16,6 +16,10 @@ package org.ml4j.nn.neurons;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * Represents a set of Neurons in a NeuralNetwork.
  * 
@@ -75,31 +79,16 @@ public class Neurons implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Neurons [neuronCountExcludingBias=" + neuronCountExcludingBias + ", hasBiasUnit=" + hasBiasUnit + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (hasBiasUnit ? 1231 : 1237);
-		result = prime * result + neuronCountExcludingBias;
-		return result;
+		   return ToStringBuilder.reflectionToString(this);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Neurons other = (Neurons) obj;
-		if (hasBiasUnit != other.hasBiasUnit)
-			return false;
-		if (neuronCountExcludingBias != other.neuronCountExcludingBias)
-			return false;
-		return true;
+		return EqualsBuilder.reflectionEquals(this, obj);
+	}
+
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
 	}
 }

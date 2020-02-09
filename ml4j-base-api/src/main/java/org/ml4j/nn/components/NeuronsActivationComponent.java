@@ -27,7 +27,9 @@ import org.ml4j.nn.neurons.format.NeuronsActivationFormat;
 public interface NeuronsActivationComponent {
 
 	/**
-	 * @return Whether a given neurons activation format is supported by this component
+	 * 
+	 * @param format The format to check
+	 * @return Whether the specified neurons activation format is supported by this component
 	 */
 	boolean isSupported(NeuronsActivationFormat<?> format);
 

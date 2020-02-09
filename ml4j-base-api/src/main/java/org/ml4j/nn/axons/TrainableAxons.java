@@ -31,8 +31,8 @@ public interface TrainableAxons<L extends Neurons, R extends Neurons, A extends 
 
 	/**
 	 * 
-	 * @param adjustments
-	 * @param adjustmentDirection
+	 * @param adjustments The adjustments to apply to the axon weights.
+	 * @param adjustmentDirection The adjustment direction.
 	 */
 	void adjustAxonWeights(AxonWeightsAdjustment adjustments, AxonWeightsAdjustmentDirection adjustmentDirection);
 

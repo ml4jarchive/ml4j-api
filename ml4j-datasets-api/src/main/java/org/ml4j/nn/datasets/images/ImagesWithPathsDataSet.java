@@ -23,7 +23,6 @@ import org.ml4j.nn.datasets.DataSet;
  * 
  * @author Michael Lavelle
  * 
- * @param <L> The type of label associated with each Image.
  */
 public interface ImagesWithPathsDataSet extends LabeledImagesDataSet<Path> {
 

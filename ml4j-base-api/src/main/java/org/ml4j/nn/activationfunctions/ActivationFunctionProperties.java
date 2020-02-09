@@ -22,7 +22,7 @@ import java.util.Optional;
 public class ActivationFunctionProperties {
 	
 	// TODO- TEMP
-	public final static float DEFAULT_ALPHA = 0.01f;
+	public static final float DEFAULT_ALPHA = 0.01f;
 	
 	private Float alpha;
 

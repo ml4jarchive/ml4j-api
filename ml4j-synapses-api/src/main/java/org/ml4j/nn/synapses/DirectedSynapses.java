@@ -75,6 +75,6 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons> extends 
 	List<DefaultChainableDirectedComponent<?, ?>> decompose();
 
 	@Override
-	NeuralComponentType<DirectedSynapses<L, R>> getComponentType();
+	NeuralComponentType getComponentType();
 
 }

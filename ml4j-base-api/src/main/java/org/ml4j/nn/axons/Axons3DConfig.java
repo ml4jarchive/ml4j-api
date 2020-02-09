@@ -16,6 +16,9 @@
 
 package org.ml4j.nn.axons;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 /**
  * Default config for 3D Axons.
  * 
@@ -90,8 +93,6 @@ public class Axons3DConfig extends AxonsConfig {
 		return this;
 	}
 	
-	
-
 	@Override
 	Axons3DConfig dup() {
 		Axons3DConfig dupConfig = new Axons3DConfig().withStrideHeight(strideHeight)
@@ -104,48 +105,14 @@ public class Axons3DConfig extends AxonsConfig {
 		}
 		return dupConfig;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
+	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((filterHeight == null) ? 0 : filterHeight.hashCode());
-		result = prime * result + ((filterWidth == null) ? 0 : filterWidth.hashCode());
-		result = prime * result + paddingHeight;
-		result = prime * result + paddingWidth;
-		result = prime * result + strideHeight;
-		result = prime * result + strideWidth;
-		return result;
+		return HashCodeBuilder.reflectionHashCode(this);
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Axons3DConfig other = (Axons3DConfig) obj;
-		if (filterHeight == null) {
-			if (other.filterHeight != null)
-				return false;
-		} else if (!filterHeight.equals(other.filterHeight))
-			return false;
-		if (filterWidth == null) {
-			if (other.filterWidth != null)
-				return false;
-		} else if (!filterWidth.equals(other.filterWidth))
-			return false;
-		if (paddingHeight != other.paddingHeight)
-			return false;
-		if (paddingWidth != other.paddingWidth)
-			return false;
-		if (strideHeight != other.strideHeight)
-			return false;
-		if (strideWidth != other.strideWidth)
-			return false;
-		return true;
-	}
-
 }

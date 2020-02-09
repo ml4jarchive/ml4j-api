@@ -6,7 +6,7 @@ import org.junit.Test;
 public class Axons3DConfigTest {
 	
 	@Test
-	public void testBuilder() {
+	public void testBuilderWithFilterHeightAndWidthSet() {
 		Axons3DConfig config = new Axons3DConfig();
 		config.withFilterHeight(1).withFilterWidth(2)
 			.withPaddingHeight(3).withPaddingWidth(4).withStrideHeight(5).withStrideWidth(6);
@@ -33,7 +33,7 @@ public class Axons3DConfigTest {
 	}
 	
 	@Test
-	public void testBuilder2() {
+	public void testBuilderWithoutFilterHeightAndWidthSet() {
 		Axons3DConfig config = new Axons3DConfig();
 		config.withPaddingHeight(3).withPaddingWidth(4).withStrideHeight(5).withStrideWidth(6);
 		

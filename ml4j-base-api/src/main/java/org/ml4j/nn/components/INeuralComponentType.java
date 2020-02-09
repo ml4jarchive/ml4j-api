@@ -13,7 +13,9 @@
  */
 package org.ml4j.nn.components;
 
-interface INeuralComponentType {
+import java.io.Serializable;
+
+interface INeuralComponentType extends Serializable {
 
 	NeuralComponentBaseType getBaseType();
 
@@ -23,11 +25,11 @@ interface INeuralComponentType {
 
 	String getQualifiedId();
 
-	static <S extends NeuralComponent> INeuralComponentType customType(NeuralComponentType<?> parentType, String id) {
-		return new NeuralComponentType<>(parentType, id, false, false);
+	static INeuralComponentType customType(NeuralComponentType parentType, String id) {
+		return new NeuralComponentType(parentType, id, false, false);
 	}
 
-	static NeuralComponentType<NeuralComponent> baseType(NeuralComponentBaseType baseType) {
+	static NeuralComponentType baseType(NeuralComponentBaseType baseType) {
 		return baseType.asNeuralNetworkType();
 	}
 

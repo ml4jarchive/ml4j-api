@@ -16,6 +16,10 @@
 
 package org.ml4j.nn.neurons;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * Neurons that are arranged in a 3D shape.
  * 
@@ -68,37 +72,16 @@ public class Neurons3D extends Neurons {
 
 	@Override
 	public String toString() {
-		return "Neurons3D [width=" + width + ", height=" + height + ", depth=" + depth + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Boolean.valueOf(hasBiasUnit).hashCode();
-		result = prime * result + depth;
-		result = prime * result + height;
-		result = prime * result + width;
-		return result;
+		   return ToStringBuilder.reflectionToString(this);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Neurons3D other = (Neurons3D) obj;
-		if (depth != other.depth)
-			return false;
-		if (hasBiasUnit != other.hasBiasUnit)
-			return false;
-		if (height != other.height)
-			return false;
-		if (width != other.width)
-			return false;
-		return true;
+		return EqualsBuilder.reflectionEquals(this, obj);
+	}
+
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
 	}
 }

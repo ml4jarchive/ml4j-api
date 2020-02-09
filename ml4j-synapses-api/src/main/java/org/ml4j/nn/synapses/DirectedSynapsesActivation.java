@@ -35,7 +35,6 @@ public interface DirectedSynapsesActivation extends DefaultChainableDirectedComp
 
 	/**
 	 * @param outerGradient   The outer gradient to back propagate.
-	 * @param synapsesContext The synapses context.
 	 * @return The back propagated DirectedComponentGradient.
 	 */
 	public DirectedComponentGradient<NeuronsActivation> backPropagate(CostFunctionGradient outerGradient);

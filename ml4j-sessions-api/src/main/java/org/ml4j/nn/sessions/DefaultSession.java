@@ -17,7 +17,7 @@ import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 
 /**
- * Convenience interface for a Session for DefaultChainableDirectedComponent<?, ?>
+ * Convenience interface for a Session for DefaultChainableDirectedComponent
  * 
  * @author Michael Lavelle
  */

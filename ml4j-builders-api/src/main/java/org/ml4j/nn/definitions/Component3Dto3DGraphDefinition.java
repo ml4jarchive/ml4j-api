@@ -25,7 +25,7 @@ public interface Component3Dto3DGraphDefinition extends NeuralComponent {
 	}
 
 	@Override
-	default NeuralComponentType<?> getComponentType() {
+	default NeuralComponentType getComponentType() {
 		return NeuralComponentType.getBaseType(NeuralComponentBaseType.DEFINITION);
 	}
 

@@ -24,7 +24,6 @@ import java.util.function.Supplier;
  * 
  * @author Michael Lavelle
  * 
- * @param <L> The type of label associated with each Image.
  */
 public interface ImagesWithBufferedImagesDataSet extends LabeledImagesDataSet<Supplier<BufferedImage>> {
 

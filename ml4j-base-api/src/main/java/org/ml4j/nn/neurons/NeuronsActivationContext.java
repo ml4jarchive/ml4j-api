@@ -36,7 +36,11 @@ public interface NeuronsActivationContext extends Serializable {
 	void setTrainingContext(Boolean trainingContext);
 	
 	default MatrixFactory getMatrixFactory() {
-		MatrixFactory matrixFactory = getThreadLocalMatrixFactory().get();
+		InheritableThreadLocal<MatrixFactory> threadLocalMatrixFactory = getThreadLocalMatrixFactory();
+		if (threadLocalMatrixFactory == null) {
+			throw new IllegalStateException("ThreadLocalMatrixFactory cannot be null");
+		}
+		MatrixFactory matrixFactory = threadLocalMatrixFactory.get();
 		if (matrixFactory == null) {
 			throw new IllegalStateException("MatrixFactory has not been set on NeuronsActivationContext");
 		}
@@ -44,7 +48,11 @@ public interface NeuronsActivationContext extends Serializable {
 	}
 	
 	default boolean isTrainingContext() {
-		Boolean trainingContext = getThreadLocalIsTrainingContext().get();
+		InheritableThreadLocal<Boolean> threadLocalIsTrainingContext = getThreadLocalIsTrainingContext();
+		if (threadLocalIsTrainingContext == null) {
+			throw new IllegalStateException("ThreadLocalTrainingContext cannot be null");
+		}
+		Boolean trainingContext = threadLocalIsTrainingContext.get();
 		if (trainingContext == null) {
 			throw new IllegalStateException("isTrainingContext has not been set on NeuronsActivationContext");
 		}

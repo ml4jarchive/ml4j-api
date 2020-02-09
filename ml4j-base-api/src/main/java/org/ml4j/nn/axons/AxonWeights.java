@@ -75,6 +75,7 @@ public interface AxonWeights extends NeuronsActivationComponent, Serializable {
 	 * Apply these AxonWeights to the left to right input of an Axons instance
 	 * 
 	 * @param input The left to right input.
+	 * @param axonsContext The axons context.
 	 * @return The left to right output after applying these axon weights.
 	 */
 	NeuronsActivation applyToLeftToRightInput(NeuronsActivation input, AxonsContext axonsContext);
@@ -83,6 +84,7 @@ public interface AxonWeights extends NeuronsActivationComponent, Serializable {
 	 * Apply these AxonWeights to the right to left input of an Axons instance
 	 * 
 	 * @param input The right to left input.
+	 * @param axonsContext The axons context.
 	 * @return The right to left output after applying these axon weights.
 	 */
 	NeuronsActivation applyToRightToLeftInput(NeuronsActivation input, AxonsContext axonsContext);

@@ -22,17 +22,6 @@ package org.ml4j.nn;
 public interface UndirectedNeuralNetworkContext extends NeuralNetworkContext {
 
 	/**
-	 * Create the UndirectedLayerContext for the UndirectedLayer specified by the
-	 * layerIndex.
-	 * 
-	 * @param layerIndex The index of the UndirectedLayer in this
-	 *                   UndirectedNeuralNetwork to create the context for.
-	 * @return The UndirectedLayerContext for the UndirectedLayer specified by the
-	 *         layerIndex.
-	 */
-	// UndirectedLayerContext getLayerContext(int layerIndex);
-
-	/**
 	 * @return The learning rate used during training.
 	 */
 	float getTrainingLearningRate();

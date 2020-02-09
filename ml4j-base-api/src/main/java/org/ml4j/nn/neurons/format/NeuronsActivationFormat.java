@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
 import org.ml4j.nn.neurons.format.features.Dimension;
 import org.ml4j.nn.neurons.format.features.FeaturesFormat;
@@ -87,17 +89,17 @@ public class NeuronsActivationFormat<F extends FeaturesFormat> {
 	
 	public String getRowDimensionsName() {
 		if (featureOrientation == NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET) {
-			return featuresFormat.getDimensions().stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+			return featuresFormat.getDimensions().stream().map(Dimension::getName).collect(Collectors.toList()).toString();
 		} else {
-			return exampleDimensions.stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+			return exampleDimensions.stream().map(Dimension::getName).collect(Collectors.toList()).toString();
 		}
 	}
 	
 	public String getColumnDimensionsName() {
 		if (featureOrientation == NeuronsActivationFeatureOrientation.COLUMNS_SPAN_FEATURE_SET) {
-			return featuresFormat.getDimensions().stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+			return featuresFormat.getDimensions().stream().map(Dimension::getName).collect(Collectors.toList()).toString();
 		} else {
-			return exampleDimensions.stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+			return exampleDimensions.stream().map(Dimension::getName).collect(Collectors.toList()).toString();
 		}
 	}
 
@@ -111,64 +113,43 @@ public class NeuronsActivationFormat<F extends FeaturesFormat> {
 			List<Dimension> dimensions = new ArrayList<>();
 			dimensions.addAll(featuresFormat.getDimensions());
 			dimensions.addAll(getExampleDimensions());
-			return dimensions.stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+			return dimensions.stream().map(Dimension::getName).collect(Collectors.toList()).toString();
 		} else {
 			List<Dimension> dimensions = new ArrayList<>();
 			dimensions.addAll(getExampleDimensions());
 			dimensions.addAll(featuresFormat.getDimensions());
-			return dimensions.stream().map(d -> d.getName()).collect(Collectors.toList()).toString();
+			return dimensions.stream().map(Dimension::getName).collect(Collectors.toList()).toString();
 		}
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((featureOrientation == null) ? 0 : featureOrientation.hashCode());
-		result = prime * result + ((featuresFormat == null || featuresFormat.getDimensions()== null) ? 0 : featuresFormat.getDimensions().hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		NeuronsActivationFormat<?> other = (NeuronsActivationFormat<?>) obj;
-		if (featureOrientation != other.featureOrientation)
-			return false;
-		if (featuresFormat == null) {
-			if (other.featuresFormat != null)
-				return false;
-		} else if (featuresFormat.getDimensions() == null || other.featuresFormat.getDimensions() == null) {
-			return false;
-		} else if (!featuresFormat.getDimensions().equals(other.featuresFormat.getDimensions())) {
-			return false;
-		}
-		return true;
+		return HashCodeBuilder.reflectionHashCode(this);
 	}
 	
 	public static Optional<NeuronsActivationFormat<?>> intersectOptionals(
 			List<Optional<NeuronsActivationFormat<?>>> values) {
-		return values.stream().reduce(Optional.empty(), (u, t) -> intersectOptionals(u, t));
+		return values.stream().reduce(Optional.empty(), NeuronsActivationFormat::intersectOptionals);
 	}
 
 	public static Optional<NeuronsActivationFormat<?>> intersectOptionals(
 			Optional<NeuronsActivationFormat<?>> first, Optional<NeuronsActivationFormat<?>> second) {
 		return first.isPresent() && second.isPresent() ? (first.get().equals(second.get()) ? first : Optional.empty())
-				: first.isPresent() ? first : (second.isPresent() ? second : Optional.empty());
+				: first.isPresent() ? first : (second);
 	}
 
 	public static List<NeuronsActivationFormat<?>> intersectLists(
 			List<NeuronsActivationFormat<?>> first, List<NeuronsActivationFormat<?>> second) {
-		return first.stream().filter(f -> second.contains(f)).collect(Collectors.toList());
+		return first.stream().filter(second::contains).collect(Collectors.toList());
 	}
 
 	public static List<NeuronsActivationFormat<?>> intersectLists(
 			List<List<NeuronsActivationFormat<?>>> values) {
-		return values.stream().reduce(Arrays.asList(), (u, t) -> intersectLists(u, t));
+		return values.stream().reduce(Arrays.asList(), NeuronsActivationFormat::intersectLists);
 	}
 }
