@@ -304,6 +304,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	/**
 	 * Construct a DefaultDirectedComponentBipoleGraph instance.
 	 * 
+	 * @param name					  The name of the component.
 	 * @param inputNeurons            The neurons on the LHS of the bipole graph.
 	 * @param outputNeurons           The neurons on the RHS of the bipole graph.
 	 * @param batchOfParallelChains   The batch of parallel chains, connecting the
@@ -314,7 +315,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @return A DefaultDirectedComponentBipoleGraph instance.
 	 */
 	@Override
-	DefaultDirectedComponentBipoleGraph createDirectedComponentBipoleGraph(Neurons inputNeurons, Neurons outputNeurons,
+	DefaultDirectedComponentBipoleGraph createDirectedComponentBipoleGraph(String name, Neurons inputNeurons, Neurons outputNeurons,
 			List<DefaultChainableDirectedComponent<?, ?>> batchOfParallelChains,
 			PathCombinationStrategy pathCombinationStrategy);
 

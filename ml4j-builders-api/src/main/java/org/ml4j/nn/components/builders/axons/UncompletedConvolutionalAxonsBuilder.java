@@ -41,5 +41,9 @@ public interface UncompletedConvolutionalAxonsBuilder<C>
 	int getPaddingWidth();
 
 	int getPaddingHeight();
+	
+	Integer getFilterWidth();
+	
+	Integer getFilterHeight();
 
 }

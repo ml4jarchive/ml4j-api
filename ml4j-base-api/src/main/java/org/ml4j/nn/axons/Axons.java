@@ -97,5 +97,11 @@ public interface Axons<L extends Neurons, R extends Neurons, A extends Axons<L, 
 	 * @return Whether these Axons are trainable within this context.
 	 */
 	boolean isTrainable(AxonsContext axonsContext);
+	
+	
+	/**
+	 * @return The AxonsType.
+	 */
+	AxonsType getAxonsType();
 
 }

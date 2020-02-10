@@ -17,7 +17,7 @@ import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
 
 public interface PathEnder<P, C> {
 
-	P endParallelPaths(PathCombinationStrategy pathCombinationStrategy);
+	P endParallelPaths(String name, PathCombinationStrategy pathCombinationStrategy);
 
 	C withPath();
 }

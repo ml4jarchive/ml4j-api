@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 the original author or authors.
+ * Copyright 2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,10 +11,30 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.ml4j.nn.components.builders.skipconnection;
+package org.ml4j.nn.axons;
 
-public interface SkipConnectionEnder<P> {
+import java.io.Serializable;
 
-	P endSkipConnection(String name);
+interface IAxonsType extends Serializable {
+
+	AxonsBaseType getBaseType();
+
+	IAxonsType getParentType();
+
+	String getId();
+
+	String getQualifiedId();
+
+	static IAxonsType customType(AxonsType parentType, String id) {
+		return new AxonsType(parentType, id, false, false);
+	}
+
+	static AxonsType baseType(AxonsBaseType baseType) {
+		return baseType.asAxonsType();
+	}
+
+	boolean isStandardBaseType();
+
+	boolean isCustomBaseType();
 
 }

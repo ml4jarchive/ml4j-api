@@ -21,6 +21,6 @@ public interface Components3DGraphSkipConnectionBuilder<P, Q, T extends NeuralCo
 		Components3DGraphBuilder<Components3DGraphSkipConnectionBuilder<P, Q, T>, ComponentsGraphSkipConnectionBuilder<Q, T>, T>,
 		Axons3DBuilder<T> {
 
-	P endSkipConnection();
+	P endSkipConnection(String name);
 
 }

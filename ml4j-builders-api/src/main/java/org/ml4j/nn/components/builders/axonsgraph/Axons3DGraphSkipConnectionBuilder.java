@@ -20,5 +20,5 @@ public interface Axons3DGraphSkipConnectionBuilder<P, Q, T extends NeuralCompone
 		Axons3DGraphBuilder<Axons3DGraphSkipConnectionBuilder<P, Q, T>, AxonsGraphSkipConnectionBuilder<Q, T>, T>,
 		Axons3DBuilder<T> {
 
-	P endSkipConnection();
+	P endSkipConnection(String name);
 }
