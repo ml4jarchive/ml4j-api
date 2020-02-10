@@ -82,6 +82,8 @@ public interface DefaultChainableDirectedComponent<A extends DefaultChainableDir
 	NeuralComponentType getComponentType();
 	
 	
+	String accept(DefaultChainableDirectedComponentVisitor visitor);
+	
 	/**
 	 * Forward Propagates the activations through component.
 	 * 

@@ -238,6 +238,7 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	/**
 	 * Construct a DefaultDirectedComponentBipoleGraph instance.
 	 * 
+	 * @param name					  The component name.
 	 * @param inputNeurons            The neurons on the LHS of the bipole graph.
 	 * @param outputNeurons           The neurons on the RHS of the bipole graph.
 	 * @param parallelComponents      The list of parallel components, connecting the
@@ -247,7 +248,7 @@ public interface NeuralComponentFactory<T extends NeuralComponent> {
 	 *                                output.
 	 * @return A DefaultDirectedComponentBipoleGraph instance.
 	 */
-	T createDirectedComponentBipoleGraph(Neurons inputNeurons, Neurons outputNeurons, List<T> parallelComponents,
+	T createDirectedComponentBipoleGraph(String name, Neurons inputNeurons, Neurons outputNeurons, List<T> parallelComponents,
 			PathCombinationStrategy pathCombinationStrategy);
 
 }

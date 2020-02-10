@@ -37,5 +37,9 @@ public interface UncompletedPoolingAxonsBuilder<C> extends UncompletedAxonsBuild
 	int getPaddingWidth();
 
 	int getPaddingHeight();
+	
+	Integer getFilterHeight();
+	
+	Integer getFilterWidth();
 
 }
