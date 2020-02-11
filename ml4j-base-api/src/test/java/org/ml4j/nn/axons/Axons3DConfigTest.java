@@ -27,7 +27,6 @@ public class Axons3DConfigTest {
 		Assert.assertEquals((int)5, (int)dupConfig.getStrideHeight());
 		Assert.assertEquals((int)6, (int)dupConfig.getStrideWidth());
 
-
 		Assert.assertTrue(config.equals(dupConfig));
 
 	}
@@ -37,8 +36,6 @@ public class Axons3DConfigTest {
 		Axons3DConfig config = new Axons3DConfig();
 		config.withPaddingHeight(3).withPaddingWidth(4).withStrideHeight(5).withStrideWidth(6);
 		
-		Assert.assertNull(config.getFilterHeight());
-		Assert.assertNull(config.getFilterWidth());
 		Assert.assertEquals((int)3, (int)config.getPaddingHeight());
 		Assert.assertEquals((int)4, (int)config.getPaddingWidth());
 		Assert.assertEquals((int)5, (int)config.getStrideHeight());
@@ -50,9 +47,6 @@ public class Axons3DConfigTest {
 		dupConfig2.withFilterHeight(10);
 		dupConfig2.withFilterWidth(10);
 
-		
-		Assert.assertNull(config.getFilterHeight());
-		Assert.assertNull(config.getFilterWidth());
 		Assert.assertEquals((int)3, (int)dupConfig.getPaddingHeight());
 		Assert.assertEquals((int)4, (int)dupConfig.getPaddingWidth());
 		Assert.assertEquals((int)5, (int)dupConfig.getStrideHeight());
@@ -65,6 +59,30 @@ public class Axons3DConfigTest {
 		Assert.assertNotEquals(config.hashCode(), dupConfig2.hashCode());
 
 
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testBuilderWithoutFilterHeightAndWidthSetAndFilterHeightCalled() {
+		Axons3DConfig config = new Axons3DConfig();
+		config.withPaddingHeight(3).withPaddingWidth(4).withStrideHeight(5).withStrideWidth(6);
+	
+		Assert.assertEquals((int)3, (int)config.getPaddingHeight());
+		Assert.assertEquals((int)4, (int)config.getPaddingWidth());
+		Assert.assertEquals((int)5, (int)config.getStrideHeight());
+		Assert.assertEquals((int)6, (int)config.getStrideWidth());
+		config.getFilterHeight();
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testBuilderWithoutFilterHeightAndWidthSetAndFilterWidthCalled() {
+		Axons3DConfig config = new Axons3DConfig();
+		config.withPaddingHeight(3).withPaddingWidth(4).withStrideHeight(5).withStrideWidth(6);
+	
+		Assert.assertEquals((int)3, (int)config.getPaddingHeight());
+		Assert.assertEquals((int)4, (int)config.getPaddingWidth());
+		Assert.assertEquals((int)5, (int)config.getStrideHeight());
+		Assert.assertEquals((int)6, (int)config.getStrideWidth());
+		config.getFilterWidth();
 	}
 
 }
