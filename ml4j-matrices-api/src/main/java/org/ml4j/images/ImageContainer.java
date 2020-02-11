@@ -17,8 +17,8 @@ public interface ImageContainer<I extends ImageContainer<I>> {
 	void setPaddingWidth(int paddingWidth);
 	int getDataLength();
 	void populateData(float[] data, int startIndex);
-	void populateDataSubImage(float[] data, int startIndex, int startHeight, int startWidth, int height, int width, int strideHeight, int strideWidth, boolean forIm2col2);
-	void populateDataSubImageReverse(float[] data, int startIndex, int startHeight, int startWidth, int height, int width, int strideHeight, int strideWidth, boolean forIm2col2);
+	void populateDataSubImage(float[] data, int startIndex, int startHeight, int startWidth, int height, int width, int strideHeight, int strideWidth, boolean pooling);
+	void populateDataSubImageReverse(float[] data, int startIndex, int startHeight, int startWidth, int height, int width, int strideHeight, int strideWidth, boolean pooling);
 	void populateIm2colConvImport(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
 	void populateIm2colConvExport(float[] data, int startIndex, int filterHeight, int filterWidth, int strideHeight, int strideWidth, int channels);
 
@@ -29,7 +29,6 @@ public interface ImageContainer<I extends ImageContainer<I>> {
 	void populateSpaceToDepthExport(float[] data, int startIndex, int blockHeight, int blockWidth);
 	void populateSpaceToDepthImport(float[] data, int startIndex, int blockHeight, int blockWidth);
 
-	
 
 	I dup();
 	I softDup();

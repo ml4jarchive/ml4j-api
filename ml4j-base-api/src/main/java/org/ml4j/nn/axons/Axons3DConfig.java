@@ -18,6 +18,7 @@ package org.ml4j.nn.axons;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.ml4j.nn.neurons.Neurons3D;
 
 /**
  * Default config for 3D Axons.
@@ -54,13 +55,53 @@ public class Axons3DConfig extends AxonsConfig {
 	public int getPaddingHeight() {
 		return paddingHeight;
 	}
+	
+	void setFilterWidthAndHeight(Neurons3D leftNeurons, Neurons3D rightNeurons) {
+		withFilterWidth(getFilterWidth(leftNeurons, rightNeurons));
+		withFilterHeight(getFilterHeight(leftNeurons, rightNeurons));
+	}
+	
+	public int getFilterWidth(Neurons3D leftNeurons, Neurons3D rightNeurons) {
 
-	public Integer getFilterWidth() {
-		return filterWidth;
+		int inputWidthWithPadding = leftNeurons.getWidth() + paddingWidth * 2;
+
+		int calculatedFilterWidth = inputWidthWithPadding + (1 - rightNeurons.getWidth()) * (strideWidth);
+
+		if (filterWidth != null && filterWidth.intValue() != calculatedFilterWidth) {
+			throw new IllegalStateException("Explicitly set filter width of:" + filterWidth
+					+ " is inconsistent with calculated filter width of:" + calculatedFilterWidth);
+		}
+
+		return calculatedFilterWidth;
 	}
 
-	public Integer getFilterHeight() {
-		return filterHeight;
+	public int getFilterHeight(Neurons3D leftNeurons, Neurons3D rightNeurons) {
+
+		int inputHeightWithPadding = leftNeurons.getHeight() + paddingHeight * 2;
+
+		int calculatedFilterHeight = inputHeightWithPadding + (1 - rightNeurons.getHeight()) * (strideHeight);
+
+		if (filterHeight != null && filterHeight.intValue() != calculatedFilterHeight) {
+			throw new IllegalStateException("Explicitly set filter height of:" + filterHeight
+					+ " is inconsistent with calculated filter width of:" + calculatedFilterHeight);
+		}
+		return calculatedFilterHeight;
+	}
+	
+	public int getFilterWidth() {
+		if (filterWidth == null) {
+			throw new IllegalStateException("Filter width has not been set on Axons3DConfig");
+		} else {
+			return filterWidth;
+		}
+	}
+	
+	public int getFilterHeight() {
+		if (filterHeight == null) {
+			throw new IllegalStateException("Filter height has not been set on Axons3DConfig");
+		} else {
+			return filterHeight;
+		}
 	}
 
 	public Axons3DConfig withStrideWidth(int strideWidth) {
