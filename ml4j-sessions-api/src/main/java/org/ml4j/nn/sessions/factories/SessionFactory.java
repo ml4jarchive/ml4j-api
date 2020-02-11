@@ -25,7 +25,7 @@ import org.ml4j.nn.sessions.Session;
  *
  * @param <T> The type of NeuralComponent within the Session.
  */
-public interface SessionFactory<T extends NeuralComponent> {
+public interface SessionFactory<T extends NeuralComponent<?>> {
 
 	/**
 	 * @param directedComponentsContext The specific directed components context within which to create the session.

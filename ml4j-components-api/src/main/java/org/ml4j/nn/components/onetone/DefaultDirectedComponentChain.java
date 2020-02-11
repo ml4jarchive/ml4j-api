@@ -28,7 +28,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
 public interface DefaultDirectedComponentChain extends
 		DirectedComponentChain<NeuronsActivation, DefaultChainableDirectedComponent<?, ?>, DefaultChainableDirectedComponentActivation, DefaultDirectedComponentChainActivation>,
 		DefaultChainableDirectedComponent<DefaultDirectedComponentChainActivation, DirectedComponentsContext>,
-		NeuralComponent {
+		NeuralComponent<DefaultChainableDirectedComponent<?, ?>> {
 
 	@Override
 	default DefaultDirectedComponentChainActivation forwardPropagate(NeuronsActivation input,

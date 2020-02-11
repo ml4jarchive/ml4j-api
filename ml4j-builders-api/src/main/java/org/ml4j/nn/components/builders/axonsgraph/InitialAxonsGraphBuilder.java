@@ -15,7 +15,7 @@ package org.ml4j.nn.components.builders.axonsgraph;
 
 import org.ml4j.nn.components.NeuralComponent;
 
-public interface InitialAxonsGraphBuilder<T extends NeuralComponent>
+public interface InitialAxonsGraphBuilder<T extends NeuralComponent<?>>
 		extends AxonsGraphBuilder<InitialAxonsGraphBuilder<T>, T> {
 
 }

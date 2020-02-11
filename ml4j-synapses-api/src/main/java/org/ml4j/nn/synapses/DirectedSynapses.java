@@ -36,7 +36,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @param <R> The type of Neurons on the right of these DirectedSynapses.
  */
 public interface DirectedSynapses<L extends Neurons, R extends Neurons> extends Synapses<DirectedSynapses<L, R>>,
-		DefaultChainableDirectedComponent<DirectedSynapsesActivation, DirectedComponentsContext>, NeuralComponent {
+		DefaultChainableDirectedComponent<DirectedSynapsesActivation, DirectedComponentsContext>, NeuralComponent<DefaultChainableDirectedComponent<?, ?>> {
 
 	/**
 	 * @return The DifferentiableActivationFunction applied to the right hand Axons

@@ -15,7 +15,7 @@ package org.ml4j.nn.components.builders.componentsgraph;
 
 import org.ml4j.nn.components.NeuralComponent;
 
-public interface InitialComponentsGraphBuilder<T extends NeuralComponent>
+public interface InitialComponentsGraphBuilder<T extends NeuralComponent<?>>
 		extends ComponentsGraphBuilder<InitialComponentsGraphBuilder<T>, T> {
 
 	T getComponentChain();

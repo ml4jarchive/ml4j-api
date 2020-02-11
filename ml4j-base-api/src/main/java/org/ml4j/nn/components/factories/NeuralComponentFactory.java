@@ -36,7 +36,7 @@ import org.ml4j.nn.neurons.Neurons3D;
  * @author Michael Lavelle
  *
  */
-public interface NeuralComponentFactory<T extends NeuralComponent> {
+public interface NeuralComponentFactory<T extends NeuralComponent<?>> {
 
 	T createComponent(String name, Neurons leftNeurons, Neurons rightNeurons,
 			NeuralComponentType neuralComponentType);

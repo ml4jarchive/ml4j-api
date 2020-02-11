@@ -1,16 +1,15 @@
-package org.ml4j.nn.components.onetone;
+package org.ml4j.nn.components;
 
 import java.util.List;
 
-import org.ml4j.nn.components.NeuralComponentVisitor;
 import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
 
 /**
- * Visitor interface for DefaultChainableDirectedComponent.
+ * Visitor interface for NeuralComponent.
  * 
  * @author Michael Lavelle
  */
-public interface DefaultChainableDirectedComponentVisitor extends NeuralComponentVisitor<DefaultChainableDirectedComponent<?, ?>>{
+public interface NeuralComponentVisitor<T extends NeuralComponent<T>> {
 
 	/**
 	 * Visit the specified component.
@@ -18,7 +17,7 @@ public interface DefaultChainableDirectedComponentVisitor extends NeuralComponen
 	 * @param component The component to visit
 	 * @return The name of the visited component.
 	 */
-	String visitComponent(DefaultChainableDirectedComponent<?, ?> component);
+	String visitComponent(T component);
 	
 	/**
 	 * Visit the specified chain of components.
@@ -26,7 +25,7 @@ public interface DefaultChainableDirectedComponentVisitor extends NeuralComponen
 	 * @param componentChain The component chain to visit.
 	 * @return The last-visited component name.
 	 */
-	String visitSequentialComponentChain(List<DefaultChainableDirectedComponent<?, ?>> componentChain);
+	String visitSequentialComponentChain(List<T> componentChain);
 	
 	/**
 	 * Visit the specified parallel batch of components.
@@ -36,5 +35,5 @@ public interface DefaultChainableDirectedComponentVisitor extends NeuralComponen
 	 * @param pathCombinationStrategy The strategy to use to join the output of the components.
 	 * @return The name of the component that joins the output of the components together.
 	 */
-	String visitParallelComponentBatch(String name, List<DefaultChainableDirectedComponent<?, ?>> componentBatch, PathCombinationStrategy pathCombinationStrategy);
+	String visitParallelComponentBatch(String name, List<T> componentBatch, PathCombinationStrategy pathCombinationStrategy);
 }

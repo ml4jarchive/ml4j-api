@@ -20,7 +20,7 @@ import org.ml4j.nn.components.builders.axons.AxonsBuilder;
 import org.ml4j.nn.components.builders.common.ParallelPathsPermitted;
 import org.ml4j.nn.components.builders.skipconnection.SkipConnection3DPermitted;
 
-public interface Axons3DGraphBuilder<C extends Axons3DBuilder<T>, A extends AxonsBuilder<T>, T extends NeuralComponent>
+public interface Axons3DGraphBuilder<C extends Axons3DBuilder<T>, A extends AxonsBuilder<T>, T extends NeuralComponent<?>>
 		extends Axons3DPermitted<C, A, T>, Axons3DBuilder<T>, ParallelPathsPermitted<Axons3DSubGraphBuilder<C, A, T>>,
 		SkipConnection3DPermitted<Axons3DGraphSkipConnectionBuilder<C, A, T>, T> {
 

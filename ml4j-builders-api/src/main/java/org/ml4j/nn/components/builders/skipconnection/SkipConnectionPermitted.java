@@ -16,7 +16,7 @@ package org.ml4j.nn.components.builders.skipconnection;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.axons.AxonsBuilder;
 
-public interface SkipConnectionPermitted<C extends AxonsBuilder<T>, T extends NeuralComponent> {
+public interface SkipConnectionPermitted<C extends AxonsBuilder<T>, T extends NeuralComponent<?>> {
 
 	C withSkipConnection();
 }

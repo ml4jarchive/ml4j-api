@@ -16,7 +16,7 @@ package org.ml4j.nn.components.builders.synapses;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.axonsgraph.Axons3DGraphBuilder;
 
-public interface SynapsesAxons3DGraphBuilder<C, D, T extends NeuralComponent> extends
+public interface SynapsesAxons3DGraphBuilder<C, D, T extends NeuralComponent<?>> extends
 		Axons3DGraphBuilder<CompletedSynapsesAxons3DGraphBuilder<C, D, T>, CompletedSynapsesAxonsGraphBuilder<D, T>, T> {
 
 }

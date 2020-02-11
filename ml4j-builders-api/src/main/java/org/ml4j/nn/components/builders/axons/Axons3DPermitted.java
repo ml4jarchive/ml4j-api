@@ -15,7 +15,7 @@ package org.ml4j.nn.components.builders.axons;
 
 import org.ml4j.nn.components.NeuralComponent;
 
-public interface Axons3DPermitted<C extends Axons3DBuilder<T>, A extends AxonsBuilder<T>, T extends NeuralComponent>
+public interface Axons3DPermitted<C extends Axons3DBuilder<T>, A extends AxonsBuilder<T>, T extends NeuralComponent<?>>
 		extends AxonsPermitted<A> {
 
 	UncompletedConvolutionalAxonsBuilder<C> withConvolutionalAxons(String name);

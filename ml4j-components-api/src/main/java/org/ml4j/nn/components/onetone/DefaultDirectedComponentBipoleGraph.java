@@ -31,7 +31,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  */
 public interface DefaultDirectedComponentBipoleGraph extends
 		DefaultChainableDirectedComponent<DefaultDirectedComponentBipoleGraphActivation, DirectedComponentsContext>,
-		NeuralComponent {
+		NeuralComponent<DefaultChainableDirectedComponent<?, ?>> {
 
 	@Override
 	DefaultDirectedComponentBipoleGraph dup();

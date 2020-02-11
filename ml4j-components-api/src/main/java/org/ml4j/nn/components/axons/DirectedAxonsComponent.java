@@ -33,7 +33,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  */
 public interface DirectedAxonsComponent<L extends Neurons, R extends Neurons, A extends Axons<?, ?, ?>>
 		extends DefaultChainableDirectedComponent<DirectedAxonsComponentActivation, AxonsContext>,
-		AxonsContextAwareNeuralComponent {
+		AxonsContextAwareNeuralComponent<DefaultChainableDirectedComponent<?, ?>> {
 
 	/**
 	 * @return The Axons instance adapted by this DirectedAxonsComponent.

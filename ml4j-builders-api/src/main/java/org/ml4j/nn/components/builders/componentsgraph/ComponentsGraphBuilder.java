@@ -22,7 +22,7 @@ import org.ml4j.nn.components.builders.skipconnection.ComponentsGraphSkipConnect
 import org.ml4j.nn.components.builders.skipconnection.SkipConnectionPermitted;
 import org.ml4j.nn.components.builders.synapses.SynapsesPermitted;
 
-public interface ComponentsGraphBuilder<C extends AxonsBuilder<T>, T extends NeuralComponent>
+public interface ComponentsGraphBuilder<C extends AxonsBuilder<T>, T extends NeuralComponent<?>>
 		extends AxonsPermitted<C>, SynapsesPermitted<C, T>, ActivationFunctionPermitted<C>,
 		ParallelPathsPermitted<ComponentsSubGraphBuilder<C, T>>,
 		SkipConnectionPermitted<ComponentsGraphSkipConnectionBuilder<C, T>, T>, AxonsBuilder<T> {
