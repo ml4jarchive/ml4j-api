@@ -19,7 +19,7 @@ import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.componentsgraph.ComponentsGraphNeurons;
 import org.ml4j.nn.neurons.Neurons;
 
-public interface ComponentsContainer<N extends Neurons, T extends NeuralComponent> {
+public interface ComponentsContainer<N extends Neurons, T extends NeuralComponent<?>> {
 
 	List<T> getComponents();
 

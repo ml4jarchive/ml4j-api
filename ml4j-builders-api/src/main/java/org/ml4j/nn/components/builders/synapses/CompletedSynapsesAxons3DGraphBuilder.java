@@ -17,7 +17,7 @@ import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.axons.ActivationFunctionPermitted;
 import org.ml4j.nn.components.builders.axonsgraph.Axons3DGraphBuilder;
 
-public interface CompletedSynapsesAxons3DGraphBuilder<P, Q, T extends NeuralComponent> extends
+public interface CompletedSynapsesAxons3DGraphBuilder<P, Q, T extends NeuralComponent<?>> extends
 		Axons3DGraphBuilder<CompletedSynapsesAxons3DGraphBuilder<P, Q, T>, CompletedSynapsesAxonsGraphBuilder<Q, T>, T>,
 		ActivationFunctionPermitted<SynapsesEnder<P>> {
 

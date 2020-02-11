@@ -15,7 +15,7 @@ package org.ml4j.nn.components.builders.synapses;
 
 import org.ml4j.nn.components.NeuralComponent;
 
-public interface SynapsesPermitted<C, T extends NeuralComponent> {
+public interface SynapsesPermitted<C, T extends NeuralComponent<?>> {
 
 	SynapsesAxonsGraphBuilder<C, T> withSynapses();
 

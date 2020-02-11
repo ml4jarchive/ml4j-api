@@ -15,7 +15,7 @@ package org.ml4j.nn.components;
 
 import org.ml4j.nn.axons.AxonsContext;
 
-public interface AxonsContextAwareNeuralComponent extends NeuralComponent {
+public interface AxonsContextAwareNeuralComponent<T extends NeuralComponent<T>> extends NeuralComponent<T> {
 
 	AxonsContext getContext(DirectedComponentsContext directedComponentsContext);
 

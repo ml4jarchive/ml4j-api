@@ -25,7 +25,7 @@ import org.ml4j.nn.components.factories.NeuralComponentFactory;
  *
  * @param <T> The type of NeuralComponent within the session.
  */
-public interface Session<T extends NeuralComponent> {
+public interface Session<T extends NeuralComponent<?>> {
 
 	NeuralComponentFactory<T> getNeuralComponentFactory();
 

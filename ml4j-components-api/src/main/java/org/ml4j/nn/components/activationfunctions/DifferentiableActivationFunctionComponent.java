@@ -29,7 +29,7 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
  */
 public interface DifferentiableActivationFunctionComponent extends
 		DefaultChainableDirectedComponent<DifferentiableActivationFunctionComponentActivation, NeuronsActivationContext>,
-		NeuralComponent {
+		NeuralComponent<DefaultChainableDirectedComponent<?, ?>> {
 
 	/**
 	 * @return The activation function type.

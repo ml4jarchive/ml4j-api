@@ -26,7 +26,7 @@ import org.ml4j.nn.definitions.Component3Dto3DGraphDefinition;
 import org.ml4j.nn.definitions.Component3DtoNon3DGraphDefinition;
 import org.ml4j.nn.neurons.Neurons3D;
 
-public interface Components3DGraphBuilder<C extends Axons3DBuilder<T>, D extends AxonsBuilder<T>, T extends NeuralComponent>
+public interface Components3DGraphBuilder<C extends Axons3DBuilder<T>, D extends AxonsBuilder<T>, T extends NeuralComponent<?>>
 		extends Axons3DPermitted<C, D, T>, Synapses3DPermitted<C, D, T>, ActivationFunctionPermitted<C>,
 		ParallelPathsPermitted<Components3DSubGraphBuilder<C, D, T>>,
 		SkipConnection3DPermitted<Components3DGraphSkipConnectionBuilder<C, D, T>, T>, Axons3DBuilder<T> {

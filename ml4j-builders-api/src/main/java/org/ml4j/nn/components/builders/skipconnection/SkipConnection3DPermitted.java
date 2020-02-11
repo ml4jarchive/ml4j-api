@@ -16,7 +16,7 @@ package org.ml4j.nn.components.builders.skipconnection;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.axons.Axons3DBuilder;
 
-public interface SkipConnection3DPermitted<C extends Axons3DBuilder<T>, T extends NeuralComponent> {
+public interface SkipConnection3DPermitted<C extends Axons3DBuilder<T>, T extends NeuralComponent<?>> {
 
 	C withSkipConnection();
 }

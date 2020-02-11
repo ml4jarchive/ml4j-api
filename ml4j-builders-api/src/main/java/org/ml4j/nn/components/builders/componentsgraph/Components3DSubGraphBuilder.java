@@ -17,7 +17,7 @@ import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.axons.Axons3DBuilder;
 import org.ml4j.nn.components.builders.common.PathEnder;
 
-public interface Components3DSubGraphBuilder<P, Q, T extends NeuralComponent>
+public interface Components3DSubGraphBuilder<P, Q, T extends NeuralComponent<?>>
 		extends Components3DGraphBuilder<Components3DSubGraphBuilder<P, Q, T>, ComponentsSubGraphBuilder<Q, T>, T>,
 		Axons3DBuilder<T> {
 

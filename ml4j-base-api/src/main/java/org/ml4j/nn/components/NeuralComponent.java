@@ -17,14 +17,21 @@ import java.io.Serializable;
 
 import org.ml4j.nn.neurons.Neurons;
 
-public interface NeuralComponent extends Serializable {
+/**
+ * @author Michael Lavelle
+ *
+ * @param <N> The specific type of NeuralComponent
+ */
+public interface NeuralComponent<N extends NeuralComponent<N>> extends Serializable {
 
 	NeuralComponentType getComponentType();
 
 	Neurons getInputNeurons();
 
 	Neurons getOutputNeurons();
-	
+		
 	String getName();
+	
+	String accept(NeuralComponentVisitor<N> visitor);
 
 }

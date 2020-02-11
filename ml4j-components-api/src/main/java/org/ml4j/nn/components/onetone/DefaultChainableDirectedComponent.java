@@ -20,6 +20,7 @@ import org.ml4j.nn.components.ChainableDirectedComponent;
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentType;
+import org.ml4j.nn.components.NeuralComponentVisitor;
 import org.ml4j.nn.components.NeuronsActivationComponent;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.NeuronsActivation;
@@ -45,7 +46,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  *            forward propagation.
  */
 public interface DefaultChainableDirectedComponent<A extends DefaultChainableDirectedComponentActivation, C>
-		extends ChainableDirectedComponent<NeuronsActivation, A, C>, NeuralComponent, NeuronsActivationComponent {
+		extends ChainableDirectedComponent<NeuronsActivation, A, C>, NeuralComponent<DefaultChainableDirectedComponent<?, ?>>, NeuronsActivationComponent {
 
 	/**
 	 * @return A deep copy of this component.
@@ -81,8 +82,8 @@ public interface DefaultChainableDirectedComponent<A extends DefaultChainableDir
 	@Override
 	NeuralComponentType getComponentType();
 	
-	
-	String accept(DefaultChainableDirectedComponentVisitor visitor);
+	@Override
+	String accept(NeuralComponentVisitor<DefaultChainableDirectedComponent<?, ?>> visitor);
 	
 	/**
 	 * Forward Propagates the activations through component.

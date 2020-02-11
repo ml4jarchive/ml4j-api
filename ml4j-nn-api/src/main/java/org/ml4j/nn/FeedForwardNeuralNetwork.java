@@ -17,6 +17,7 @@
 package org.ml4j.nn;
 
 import org.ml4j.nn.components.NeuralComponent;
+import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 
 /**
  * 
@@ -28,5 +29,5 @@ import org.ml4j.nn.components.NeuralComponent;
  * 
  */
 public interface FeedForwardNeuralNetwork<C extends FeedForwardNeuralNetworkContext, N extends FeedForwardNeuralNetwork<C, N>>
-		extends DirectedNeuralNetwork<C, N>, NeuralComponent {
+		extends DirectedNeuralNetwork<C, N>, NeuralComponent<DefaultChainableDirectedComponent<?, ?>> {
 }

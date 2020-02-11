@@ -16,7 +16,7 @@ package org.ml4j.nn.components.builders.axonsgraph;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.axons.Axons3DBuilder;
 
-public interface Axons3DGraphSkipConnectionBuilder<P, Q, T extends NeuralComponent> extends
+public interface Axons3DGraphSkipConnectionBuilder<P, Q, T extends NeuralComponent<?>> extends
 		Axons3DGraphBuilder<Axons3DGraphSkipConnectionBuilder<P, Q, T>, AxonsGraphSkipConnectionBuilder<Q, T>, T>,
 		Axons3DBuilder<T> {
 

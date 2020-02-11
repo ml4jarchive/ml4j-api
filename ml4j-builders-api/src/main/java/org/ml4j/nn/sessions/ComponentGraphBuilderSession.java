@@ -29,7 +29,7 @@ import org.ml4j.nn.neurons.Neurons3D;
  *
  * @param <T> The type of NeuralComponent within the session.
  */
-public interface ComponentGraphBuilderSession<T extends NeuralComponent> {
+public interface ComponentGraphBuilderSession<T extends NeuralComponent<?>> {
 
 	NeuralComponentFactory<T> getNeuralComponentFactory();
 
