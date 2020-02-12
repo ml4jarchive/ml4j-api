@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
+import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.manytomany.DefaultDirectedComponentChainBatch;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -33,7 +34,7 @@ public interface DefaultDirectedComponentChainBipoleGraph extends
 		NeuralComponent<DefaultChainableDirectedComponent<?, ?>> {
 
 	@Override
-	DefaultDirectedComponentChainBipoleGraph dup();
+	DefaultDirectedComponentChainBipoleGraph dup(DirectedComponentFactory directedComponentFactory);
 
 	@Override
 	List<DefaultChainableDirectedComponent<?, ?>> decompose();

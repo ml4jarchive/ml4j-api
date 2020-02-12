@@ -29,4 +29,10 @@ import org.ml4j.nn.synapses.UndirectedSynapses;
 public interface UndirectedLayer<A extends Axons<?,?,?>, L extends UndirectedLayer<A, L>>
     extends Layer<A, UndirectedSynapses<?, ?>, L> {
   
+	 /**
+	   * Duplicates this Layer.
+	   * 
+	   * @return A deep clone of this Layer
+	   */
+	  L dup();
 }

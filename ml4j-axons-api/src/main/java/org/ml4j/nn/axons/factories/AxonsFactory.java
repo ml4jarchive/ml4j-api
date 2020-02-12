@@ -17,6 +17,7 @@ import java.io.Serializable;
 
 import org.ml4j.nn.axons.AveragePoolingAxons;
 import org.ml4j.nn.axons.Axons3DConfig;
+import org.ml4j.nn.axons.AxonsConfig;
 import org.ml4j.nn.axons.BiasMatrix;
 import org.ml4j.nn.axons.ConvolutionalAxons;
 import org.ml4j.nn.axons.FullyConnectedAxonsFactory;
@@ -24,7 +25,6 @@ import org.ml4j.nn.axons.MaxPoolingAxons;
 import org.ml4j.nn.axons.ScaleAndShiftAxons;
 import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.neurons.Neurons;
-import org.ml4j.nn.neurons.Neurons3D;
 
 /**
  * A factory for different types of Axons.
@@ -43,8 +43,7 @@ public interface AxonsFactory extends FullyConnectedAxonsFactory, Serializable {
 	 * @param biases            The convolutional biases.
 	 * @return A ConvolutionalAxons instance.
 	 */
-	ConvolutionalAxons createConvolutionalAxons(Neurons3D leftNeurons, Neurons3D rightNeurons,
-			Axons3DConfig axons3DConfig, WeightsMatrix connectionWeights, BiasMatrix biases);
+	ConvolutionalAxons createConvolutionalAxons(Axons3DConfig axons3DConfig, WeightsMatrix connectionWeights, BiasMatrix biases);
 
 	/**
 	 * Construct a MaxPoolingAxons instance.
@@ -57,19 +56,15 @@ public interface AxonsFactory extends FullyConnectedAxonsFactory, Serializable {
 	 * @param axons3DConfig The Axons3DConfig
 	 * @return A MaxPoolingAxons instance.
 	 */
-	MaxPoolingAxons createMaxPoolingAxons(Neurons3D leftNeurons, Neurons3D rightNeurons, boolean scaleOutputs,
-			Axons3DConfig axons3DConfig);
+	MaxPoolingAxons createMaxPoolingAxons(Axons3DConfig axons3DConfig, boolean scaleOutputs);
 
 	/**
 	 * Construct an AveragePoolingAxons instance
 	 * 
-	 * @param leftNeurons   The neurons on the LHS of the Axons.
-	 * @param rightNeurons  The neurons on the RHS of the Axons.
 	 * @param axons3DConfig The Axons3DConfig
 	 * @return An AveragePoolingAxons instance.
 	 */
-	AveragePoolingAxons createAveragePoolingAxons(Neurons3D leftNeurons, Neurons3D rightNeurons,
-			Axons3DConfig axons3DConfig);
+	AveragePoolingAxons createAveragePoolingAxons(Axons3DConfig axons3DConfig);
 
 	/**
 	 * Construct a scale-and-shift Axons instance.
@@ -81,6 +76,5 @@ public interface AxonsFactory extends FullyConnectedAxonsFactory, Serializable {
 	 * @param beta         The shifting beta vector.
 	 * @return A scale-and-shift Axons instance.
 	 */
-	<N extends Neurons> ScaleAndShiftAxons<N> createScaleAndShiftAxons(N leftNeurons, N rightNeurons,
-			WeightsMatrix gamma, BiasMatrix beta);
+	<N extends Neurons> ScaleAndShiftAxons<N> createScaleAndShiftAxons(AxonsConfig<N, N> axonsConfig, WeightsMatrix gamma, BiasMatrix beta);
 }

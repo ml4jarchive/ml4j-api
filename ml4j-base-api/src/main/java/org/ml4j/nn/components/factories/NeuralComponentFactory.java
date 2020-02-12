@@ -20,6 +20,7 @@ import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons3DConfig;
+import org.ml4j.nn.axons.AxonsConfig;
 import org.ml4j.nn.axons.BiasMatrix;
 import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.NeuralComponent;
@@ -38,29 +39,30 @@ import org.ml4j.nn.neurons.Neurons3D;
  */
 public interface NeuralComponentFactory<T extends NeuralComponent<?>> {
 
+	/**
+	 * @param name The name of the component.
+	 * @param leftNeurons The neurons on the LHS of the component.
+	 * @param rightNeurons The neurons on the RHS of the component.
+	 * @param neuralComponentType The type of component
+	 * @return A component based on the provided parameters.
+	 */
 	T createComponent(String name, Neurons leftNeurons, Neurons rightNeurons,
 			NeuralComponentType neuralComponentType);
-
 	/**
-	 * Create a fully-connected axons component, connecting leftNeurons to
-	 * rightNeurons via connectionWeights.
 	 * 
-	 * @param name 				The name of the component.
-	 * @param leftNeurons       The neurons on the left of the fully-connected axons
-	 *                          component.
-	 * @param rightNeurons      The neurons on the right of the fully-connected
-	 *                          axons component.
+	 * @param name The name of the component.
+	 * @param axonsConfig The left and right neurons configuration for this component.
 	 * @param connectionWeights Optionally specify the connection weights of the
 	 *                          axons - if not provided the weights will be
 	 *                          initialised to defaults.
-	 * @param biases            Optionally specify the left-to-right biases of the
+	 * @param biases			Optionally specify the left-to-right biases of the
 	 *                          axons - if not provided the biases will be
 	 *                          initialised to defaults if the LHS neurons have a
 	 *                          bias unit.
 	 * @return A fully-connected axons component, connecting leftNeurons to
 	 *         rightNeurons via connectionWeights.
 	 */
-	T createFullyConnectedAxonsComponent(String name, Neurons leftNeurons, Neurons rightNeurons, WeightsMatrix connectionWeights,
+	T createFullyConnectedAxonsComponent(String name, AxonsConfig<Neurons, Neurons> axonsConfig, WeightsMatrix connectionWeights,
 			BiasMatrix biases);
 
 	/**
@@ -83,23 +85,34 @@ public interface NeuralComponentFactory<T extends NeuralComponent<?>> {
 	 * @return A fully-connected axons component, connecting leftNeurons to
 	 *         rightNeurons convolutionally via convolutional connectionWeights.
 	 */
-	T createConvolutionalAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config,
+	
+	
+	/**
+	 * 
+	 * @param name				The name of the component.
+	 * @param config 			The Axons3DConfig.
+	 * @param connectionWeights Specify the convolutional connection weights of the axons.  To default the connection weights
+	 * 							specify a WeightsMatrix with the matrix null but the WeightsFormat provided.
+	 * @param biases			Optionally specify the left-to-right biases of the
+	 *                          axons - if not provided the biases will be
+	 *                          initialised to defaults if the LHS neurons have a
+	 *                          bias unit.
+	 * @return					 A convolutional component connecting leftNeurons to
+	 *         					rightNeurons convolutionally via convolutional connectionWeights.
+	 */
+	T createConvolutionalAxonsComponent(String name, Axons3DConfig config,
 			WeightsMatrix connectionWeights, BiasMatrix biases);
 
 	/**
 	 * Create a max-pooling axons component.
 	 * 
 	 * @param name 		   The name of the component.
-	 * @param leftNeurons  The neurons on the left of the max pooling axons
-	 *                     component.
-	 * @param rightNeurons The neurons on the right of the max pooling axons
-	 *                     component.
 	 * @param config       The Axons3DConfig.
 	 * @param scaleOutputs Whether to scale the output of the max pooling axons by a
 	 *                     scaling factor to compensate for the max-pooling dropout.
 	 * @return A max-pooling axons component.
 	 */
-	T createMaxPoolingAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config,
+	T createMaxPoolingAxonsComponent(String name, Axons3DConfig config,
 			boolean scaleOutputs);
 
 	/**
@@ -107,14 +120,10 @@ public interface NeuralComponentFactory<T extends NeuralComponent<?>> {
 	 * Create an average-pooling axons component.
 	 * 
 	 * @param name 		   The name of the component.
-	 * @param leftNeurons  The neurons on the left of the average pooling axons
-	 *                     component.
-	 * @param rightNeurons The neurons on the right of the average pooling axons
-	 *                     component.
 	 * @param config       The Axons3DConfig.
 	 * @return An average-pooling axons component.
 	 */
-	T createAveragePoolingAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons, Axons3DConfig config);
+	T createAveragePoolingAxonsComponent(String name, Axons3DConfig config);
 
 	/**
 	 * Create a batch-norm directed axons component with default initialised

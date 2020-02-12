@@ -15,6 +15,8 @@ package org.ml4j.nn.components;
 
 import java.util.List;
 
+import org.ml4j.nn.components.factories.NeuralComponentFactory;
+
 /**
  * A chainable component within a DirectedNeuralNetwork where data flows in a
  * left-to-right direction through forward propagation. Error information is
@@ -32,8 +34,8 @@ import java.util.List;
  * @param <C> The context provided to the ChainableDirectedComponent on forward
  *            propagation.
  */
-public interface ChainableDirectedComponent<I, A extends ChainableDirectedComponentActivation<I>, C>
-		extends DirectedComponent<I, A, C> {
+public interface ChainableDirectedComponent<I, A extends ChainableDirectedComponentActivation<I>, C, F extends NeuralComponentFactory<?>>
+		extends DirectedComponent<I, A, C, F> {
 
 	/**
 	 * Obtain the context of this ChainableDirectedComponent from the provided
@@ -49,11 +51,11 @@ public interface ChainableDirectedComponent<I, A extends ChainableDirectedCompon
 	 *         ChainableDirectedComponents that can be chained together to form this
 	 *         component.
 	 */
-	List<? extends ChainableDirectedComponent<I, ? extends ChainableDirectedComponentActivation<I>, ?>> decompose();
+	List<? extends ChainableDirectedComponent<I, ? extends ChainableDirectedComponentActivation<I>, ?, F>> decompose();
 
 	/**
 	 * @return A deep copy of this component.
 	 */
 	@Override
-	ChainableDirectedComponent<I, A, C> dup();
+	ChainableDirectedComponent<I, A, C, F> dup(F neuralComponentFactory);
 }

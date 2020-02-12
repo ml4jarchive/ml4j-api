@@ -20,21 +20,42 @@ import java.io.Serializable;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.ml4j.nn.neurons.Neurons;
+
 
 /**
  * Base class for configurations for Axons.
- * 
+ *
  * @author Michael Lavelle
+ *
+ * @param <L> The type of Neurons on the LHS of the axons.
+ * @param <R> The type of Neurons on the RHS of the axons.
  */
-public class AxonsConfig implements Serializable {
+public class AxonsConfig<L extends Neurons, R extends Neurons> implements Serializable {
 
 	/**
 	 * Default serialization id.
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	AxonsConfig dup() {
-		return new AxonsConfig();
+	protected L leftNeurons;
+	protected R rightNeurons;
+	
+	public AxonsConfig(L leftNeurons, R rightNeurons) {
+		this.leftNeurons = leftNeurons;
+		this.rightNeurons = rightNeurons;
+	}
+	
+	public L getLeftNeurons() {
+		return leftNeurons;
+	}
+
+	public R getRightNeurons() {
+		return rightNeurons;
+	}
+
+	AxonsConfig<L, R> dup() {
+		return new AxonsConfig<>(leftNeurons, rightNeurons);
 	}
 	
 	@Override

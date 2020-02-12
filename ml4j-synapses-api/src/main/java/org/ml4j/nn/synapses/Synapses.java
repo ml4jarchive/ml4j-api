@@ -28,8 +28,4 @@ import org.ml4j.nn.components.NeuralNetworkComponent;
  */
 public interface Synapses<S extends Synapses<S>> extends NeuralNetworkComponent, Serializable {
 
-	/**
-	 * @return A deep copy of these Synapses.
-	 */
-	S dup();
 }

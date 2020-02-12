@@ -16,6 +16,7 @@ package org.ml4j.nn.components.onetomany;
 import org.ml4j.nn.components.DirectedComponent;
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuronsActivationComponent;
+import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -31,8 +32,8 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  *            forward-propagation.
  */
 public interface OneToManyDirectedComponent<A extends OneToManyDirectedComponentActivation>
-		extends DirectedComponent<NeuronsActivation, A, DirectedComponentsContext>, NeuronsActivationComponent {
+		extends DirectedComponent<NeuronsActivation, A, DirectedComponentsContext, DirectedComponentFactory>, NeuronsActivationComponent {
 
 	@Override
-	OneToManyDirectedComponent<A> dup();
+	OneToManyDirectedComponent<A> dup(DirectedComponentFactory directedComponentFactory);
 }

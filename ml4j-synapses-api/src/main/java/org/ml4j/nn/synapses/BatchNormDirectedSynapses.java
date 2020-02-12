@@ -15,6 +15,7 @@
 package org.ml4j.nn.synapses;
 
 import org.ml4j.Matrix;
+import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.neurons.Neurons;
 
 /**
@@ -67,5 +68,5 @@ public interface BatchNormDirectedSynapses<L extends Neurons, R extends Neurons>
 	double getBetaForExponentiallyWeightedAverages();
 
 	@Override
-	BatchNormDirectedSynapses<L, R> dup();
+	BatchNormDirectedSynapses<L, R> dup(DirectedComponentFactory directedComponentFactory);
 }

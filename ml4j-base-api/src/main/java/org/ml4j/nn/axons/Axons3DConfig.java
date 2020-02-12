@@ -26,19 +26,23 @@ import org.ml4j.nn.neurons.Neurons3D;
  * @author Michael Lavelle
  *
  */
-public class Axons3DConfig extends AxonsConfig {
+public class Axons3DConfig extends AxonsConfig<Neurons3D, Neurons3D> {
 
 	/**
 	 * Default serialization id.
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	private int strideWidth = 1;
 	private int strideHeight = 1;
 	private int paddingWidth = 0;
 	private int paddingHeight = 0;
 	private Integer filterWidth;
 	private Integer filterHeight;
+	
+	public Axons3DConfig(Neurons3D leftNeurons, Neurons3D rightNeurons) {
+		super(leftNeurons, rightNeurons);
+	}
 
 	public int getStrideWidth() {
 		return strideWidth;
@@ -55,13 +59,8 @@ public class Axons3DConfig extends AxonsConfig {
 	public int getPaddingHeight() {
 		return paddingHeight;
 	}
-	
-	void setFilterWidthAndHeight(Neurons3D leftNeurons, Neurons3D rightNeurons) {
-		withFilterWidth(getFilterWidth(leftNeurons, rightNeurons));
-		withFilterHeight(getFilterHeight(leftNeurons, rightNeurons));
-	}
-	
-	public int getFilterWidth(Neurons3D leftNeurons, Neurons3D rightNeurons) {
+
+	public int getFilterWidth() {
 
 		int inputWidthWithPadding = leftNeurons.getWidth() + paddingWidth * 2;
 
@@ -75,7 +74,7 @@ public class Axons3DConfig extends AxonsConfig {
 		return calculatedFilterWidth;
 	}
 
-	public int getFilterHeight(Neurons3D leftNeurons, Neurons3D rightNeurons) {
+	public int getFilterHeight() {
 
 		int inputHeightWithPadding = leftNeurons.getHeight() + paddingHeight * 2;
 
@@ -83,60 +82,63 @@ public class Axons3DConfig extends AxonsConfig {
 
 		if (filterHeight != null && filterHeight.intValue() != calculatedFilterHeight) {
 			throw new IllegalStateException("Explicitly set filter height of:" + filterHeight
-					+ " is inconsistent with calculated filter width of:" + calculatedFilterHeight);
+					+ " is inconsistent with calculated filter height of:" + calculatedFilterHeight);
 		}
 		return calculatedFilterHeight;
 	}
-	
-	public int getFilterWidth() {
-		if (filterWidth == null) {
-			throw new IllegalStateException("Filter width has not been set on Axons3DConfig");
-		} else {
-			return filterWidth;
-		}
-	}
-	
-	public int getFilterHeight() {
-		if (filterHeight == null) {
-			throw new IllegalStateException("Filter height has not been set on Axons3DConfig");
-		} else {
-			return filterHeight;
-		}
-	}
+
 
 	public Axons3DConfig withStrideWidth(int strideWidth) {
+		if (strideWidth < 1) {
+			throw new IllegalArgumentException("Stride width must be >= 1");
+		}
 		this.strideWidth = strideWidth;
 		return this;
 	}
 
 	public Axons3DConfig withStrideHeight(int strideHeight) {
+		if (strideHeight < 1) {
+			throw new IllegalArgumentException("Stride height must be >= 1");
+		}
 		this.strideHeight = strideHeight;
 		return this;
 	}
 
 	public Axons3DConfig withFilterWidth(int filterWidth) {
+		if (filterWidth < 1) {
+			throw new IllegalArgumentException("Filter width must be >= 1");
+		}
 		this.filterWidth = filterWidth;
 		return this;
 	}
 
 	public Axons3DConfig withFilterHeight(int filterHeight) {
+		if (filterHeight < 1) {
+			throw new IllegalArgumentException("Filter height must be >= 1");
+		}
 		this.filterHeight = filterHeight;
 		return this;
 	}
 
 	public Axons3DConfig withPaddingWidth(int paddingWidth) {
+		if (paddingWidth < 0) {
+			throw new IllegalArgumentException("Padding width must be >= 0");
+		}
 		this.paddingWidth = paddingWidth;
 		return this;
 	}
 
 	public Axons3DConfig withPaddingHeight(int paddingHeight) {
+		if (paddingHeight < 0) {
+			throw new IllegalArgumentException("Padding height must be >= 0");
+		}
 		this.paddingHeight = paddingHeight;
 		return this;
 	}
 	
 	@Override
 	Axons3DConfig dup() {
-		Axons3DConfig dupConfig = new Axons3DConfig().withStrideHeight(strideHeight)
+		Axons3DConfig dupConfig = new Axons3DConfig(leftNeurons, rightNeurons).withStrideHeight(strideHeight)
 				.withStrideWidth(strideWidth).withPaddingHeight(paddingHeight).withPaddingWidth(paddingWidth);
 		if (filterHeight != null) {
 			dupConfig = dupConfig.withFilterHeight(filterHeight);

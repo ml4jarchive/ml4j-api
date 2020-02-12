@@ -26,10 +26,5 @@ import java.io.Serializable;
  */
 public interface NeuralNetwork<C extends NeuralNetworkContext, N extends NeuralNetwork<C, N>> extends Serializable {
 
-	/**
-	 * Duplicates this NeuralNetwork.
-	 * 
-	 * @return A deep copy of this NeuralNetwork
-	 */
-	N dup();
+	
 }
