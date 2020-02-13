@@ -46,5 +46,9 @@ public interface CostAndGradients {
 	 */
 	List<AxonsGradient> getAverageTrainableAxonsGradients();
 
+	/**
+	 * Clean-up method that can be called to release resources within 
+	 * this CostAndGradients instance once it is no longer needed.
+	 */
 	void close();
 }

@@ -14,6 +14,8 @@
 
 package org.ml4j.nn.synapses;
 
+import org.ml4j.nn.axons.AxonsContext;
+
 /**
  * Defines the context for activations travelling through DirectedSynapses.
  * 
@@ -21,5 +23,13 @@ package org.ml4j.nn.synapses;
  *
  */
 public interface DirectedSynapsesContext extends SynapsesContext {
-
+	
+	/**
+	 * Get the AxonsContext, given identifiers which specify the location of
+	 * the Axons within the Synapses
+	 * 
+	 * @param pathIndex        The index of the path of Axons in these Synapses.
+	 * @param axonsIndexInPath The index of the Axons within the path.
+	 */
+	AxonsContext getAxonsContext(int pathIndex, int axonsIndexInPath);
 }

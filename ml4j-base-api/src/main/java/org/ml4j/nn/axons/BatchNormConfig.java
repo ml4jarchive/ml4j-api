@@ -1,34 +1,46 @@
 package org.ml4j.nn.axons;
 
+import java.util.function.ToIntFunction;
+
 import org.ml4j.Matrix;
 import org.ml4j.nn.neurons.Neurons;
+import org.ml4j.nn.neurons.Neurons3D;
 import org.ml4j.nn.neurons.format.features.Dimension;
 
 public class BatchNormConfig<N extends Neurons> {
 	
-	private BatchNormDimension batchNormDimension;
+	private BatchNormDimension<N> batchNormDimension;
 	private WeightsMatrix gammaColumnVector;
 	private BiasMatrix betaColumnVector;
 	private Matrix meanColumnVector;
 	private Matrix varianceColumnVector;
-	private N neurons;
 	
-	public BatchNormConfig(N neurons, BatchNormDimension batchNormDimension) {
-		this.neurons = neurons;
+	public BatchNormConfig(BatchNormDimension<N> batchNormDimension) {
 		this.batchNormDimension = batchNormDimension;
 	}
-	
-	public N getNeurons() {
-		return neurons;
-	}
 
-	public enum BatchNormDimension {
-		INPUT_FEATURE(Dimension.FEATURE), CHANNEL(Dimension.CHANNEL);
+	public static class BatchNormDimension<L extends Neurons> {
 		
-		Dimension inputDimension;
+		public static final BatchNormDimension<Neurons> INPUT_FEATURE = 
+				new BatchNormDimension<>(Dimension.FEATURE, n -> n.getNeuronCountExcludingBias());
 		
-		BatchNormDimension(Dimension inputDimension) {
+		public static final BatchNormDimension<Neurons3D> 
+			CHANNEL = new BatchNormDimension<>(Dimension.CHANNEL, n -> n.getDepth());
+		
+		private Dimension inputDimension;
+		private ToIntFunction<L> dimensionSizeFunction;
+		
+		BatchNormDimension(Dimension inputDimension, ToIntFunction<L> dimensionSizeFunction) {
 			this.inputDimension = inputDimension;
+			this.dimensionSizeFunction = dimensionSizeFunction;
+		}
+		
+		public int getDimensionSize(L neurons) {
+			return dimensionSizeFunction.applyAsInt(neurons);
+		}
+		
+		public Dimension getInputDimension() {
+			return inputDimension;
 		}
 	}
 
@@ -68,16 +80,16 @@ public class BatchNormConfig<N extends Neurons> {
 		return this;
 	}
 
-	public BatchNormDimension getBatchNormDimension() {
+	public BatchNormDimension<N> getBatchNormDimension() {
 		return batchNormDimension;
 	}
 	
 	public BatchNormConfig<N> dup() {
-		BatchNormConfig<N> config = new BatchNormConfig<N>(neurons, batchNormDimension);
-		if (betaColumnVector != null) {
-			config.withBetaColumnVector(betaColumnVector.dup());
-		}
+		BatchNormConfig<N> config = new BatchNormConfig<>(batchNormDimension);
 		if (gammaColumnVector != null) {
+			config.withGammaColumnVector(gammaColumnVector.dup());
+		}
+		if (betaColumnVector != null) {
 			config.withBetaColumnVector(betaColumnVector.dup());
 		}
 		if (meanColumnVector != null) {

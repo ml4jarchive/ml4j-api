@@ -61,7 +61,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	DirectedAxonsComponent<Neurons3D, Neurons3D, ?> createAveragePoolingAxonsComponent(String name, Axons3DConfig config);
 
 	@Override
-	<N extends Neurons> BatchNormDirectedAxonsComponent<N, ?> createBatchNormAxonsComponent(String name, BatchNormConfig<N> batchNormConfig);
+	<N extends Neurons> BatchNormDirectedAxonsComponent<N, ?> createBatchNormAxonsComponent(String name, N neurons, BatchNormConfig<N> batchNormConfig);
 
 	/**
 	 * Construct a DirectedAxonsComponent adapter for the specified Axons.

@@ -27,7 +27,6 @@ public interface BackPropagationListener extends Serializable {
 	 * Callback for a back propagation event.
 	 * 
 	 * @param backPropagation The back propagation.
-	 * 
 	 */
 	void onBackPropagation(BackPropagation backPropagation);
 }

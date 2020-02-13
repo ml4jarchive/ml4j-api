@@ -19,7 +19,7 @@ import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
 
 /**
- * Session interface for the creation of Neural Component graphs.
+ * Session interface for the creation of NeuralComponent graphs.
  * 
  * @author Michael Lavelle
  *
@@ -27,11 +27,24 @@ import org.ml4j.nn.components.factories.NeuralComponentFactory;
  */
 public interface Session<T extends NeuralComponent<?>> {
 
-	NeuralComponentFactory<T> getNeuralComponentFactory();
-
+	/**
+	 * @return Start a new ComponentGraphBuilderSession which allows
+	 * component graphs to be built.
+	 */
 	ComponentGraphBuilderSession<T> buildComponentGraph();
 
+	/**
+	 * @return The DirectedComponentsContext configured for this Session.
+	 */
 	DirectedComponentsContext getDirectedComponentsContext();
 	
+	/**
+	 * @return The NeuralComponentFactory configured for this Session.
+	 */
+	NeuralComponentFactory<T> getNeuralComponentFactory();
+
+	/**
+	 * @return The MatrixFactory configured for this Session.
+	 */
 	MatrixFactory getMatrixFactory();
 }

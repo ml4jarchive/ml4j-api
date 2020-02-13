@@ -115,9 +115,7 @@ public class NeuronsActivationFormatTest {
 				NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET, new FeaturesFormatImpl(
 				Arrays.asList(Dimension.DEPTH, Dimension.HEIGHT, Dimension.WIDTH)), 
 				Arrays.asList(Dimension.EXAMPLE));
-		
-		Assert.assertNotEquals(ImageNeuronsActivationFormat.ML4J_DEFAULT_IMAGE_FORMAT, 
-				customDepthHeightWidthWithExampleColumnsFormat);
+
 		
 		Assert.assertTrue(ImageNeuronsActivationFormat.ML4J_DEFAULT_IMAGE_FORMAT
 				.isEquivalentFormat(customDepthHeightWidthWithExampleColumnsFormat, DimensionScope.ANY));
@@ -146,9 +144,6 @@ public class NeuronsActivationFormatTest {
 				NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET, new FeaturesFormatImpl(
 				Arrays.asList(Dimension.INPUT_DEPTH, Dimension.INPUT_HEIGHT, Dimension.INPUT_WIDTH)), 
 				Arrays.asList(Dimension.EXAMPLE));
-		
-		Assert.assertNotEquals(ImageNeuronsActivationFormat.ML4J_DEFAULT_IMAGE_FORMAT, 
-				customDepthHeightWidthWithExampleColumnsFormat);
 		
 		Assert.assertTrue(ImageNeuronsActivationFormat.ML4J_DEFAULT_IMAGE_FORMAT
 				.isEquivalentFormat(customDepthHeightWidthWithExampleColumnsFormat, DimensionScope.ANY));

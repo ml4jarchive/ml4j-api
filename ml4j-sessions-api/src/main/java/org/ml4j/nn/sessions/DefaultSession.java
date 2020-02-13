@@ -19,7 +19,10 @@ import org.ml4j.nn.layers.DirectedLayerFactory;
 import org.ml4j.nn.supervised.SupervisedFeedForwardNeuralNetworkFactory;
 
 /**
- * Convenience interface for a Session for DefaultChainableDirectedComponent
+ * Convenience interface for a Session for the creation of graphs of DefaultChainableDirectedComponents.
+ * 
+ * Also provides access to a DirectedLayerFactory and a SupervisedFeedForwardNeuralNetworkFactory that enables the building of
+ * higher-level components of DirectedLayer and SupervisedFeedForwardNeuralNetwork.
  * 
  * @author Michael Lavelle
  */
@@ -27,9 +30,13 @@ public interface DefaultSession extends Session<DefaultChainableDirectedComponen
 	
 	@Override
 	DirectedComponentFactory getNeuralComponentFactory();
-	
+	/**
+	 * @return The configured SupervisedFeedForwardNeuralNetworkFactory for this session.
+	 */
 	SupervisedFeedForwardNeuralNetworkFactory getSupervisedFeedForwardNeuralNetworkFactory();
 
+	/**
+	 * @return The configured DirectedLayerFactory for this DefaultSession.
+	 */
 	DirectedLayerFactory getDirectedLayerFactory();
-
 }

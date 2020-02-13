@@ -107,10 +107,11 @@ public interface NeuralComponentFactory<T extends NeuralComponent<?>> {
 	 * 
 	 * @param <N>          The type of neurons on the LHS/RHS of these axons.
 	 * @param name 		   The name of the component.
+	 * @param neurons	   The Neurons to which this batch norm is applied.
 	 * @param batchNormConfig The config for this component
 	 * @return A batch-norm directed axons component.
 	 */
-	<N extends Neurons> T createBatchNormAxonsComponent(String name, BatchNormConfig<N> batchNormConfig);
+	<N extends Neurons> T createBatchNormAxonsComponent(String name, N neurons, BatchNormConfig<N> batchNormConfig);
 	
 	/**
 	 * Construct a pass-through (no-op) axons component - used within residual

@@ -19,7 +19,6 @@ public class ActivationFunctionBaseTypeTest {
 			Assert.assertTrue(baseType.isStandardBaseType());
 			Assert.assertNotNull(baseType.asActivationFunctionType());
 			ActivationFunctionType activationFunctionType = baseType.asActivationFunctionType();
-			Assert.assertNotEquals(baseType, activationFunctionType);
 			Assert.assertEquals(baseType, activationFunctionType.getBaseType());
 			Assert.assertEquals(baseType, activationFunctionType.getParentType());
 			Assert.assertFalse(activationFunctionType.isCustomBaseType());

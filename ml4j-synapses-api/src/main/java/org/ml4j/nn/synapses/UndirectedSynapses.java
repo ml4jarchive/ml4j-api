@@ -17,10 +17,11 @@ package org.ml4j.nn.synapses;
 import org.ml4j.nn.activationfunctions.ActivationFunction;
 import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.neurons.Neurons;
+import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * UndirectedSynapses are undirected containers for Axons and
- * ActivationFunctions
+ * UndirectedSynapses are undirected containers for an Axons instance optionally book-ended 
+ * by ActivationFunctions.
  * 
  * @author Michael Lavelle
  *
@@ -77,7 +78,7 @@ public interface UndirectedSynapses<L extends Neurons, R extends Neurons> extend
 	 * @return The activation output on the right hand side of these
 	 *         UndirectedSynapses.
 	 */
-	UndirectedSynapsesActivation pushLeftToRight(UndirectedSynapsesInput leftHandNeuronsInput,
+	UndirectedSynapsesActivation pushLeftToRight(NeuronsActivation leftHandNeuronsInput,
 			UndirectedSynapsesActivation previousRightToLeftSynapsesActivation,
 			UndirectedSynapsesContext synapsesContext);
 
@@ -102,7 +103,7 @@ public interface UndirectedSynapses<L extends Neurons, R extends Neurons> extend
 	 * @return The activation output on the left hand side of these
 	 *         UndirectedSynapses.
 	 */
-	UndirectedSynapsesActivation pushRightToLeft(UndirectedSynapsesInput rightHandNeuronsInput,
+	UndirectedSynapsesActivation pushRightToLeft(NeuronsActivation rightHandNeuronsInput,
 			UndirectedSynapsesActivation previousLeftToRightSynapsesActivation,
 			UndirectedSynapsesContext synapsesContext);
 	

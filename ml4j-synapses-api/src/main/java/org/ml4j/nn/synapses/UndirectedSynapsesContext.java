@@ -14,6 +14,8 @@
 
 package org.ml4j.nn.synapses;
 
+import org.ml4j.nn.axons.AxonsContext;
+
 /**
  * Defines the context for activations travelling through UndirectedSynapses.
  * 
@@ -22,4 +24,9 @@ package org.ml4j.nn.synapses;
  */
 public interface UndirectedSynapsesContext extends SynapsesContext {
 
+	/**
+	 * @return The AxonsContext configured for the single instance of Axons within
+	 * an instance of UndirectedSynapses.
+	 */
+	AxonsContext getAxonsContext();
 }

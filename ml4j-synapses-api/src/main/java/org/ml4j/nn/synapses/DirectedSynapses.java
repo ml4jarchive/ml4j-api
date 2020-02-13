@@ -26,9 +26,9 @@ import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
- * DirectedSynapses are containers for Axons with a
- * DifferentiableActivationFunction applied to the right hand Axons output on a
- * push of data left-to-right during forward propagation.
+ * DirectedSynapses are ChainableDirectedComponents that act as differentiable containers for 
+ * directed graphs of Axons with a DifferentiableActivationFunction applied to the right hand Axons output 
+ * on a push of data left-to-right during forward propagation.
  * 
  * @author Michael Lavelle
  *
@@ -72,6 +72,7 @@ public interface DirectedSynapses<L extends Neurons, R extends Neurons> extends 
 	 */
 	DirectedSynapsesActivation forwardPropagate(NeuronsActivation input, DirectedComponentsContext synapsesContext);
 	
+	@Override
 	List<DefaultChainableDirectedComponent<?, ?>> decompose();
 
 	@Override

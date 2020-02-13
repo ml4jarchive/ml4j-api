@@ -25,5 +25,8 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  */
 public interface BackPropagation {
 
+	/**
+	 * @return A container for the back-propagated gradient.
+	 */
 	DirectedComponentGradient<NeuronsActivation> getGradient();
 }
