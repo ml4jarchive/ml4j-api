@@ -15,6 +15,7 @@ package org.ml4j.nn.components.builders;
 
 import org.ml4j.nn.axons.BiasMatrix;
 import org.ml4j.nn.axons.WeightsMatrix;
+import org.ml4j.nn.components.builders.axons.UncompletedBatchNormAxonsBuilder;
 import org.ml4j.nn.components.builders.axons.UncompletedFullyConnectedAxonsBuilder;
 import org.ml4j.nn.components.builders.componentsgraph.ComponentsGraphNeurons;
 import org.ml4j.nn.components.builders.synapses.SynapsesAxonsGraphBuilder;
@@ -37,6 +38,10 @@ public interface BaseGraphBuilderState {
 	void setFullyConnectedAxonsBuilder(UncompletedFullyConnectedAxonsBuilder<?> object);
 
 	void setSynapsesBuilder(SynapsesAxonsGraphBuilder<?, ?> synapsesBuilder);
+	
+	void setBatchNormAxonsBuilder(UncompletedBatchNormAxonsBuilder<Neurons, ?> axonsBuilder);
+
+	UncompletedBatchNormAxonsBuilder<Neurons, ?> getBatchNormAxonsBuilder();
 
 	SynapsesAxonsGraphBuilder<?, ?> getSynapsesBuilder();
 

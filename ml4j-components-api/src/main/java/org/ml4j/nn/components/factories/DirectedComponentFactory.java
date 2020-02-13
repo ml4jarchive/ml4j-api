@@ -16,13 +16,13 @@ package org.ml4j.nn.components.factories;
 import java.io.Serializable;
 import java.util.List;
 
-import org.ml4j.Matrix;
 import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.axons.Axons3DConfig;
 import org.ml4j.nn.axons.AxonsConfig;
+import org.ml4j.nn.axons.BatchNormConfig;
 import org.ml4j.nn.axons.BiasMatrix;
 import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.activationfunctions.DifferentiableActivationFunctionComponent;
@@ -61,20 +61,7 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	DirectedAxonsComponent<Neurons3D, Neurons3D, ?> createAveragePoolingAxonsComponent(String name, Axons3DConfig config);
 
 	@Override
-	<N extends Neurons> BatchNormDirectedAxonsComponent<N, ?> createBatchNormAxonsComponent(String name, N leftNeurons,
-			N rightNeurons);
-
-	@Override
-	<N extends Neurons> BatchNormDirectedAxonsComponent<N, ?> createBatchNormAxonsComponent(String name, N leftNeurons,
-			N rightNeurons, WeightsMatrix gamma, BiasMatrix beta, Matrix mean, Matrix var);
-	
-	@Override
-	BatchNormDirectedAxonsComponent<Neurons3D, ?> createConvolutionalBatchNormAxonsComponent(String name, Neurons3D leftNeurons,
-			Neurons3D rightNeurons);
-
-	@Override
-	BatchNormDirectedAxonsComponent<Neurons3D, ?> createConvolutionalBatchNormAxonsComponent(String name, Neurons3D leftNeurons,
-			Neurons3D rightNeurons, WeightsMatrix gamma, BiasMatrix beta, Matrix mean, Matrix var);
+	<N extends Neurons> BatchNormDirectedAxonsComponent<N, ?> createBatchNormAxonsComponent(String name, BatchNormConfig<N> batchNormConfig);
 
 	/**
 	 * Construct a DirectedAxonsComponent adapter for the specified Axons.

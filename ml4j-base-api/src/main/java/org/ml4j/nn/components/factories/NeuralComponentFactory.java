@@ -15,19 +15,18 @@ package org.ml4j.nn.components.factories;
 
 import java.util.List;
 
-import org.ml4j.Matrix;
 import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons3DConfig;
 import org.ml4j.nn.axons.AxonsConfig;
+import org.ml4j.nn.axons.BatchNormConfig;
 import org.ml4j.nn.axons.BiasMatrix;
 import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
 import org.ml4j.nn.neurons.Neurons;
-import org.ml4j.nn.neurons.Neurons3D;
 
 /**
  * 
@@ -64,28 +63,6 @@ public interface NeuralComponentFactory<T extends NeuralComponent<?>> {
 	 */
 	T createFullyConnectedAxonsComponent(String name, AxonsConfig<Neurons, Neurons> axonsConfig, WeightsMatrix connectionWeights,
 			BiasMatrix biases);
-
-	/**
-	 * 
-	 * Create a convolutional axons component.
-	 * 
-	 * @param name 				The name of the component.
-	 * @param leftNeurons       The neurons on the left of the convolutional axons
-	 *                          component.
-	 * @param rightNeurons      The neurons on the right of the convolutional axons
-	 *                          component.
-	 * @param config            The Axons3DConfig.
-	 * @param connectionWeights Optionally specify the convolutional connection
-	 *                          weights of the axons - if not provided the weights
-	 *                          will be initialised to defaults.
-	 * @param biases            Optionally specify the left-to-right biases of the
-	 *                          axons - if not provided the biases will be
-	 *                          initialised to defaults if the LHS neurons have a
-	 *                          bias unit.
-	 * @return A fully-connected axons component, connecting leftNeurons to
-	 *         rightNeurons convolutionally via convolutional connectionWeights.
-	 */
-	
 	
 	/**
 	 * 
@@ -126,72 +103,15 @@ public interface NeuralComponentFactory<T extends NeuralComponent<?>> {
 	T createAveragePoolingAxonsComponent(String name, Axons3DConfig config);
 
 	/**
-	 * Create a batch-norm directed axons component with default initialised
-	 * weights.
+	 * Create a batch-norm directed axons component
 	 * 
 	 * @param <N>          The type of neurons on the LHS/RHS of these axons.
 	 * @param name 		   The name of the component.
-	 * @param leftNeurons  The left neurons.
-	 * @param rightNeurons The right neurons.
-	 * @return A batch-norm directed axons component with default initialised
-	 *         weights.
+	 * @param batchNormConfig The config for this component
+	 * @return A batch-norm directed axons component.
 	 */
-	<N extends Neurons> T createBatchNormAxonsComponent(String name, N leftNeurons, N rightNeurons);
-
-	/**
-	 * 
-	 * @param <N>          The type of neurons on the LHS/RHS of these axons.
-	 * 
-	 * @param name 				The name of the component.
-	 * @param leftNeurons  The left neurons.
-	 * @param rightNeurons The right neurons.
-	 * @param gamma        The initial scaling column vector with which to
-	 *                     initialise the axons.
-	 * @param beta         The initial shift column vector with which to initialise
-	 *                     the axons.
-	 * @param mean         The mean with which to initialise the component.
-	 * @param var          The variance with which to initialise the component.
-	 * @return The BatchNormDirectedAxonsComponent.
-	 */
-	<N extends Neurons> T createBatchNormAxonsComponent(String name, N leftNeurons, N rightNeurons, WeightsMatrix gamma, BiasMatrix beta,
-			Matrix mean, Matrix var);
-
-	/**
-	 * Create a convolutional batch-norm directed axons component with default
-	 * initialised weights.
-	 * 
-	 * Convolutional batch-norm axon components have a single mean/variance value
-	 * for each depth.
-	 * 
-	 * @param name 				The name of the component.
-	 * @param leftNeurons  The left neurons.
-	 * @param rightNeurons The right neurons.
-	 * @return A convolutional batch-norm directed axons component with default
-	 *         initialised weights.
-	 */
-	T createConvolutionalBatchNormAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons);
-
-	/**
-	 * Create a convolutional batch-norm directed axons component with specified
-	 * weights.
-	 * 
-	 * Convolutional batch-norm axon components have a single mean/variance value
-	 * for each depth.
-	 * 
-	 * @param name 		   The name of the component.
-	 * @param leftNeurons  The left neurons.
-	 * @param rightNeurons The right neurons
-	 * @param gamma        The initial scaling column vector with which to
-	 *                     initialise the axons.
-	 * @param beta         The initial shift column vector with which to initialise
-	 *                     the axons.
-	 * @param mean         The mean with which to initialise the component.
-	 * @param var          The variance with which to initialise the component.
-	 * @return The BatchNormDirectedAxonsComponent.
-	 */
-	T createConvolutionalBatchNormAxonsComponent(String name, Neurons3D leftNeurons, Neurons3D rightNeurons, WeightsMatrix gamma,
-			BiasMatrix beta, Matrix mean, Matrix var);
-
+	<N extends Neurons> T createBatchNormAxonsComponent(String name, BatchNormConfig<N> batchNormConfig);
+	
 	/**
 	 * Construct a pass-through (no-op) axons component - used within residual
 	 * networks for skip-connections.

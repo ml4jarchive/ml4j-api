@@ -46,4 +46,8 @@ public interface DefaultDirectedComponentBatch extends
 			DirectedComponentsContext context) {
 		return forwardPropagate(input, getContext(context));
 	}
+
+	@Override
+	List<DefaultDirectedComponentBatch> decompose();
+
 }

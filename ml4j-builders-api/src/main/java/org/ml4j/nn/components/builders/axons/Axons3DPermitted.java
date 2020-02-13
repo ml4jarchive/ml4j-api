@@ -14,9 +14,10 @@
 package org.ml4j.nn.components.builders.axons;
 
 import org.ml4j.nn.components.NeuralComponent;
+import org.ml4j.nn.neurons.Neurons3D;
 
 public interface Axons3DPermitted<C extends Axons3DBuilder<T>, A extends AxonsBuilder<T>, T extends NeuralComponent<?>>
-		extends AxonsPermitted<A> {
+		extends AxonsPermitted<Neurons3D, A, C> {
 
 	UncompletedConvolutionalAxonsBuilder<C> withConvolutionalAxons(String name);
 
@@ -24,6 +25,6 @@ public interface Axons3DPermitted<C extends Axons3DBuilder<T>, A extends AxonsBu
 
 	UncompletedPoolingAxonsBuilder<C> withAveragePoolingAxons(String name);
 
-	UncompletedBatchNormAxonsBuilder<C> withBatchNormAxons(String name);
-
+	@Override
+	UncompletedBatchNormAxons3DBuilder<C> withBatchNormAxons(String name);
 }

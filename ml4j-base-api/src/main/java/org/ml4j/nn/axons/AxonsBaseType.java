@@ -16,14 +16,13 @@ package org.ml4j.nn.axons;
 public enum AxonsBaseType implements IAxonsType {
 
 	CUSTOM, FULLY_CONNECTED, CONVOLUTIONAL, MAX_POOLING, AVERAGE_POOLING,
-	BATCH_NORM, CONVOLUTIONAL_BATCH_NORM, 
-	SCALE_AND_SHIFT, PASS_THROUGH;
+	BATCH_NORM, SCALE_AND_SHIFT, PASS_THROUGH;
 	
 	@Override
 	public IAxonsType getParentType() {
 		return this;
 	}
-
+	
 	@Override
 	public String getId() {
 		return name();
