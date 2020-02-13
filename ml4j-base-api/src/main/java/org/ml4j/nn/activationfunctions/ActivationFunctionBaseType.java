@@ -32,13 +32,16 @@ public enum ActivationFunctionBaseType implements IActivationFunctionType {
 		return this;
 	}
 
+	/**
+	 * @return this type represented as an ActivationFunctionType.
+	 */
 	ActivationFunctionType asActivationFunctionType() {
 		return new ActivationFunctionType(this, getId(), isStandardBaseType(), isCustomBaseType());
 	}
 
 	@Override
 	public String getQualifiedId() {
-		return getId();
+		return ActivationFunctionBaseType.class.getName() + "." + getId();
 	}
 
 	@Override

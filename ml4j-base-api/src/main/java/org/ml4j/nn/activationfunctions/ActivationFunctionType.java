@@ -18,6 +18,11 @@ import java.util.Arrays;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
+/**
+ * An instance of IActivationFunctionType which is not one of the instances of ActivationFunctionBaseType.
+ * 
+ * @author Michael Lavelle
+ */
 public final class ActivationFunctionType implements IActivationFunctionType {
 
 	/**
@@ -30,14 +35,35 @@ public final class ActivationFunctionType implements IActivationFunctionType {
 	private final boolean isStandardBaseType;
 	private final boolean isCustomBaseType;
 
+	/**
+	 * Create a sub-type of an ActivationFunctionType
+	 * 
+	 * @param parentType The parent type.
+	 * @param id The id of the sub-type.
+	 * @return The subtype.
+	 */
 	public static ActivationFunctionType createSubType(ActivationFunctionType parentType, String id) {
 		return new ActivationFunctionType(parentType, id, false, false);
 	}
 
+	/**
+	 * Create a sub-type of an ActivationFunctionType
+	 * 
+	 * @param parentType The parent type.
+	 * @param id The id of the sub-type.
+	 * @return The subtype.
+	 */
 	public static ActivationFunctionType createSubType(ActivationFunctionBaseType parentType, String id) {
 		return new ActivationFunctionType(parentType, id, false, false);
 	}
 
+	/**
+	 * Create a custom root-level base type - useful for representing base types before they are added to
+	 * ActivationFunctionBaseType.
+	 * 
+	 * @param id The id of the type.
+	 * @return A ActivationFunctionType instance that acts as a pseduo-ActivationFunctionBaseType.
+	 */
 	public static ActivationFunctionType createCustomBaseType(String id) {
 		if (Arrays.asList(ActivationFunctionBaseType.values()).stream()
 				.anyMatch(v -> v.getId().compareToIgnoreCase(id) == 0)) {
@@ -46,6 +72,12 @@ public final class ActivationFunctionType implements IActivationFunctionType {
 		return new ActivationFunctionType(ActivationFunctionBaseType.CUSTOM, id, false, true);
 	}
 
+	/**
+	 * Get an ActivationFunctionType representation of an ActivationFunctionBaseType.
+	 * 
+	 * @param baseType The ActivationFunctionBaseType to represent as an ActivationFunctionType
+	 * @return an ActivationFunctionType representation of an ActivationFunctionBaseType.
+	 */
 	public static ActivationFunctionType getBaseType(ActivationFunctionBaseType baseType) {
 		if (ActivationFunctionBaseType.CUSTOM.equals(baseType)) {
 			throw new IllegalArgumentException(
@@ -60,6 +92,14 @@ public final class ActivationFunctionType implements IActivationFunctionType {
 		this.id = id;
 		this.isStandardBaseType = isStandardBaseType;
 		this.isCustomBaseType = isCustomBaseType;
+		if (isStandardBaseType) {
+			if (!Arrays.asList(ActivationFunctionBaseType.values()).contains(parentType)) {
+				throw new IllegalArgumentException("isStandardBaseType is set to true but parent type is not an ActivationFunctionBaseType");
+			}
+			if (!parentType.getId().equals(id)) {
+				throw new IllegalArgumentException("Parent type id must match the specified id for standard base types");
+			}
+		}
 		if (isStandardBaseType && isCustomBaseType) {
 			throw new IllegalArgumentException("A type cannot be both a custom base type and a standard base type");
 		}

@@ -33,13 +33,16 @@ public enum AxonsBaseType implements IAxonsType {
 		return this;
 	}
 
+	/**
+	 * @return this type represented as an AxonsType
+	 */
 	AxonsType asAxonsType() {
 		return new AxonsType(this, getId(), isStandardBaseType(), isCustomBaseType());
 	}
 
 	@Override
 	public String getQualifiedId() {
-		return getId();
+		return AxonsBaseType.class.getName() + "." + getId();
 	}
 
 	@Override
