@@ -13,7 +13,7 @@ public class ActivationFunctionBaseTypeTest {
 			Assert.assertEquals(baseType, baseType.getBaseType());
 			Assert.assertEquals(baseType, baseType.getParentType());
 			Assert.assertEquals(baseType.name(), baseType.getId());
-			Assert.assertEquals(baseType.name(), baseType.getQualifiedId());
+			Assert.assertEquals("org.ml4j.nn.activationfunctions.ActivationFunctionBaseType." + baseType.getId(), baseType.getQualifiedId());
 			Assert.assertEquals(baseType, baseType.getBaseType());
 			Assert.assertFalse(baseType.isCustomBaseType());
 			Assert.assertTrue(baseType.isStandardBaseType());

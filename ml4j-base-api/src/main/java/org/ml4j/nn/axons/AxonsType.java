@@ -18,6 +18,11 @@ import java.util.Arrays;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
+/**
+ * An instance of IAxonsType which is not one of the instances of AxonsBaseType.
+ * 
+ * @author Michael Lavelle
+ */
 public final class AxonsType implements IAxonsType {
 
 	/**
@@ -30,14 +35,35 @@ public final class AxonsType implements IAxonsType {
 	private final boolean isStandardBaseType;
 	private final boolean isCustomBaseType;
 
+	/**
+	 * Create a sub-type of an AxonsType
+	 * 
+	 * @param parentType The parent type.
+	 * @param id The id of the sub-type.
+	 * @return The subtype.
+	 */
 	public static AxonsType createSubType(AxonsType parentType, String id) {
 		return new AxonsType(parentType, id, false, false);
 	}
 
+	/**
+	 * Create a sub-type of an AxonsType
+     *
+	 * @param parentType The parent type.
+	 * @param id The id of the sub-type.
+	 * @return The subtype.
+	 */
 	public static AxonsType createSubType(AxonsBaseType parentType, String id) {
 		return new AxonsType(parentType, id, false, false);
 	}
 
+	/**
+	 * Create a custom root-level base type - useful for representing base types before they are added to
+	 * AxonsBaseType.
+	 * 
+	 * @param id The id of the type.
+	 * @return A AxonsType instance that acts as a pseduo-AxonsBaseType.
+	 */
 	public static AxonsType createCustomBaseType(String id) {
 		if (Arrays.asList(AxonsBaseType.values()).stream()
 				.anyMatch(v -> v.getId().compareToIgnoreCase(id) == 0)) {
@@ -46,6 +72,12 @@ public final class AxonsType implements IAxonsType {
 		return new AxonsType(AxonsBaseType.CUSTOM, id, false, true);
 	}
 
+	/**
+	 * Get an AxonsType representation of an AxonsBaseType.
+	 * 
+	 * @param baseType The AxonsBaseType to represent as an AxonsType
+	 * @return an AxonsType representation of an AxonsBaseType.
+	 */
 	public static AxonsType getBaseType(AxonsBaseType baseType) {
 		if (AxonsBaseType.CUSTOM.equals(baseType)) {
 			throw new IllegalArgumentException(
@@ -60,6 +92,14 @@ public final class AxonsType implements IAxonsType {
 		this.id = id;
 		this.isStandardBaseType = isStandardBaseType;
 		this.isCustomBaseType = isCustomBaseType;
+		if (isStandardBaseType) {
+			if (!Arrays.asList(AxonsBaseType.values()).contains(parentType)) {
+				throw new IllegalArgumentException("isStandardBaseType is set to true but parent type is not an AxonsBaseType");
+			}
+			if (!parentType.getId().equals(id)) {
+				throw new IllegalArgumentException("Parent type id must match the specified id for standard base types");
+			}
+		}
 		if (isStandardBaseType && isCustomBaseType) {
 			throw new IllegalArgumentException("A type cannot be both a custom base type and a standard base type");
 		}

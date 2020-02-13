@@ -15,26 +15,43 @@ package org.ml4j.nn.axons;
 
 import java.io.Serializable;
 
+/**
+ * Base interface for identifiers of axons type - allows both enums (AxonsBaseType) and subclasses (AxonsType) to 
+ * implement the same interface.
+ * 
+ * @author Michael Lavelle
+ */
 interface IAxonsType extends Serializable {
 
+	/**
+	 * @return All axons type descend from one of the instances of AxonsBaseType - this method returns the root AxonsBaseType for
+	 * this axons type.   If this axons type itself represents a standard base type, this method returns this.
+	 */
 	AxonsBaseType getBaseType();
 
+	/**
+	 * @return The direct parent of this axons type - if this axons type is itself a root level type,  this method returns this
+	 */
 	IAxonsType getParentType();
 
+	/**
+	 * @return The leaf-level id of this axons type.
+	 */
 	String getId();
 
+	/**
+	 * @return The fully qualified id of this axons type.
+	 */
 	String getQualifiedId();
 
-	static IAxonsType customType(AxonsType parentType, String id) {
-		return new AxonsType(parentType, id, false, false);
-	}
-
-	static AxonsType baseType(AxonsBaseType baseType) {
-		return baseType.asAxonsType();
-	}
-
+	/**
+	 * @return Whether this type represents one of the standard base types specified by AxonsBaseType.
+	 */
 	boolean isStandardBaseType();
 
+	/**
+	 * @return Whether this type represents a custom base type - eg. a type that is requested to be added to AxonsBaseType.
+	 */
 	boolean isCustomBaseType();
 
 }

@@ -15,26 +15,45 @@ package org.ml4j.nn.activationfunctions;
 
 import java.io.Serializable;
 
+/**
+ * Base interface for identifiers of activation function type - allows both enums (ActivationFunctionBaseType) 
+ * and subclasses (ActivationFunctionType) to implement the same interface.
+ * 
+ * @author Michael Lavelle
+ */
 interface IActivationFunctionType extends Serializable {
 
+	/**
+	 * @return All activation function types descend from one of the instances of ActivationFunctionBaseType - this method returns 
+	 * the root ActivationFunctionBaseType for this activation function type.   
+	 * If this activation function type itself represents a standard base type, this method returns this.
+	 */
 	ActivationFunctionBaseType getBaseType();
 
+	/**
+	 * @return The direct parent of this activation function type - if this activation function type is itself a root level type,  
+	 * this method returns this
+	 */
 	IActivationFunctionType getParentType();
 
+	/**
+	 * @return The leaf-level id of this activation function type.
+	 */
 	String getId();
 
+	/**
+	 * @return The fully qualified id of this activation function type.
+	 */
 	String getQualifiedId();
 
-	static IActivationFunctionType customType(ActivationFunctionType parentType, String id) {
-		return new ActivationFunctionType(parentType, id, false, false);
-	}
-
-	static ActivationFunctionType baseType(ActivationFunctionBaseType baseType) {
-		return baseType.asActivationFunctionType();
-	}
-
+	/**
+	 * @return Whether this type represents one of the standard base types specified by ActivationFunctionBaseType.
+	 */
 	boolean isStandardBaseType();
 
+	/**
+	 * @return Whether this type represents a custom base type - eg. a type that is requested to be added to ActivationFunctionBaseTypes.
+	 */
 	boolean isCustomBaseType();
 
 }
