@@ -57,7 +57,7 @@ public interface Streamable<T> extends Supplier<Stream<T>> {
 	/**
      * Returns a new Stream over elements of type T
      *
-     * @return a Stream<T>.
+     * @return a new Stream.
      */
 	Stream<T> stream();
 }
