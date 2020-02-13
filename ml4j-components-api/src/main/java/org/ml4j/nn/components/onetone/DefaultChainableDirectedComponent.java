@@ -22,6 +22,7 @@ import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.NeuralComponentVisitor;
 import org.ml4j.nn.components.NeuronsActivationComponent;
+import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -46,13 +47,13 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  *            forward propagation.
  */
 public interface DefaultChainableDirectedComponent<A extends DefaultChainableDirectedComponentActivation, C>
-		extends ChainableDirectedComponent<NeuronsActivation, A, C>, NeuralComponent<DefaultChainableDirectedComponent<?, ?>>, NeuronsActivationComponent {
+		extends ChainableDirectedComponent<NeuronsActivation, A, C, DirectedComponentFactory>, NeuralComponent<DefaultChainableDirectedComponent<?, ?>>, NeuronsActivationComponent {
 
 	/**
 	 * @return A deep copy of this component.
 	 */
 	@Override
-	DefaultChainableDirectedComponent<A, C> dup();
+	DefaultChainableDirectedComponent<A, C> dup(DirectedComponentFactory directedComponentFactory);
 
 	/**
 	 * @return Decompose this component into a list of the smallest atomic

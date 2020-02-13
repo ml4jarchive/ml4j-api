@@ -13,6 +13,8 @@
  */
 package org.ml4j.nn.components;
 
+import org.ml4j.nn.components.factories.NeuralComponentFactory;
+
 /**
  * A component within a DirectedNeuralNetwork where data flows in a
  * left-to-right direction through forward propagation. Error information is
@@ -28,7 +30,7 @@ package org.ml4j.nn.components;
  *            propagation, and by the resulting activation for back propagation.
  * 
  */
-public interface DirectedComponent<I, A extends DirectedComponentActivation<I, ?>, C> extends NeuralNetworkComponent {
+public interface DirectedComponent<I, A extends DirectedComponentActivation<I, ?>, C, F extends NeuralComponentFactory<?>> extends NeuralNetworkComponent {
 
 	/**
 	 * Forward Propagates the activations through the Synapses via the Axons and
@@ -50,7 +52,6 @@ public interface DirectedComponent<I, A extends DirectedComponentActivation<I, ?
 	/**
 	 * @return A deep copy of this component.
 	 */
-	@Override
-	DirectedComponent<I, A, C> dup();
+	DirectedComponent<I, A, C, F> dup(F neuralComponentFactory);
 
 }

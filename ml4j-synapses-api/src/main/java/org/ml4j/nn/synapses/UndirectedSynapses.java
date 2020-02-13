@@ -105,5 +105,11 @@ public interface UndirectedSynapses<L extends Neurons, R extends Neurons> extend
 	UndirectedSynapsesActivation pushRightToLeft(UndirectedSynapsesInput rightHandNeuronsInput,
 			UndirectedSynapsesActivation previousLeftToRightSynapsesActivation,
 			UndirectedSynapsesContext synapsesContext);
+	
+	
+	/**
+	 * @return A deep copy of these Synapses.
+	 */
+	UndirectedSynapses<L, R> dup();
 
 }

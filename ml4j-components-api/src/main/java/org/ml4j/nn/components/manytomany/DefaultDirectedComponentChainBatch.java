@@ -18,6 +18,7 @@ import java.util.List;
 import org.ml4j.nn.components.ChainableDirectedComponent;
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuronsActivationComponent;
+import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentChain;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -28,11 +29,11 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @author Michael Lavelle
  */
 public interface DefaultDirectedComponentChainBatch extends
-		ChainableDirectedComponent<List<NeuronsActivation>, DefaultDirectedComponentChainBatchActivation, DirectedComponentsContext>,
+		ChainableDirectedComponent<List<NeuronsActivation>, DefaultDirectedComponentChainBatchActivation, DirectedComponentsContext, DirectedComponentFactory>,
 		NeuronsActivationComponent {
 
 	@Override
-	DefaultDirectedComponentChainBatch dup();
+	DefaultDirectedComponentChainBatch dup(DirectedComponentFactory directedComponentFactory);
 
 	/**
 	 * @return A list of the parallel DefaultDirectedComponentChain instances within
@@ -45,4 +46,8 @@ public interface DefaultDirectedComponentChainBatch extends
 			DirectedComponentsContext context) {
 		return forwardPropagate(input, getContext(context));
 	}
+
+	@Override
+	List<DefaultDirectedComponentChainBatch> decompose();
+
 }

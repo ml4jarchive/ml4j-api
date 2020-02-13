@@ -15,6 +15,8 @@ package org.ml4j.nn.sessions;
 
 import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
+import org.ml4j.nn.layers.DirectedLayerFactory;
+import org.ml4j.nn.supervised.SupervisedFeedForwardNeuralNetworkFactory;
 
 /**
  * Convenience interface for a Session for DefaultChainableDirectedComponent
@@ -25,4 +27,9 @@ public interface DefaultSession extends Session<DefaultChainableDirectedComponen
 	
 	@Override
 	DirectedComponentFactory getNeuralComponentFactory();
+	
+	SupervisedFeedForwardNeuralNetworkFactory getSupervisedFeedForwardNeuralNetworkFactory();
+
+	DirectedLayerFactory getDirectedLayerFactory();
+
 }

@@ -19,6 +19,7 @@ import java.util.List;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.components.DirectedComponentsContext;
+import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -85,4 +86,12 @@ public interface DirectedLayer<A extends Axons<?,?,?>, L extends DirectedLayer<A
   default DirectedLayerActivation forwardPropagate(NeuronsActivation input, DirectedComponentsContext context) {
 	return forwardPropagate(input, getContext(context));
   }
+  
+  /**
+   * Duplicates this Layer.
+   * 
+   * @param directedComponentFactory The directed component factory.
+   * @return A deep clone of this Layer
+   */
+  L dup(DirectedComponentFactory directedComponentFactory);
 }

@@ -27,5 +27,5 @@ public interface NeuralNetworkComponent extends Serializable {
 	/**
 	 * @return A deep copy of this component.
 	 */
-	NeuralNetworkComponent dup();
+	//NeuralNetworkComponent dup();
 }

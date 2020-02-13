@@ -13,7 +13,12 @@
  */
 package org.ml4j.nn.components.builders.axons;
 
-public interface AxonsPermitted<A> {
+import org.ml4j.nn.neurons.Neurons;
+
+public interface AxonsPermitted<N extends Neurons, A, B> {
 
 	UncompletedFullyConnectedAxonsBuilder<A> withFullyConnectedAxons(String name);
+	
+	UncompletedBatchNormAxonsBuilder<N, B> withBatchNormAxons(String name);
+
 }

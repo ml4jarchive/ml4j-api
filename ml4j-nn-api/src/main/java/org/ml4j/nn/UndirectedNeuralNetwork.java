@@ -25,4 +25,11 @@ package org.ml4j.nn;
  */
 public interface UndirectedNeuralNetwork<C extends NeuralNetworkContext, N extends UndirectedNeuralNetwork<C, N>>
 		extends NeuralNetwork<C, N> {
+	
+	/**
+	 * Duplicates this DirectedNeuralNetwork.
+	 * 
+	 * @return A deep copy of this DirectedNeuralNetwork
+	 */
+	N dup();
 }

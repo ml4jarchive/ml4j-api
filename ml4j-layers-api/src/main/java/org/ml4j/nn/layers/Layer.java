@@ -34,12 +34,6 @@ import org.ml4j.nn.components.NeuralNetworkComponent;
 public interface Layer<A extends Axons<?, ?, ?>, C extends NeuralNetworkComponent, 
     L extends Layer<A, C, L>> extends Serializable {
 
-  /**
-   * Duplicates this Layer.
-   * 
-   * @return A deep clone of this Layer
-   */
-  L dup();
   
   /**
    * Each Layer is associated with a primary type of Axons, after which the Layer is often named.

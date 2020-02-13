@@ -26,14 +26,14 @@ public interface DirectedComponentsContext extends Serializable {
 	 * @param defaultContextSupplier A supplier of a default context should there be no pre-existing context available.
 	 * @return The context for the component.
 	 */
-	<C extends Serializable> C getContext(DirectedComponent<?, ?, C> component, Supplier<C> defaultContextSupplier);
+	<C extends Serializable> C getContext(DirectedComponent<?, ?, C, ?> component, Supplier<C> defaultContextSupplier);
 
 	/**
 	 * @param <C> The type of context we wish to set.
 	 * @param component The component whose context we wish to set.
 	 * @param context The context we wish to set.
 	 */
-	<C extends Serializable> void setContext(DirectedComponent<?, ?, C> component, C context);
+	<C extends Serializable> void setContext(DirectedComponent<?, ?, C, ?> component, C context);
 
 	MatrixFactory getMatrixFactory();
 

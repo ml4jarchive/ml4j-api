@@ -19,6 +19,7 @@ import org.ml4j.nn.components.ChainableDirectedComponent;
 import org.ml4j.nn.components.ChainableDirectedComponentActivation;
 import org.ml4j.nn.components.DirectedComponent;
 import org.ml4j.nn.components.DirectedComponentsContext;
+import org.ml4j.nn.components.factories.NeuralComponentFactory;
 
 /**
  * Encapsulates a sequential chain of ChainableDirectedComponents
@@ -30,13 +31,13 @@ import org.ml4j.nn.components.DirectedComponentsContext;
  * @param <A> The type of activation of each component of the chain.
  * @param <B> The type of activation produced by this chain.
  */
-public interface DirectedComponentChain<I, L extends ChainableDirectedComponent<I, ? extends A, ?>, A extends ChainableDirectedComponentActivation<I>, B extends DirectedComponentChainActivation<I, A>>
-		extends DirectedComponent<I, B, DirectedComponentsContext>,
-		ChainableDirectedComponent<I, B, DirectedComponentsContext> {
+public interface DirectedComponentChain<I, L extends ChainableDirectedComponent<I, ? extends A, ?, F>, A extends ChainableDirectedComponentActivation<I>, B extends DirectedComponentChainActivation<I, A>, F extends NeuralComponentFactory<?>>
+		extends DirectedComponent<I, B, DirectedComponentsContext, F>,
+		ChainableDirectedComponent<I, B, DirectedComponentsContext, F> {
 
 	public List<L> getComponents();
 
 	@Override
-	DirectedComponentChain<I, L, A, B> dup();
+	DirectedComponentChain<I, L, A, B, F> dup(F neuralComponentFactory);
 
 }

@@ -16,7 +16,10 @@ package org.ml4j.nn.axons.factories;
 import java.io.Serializable;
 
 import org.ml4j.nn.axons.AveragePoolingAxons;
+import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.axons.Axons3DConfig;
+import org.ml4j.nn.axons.AxonsConfig;
+import org.ml4j.nn.axons.AxonsType;
 import org.ml4j.nn.axons.BiasMatrix;
 import org.ml4j.nn.axons.ConvolutionalAxons;
 import org.ml4j.nn.axons.FullyConnectedAxonsFactory;
@@ -36,51 +39,69 @@ public interface AxonsFactory extends FullyConnectedAxonsFactory, Serializable {
 	/**
 	 * Construct a ConvolutionalAxons instance.
 	 * 
-	 * @param leftNeurons       The neurons on the LHS of the Axons.
-	 * @param rightNeurons      The neurons on the RHS of the Axons.
 	 * @param axons3DConfig     The Axons3DConfig
 	 * @param connectionWeights The convolutional connection weights.
 	 * @param biases            The convolutional biases.
 	 * @return A ConvolutionalAxons instance.
 	 */
-	ConvolutionalAxons createConvolutionalAxons(Neurons3D leftNeurons, Neurons3D rightNeurons,
-			Axons3DConfig axons3DConfig, WeightsMatrix connectionWeights, BiasMatrix biases);
+	ConvolutionalAxons createConvolutionalAxons(Axons3DConfig axons3DConfig, WeightsMatrix connectionWeights, BiasMatrix biases);
 
+	
+	/**
+	 * Create an Axons instance by type.
+	 * 
+	 * @param axonsType The type of the axons.
+	 * @param axonsConfig The config for the axons.
+	 * @return The axons component.
+	 */
+	Axons<Neurons, Neurons, ?> createAxons(AxonsType axonsType,  AxonsConfig<Neurons, Neurons> axonsConfig);
+	
+
+	/**
+	 * Create an Axons instance by type.
+	 * 
+	 * @param axonsType The type of the axons.
+	 * @param axonsConfig The config for the axons.
+	 * @return The axons component.
+	 */
+	Axons<Neurons3D, Neurons3D, ?> createAxons3D(AxonsType axonsType,  AxonsConfig<Neurons3D, Neurons3D> axonsConfig);
+	
+	/**
+	 * Create an Axons instance by type.
+	 * 
+	 * @param axonsType The type of the axons.
+	 * @param axonsConfig The config for the axons.
+	 * @return The axons component.
+	 */
+	Axons<Neurons3D, Neurons3D, ?> createAxons3DWith3DConfig(AxonsType axonsType,  Axons3DConfig axonsConfig);
+	
 	/**
 	 * Construct a MaxPoolingAxons instance.
 	 *
-	 * @param leftNeurons   The neurons on the LHS of the Axons.
-	 * @param rightNeurons  The neurons on the RHS of the Axons.
 	 * @param scaleOutputs  Whether to scale the output of these max pooling axons
 	 *                      by a scaling factor to compensate for the max-pooling
 	 *                      dropout.
 	 * @param axons3DConfig The Axons3DConfig
 	 * @return A MaxPoolingAxons instance.
 	 */
-	MaxPoolingAxons createMaxPoolingAxons(Neurons3D leftNeurons, Neurons3D rightNeurons, boolean scaleOutputs,
-			Axons3DConfig axons3DConfig);
+	MaxPoolingAxons createMaxPoolingAxons(Axons3DConfig axons3DConfig, boolean scaleOutputs);
 
 	/**
 	 * Construct an AveragePoolingAxons instance
 	 * 
-	 * @param leftNeurons   The neurons on the LHS of the Axons.
-	 * @param rightNeurons  The neurons on the RHS of the Axons.
 	 * @param axons3DConfig The Axons3DConfig
 	 * @return An AveragePoolingAxons instance.
 	 */
-	AveragePoolingAxons createAveragePoolingAxons(Neurons3D leftNeurons, Neurons3D rightNeurons,
-			Axons3DConfig axons3DConfig);
+	AveragePoolingAxons createAveragePoolingAxons(Axons3DConfig axons3DConfig);
 
 	/**
 	 * Construct a scale-and-shift Axons instance.
 	 * 
 	 * @param <N>          The type of Neurons on the LHS and RHS of these axons.
-	 * @param leftNeurons  The neurons on the LHS of the Axons.
-	 * @param rightNeurons The neurons on the RHS of the Axons.
+	 * @param axonsConfig The config for the axons.
 	 * @param gamma        The scaling column vector.
 	 * @param beta         The shifting beta vector.
 	 * @return A scale-and-shift Axons instance.
 	 */
-	<N extends Neurons> ScaleAndShiftAxons<N> createScaleAndShiftAxons(N leftNeurons, N rightNeurons,
-			WeightsMatrix gamma, BiasMatrix beta);
+	<N extends Neurons> ScaleAndShiftAxons<N> createScaleAndShiftAxons(AxonsConfig<N, N> axonsConfig, WeightsMatrix gamma, BiasMatrix beta);
 }

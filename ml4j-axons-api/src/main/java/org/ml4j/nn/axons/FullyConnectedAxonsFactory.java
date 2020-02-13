@@ -29,23 +29,21 @@ public interface FullyConnectedAxonsFactory extends Serializable {
 	 * Construct a directed FullyConnectedAxons instance, with connection weights
 	 * and left-to-right biases.
 	 * 
-	 * @param leftNeurons       The neurons on the LHS of the Axons.
-	 * @param rightNeurons      The neurons on the RHS on the Axons.
+	 * @param axonsConfig       The config for these axons.
 	 * @param connectionWeights The connection weights connecting the leftNeurons to
 	 *                          the rightNeurons.
 	 * @param biases            The left-to-right biases for these
 	 *                          FullyConnectedAxons.
 	 * @return The FullyConnectedAxons instance.
 	 */
-	FullyConnectedAxons createFullyConnectedAxons(Neurons leftNeurons, Neurons rightNeurons, WeightsMatrix connectionWeights,
-	BiasMatrix biases);
+	FullyConnectedAxons createFullyConnectedAxons(AxonsConfig<Neurons, Neurons> axonsConfig, WeightsMatrix connectionWeights,
+			BiasMatrix biases);
 
 	/**
 	 * Construct an undirected FullyConnectedAxons instance, with connection weights
 	 * and left-to-right and right-to-left biases.
 	 * 
-	 * @param leftNeurons       The neurons on the LHS of the Axons.
-	 * @param rightNeurons      The neurons on the RHS on the Axons.
+	 * @param axonsConfig       The config for these axons.
 	 * @param connectionWeights The connection weights connecting the leftNeurons to
 	 *                          the rightNeurons.
 	 * @param leftToRightBiases The left-to-right biases for these
@@ -54,7 +52,7 @@ public interface FullyConnectedAxonsFactory extends Serializable {
 	 *                          FullyConnectedAxons.
 	 * @return The FullyConnectedAxons instance.
 	 */
-	FullyConnectedAxons createFullyConnectedAxons(Neurons leftNeurons, Neurons rightNeurons, WeightsMatrix connectionWeights,
+	FullyConnectedAxons createFullyConnectedAxons(AxonsConfig<Neurons, Neurons> axonsConfig, WeightsMatrix connectionWeights,
 			BiasMatrix leftToRightBiases, BiasMatrix rightToLeftBiases);
 
 }

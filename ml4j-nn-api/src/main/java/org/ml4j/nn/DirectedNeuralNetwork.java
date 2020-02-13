@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import org.ml4j.nn.components.DirectedComponentsContext;
+import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.datasets.LabeledData;
 import org.ml4j.nn.neurons.NeuronsActivation;
@@ -63,5 +64,12 @@ public interface DirectedNeuralNetwork<C extends NeuralNetworkContext, N extends
 	C getLastEpochTrainingContext();
 
 	List<DefaultChainableDirectedComponent<?, ?>> decompose();
+	
+	/**
+	 * Duplicates this DirectedNeuralNetwork.
+	 * 
+	 * @return A deep copy of this DirectedNeuralNetwork
+	 */
+	N dup(DirectedComponentFactory directedComponentFactory);
 
 }

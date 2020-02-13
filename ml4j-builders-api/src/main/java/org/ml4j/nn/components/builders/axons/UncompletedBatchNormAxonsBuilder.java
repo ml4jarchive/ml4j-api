@@ -17,22 +17,22 @@ import java.util.function.Consumer;
 
 import org.ml4j.Matrix;
 import org.ml4j.nn.axons.AxonsContext;
+import org.ml4j.nn.axons.BatchNormConfig.BatchNormDimension;
 import org.ml4j.nn.axons.BiasMatrix;
 import org.ml4j.nn.axons.WeightsMatrix;
-import org.ml4j.nn.neurons.Neurons3D;
 
-public interface UncompletedBatchNormAxonsBuilder<C>
-		extends UncompletedTrainableAxonsBuilder<Neurons3D, C, UncompletedBatchNormAxonsBuilder<C>> {
+public interface UncompletedBatchNormAxonsBuilder<N, C>
+		extends UncompletedTrainableAxonsBuilder<N, C, UncompletedBatchNormAxonsBuilder<N, C>> {
 
-	UncompletedBatchNormAxonsBuilder<C> withAxonsContextConfigurer(Consumer<AxonsContext> axonsContextConfigurer);
+	UncompletedBatchNormAxonsBuilder<N, C> withAxonsContextConfigurer(Consumer<AxonsContext> axonsContextConfigurer);
 
-	UncompletedBatchNormAxonsBuilder<C> withGamma(WeightsMatrix gamma);
+	UncompletedBatchNormAxonsBuilder<N, C> withGamma(WeightsMatrix gamma);
 
-	UncompletedBatchNormAxonsBuilder<C> withBeta(BiasMatrix beta);
+	UncompletedBatchNormAxonsBuilder<N, C> withBeta(BiasMatrix beta);
 
-	UncompletedBatchNormAxonsBuilder<C> withMean(Matrix mean);
+	UncompletedBatchNormAxonsBuilder<N, C> withMean(Matrix mean);
 
-	UncompletedBatchNormAxonsBuilder<C> withVariance(Matrix variance);
+	UncompletedBatchNormAxonsBuilder<N, C> withVariance(Matrix variance);
 
 	WeightsMatrix getGamma();
 
@@ -41,5 +41,7 @@ public interface UncompletedBatchNormAxonsBuilder<C>
 	Matrix getMean();
 
 	Matrix getVariance();
+	
+	BatchNormDimension getBatchNormDimension();
 
 }

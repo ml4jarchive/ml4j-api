@@ -17,6 +17,7 @@ import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.axons.AxonsContext;
 import org.ml4j.nn.components.AxonsContextAwareNeuralComponent;
 import org.ml4j.nn.components.DirectedComponentsContext;
+import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.NeuronsActivation;
@@ -41,7 +42,7 @@ public interface DirectedAxonsComponent<L extends Neurons, R extends Neurons, A 
 	A getAxons();
 
 	@Override
-	DirectedAxonsComponent<L, R, A> dup();
+	DirectedAxonsComponent<L, R, A> dup(DirectedComponentFactory directedComponentFactory);
 
 	@Override
 	default DirectedAxonsComponentActivation forwardPropagate(NeuronsActivation input,

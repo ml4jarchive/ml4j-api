@@ -14,6 +14,7 @@
 package org.ml4j.nn.components.activationfunctions;
 
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
+import org.ml4j.nn.components.factories.DirectedComponentFactory;
 
 /**
  * Component adapter for a DifferentiableActivationFunction, allowing
@@ -33,6 +34,6 @@ public interface DifferentiableActivationFunctionComponentAdapter extends Differ
 	 * @return A deep copy of this component.
 	 */
 	@Override
-	DifferentiableActivationFunctionComponentAdapter dup();
+	DifferentiableActivationFunctionComponentAdapter dup(DirectedComponentFactory directedComponentFactory);
 
 }
