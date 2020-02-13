@@ -14,22 +14,14 @@
 
 package org.ml4j.nn.synapses;
 
-import org.ml4j.nn.axons.AxonsContext;
 import org.ml4j.nn.neurons.NeuronsActivationContext;
 
 /**
  * Defines the context for activations travelling through Synapses.
  * 
  * @author Michael Lavelle
- *
  */
 public interface SynapsesContext extends NeuronsActivationContext {
-
-	/**
-	 * @param pathIndex        The index of the path of Axons in these Synapses.
-	 * @param axonsIndexInPath The index of the Axons within the path.
-	 */
-	AxonsContext getAxonsContext(int pathIndex, int axonsIndexInPath);
 
 	/**
 	 * @return Whether these Synapses are frozen out of training.

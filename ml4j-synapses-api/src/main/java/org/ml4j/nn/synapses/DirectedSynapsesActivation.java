@@ -24,19 +24,22 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * DirectedSynapses - including the NeuronsActivation output from the right hand
  * side of the DirectedSynapses.
  * 
+ * Supports the back propagation of error gradients back through the activation
+ * 
  * @author Michael Lavelle
  */
 public interface DirectedSynapsesActivation extends DefaultChainableDirectedComponentActivation {
 
 	/**
-	 * @return The DirectedSynapses that generated this DirectedSynapsesActivation.
+	 * @return The DirectedSynapses instance from which this UndirectedSynapsesActivation originated.
 	 */
-	public DirectedSynapses<?, ?> getSynapses();
+	DirectedSynapses<?, ?> getSynapses();
 
 	/**
+	 * Back propagates a CostFunctionGradient through this activation
+	 * 
 	 * @param outerGradient   The outer gradient to back propagate.
 	 * @return The back propagated DirectedComponentGradient.
 	 */
-	public DirectedComponentGradient<NeuronsActivation> backPropagate(CostFunctionGradient outerGradient);
-
+	DirectedComponentGradient<NeuronsActivation> backPropagate(CostFunctionGradient outerGradient);
 }

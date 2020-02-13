@@ -17,8 +17,16 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * A Streamable implementation provides a means to obtain new Streams of it's elements.
+ * 
+ * @author Michael Lavelle
+ *
+ * @param <T> the type of elements returned by the Streamable
+ */
 public interface Streamable<T> extends Supplier<Stream<T>> {
-
+	
+	@Override
 	default Stream<T> get() {
 		return stream();
 	}
@@ -46,5 +54,10 @@ public interface Streamable<T> extends Supplier<Stream<T>> {
 		return transform(s -> s.map(f));
 	}
 
+	/**
+     * Returns a new Stream over elements of type T
+     *
+     * @return a Stream<T>.
+     */
 	Stream<T> stream();
 }

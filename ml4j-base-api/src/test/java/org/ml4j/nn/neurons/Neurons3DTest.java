@@ -17,9 +17,6 @@ public class Neurons3DTest {
 		Assert.assertEquals(3, neurons1.getHeight());
 		Assert.assertEquals(5, neurons1.getDepth());
 		
-		Neurons neurons10 = new Neurons(30, false);
-		Assert.assertNotEquals(neurons10, neurons1);
-		Assert.assertNotEquals(neurons1, neurons10);
 
 		Neurons3D neurons2 = new Neurons3D(2, 3, 5, false);
 		Assert.assertFalse(neurons2.hasBiasUnit());

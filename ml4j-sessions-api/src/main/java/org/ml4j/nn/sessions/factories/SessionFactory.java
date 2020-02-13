@@ -19,7 +19,7 @@ import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.sessions.Session;
 
 /**
- * Factory for Sessions
+ * Factory for NeuralComponent Sessions 
  * 
  * @author Michael Lavelle
  *

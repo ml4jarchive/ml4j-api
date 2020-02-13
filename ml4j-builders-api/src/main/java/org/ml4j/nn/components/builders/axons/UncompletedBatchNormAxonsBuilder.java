@@ -20,8 +20,9 @@ import org.ml4j.nn.axons.AxonsContext;
 import org.ml4j.nn.axons.BatchNormConfig.BatchNormDimension;
 import org.ml4j.nn.axons.BiasMatrix;
 import org.ml4j.nn.axons.WeightsMatrix;
+import org.ml4j.nn.neurons.Neurons;
 
-public interface UncompletedBatchNormAxonsBuilder<N, C>
+public interface UncompletedBatchNormAxonsBuilder<N extends Neurons, C>
 		extends UncompletedTrainableAxonsBuilder<N, C, UncompletedBatchNormAxonsBuilder<N, C>> {
 
 	UncompletedBatchNormAxonsBuilder<N, C> withAxonsContextConfigurer(Consumer<AxonsContext> axonsContextConfigurer);
@@ -42,6 +43,6 @@ public interface UncompletedBatchNormAxonsBuilder<N, C>
 
 	Matrix getVariance();
 	
-	BatchNormDimension getBatchNormDimension();
+	BatchNormDimension<N> getBatchNormDimension();
 
 }

@@ -50,7 +50,7 @@ public interface DirectedLayerFactory {
 	FullyConnectedFeedForwardLayer createFullyConnectedFeedForwardLayer(String name,
 			AxonsConfig<Neurons, Neurons> axonsConfig, WeightsMatrix connectionWeights, BiasMatrix biases,
 			ActivationFunctionType activationFunctionType, ActivationFunctionProperties activationFunctionProperties,
-			BatchNormConfig<?> batchNormConfig);
+			BatchNormConfig<Neurons> batchNormConfig);
 
 	/**
 	 * Create a MaxPoolingFeedForwardLayer

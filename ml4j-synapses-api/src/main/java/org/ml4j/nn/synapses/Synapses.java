@@ -19,8 +19,8 @@ import java.io.Serializable;
 import org.ml4j.nn.components.NeuralNetworkComponent;
 
 /**
- * Synapses are containers for Axons with optional surrounding transformations
- * such as ActivationFunctions.
+ * Synapses are containers for Axons ( or graphs of Axons) with optional surrounding 
+ * transformations such as ActivationFunctions.
  * 
  * @author Michael Lavelle
  *
