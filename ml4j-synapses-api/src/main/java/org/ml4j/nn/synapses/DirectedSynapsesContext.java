@@ -30,6 +30,7 @@ public interface DirectedSynapsesContext extends SynapsesContext {
 	 * 
 	 * @param pathIndex        The index of the path of Axons in these Synapses.
 	 * @param axonsIndexInPath The index of the Axons within the path.
+	 * @return The AxonsContext
 	 */
 	AxonsContext getAxonsContext(int pathIndex, int axonsIndexInPath);
 }

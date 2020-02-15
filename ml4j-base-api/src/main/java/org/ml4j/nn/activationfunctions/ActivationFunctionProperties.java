@@ -13,14 +13,23 @@
  */
 package org.ml4j.nn.activationfunctions;
 
+import java.io.Serializable;
 import java.util.Optional;
+
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 /**
  * Container for properties for common activation functions.
  * 
  * @author Michael Lavelle
  */
-public class ActivationFunctionProperties {
+public class ActivationFunctionProperties implements Serializable {
 	
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// TODO- TEMP
 	public static final float DEFAULT_ALPHA = 0.01f;
 	
@@ -42,5 +51,15 @@ public class ActivationFunctionProperties {
 	@Override
 	public String toString() {
 		return "ActivationFunctionProperties [alpha=" + alpha + "]";
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
+	}
+
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
 	}
 }

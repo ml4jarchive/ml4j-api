@@ -33,15 +33,82 @@ public class Axons3DConfig extends AxonsConfig<Neurons3D, Neurons3D> {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private int strideWidth = 1;
-	private int strideHeight = 1;
-	private int paddingWidth = 0;
-	private int paddingHeight = 0;
+	private int strideWidth;
+	private int strideHeight;
+	private int paddingWidth;
+	private int paddingHeight;
 	private Integer filterWidth;
 	private Integer filterHeight;
+	private Integer outputDepth;
+	private boolean outputBiasUnit;
 	
 	public Axons3DConfig(Neurons3D leftNeurons, Neurons3D rightNeurons) {
 		super(leftNeurons, rightNeurons);
+		this.strideWidth = 1;
+		this.strideHeight = 1;
+		if (rightNeurons != null) {
+			outputDepth = rightNeurons.getDepth();
+			outputBiasUnit = rightNeurons.hasBiasUnit();
+		}	
+	}
+	
+	@Override
+	public boolean isFullyPopulated() {
+		try {
+			getFilterWidth();
+			getFilterHeight();
+		} catch (Exception e) {
+			return false;
+		}
+		return super.isFullyPopulated() && outputDepth != null;
+	}
+	
+	protected Axons3DConfig(Neurons3D leftNeurons) {
+		super(leftNeurons);
+		this.strideWidth = 1;
+		this.strideHeight = 1;
+		if (rightNeurons != null) {
+			outputDepth = rightNeurons.getDepth();
+			outputBiasUnit = rightNeurons.hasBiasUnit();
+		}	
+	}
+
+	@Override
+	public Neurons3D getRightNeurons() {
+		Neurons3D explictlySetRightNeurons = this.rightNeurons;
+		if (explictlySetRightNeurons != null) {
+			return explictlySetRightNeurons;
+		} else {
+			if (this.leftNeurons == null || outputDepth == null || filterWidth == null || filterHeight == null) {
+				throw new IllegalStateException("Invalid configuration - right neurons have not been specified "
+						+ "and they cannot be calculated from the provided configuration");
+			} else {	
+	
+					int filterWidthMinusInputWidthWithPadding = filterWidth - leftNeurons.getWidth() + paddingWidth * 2;
+					int filterWidthMinusInputWidthWithPaddingDividedByStrideWidth = filterWidthMinusInputWidthWithPadding/strideWidth;
+					
+					if (filterWidthMinusInputWidthWithPaddingDividedByStrideWidth * strideWidth != filterWidthMinusInputWidthWithPadding) {
+						throw new IllegalStateException("The input width with padding is not an integer multiple of the stride width");
+					}
+					
+					int rightNeuronsWidth = 1 - filterWidthMinusInputWidthWithPaddingDividedByStrideWidth;
+					int filterHeightMinusInputHeightWithPadding = filterHeight - leftNeurons.getHeight() + paddingHeight * 2;
+					int filterHeightMinusInputHeightWithPaddingDividedByStrideHeight= filterHeightMinusInputHeightWithPadding/strideHeight;
+					
+					if (filterHeightMinusInputHeightWithPaddingDividedByStrideHeight * strideHeight != filterHeightMinusInputHeightWithPadding) {
+						throw new IllegalStateException("The input height with padding is not an integer multiple of the stride height");
+					}
+					
+					int rightNeuronsHeight = 1 - filterHeightMinusInputHeightWithPaddingDividedByStrideHeight;
+					
+					if (rightNeuronsWidth < 1 || rightNeuronsHeight < 1) {
+						throw new IllegalStateException("Invalid configuration - neither right neurons have been specified "
+								+ "and the calculated right neurons base on the specified parameters would have dimensions < 1");
+					} else {
+						return new Neurons3D(rightNeuronsWidth, rightNeuronsHeight, outputDepth, outputBiasUnit);
+					}		
+				}
+		}
 	}
 
 	public int getStrideWidth() {
@@ -59,32 +126,67 @@ public class Axons3DConfig extends AxonsConfig<Neurons3D, Neurons3D> {
 	public int getPaddingHeight() {
 		return paddingHeight;
 	}
-
+	
 	public int getFilterWidth() {
-
-		int inputWidthWithPadding = leftNeurons.getWidth() + paddingWidth * 2;
-
-		int calculatedFilterWidth = inputWidthWithPadding + (1 - rightNeurons.getWidth()) * (strideWidth);
-
-		if (filterWidth != null && filterWidth.intValue() != calculatedFilterWidth) {
-			throw new IllegalStateException("Explicitly set filter width of:" + filterWidth
-					+ " is inconsistent with calculated filter width of:" + calculatedFilterWidth);
+		
+		if (filterWidth == null && (leftNeurons == null || rightNeurons == null)) {
+			throw new IllegalStateException("Invalid configuration - filterWidth has not been explicitly set, and"
+					+ " leftNeurons and rightNeurons have not both been specified");
 		}
+		
+		if (leftNeurons == null || rightNeurons == null) {
+			return filterWidth;
+		} else {
+			
+			// Left neurons and right neurons specified, filterWidth specified
 
-		return calculatedFilterWidth;
+			int inputWidthWithPadding = leftNeurons.getWidth() + paddingWidth * 2;
+
+			int calculatedFilterWidth = inputWidthWithPadding + (1 - rightNeurons.getWidth()) * (strideWidth);
+
+			if (calculatedFilterWidth < 1) {
+				throw new IllegalStateException(
+						"Invalid configuration - calculated filter width cannot be less than 1");
+			}
+	
+			if (filterWidth != null && filterWidth.intValue() != calculatedFilterWidth) {
+				throw new IllegalStateException("Explicitly set filter width of:" + filterWidth
+						+ " is inconsistent with calculated filter width of:" + calculatedFilterWidth);
+			}
+
+			return calculatedFilterWidth;
+
+		}
 	}
 
 	public int getFilterHeight() {
 
-		int inputHeightWithPadding = leftNeurons.getHeight() + paddingHeight * 2;
-
-		int calculatedFilterHeight = inputHeightWithPadding + (1 - rightNeurons.getHeight()) * (strideHeight);
-
-		if (filterHeight != null && filterHeight.intValue() != calculatedFilterHeight) {
-			throw new IllegalStateException("Explicitly set filter height of:" + filterHeight
-					+ " is inconsistent with calculated filter height of:" + calculatedFilterHeight);
+		if (filterHeight == null && (leftNeurons == null || rightNeurons == null)) {
+			throw new IllegalStateException(
+					"Invalid configuration -  filterHeight has not been explicitly set, and"
+							+ " leftNeurons and rightNeurons have not both been specified");
 		}
-		return calculatedFilterHeight;
+
+		if (leftNeurons == null || rightNeurons == null) {
+			return filterHeight;
+		} else {
+
+			int inputHeightWithPadding = leftNeurons.getHeight() + paddingHeight * 2;
+
+			int calculatedFilterHeight = inputHeightWithPadding + (1 - rightNeurons.getHeight()) * (strideHeight);
+
+			if (calculatedFilterHeight < 1) {
+				throw new IllegalStateException(
+						"Invalid configuration - calculated filter height cannot be less than 1");
+			}
+
+			if (filterHeight != null && filterHeight.intValue() != calculatedFilterHeight) {
+				throw new IllegalStateException("Explicitly set filter height of:" + filterHeight
+						+ " is inconsistent with calculated filter height of:" + calculatedFilterHeight);
+			}
+			return calculatedFilterHeight;
+
+		}
 	}
 
 
