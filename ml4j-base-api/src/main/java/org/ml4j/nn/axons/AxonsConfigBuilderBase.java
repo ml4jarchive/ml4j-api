@@ -22,63 +22,65 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.ml4j.nn.neurons.Neurons;
 
-
 /**
- * Base class for configurations for Axons.
- *
+ * Base builder for non-3d subclasses of AxonsConfig.
+ * 
  * @author Michael Lavelle
  *
- * @param <L> The type of Neurons on the LHS of the axons.
- * @param <R> The type of Neurons on the RHS of the axons.
  */
-public class AxonsConfig<L extends Neurons, R extends Neurons> implements Serializable {
+public abstract class AxonsConfigBuilderBase<C extends AxonsConfig<?, ?>, T extends AxonsConfigBuilderBase<C, T>> implements Serializable {
 
 	/**
 	 * Default serialization id.
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	protected L leftNeurons;
-	protected R rightNeurons;
-	
-	protected AxonsConfig(L leftNeurons) {
-		this.leftNeurons = leftNeurons;
-		if (leftNeurons == null) {
-			throw new IllegalStateException("Left neurons cannot be null");
-		}
+
+	protected Neurons leftNeurons;
+	protected Neurons rightNeurons;
+
+	public AxonsConfigBuilderBase() {
 	}
 	
 	public boolean isFullyPopulated() {
-		return leftNeurons != null && rightNeurons != null;
+			return leftNeurons != null && rightNeurons != null;
 	}
 	
-	public AxonsConfig(L leftNeurons, R rightNeurons) {
-		this.leftNeurons = leftNeurons;
-		this.rightNeurons = rightNeurons;
+	public AxonsConfigBuilderBase(Neurons leftNeurons) {
+		this();
 		if (leftNeurons == null) {
-			throw new IllegalStateException("Left neurons cannot be null");
+			throw new IllegalArgumentException("Left neurons cannot be null for this constructor");
 		}
-		if (rightNeurons == null) {
-			throw new IllegalStateException("Right neurons cannot be null");
-		}
-
+		this.leftNeurons = leftNeurons;
 	}
 	
-	public L getLeftNeurons() {
-		return leftNeurons;
-	}
-
-	public R getRightNeurons() {
-		if (rightNeurons == null) {
-			throw new IllegalStateException("Left neurons cannot be null");
-		}
-		return rightNeurons;
-	}
-
-	AxonsConfig<L, R> dup() {
-		return new AxonsConfig<>(leftNeurons, rightNeurons);
-	}
+	protected abstract C createDefaultConfig(Neurons leftNeurons, Neurons rightNeurons);
 	
+	protected abstract T getInstance();
+
+	public T withInputNeurons(Neurons neurons) {
+
+		if (leftNeurons == null) {
+			this.leftNeurons = neurons;
+		} else {
+			if (!leftNeurons.equals(neurons)) {
+				throw new IllegalArgumentException(
+						"Inconsistency been the passed in input neurons and those already set");
+			}
+		}
+
+		return getInstance();
+	}
+
+	public abstract C build();
+
+	public T withOutputNeurons(Neurons rightNeurons) {
+		if (rightNeurons == null) {
+			throw new IllegalArgumentException("Output neurons cannot be set to null");
+		}
+		this.rightNeurons = rightNeurons;
+		return getInstance();
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		return EqualsBuilder.reflectionEquals(this, obj);
@@ -88,5 +90,4 @@ public class AxonsConfig<L extends Neurons, R extends Neurons> implements Serial
 	public int hashCode() {
 		return HashCodeBuilder.reflectionHashCode(this);
 	}
-
 }

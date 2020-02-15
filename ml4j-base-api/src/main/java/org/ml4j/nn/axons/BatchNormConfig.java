@@ -1,5 +1,6 @@
 package org.ml4j.nn.axons;
 
+import java.io.Serializable;
 import java.util.function.ToIntFunction;
 
 import org.ml4j.Matrix;
@@ -7,7 +8,12 @@ import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.Neurons3D;
 import org.ml4j.nn.neurons.format.features.Dimension;
 
-public class BatchNormConfig<N extends Neurons> {
+public class BatchNormConfig<N extends Neurons> implements Serializable {
+	
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private BatchNormDimension<N> batchNormDimension;
 	private WeightsMatrix gammaColumnVector;
@@ -19,8 +25,13 @@ public class BatchNormConfig<N extends Neurons> {
 		this.batchNormDimension = batchNormDimension;
 	}
 
-	public static class BatchNormDimension<L extends Neurons> {
+	public static class BatchNormDimension<L extends Neurons> implements Serializable{
 		
+		/**
+		 * Default serialization id.
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public static final BatchNormDimension<Neurons> INPUT_FEATURE = 
 				new BatchNormDimension<>(Dimension.FEATURE, n -> n.getNeuronCountExcludingBias());
 		

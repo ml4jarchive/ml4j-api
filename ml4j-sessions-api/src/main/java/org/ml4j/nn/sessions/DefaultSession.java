@@ -16,6 +16,7 @@ package org.ml4j.nn.sessions;
 import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.layers.DirectedLayerFactory;
+import org.ml4j.nn.supervised.LayeredSupervisedFeedForwardNeuralNetworkFactory;
 import org.ml4j.nn.supervised.SupervisedFeedForwardNeuralNetworkFactory;
 
 /**
@@ -34,9 +35,28 @@ public interface DefaultSession extends Session<DefaultChainableDirectedComponen
 	 * @return The configured SupervisedFeedForwardNeuralNetworkFactory for this session.
 	 */
 	SupervisedFeedForwardNeuralNetworkFactory getSupervisedFeedForwardNeuralNetworkFactory();
+	
+	
+	/**
+	 * @return The configured LayeredSupervisedFeedForwardNeuralNetworkFactory for this session.
+	 */
+	LayeredSupervisedFeedForwardNeuralNetworkFactory getLayeredSupervisedFeedForwardNeuralNetworkFactory();
 
 	/**
 	 * @return The configured DirectedLayerFactory for this DefaultSession.
 	 */
 	DirectedLayerFactory getDirectedLayerFactory();
+	
+	/**
+	 * @param neuralNetworkName The name for the neural network.
+	 * @return Start a new SupervisedFeedForwardNeuralNetworkBuilderSession which allows
+	 * a SupervisedFeedForwardNeuralNetworkBuilderSession to be built.
+	 */
+	SupervisedFeedForwardNeuralNetwork3DBuilderSession buildNeuralNetwork(String neuralNetworkName);
+	
+	
+	
+	DirectedLayerBuilderSession buildLayer();
+	
+
 }
