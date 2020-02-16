@@ -18,7 +18,6 @@ package org.ml4j.nn.neurons;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
  * Neurons that are arranged in a 3D shape.
@@ -69,10 +68,12 @@ public class Neurons3D extends Neurons {
 	public int getDepth() {
 		return depth;
 	}
-
+	
 	@Override
 	public String toString() {
-		   return ToStringBuilder.reflectionToString(this);
+		return "Neurons3D [width=" + width + ", height=" + height + ", depth=" + depth + ", hasBiasUnit=" + hasBiasUnit
+				+ ", neuronCountIncludingBias=" + getNeuronCountIncludingBias()
+				+ ", neuronCountExcludingBias=" + getNeuronCountExcludingBias() + "]";
 	}
 
 	@Override
