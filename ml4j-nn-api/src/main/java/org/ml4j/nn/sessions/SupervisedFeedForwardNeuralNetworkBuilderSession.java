@@ -30,15 +30,11 @@ public interface SupervisedFeedForwardNeuralNetworkBuilderSession extends Layers
 
 	DirectedComponentFactory getDirectedComponentFactory();
 	
-	DirectedLayerFactory getDirectedLayerFactory();
-
-	//<L extends FeedForwardLayer<?, L>> DirectedLayerBuilderSession<L, SupervisedFeedForwardNeuralNetworkBuilderSession> withLayer(Class<L> layerType);
-	
+	DirectedLayerFactory getDirectedLayerFactory();	
 
 	FullyConnectedFeedForwardLayerBuilderSession
 	<SupervisedFeedForwardNeuralNetworkBuilderSession> withFullyConnectedLayer(String layerName);
 	
-
 	
 	SupervisedFeedForwardNeuralNetwork build();
 	
