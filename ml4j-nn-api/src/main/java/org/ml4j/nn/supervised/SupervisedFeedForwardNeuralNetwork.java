@@ -16,6 +16,7 @@
 
 package org.ml4j.nn.supervised;
 
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -23,6 +24,7 @@ import java.util.stream.Stream;
 import org.ml4j.nn.CostAndGradients;
 import org.ml4j.nn.FeedForwardNeuralNetwork;
 import org.ml4j.nn.FeedForwardNeuralNetworkContext;
+import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.datasets.LabeledData;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -98,4 +100,10 @@ public interface SupervisedFeedForwardNeuralNetwork
 	 */
 	public CostAndGradients getCostAndGradients(NeuronsActivation inputActivations,
 			NeuronsActivation desiredOutputActivations, FeedForwardNeuralNetworkContext trainingContext);
+	
+	/**
+	 * @return A list of all the top level components in this SupervisedFeedForwardNeuralNetwork.  To get the expanded list of
+	 * low level components, call the decompose() method.
+	 */
+	List<DefaultChainableDirectedComponent<?, ?>> getComponents();
 }

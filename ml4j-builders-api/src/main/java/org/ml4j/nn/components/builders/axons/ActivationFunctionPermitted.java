@@ -13,6 +13,7 @@
  */
 package org.ml4j.nn.components.builders.axons;
 
+import org.ml4j.nn.activationfunctions.ActivationFunctionBaseType;
 import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
@@ -22,4 +23,11 @@ public interface ActivationFunctionPermitted<C> {
 	C withActivationFunction(String name, DifferentiableActivationFunction activationFunction);
 
 	C withActivationFunction(String name, ActivationFunctionType activationFunctionType, ActivationFunctionProperties activationFunctionProperties);
+	
+	C withActivationFunction(String name, ActivationFunctionType activationFunctionBaseType);
+	
+	C withActivationFunction(String name, ActivationFunctionBaseType activationFunctionType, ActivationFunctionProperties activationFunctionProperties);
+	
+	C withActivationFunction(String name, ActivationFunctionBaseType activationFunctionBaseType);
+
 }

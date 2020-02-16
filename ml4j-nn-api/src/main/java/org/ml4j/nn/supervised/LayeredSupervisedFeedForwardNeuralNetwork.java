@@ -16,9 +16,12 @@
 
 package org.ml4j.nn.supervised;
 
+import java.util.List;
+
 import org.ml4j.nn.CostAndGradients;
 import org.ml4j.nn.LayeredFeedForwardNeuralNetwork;
 import org.ml4j.nn.LayeredFeedForwardNeuralNetworkContext;
+import org.ml4j.nn.layers.FeedForwardLayer;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
 /**
@@ -70,4 +73,9 @@ public interface LayeredSupervisedFeedForwardNeuralNetwork extends
 	 */
 	public CostAndGradients getCostAndGradients(NeuronsActivation inputActivations,
 			NeuronsActivation desiredOutputActivations, LayeredFeedForwardNeuralNetworkContext trainingContext);
+	
+	/**
+	 * @return A list of all the layers in this LayeredSupervisedFeedForwardNeuralNetwork.
+	 */
+	List<FeedForwardLayer<?, ?>> getLayers();
 }

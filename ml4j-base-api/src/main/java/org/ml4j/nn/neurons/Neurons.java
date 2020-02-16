@@ -18,7 +18,6 @@ import java.io.Serializable;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
  * Represents a set of Neurons in a NeuralNetwork.
@@ -77,9 +76,12 @@ public class Neurons implements Serializable {
 		return neuronCountExcludingBias;
 	}
 
+	
+	
 	@Override
 	public String toString() {
-		   return ToStringBuilder.reflectionToString(this);
+		return "Neurons [neuronCountExcludingBias=" + neuronCountExcludingBias + ", hasBiasUnit=" + hasBiasUnit
+				+ ", neuronCountIncludingBias=" + getNeuronCountIncludingBias() + "]";
 	}
 
 	@Override

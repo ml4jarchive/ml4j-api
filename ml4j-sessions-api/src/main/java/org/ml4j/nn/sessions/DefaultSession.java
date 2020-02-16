@@ -16,6 +16,7 @@ package org.ml4j.nn.sessions;
 import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.layers.DirectedLayerFactory;
+import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.Neurons3D;
 import org.ml4j.nn.supervised.LayeredSupervisedFeedForwardNeuralNetworkFactory;
 import org.ml4j.nn.supervised.SupervisedFeedForwardNeuralNetworkFactory;
@@ -32,6 +33,7 @@ public interface DefaultSession extends Session<DefaultChainableDirectedComponen
 	
 	@Override
 	DirectedComponentFactory getNeuralComponentFactory();
+	
 	/**
 	 * @return The configured SupervisedFeedForwardNeuralNetworkFactory for this session.
 	 */
@@ -49,15 +51,51 @@ public interface DefaultSession extends Session<DefaultChainableDirectedComponen
 	DirectedLayerFactory getDirectedLayerFactory();
 	
 	/**
+	 * Create a new builder session for a LayeredSupervisedFeedForwardNeuralNetwork or 
+	 * operating on Neurons3D ( ie. image data) - builds a network with only FeedForwardLayer components)
+	 * 
 	 * @param neuralNetworkName The name for the neural network.
 	 * @param initialNeurons The initial neurons.
-	 * @return Start a new SupervisedFeedForwardNeuralNetworkBuilderSession which allows
-	 * a SupervisedFeedForwardNeuralNetworkBuilderSession to be built.
+	 * @return  a new builder session for a LayeredSupervisedFeedForwardNeuralNetwork or 
+	 * operating on Neurons3D ( ie. image data) - builds a network with only FeedForwardLayer components)
 	 */
-	SupervisedFeedForwardNeuralNetwork3DBuilderSession buildNeuralNetwork(String neuralNetworkName, Neurons3D initialNeurons);
+	LayeredSupervisedFeedForwardNeuralNetwork3DBuilderSession buildLayeredSupervised3DNeuralNetwork(String neuralNetworkName);
+
+	/**
+	 * Create a new builder session for a LayeredSupervisedFeedForwardNeuralNetwork (containing only FeedForwardLayer components, 
+	 * operating on Neurons ( ie. flat data).
+	 * 
+	 * @param neuralNetworkName The name for the neural network.
+	 * @param initialNeurons The initial neurons.
+	 * @return a new builder session for a LayeredSupervisedFeedForwardNeuralNetwork (containing only FeedForwardLayer components, 
+	 * operating on Neurons ( ie. flat data).
+	 */
+	LayeredSupervisedFeedForwardNeuralNetworkBuilderSession buildLayeredSupervisedNeuralNetwork(String neuralNetworkName);
 	
 	
-	
+	/**
+	 * Create a new builder session for a SupervisedFeedForwardNeuralNetwork operating on Neurons3D ( ie. image data).
+	 * 
+	 * @param neuralNetworkName The name for the neural network.
+	 * @param initialNeurons The initial neurons.
+	 * @return a new builder session for a SupervisedFeedForwardNeuralNetwork operating on Neurons3D ( ie. image data).
+	 */
+	SupervisedFeedForwardNeuralNetwork3DBuilderSession buildSupervised3DNeuralNetwork(String neuralNetworkName, Neurons3D initialNeurons);
+
+	/**
+	 * Create a new builder session for a SupervisedFeedForwardNeuralNetwork operating on Neurons ( ie. flat data).
+	 * 
+	 * @param neuralNetworkName The name for the neural network.
+	 * @param initialNeurons The initial neurons.
+	 * @return a new builder session for a SupervisedFeedForwardNeuralNetwork operating on Neurons ( ie. flat data).
+	 */
+	SupervisedFeedForwardNeuralNetworkBuilderSession buildSupervisedNeuralNetwork(String neuralNetworkName, Neurons initialNeurons);
+
+	/**
+	 * Create a new builder session for a single DirectedLayer
+	 * 
+	 * @return  a new builder session for a single DirectedLayer.
+	 */
 	DirectedLayerBuilderSession buildLayer();
 	
 
