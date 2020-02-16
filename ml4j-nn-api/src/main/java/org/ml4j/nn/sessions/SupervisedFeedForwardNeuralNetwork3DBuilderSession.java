@@ -15,6 +15,8 @@ package org.ml4j.nn.sessions;
 
 import org.ml4j.nn.axons.Axons3DConfigBuilder;
 import org.ml4j.nn.components.factories.DirectedComponentFactory;
+import org.ml4j.nn.definitions.Component3Dto3DGraphDefinition;
+import org.ml4j.nn.definitions.Component3DtoNon3DGraphDefinition;
 import org.ml4j.nn.layers.builders.AveragePoolingFeedForwardLayerPropertiesBuilder;
 import org.ml4j.nn.layers.builders.MaxPoolingFeedForwardLayerPropertiesBuilder;
 
@@ -28,12 +30,9 @@ public interface SupervisedFeedForwardNeuralNetwork3DBuilderSession extends Supe
 
 	DirectedComponentFactory getDirectedComponentFactory();
 
-	//<L extends FeedForwardLayer<?, L>> DirectedLayerBuilderSession<L, SupervisedFeedForwardNeuralNetwork3DBuilderSession> withLayer(Class<L> layerType);
-
 	ConvolutionalFeedForwardLayerBuilderSession
 			<SupervisedFeedForwardNeuralNetwork3DBuilderSession> withConvolutionalLayer(String layerName);
 		
-
 	
 	FeedForward3DLayerBuilderSession
 	<SupervisedFeedForwardNeuralNetwork3DBuilderSession, Axons3DConfigBuilder, AveragePoolingFeedForwardLayerPropertiesBuilder<SupervisedFeedForwardNeuralNetwork3DBuilderSession>> withAveragePoolingLayer(String layerName);
@@ -42,5 +41,9 @@ public interface SupervisedFeedForwardNeuralNetwork3DBuilderSession extends Supe
 	FeedForward3DLayerBuilderSession
 	<SupervisedFeedForwardNeuralNetwork3DBuilderSession, Axons3DConfigBuilder, MaxPoolingFeedForwardLayerPropertiesBuilder<SupervisedFeedForwardNeuralNetwork3DBuilderSession>> withMaxPoolingLayer(String layerName);
 	
+	SupervisedFeedForwardNeuralNetworkBuilderSession withComponentGraphDefinition(Component3DtoNon3DGraphDefinition definition);
+	
+	SupervisedFeedForwardNeuralNetwork3DBuilderSession withComponentGraphDefinition(Component3Dto3DGraphDefinition definition);
 
+	
 }
