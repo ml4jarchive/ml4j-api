@@ -1,2 +1,1 @@
-# ml4j-components-api
-
+# ml4j-streams-api
