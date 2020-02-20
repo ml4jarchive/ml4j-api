@@ -38,12 +38,12 @@ public interface FloatArrayLabeledDataBatch extends LabeledDataBatch<float[], fl
 	FloatArrayDataBatch getLabelsSet();
 
 	/**
-	 * Convert this FloatArrayLabeledDataBatch to a pair of NeuronsActivations - one
-	 * NeuronsActivation containing the elements and another for the labels.
+	 * Convert this FloatArrayLabeledDataBatch to a pair of NeuronsActivations - the first
+	 * NeuronsActivation containing the elements and the second the labels.
 	 * 
-	 * @param matrixFactory
+	 * @param matrixFactory The matrix factory used to create matrices with the NeuronsActivations.
 	 * @param format        The desired format of NeuronsActivations in the result
-	 * @return
+	 * @return a pair of NeuronsActivations - the first NeuronsActivation containing the elements and the second the labels.
 	 */
 	LabeledData<NeuronsActivation, NeuronsActivation> toNeuronsActivations(MatrixFactory matrixFactory,
 			NeuronsActivationFormat<?> format);

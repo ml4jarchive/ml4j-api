@@ -13,12 +13,17 @@
  */
 package org.ml4j.nn.components.onetone;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import org.ml4j.nn.components.ChainableDirectedComponent;
+import org.ml4j.nn.components.ContextualNeuralComponent;
 import org.ml4j.nn.components.DirectedComponentsContext;
-import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.NeuralComponentVisitor;
 import org.ml4j.nn.components.NeuronsActivationComponent;
@@ -46,10 +51,11 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @param <C> The context provided to the DefaultChainableDirectedComponent on
  *            forward propagation.
  */
-public interface DefaultChainableDirectedComponent<A extends DefaultChainableDirectedComponentActivation, C>
-		extends ChainableDirectedComponent<NeuronsActivation, A, C, DirectedComponentFactory>, NeuralComponent<DefaultChainableDirectedComponent<?, ?>>, NeuronsActivationComponent {
+public interface DefaultChainableDirectedComponent<A extends DefaultChainableDirectedComponentActivation, C extends Serializable>
+		extends ChainableDirectedComponent<NeuronsActivation, A, C, DirectedComponentFactory>, ContextualNeuralComponent<C>, NeuronsActivationComponent, DefaultNeuralComponent {
 
 	/**
+	 * @param directedComponentFactory The directedComponentFactory used to duplicate nested components.
 	 * @return A deep copy of this component.
 	 */
 	@Override
@@ -82,6 +88,70 @@ public interface DefaultChainableDirectedComponent<A extends DefaultChainableDir
 
 	@Override
 	NeuralComponentType getComponentType();
+	
+	/**
+	 * @return Flatten this component into the set of all the components forming it's
+	 * component graph (including itself).  This is unordered and will consist of
+	 * both parent and child components in the graph,  unlike the decompose() method.
+	 */
+	Set<DefaultChainableDirectedComponent<?, ?>> flatten();
+
+	/**
+	 * A convenience filter on the flatten method which returns all nested components
+	 * matching the provided component class, and will exclude this component, although
+	 * other nested parent and child components will still be included.
+	 */
+	
+	
+	
+	/**
+	 * A convenience filter on the flatten method which returns all nested
+	 * components matching the provided component class, and will exclude this
+	 * component, although other nested parent and child components will still be
+	 * included.
+	 * 
+	 * @param <L>            The type of class of the nested components to be
+	 *                       retrieved.
+	 * @param componentClass The class of the nested components to be retrieved.
+	 * @return A set of all nested components matching the provided component class
+	 *         and excluding this component
+	 */
+	default <L> Set<L> getNestedComponents(Class<L> componentClass) {
+		Set<L> foundComponents = new HashSet<>();
+		for (DefaultChainableDirectedComponent<?, ?> component : flatten()) {
+			if (component != this && componentClass.isAssignableFrom(component.getClass())) {
+				@SuppressWarnings("unchecked")
+				L foundComponent = (L)component;
+				foundComponents.add(foundComponent);
+			}
+		}
+		return foundComponents;
+	}
+	
+	/**
+	 * Retrieve all the nested contexts of the specified type used by this component, keyed by component name.
+	 * 
+	 * @param <D> The type of class of the contexts to be retrieved.
+	 * @param directedComponentsContext The DirectedComponentsContext containing the contexts.
+	 * @param contextClass The class of context to be retrieved.
+	 * @return A map of nested contexts of the specified type used by this component, keyed by component name.
+	 */
+	default <D> Map<String, D> getNestedContexts(DirectedComponentsContext directedComponentsContext, Class<D> contextClass) {
+		Map<String, D> foundContexts = new HashMap<>();
+		for (DefaultChainableDirectedComponent<?, ?> component : flatten()) {
+			if (component != this) {
+				Object context = component.getContext(directedComponentsContext);
+				if (contextClass.isAssignableFrom(context.getClass())) {
+					@SuppressWarnings("unchecked")
+					D foundContext = (D)context;
+					foundContexts.put(component.getName(), foundContext);
+					
+				}
+	
+			}
+		}
+		return foundContexts;
+	}
 	
 	@Override
 	String accept(NeuralComponentVisitor<DefaultChainableDirectedComponent<?, ?>> visitor);

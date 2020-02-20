@@ -16,7 +16,11 @@
 
 package org.ml4j.nn.layers;
 
+import java.util.Optional;
+
+import org.ml4j.nn.axons.AxonsContext;
 import org.ml4j.nn.axons.FullyConnectedAxons;
+import org.ml4j.nn.components.DirectedComponentsContext;
 
 /**
  * Convenience interface for FeedForwardLayer implementations which are fully connected.
@@ -26,5 +30,17 @@ import org.ml4j.nn.axons.FullyConnectedAxons;
  */
 public interface FullyConnectedFeedForwardLayer 
     extends FeedForwardLayer<FullyConnectedAxons, FullyConnectedFeedForwardLayer> {
-
+	
+	  /**
+	   * @param directedComponentsContext The DirectedComponentsContext.
+	   * @return The AxonsContext of the primary FullyConnectedAxons of this DirectedLayer.
+	   */
+	  AxonsContext getPrimaryAxonsContext(DirectedComponentsContext directedComponentsContext);
+	  
+	  /**
+	   * @param directedComponentsContext The DirectedComponentsContext.
+	   * @return The AxonsContext of the batch norm axons of this DirectedLayer if batch norm has been configured.
+	   */
+	  Optional<AxonsContext> getBatchNormAxonsContext(DirectedComponentsContext directedComponentsContext);
+	 
 }

@@ -37,7 +37,7 @@ public interface FullyConnectedAxonsFactory extends Serializable {
 	 * @return The FullyConnectedAxons instance.
 	 */
 	FullyConnectedAxons createFullyConnectedAxons(AxonsConfig<Neurons, Neurons> axonsConfig, WeightsMatrix connectionWeights,
-			BiasMatrix biases);
+			BiasVector biases);
 
 	/**
 	 * Construct an undirected FullyConnectedAxons instance, with connection weights
@@ -53,6 +53,6 @@ public interface FullyConnectedAxonsFactory extends Serializable {
 	 * @return The FullyConnectedAxons instance.
 	 */
 	FullyConnectedAxons createFullyConnectedAxons(AxonsConfig<Neurons, Neurons> axonsConfig, WeightsMatrix connectionWeights,
-			BiasMatrix leftToRightBiases, BiasMatrix rightToLeftBiases);
+			BiasVector leftToRightBiases, BiasVector rightToLeftBiases);
 
 }

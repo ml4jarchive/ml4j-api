@@ -1,9 +1,21 @@
+/*
+ * Copyright 2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package org.ml4j.nn.axons;
 
 import java.io.Serializable;
 import java.util.function.ToIntFunction;
 
-import org.ml4j.Matrix;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.Neurons3D;
 import org.ml4j.nn.neurons.format.features.Dimension;
@@ -16,10 +28,10 @@ public class BatchNormConfig<N extends Neurons> implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private BatchNormDimension<N> batchNormDimension;
-	private WeightsMatrix gammaColumnVector;
-	private BiasMatrix betaColumnVector;
-	private Matrix meanColumnVector;
-	private Matrix varianceColumnVector;
+	private WeightsVector gammaColumnVector;
+	private BiasVector betaColumnVector;
+	private FeaturesVector meanColumnVector;
+	private FeaturesVector varianceColumnVector;
 	
 	public BatchNormConfig(BatchNormDimension<N> batchNormDimension) {
 		this.batchNormDimension = batchNormDimension;
@@ -55,38 +67,38 @@ public class BatchNormConfig<N extends Neurons> implements Serializable {
 		}
 	}
 
-	public WeightsMatrix getGammaColumnVector() {
+	public WeightsVector getGammaColumnVector() {
 		return gammaColumnVector;
 	}
 
-	public BatchNormConfig<N> withGammaColumnVector(WeightsMatrix gammaColumnVector) {
+	public BatchNormConfig<N> withGammaColumnVector(WeightsVector gammaColumnVector) {
 		this.gammaColumnVector = gammaColumnVector;
 		return this;
 	}
 
-	public BiasMatrix getBetaColumnVector() {
+	public BiasVector getBetaColumnVector() {
 		return betaColumnVector;
 	}
 
-	public BatchNormConfig<N> withBetaColumnVector(BiasMatrix betaColumnVector) {
+	public BatchNormConfig<N> withBetaColumnVector(BiasVector betaColumnVector) {
 		this.betaColumnVector = betaColumnVector;
 		return this;
 	}
 
-	public Matrix getMeanColumnVector() {
+	public FeaturesVector getMeanColumnVector() {
 		return meanColumnVector;
 	}
 
-	public BatchNormConfig<N> withMeanColumnVector(Matrix meanColumnVector) {
+	public BatchNormConfig<N> withMeanColumnVector(FeaturesVector meanColumnVector) {
 		this.meanColumnVector = meanColumnVector;
 		return this;
 	}
 
-	public Matrix getVarianceColumnVector() {
+	public FeaturesVector getVarianceColumnVector() {
 		return varianceColumnVector;
 	}
 
-	public BatchNormConfig<N> withVarianceColumnVector(Matrix varianceColumnVector) {
+	public BatchNormConfig<N> withVarianceColumnVector(FeaturesVector varianceColumnVector) {
 		this.varianceColumnVector = varianceColumnVector;
 		return this;
 	}

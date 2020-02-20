@@ -215,6 +215,10 @@ public class Dimension implements Serializable {
 		return name;
 	}	
 	
+	public DimensionScope getScope() {
+		return scope;
+	}
+	
 	@Override
 	public String toString() {
 		return "Dimension [id=" + id + ", name=" + name + ", scope=" + scope + "]";

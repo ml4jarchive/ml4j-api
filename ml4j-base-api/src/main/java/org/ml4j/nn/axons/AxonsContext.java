@@ -16,7 +16,7 @@
 
 package org.ml4j.nn.axons;
 
-import org.ml4j.nn.neurons.NeuronsActivationContext;
+import org.ml4j.nn.neurons.FreezeableNeuronsActivationContext;
 
 /**
  * Defines the context for activations travelling through Axons.
@@ -24,14 +24,21 @@ import org.ml4j.nn.neurons.NeuronsActivationContext;
  * @author Michael Lavelle
  *
  */
-public interface AxonsContext extends NeuronsActivationContext {
+public interface AxonsContext extends FreezeableNeuronsActivationContext<AxonsContext> {
+
+	
+	@Override
+	AxonsContext asTrainingContext();
+
+	@Override
+	AxonsContext asNonTrainingContext();
 
 	/**
 	 * @return The keep probability for input dropout on the left hand side of an
 	 *         Axons instance.
 	 */
 	float getLeftHandInputDropoutKeepProbability();
-
+	
 	/**
 	 * @return Whether these Axons are frozen out for training.
 	 */
@@ -62,5 +69,10 @@ public interface AxonsContext extends NeuronsActivationContext {
 	 *         DirectedLayer.
 	 */
 	float getRegularisationLambda();
+	
+	/**
+	 * @return A deep copy of this AxonsContext
+	 */
+	AxonsContext dup();
 
 }

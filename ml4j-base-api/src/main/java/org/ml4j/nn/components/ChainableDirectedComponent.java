@@ -13,6 +13,7 @@
  */
 package org.ml4j.nn.components;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
@@ -34,7 +35,7 @@ import org.ml4j.nn.components.factories.NeuralComponentFactory;
  * @param <C> The context provided to the ChainableDirectedComponent on forward
  *            propagation.
  */
-public interface ChainableDirectedComponent<I, A extends ChainableDirectedComponentActivation<I>, C, F extends NeuralComponentFactory<?>>
+public interface ChainableDirectedComponent<I, A extends ChainableDirectedComponentActivation<I>, C extends Serializable, F extends NeuralComponentFactory<?>>
 		extends DirectedComponent<I, A, C, F> {
 
 	/**

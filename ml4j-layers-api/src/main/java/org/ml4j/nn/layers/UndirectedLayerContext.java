@@ -21,7 +21,7 @@ import org.ml4j.nn.synapses.UndirectedSynapsesContext;
  * 
  * @author Michael Lavelle
  */
-public interface UndirectedLayerContext extends LayerContext {
+public interface UndirectedLayerContext extends LayerContext<UndirectedLayerContext> {
 
   /**
    * @param synapsesIndex The index of the synapses within this UndirectedLayer.
@@ -29,14 +29,5 @@ public interface UndirectedLayerContext extends LayerContext {
    *         synapses of this Layer.
    */
   UndirectedSynapsesContext createSynapsesContext(int synapsesIndex);
-  
-  /**
-   * @return Whether to freeze out this Layer for training.
-   */
-  boolean isWithFreezeOut();
-  
-  /**
-   * @param withFreezeOut Whether to freeze out this Layer for training.
-   */
-  void setWithFreezeOut(boolean withFreezeOut);
+
 }

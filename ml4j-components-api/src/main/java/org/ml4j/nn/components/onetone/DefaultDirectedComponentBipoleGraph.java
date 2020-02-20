@@ -16,7 +16,6 @@ package org.ml4j.nn.components.onetone;
 import java.util.List;
 
 import org.ml4j.nn.components.DirectedComponentsContext;
-import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.manytomany.DefaultDirectedComponentBatch;
@@ -32,7 +31,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  */
 public interface DefaultDirectedComponentBipoleGraph extends
 		DefaultChainableDirectedComponent<DefaultDirectedComponentBipoleGraphActivation, DirectedComponentsContext>,
-		NeuralComponent<DefaultChainableDirectedComponent<?, ?>> {
+		DefaultNeuralComponent {
 
 	@Override
 	DefaultDirectedComponentBipoleGraph dup(DirectedComponentFactory directedComponentFactory);

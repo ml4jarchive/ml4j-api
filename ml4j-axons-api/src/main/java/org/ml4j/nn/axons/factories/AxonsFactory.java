@@ -20,7 +20,7 @@ import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.axons.Axons3DConfig;
 import org.ml4j.nn.axons.AxonsConfig;
 import org.ml4j.nn.axons.AxonsType;
-import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.BiasVector;
 import org.ml4j.nn.axons.ConvolutionalAxons;
 import org.ml4j.nn.axons.FullyConnectedAxonsFactory;
 import org.ml4j.nn.axons.MaxPoolingAxons;
@@ -44,36 +44,41 @@ public interface AxonsFactory extends FullyConnectedAxonsFactory, Serializable {
 	 * @param biases            The convolutional biases.
 	 * @return A ConvolutionalAxons instance.
 	 */
-	ConvolutionalAxons createConvolutionalAxons(Axons3DConfig axons3DConfig, WeightsMatrix connectionWeights, BiasMatrix biases);
-
-	
-	/**
-	 * Create an Axons instance by type.
-	 * 
-	 * @param axonsType The type of the axons.
-	 * @param axonsConfig The config for the axons.
-	 * @return The axons component.
-	 */
-	Axons<Neurons, Neurons, ?> createAxons(AxonsType axonsType,  AxonsConfig<Neurons, Neurons> axonsConfig);
-	
+	ConvolutionalAxons createConvolutionalAxons(Axons3DConfig axons3DConfig, WeightsMatrix connectionWeights, BiasVector biases);
 
 	/**
-	 * Create an Axons instance by type.
+	 * Create an Neurons Axons instance by type with AxonsConfig
 	 * 
-	 * @param axonsType The type of the axons.
-	 * @param axonsConfig The config for the axons.
-	 * @return The axons component.
+	 * @param <A> The type of class of Axons
+	 * @param axonsType The axons type
+	 * @param axonsClass The class of Axons
+	 * @param axonsConfig The axons config.
+	 * @return The axons component
 	 */
-	Axons<Neurons3D, Neurons3D, ?> createAxons3D(AxonsType axonsType,  AxonsConfig<Neurons3D, Neurons3D> axonsConfig);
+	<A extends Axons<Neurons, Neurons, ?>> A createAxons(AxonsType axonsType,  Class<A> axonsClass, AxonsConfig<Neurons, Neurons> axonsConfig);
+	
 	
 	/**
-	 * Create an Axons instance by type.
+	 * Create an Neurons3D Axons instance by type, with AxonsConfig.
 	 * 
-	 * @param axonsType The type of the axons.
-	 * @param axonsConfig The config for the axons.
-	 * @return The axons component.
+	 * @param <A> The type of class of Axons
+	 * @param axonsType The axons type
+	 * @param axonsClass The class of Axons
+	 * @param axonsConfig The axons config.
+	 * @return The axons component
 	 */
-	Axons<Neurons3D, Neurons3D, ?> createAxons3DWith3DConfig(AxonsType axonsType,  Axons3DConfig axonsConfig);
+	<A extends Axons<Neurons3D, Neurons3D, ?>> A createAxons3D(AxonsType axonsType, Class<A> axonsClass, AxonsConfig<Neurons3D, Neurons3D> axonsConfig);
+	
+	/**
+	 * Create an Neurons3D Axons instance by type, with Axons3DConfig
+	 * 
+	 * @param <A> The type of class of Axons
+	 * @param axonsType The axons type
+	 * @param axonsClass The class of Axons
+	 * @param axonsConfig The axons config.
+	 * @return The axons component
+	 */
+	<A extends Axons<Neurons3D, Neurons3D, ?>> A createAxons3DWith3DConfig(AxonsType axonsType, Class<A> axonsClass, Axons3DConfig axonsConfig);
 	
 	/**
 	 * Construct a MaxPoolingAxons instance.
@@ -103,5 +108,5 @@ public interface AxonsFactory extends FullyConnectedAxonsFactory, Serializable {
 	 * @param beta         The shifting beta vector.
 	 * @return A scale-and-shift Axons instance.
 	 */
-	<N extends Neurons> ScaleAndShiftAxons<N> createScaleAndShiftAxons(AxonsConfig<N, N> axonsConfig, WeightsMatrix gamma, BiasMatrix beta);
+	<N extends Neurons> ScaleAndShiftAxons<N> createScaleAndShiftAxons(AxonsConfig<N, N> axonsConfig, WeightsMatrix gamma, BiasVector beta);
 }

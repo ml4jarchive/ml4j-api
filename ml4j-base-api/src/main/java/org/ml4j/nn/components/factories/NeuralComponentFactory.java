@@ -18,10 +18,11 @@ import java.util.List;
 import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
-import org.ml4j.nn.axons.Axons3DConfig;
-import org.ml4j.nn.axons.AxonsConfig;
-import org.ml4j.nn.axons.BatchNormConfig;
-import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.BatchNormAxonsConfig;
+import org.ml4j.nn.axons.BiasVector;
+import org.ml4j.nn.axons.ConvolutionalAxonsConfig;
+import org.ml4j.nn.axons.FullyConnectedAxonsConfig;
+import org.ml4j.nn.axons.PoolingAxonsConfig;
 import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentType;
@@ -47,49 +48,58 @@ public interface NeuralComponentFactory<T extends NeuralComponent<?>> {
 	 */
 	T createComponent(String name, Neurons leftNeurons, Neurons rightNeurons,
 			NeuralComponentType neuralComponentType);
+
 	/**
 	 * 
-	 * @param name The name of the component.
-	 * @param axonsConfig The left and right neurons configuration for this component.
-	 * @param connectionWeights Optionally specify the connection weights of the
-	 *                          axons - if not provided the weights will be
-	 *                          initialised to defaults.
-	 * @param biases			Optionally specify the left-to-right biases of the
-	 *                          axons - if not provided the biases will be
-	 *                          initialised to defaults if the LHS neurons have a
-	 *                          bias unit.
+	 * @param name                          The name of the component.
+	 * @param axonsConfig                   The left and right neurons configuration
+	 *                                      for this component, and optionally an
+	 *                                      AxonsContextConfigurer.
+	 * @param connectionWeights             Optionally specify the connection
+	 *                                      weights of the axons - if not provided
+	 *                                      the weights will be initialised to
+	 *                                      defaults.
+	 * @param biases                        Optionally specify the left-to-right
+	 *                                      biases of the axons - if not provided
+	 *                                      the biases will be initialised to
+	 *                                      defaults if the LHS neurons have a bias
+	 *                                      unit.
 	 * @return A fully-connected axons component, connecting leftNeurons to
 	 *         rightNeurons via connectionWeights.
 	 */
-	T createFullyConnectedAxonsComponent(String name, AxonsConfig<Neurons, Neurons> axonsConfig, WeightsMatrix connectionWeights,
-			BiasMatrix biases);
-	
+	T createFullyConnectedAxonsComponent(String name, FullyConnectedAxonsConfig axonsConfig,
+			WeightsMatrix connectionWeights, BiasVector biases);
+
 	/**
 	 * 
-	 * @param name				The name of the component.
-	 * @param config 			The Axons3DConfig.
-	 * @param connectionWeights Specify the convolutional connection weights of the axons.  To default the connection weights
-	 * 							specify a WeightsMatrix with the matrix null but the WeightsFormat provided.
-	 * @param biases			Optionally specify the left-to-right biases of the
-	 *                          axons - if not provided the biases will be
-	 *                          initialised to defaults if the LHS neurons have a
-	 *                          bias unit.
-	 * @return					 A convolutional component connecting leftNeurons to
-	 *         					rightNeurons convolutionally via convolutional connectionWeights.
+	 * @param name                          The name of the component.
+	 * @param config                        The ConvolutionalAxonsConfig
+	 * @param connectionWeights             Specify the convolutional connection
+	 *                                      weights of the axons. To default the
+	 *                                      connection weights specify a
+	 *                                      WeightsMatrix with the matrix null but
+	 *                                      the WeightsFormat provided.
+	 * @param biases                        Optionally specify the left-to-right
+	 *                                      biases of the axons - if not provided
+	 *                                      the biases will be initialised to
+	 *                                      defaults if the LHS neurons have a bias
+	 *                                      unit.
+	 * @return A convolutional component connecting leftNeurons to rightNeurons
+	 *         convolutionally via convolutional connectionWeights.
 	 */
-	T createConvolutionalAxonsComponent(String name, Axons3DConfig config,
-			WeightsMatrix connectionWeights, BiasMatrix biases);
+	T createConvolutionalAxonsComponent(String name, ConvolutionalAxonsConfig config, WeightsMatrix connectionWeights,
+			BiasVector biases);
 
 	/**
 	 * Create a max-pooling axons component.
 	 * 
 	 * @param name 		   The name of the component.
-	 * @param config       The Axons3DConfig.
+	 * @param config       The PoolingAxonsConfig.
 	 * @param scaleOutputs Whether to scale the output of the max pooling axons by a
 	 *                     scaling factor to compensate for the max-pooling dropout.
 	 * @return A max-pooling axons component.
 	 */
-	T createMaxPoolingAxonsComponent(String name, Axons3DConfig config,
+	T createMaxPoolingAxonsComponent(String name, PoolingAxonsConfig config,
 			boolean scaleOutputs);
 
 	/**
@@ -97,30 +107,30 @@ public interface NeuralComponentFactory<T extends NeuralComponent<?>> {
 	 * Create an average-pooling axons component.
 	 * 
 	 * @param name 		   The name of the component.
-	 * @param config       The Axons3DConfig.
+	 * @param config       The PoolingAxonsConfig.
 	 * @return An average-pooling axons component.
 	 */
-	T createAveragePoolingAxonsComponent(String name, Axons3DConfig config);
+	T createAveragePoolingAxonsComponent(String name, PoolingAxonsConfig config);
 
 	/**
 	 * Create a batch-norm directed axons component
 	 * 
-	 * @param <N>          The type of neurons on the LHS/RHS of these axons.
-	 * @param name 		   The name of the component.
-	 * @param neurons	   The Neurons to which this batch norm is applied.
-	 * @param batchNormConfig The config for this component
+	 * @param <N>                           The type of neurons on the LHS/RHS of
+	 *                                      these axons.
+	 * @param name                          The name of the component.
+	 * @param batchNormAxonsConfig               The config for this component
 	 * @return A batch-norm directed axons component.
 	 */
-	<N extends Neurons> T createBatchNormAxonsComponent(String name, N neurons, BatchNormConfig<N> batchNormConfig);
-	
+	<N extends Neurons> T createBatchNormAxonsComponent(String name, BatchNormAxonsConfig<N> batchNormAxonsConfig);
+
 	/**
 	 * Construct a pass-through (no-op) axons component - used within residual
 	 * networks for skip-connections.
 	 * 
 	 * @param <N>          The type of neurons on the LHS/RHS of the pass-through
 	 *                     axons.
-	 *                     
-	 * @param name 		   The name of the component.            
+	 * 
+	 * @param name         The name of the component.
 	 * @param leftNeurons  The neurons on the LHS of these pass-through axons.
 	 * @param rightNeurons The neurons on the RHS of these pass-through axons.
 	 * @return A pass-through (no-op) axons component

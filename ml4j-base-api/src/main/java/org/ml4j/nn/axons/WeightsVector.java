@@ -11,12 +11,14 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.ml4j.nn.components;
+package org.ml4j.nn.axons;
 
-import org.ml4j.nn.axons.AxonsContext;
+public interface WeightsVector extends FeaturesVector {
 
-public interface AxonsContextAwareNeuralComponent<T extends NeuralComponent<T>> extends NeuralComponent<T> {
+	WeightsMatrix toWeightsMatrix();
 
-	AxonsContext getContext(DirectedComponentsContext directedComponentsContext);
-
+	@Override
+	WeightsVector dup();
+	
+	
 }

@@ -15,7 +15,6 @@ package org.ml4j.nn.components.axons;
 
 import org.ml4j.nn.axons.Axons;
 import org.ml4j.nn.axons.AxonsContext;
-import org.ml4j.nn.components.AxonsContextAwareNeuralComponent;
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
@@ -33,8 +32,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @param <A> The specific type of Axons wrapped by this DirectedAxonsComponent.
  */
 public interface DirectedAxonsComponent<L extends Neurons, R extends Neurons, A extends Axons<?, ?, ?>>
-		extends DefaultChainableDirectedComponent<DirectedAxonsComponentActivation, AxonsContext>,
-		AxonsContextAwareNeuralComponent<DefaultChainableDirectedComponent<?, ?>> {
+		extends DefaultChainableDirectedComponent<DirectedAxonsComponentActivation, AxonsContext> {
 
 	/**
 	 * @return The Axons instance adapted by this DirectedAxonsComponent.

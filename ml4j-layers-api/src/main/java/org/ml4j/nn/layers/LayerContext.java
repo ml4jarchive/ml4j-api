@@ -14,14 +14,14 @@
 
 package org.ml4j.nn.layers;
 
-import org.ml4j.nn.neurons.NeuronsActivationContext;
+import org.ml4j.nn.neurons.FreezeableNeuronsActivationContext;
 
 /**
  * Encapsulates the runtime context used with a Layer.
  * 
  * @author Michael Lavelle
  */
-public interface LayerContext extends NeuronsActivationContext {
+public interface LayerContext<C extends LayerContext<C>> extends FreezeableNeuronsActivationContext<C>{
 
 
 }

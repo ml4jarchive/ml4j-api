@@ -13,6 +13,8 @@
  */
 package org.ml4j.nn.sessions;
 
+import org.ml4j.nn.FeedForwardNeuralNetworkContext;
+import org.ml4j.nn.LayeredFeedForwardNeuralNetworkContext;
 import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.layers.DirectedLayerFactory;
@@ -55,7 +57,6 @@ public interface DefaultSession extends Session<DefaultChainableDirectedComponen
 	 * operating on Neurons3D ( ie. image data) - builds a network with only FeedForwardLayer components)
 	 * 
 	 * @param neuralNetworkName The name for the neural network.
-	 * @param initialNeurons The initial neurons.
 	 * @return  a new builder session for a LayeredSupervisedFeedForwardNeuralNetwork or 
 	 * operating on Neurons3D ( ie. image data) - builds a network with only FeedForwardLayer components)
 	 */
@@ -66,7 +67,6 @@ public interface DefaultSession extends Session<DefaultChainableDirectedComponen
 	 * operating on Neurons ( ie. flat data).
 	 * 
 	 * @param neuralNetworkName The name for the neural network.
-	 * @param initialNeurons The initial neurons.
 	 * @return a new builder session for a LayeredSupervisedFeedForwardNeuralNetwork (containing only FeedForwardLayer components, 
 	 * operating on Neurons ( ie. flat data).
 	 */
@@ -97,6 +97,38 @@ public interface DefaultSession extends Session<DefaultChainableDirectedComponen
 	 * @return  a new builder session for a single DirectedLayer.
 	 */
 	DirectedLayerBuilderSession buildLayer();
+	
+	/**
+	 * @return A FeedForwardNeuralNetworkContext 
+	 */
+	FeedForwardNeuralNetworkContext createSupervisedFeedForwardNeuralNetworkContext();
+	
+	
+	/**
+	 * @return A LayeredFeedForwardNeuralNetworkContext 
+	 */
+	LayeredFeedForwardNeuralNetworkContext createLayeredSupervisedFeedForwardNeuralNetworkContext();
+	
+	/**
+	 * @return A lightweight wrapper around the current session, 
+	 * with shared factories and configuration, but with training mode set to true.
+	 * This will not change the training status of any previous contexts that have been generated
+	 * using this session, but will change the status of any generated future contexts.
+	 */
+	DefaultSession asTrainingSession();
+	
+	/**
+	 * @return A lightweight wrapper around the current session, 
+	 * with shared factories and configuration, but with training mode set to false.
+	 * This will not change the training status of any previous contexts that have been generated
+	 * using this session, but will change the status of any generated future contexts.
+	 */
+	DefaultSession asNonTrainingSession();
+
+	/**
+	 * @return Whether this session is a training session.
+	 */
+	boolean isTrainingSession();
 	
 
 }

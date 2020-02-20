@@ -33,6 +33,8 @@ public interface SupervisedFeedForwardNeuralNetworkBuilderSessionBase<S extends 
 	
 	DirectedLayerFactory getDirectedLayerFactory();	
 	
+	//DirectedComponentsContext getDirectedComponentsContext();
+	
 	SupervisedFeedForwardNeuralNetworkFactory getNeuralNetworkFactory();
 
 	FullyConnectedFeedForwardLayerBuilderSession

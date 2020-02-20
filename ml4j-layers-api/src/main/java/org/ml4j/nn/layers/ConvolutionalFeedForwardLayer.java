@@ -16,7 +16,11 @@
 
 package org.ml4j.nn.layers;
 
+import java.util.Optional;
+
+import org.ml4j.nn.axons.AxonsContext;
 import org.ml4j.nn.axons.ConvolutionalAxons;
+import org.ml4j.nn.components.DirectedComponentsContext;
 
 /**
  * A ConvolutionalFeedForwardLayer is a FeedForwardLayer which composes input neurons and output
@@ -50,4 +54,19 @@ public interface ConvolutionalFeedForwardLayer
    * @return The amount of zero padding.
    */
   int getZeroPadding();
+  
+  
+  /**
+   * @param directedComponentsContext The DirectedComponentsContext.
+   * @return The AxonsContext of the primary axons of this DirectedLayer.
+   */
+  AxonsContext getPrimaryAxonsContext(DirectedComponentsContext directedComponentsContext);
+  
+  /**
+   * @param directedComponentsContext The DirectedComponentsContext.
+   * @return The AxonsContext of the batch norm axons of this DirectedLayer if batch norm has been configured.
+   */
+  Optional<AxonsContext> getBatchNormAxonsContext(DirectedComponentsContext directedComponentsContext);
+
+
 }

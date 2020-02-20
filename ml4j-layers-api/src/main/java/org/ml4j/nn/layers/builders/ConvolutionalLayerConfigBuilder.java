@@ -7,8 +7,9 @@ import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons3DConfigBuilderBase;
 import org.ml4j.nn.axons.Axons3DConfigPopulator;
-import org.ml4j.nn.axons.BatchNormConfig;
-import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.AxonsContextConfigurer;
+import org.ml4j.nn.axons.BatchNormAxonsConfig;
+import org.ml4j.nn.axons.BiasVector;
 import org.ml4j.nn.axons.WeightsFormat;
 import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.neurons.Neurons3D;
@@ -27,10 +28,11 @@ public class ConvolutionalLayerConfigBuilder extends Axons3DConfigBuilderBase<Co
 	private DifferentiableActivationFunction activationFunction;
 	private WeightsMatrix weightsMatrix;
 	private WeightsFormat weightsFormat;
-	private BiasMatrix biasMatrix;
+	private BiasVector biasMatrix;
 	private Boolean withBiasUnit;
-	private BatchNormConfig<Neurons3D> batchNormConfig;
-	
+	private BatchNormAxonsConfig<Neurons3D> batchNormAxonConfig;
+	private AxonsContextConfigurer axonsContextConfigurer;
+
 	public ConvolutionalLayerConfigBuilder() {
 		super();
 	}
@@ -39,17 +41,29 @@ public class ConvolutionalLayerConfigBuilder extends Axons3DConfigBuilderBase<Co
 		super(leftNeurons);
 	}
 	
-	public BatchNormConfig<Neurons3D> getBatchNormConfig() {
-		return batchNormConfig;
+	public BatchNormAxonsConfig<Neurons3D> getBatchNormAxonsConfig() {
+		return batchNormAxonConfig;
 	}
 
-	public ConvolutionalLayerConfigBuilder withBatchNormConfig(BatchNormConfig<Neurons3D> batchNormConfig) {
-		this.batchNormConfig = batchNormConfig;
+	public ConvolutionalLayerConfigBuilder withBatchNormAxonsConfig(BatchNormAxonsConfig<Neurons3D> batchNormAxonConfig) {
+		this.batchNormAxonConfig = batchNormAxonConfig;
 		return this;
 	}
 
 	public WeightsMatrix getWeightsMatrix() {
 		return weightsMatrix;
+	}
+
+	public AxonsContextConfigurer getAxonsContextConfigurer() {
+		return axonsContextConfigurer;
+	}
+
+	public ConvolutionalLayerConfigBuilder withAxonsContextConfigurer(AxonsContextConfigurer axonsContextConfigurer) {
+		if (this.axonsContextConfigurer != null) {
+			throw new IllegalStateException("Axons context configurer has already been set on this layer config");
+		}
+		this.axonsContextConfigurer = axonsContextConfigurer;
+		return this;
 	}
 
 	public ConvolutionalLayerConfigBuilder withWeightsMatrix(WeightsMatrix weightsMatrix) {
@@ -72,7 +86,7 @@ public class ConvolutionalLayerConfigBuilder extends Axons3DConfigBuilderBase<Co
 	}
 	
 	
-	public ConvolutionalLayerConfigBuilder withBiasMatrix(BiasMatrix biasMatrix) {
+	public ConvolutionalLayerConfigBuilder withBiasVector(BiasVector biasMatrix) {
 		if (leftNeurons != null && !leftNeurons.hasBiasUnit()) {
 			throw new IllegalStateException("Unable to set a bias matrix as left neurons instance has not been configured with a bias unit");
 		}
@@ -92,7 +106,7 @@ public class ConvolutionalLayerConfigBuilder extends Axons3DConfigBuilderBase<Co
 		return this;
 	}
 
-	public BiasMatrix getBiasMatrix() {
+	public BiasVector getBiasVector() {
 		return biasMatrix;
 	}
 
