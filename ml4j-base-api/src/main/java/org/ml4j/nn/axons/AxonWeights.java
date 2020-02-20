@@ -36,12 +36,12 @@ public interface AxonWeights extends NeuronsActivationComponent, Serializable {
 	/**
 	 * @return A column vector of left to right biases.
 	 */
-	BiasMatrix getLeftToRightBiases();
+	BiasVector getLeftToRightBiases();
 
 	/**
 	 * @return A column vector of right to left biases.
 	 */
-	BiasMatrix getRightToLeftBiases();
+	BiasVector getRightToLeftBiases();
 
 	/**
 	 * @return The type of these AxonWeights.

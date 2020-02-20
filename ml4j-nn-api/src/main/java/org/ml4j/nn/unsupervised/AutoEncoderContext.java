@@ -25,5 +25,10 @@ import org.ml4j.nn.LayeredFeedForwardNeuralNetworkContext;
  */
 public interface AutoEncoderContext extends LayeredFeedForwardNeuralNetworkContext {
 
+	@Override
+	AutoEncoderContext asTrainingContext();
+	
+	@Override
+	AutoEncoderContext asNonTrainingContext();
 
 }

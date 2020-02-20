@@ -1,13 +1,12 @@
 package org.ml4j.nn.layers.builders;
 
-import java.util.function.Consumer;
-
 import org.ml4j.nn.activationfunctions.ActivationFunctionBaseType;
 import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
-import org.ml4j.nn.axons.BatchNormConfig;
-import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.AxonsContextConfigurer;
+import org.ml4j.nn.axons.BatchNormAxonsConfigConfigurer;
+import org.ml4j.nn.axons.BiasVector;
 import org.ml4j.nn.axons.WeightsFormat;
 import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.neurons.Neurons;
@@ -20,11 +19,13 @@ public interface WeightedFeedForwardLayerPropertiesBuilder<C, B, N extends Neuro
 
 	B withWeightsMatrix(WeightsMatrix weightsMatrix);
 	
-	B withBiasMatrix(BiasMatrix weightsMatrix);
+	B withBiasVector(BiasVector weightsMatrix);
 
 	B withBiasUnit();
 	
-	B withBatchNormConfig(Consumer<BatchNormConfig<N>> batchNormConfigConfigurer);
+	B withBatchNormAxonsConfig(BatchNormAxonsConfigConfigurer<N> batchNormAxonsConfigConfigurer);
+	
+	B withAxonsContextConfigurer(AxonsContextConfigurer axonsContextConfigurer);
 	
 	B withWeightsFormat(WeightsFormat weightsFormat);
 

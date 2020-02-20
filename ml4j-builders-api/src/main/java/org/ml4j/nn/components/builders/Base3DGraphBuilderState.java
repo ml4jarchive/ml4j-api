@@ -13,7 +13,7 @@
  */
 package org.ml4j.nn.components.builders;
 
-import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.BiasVector;
 import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.builders.axons.UncompletedBatchNormAxons3DBuilder;
 import org.ml4j.nn.components.builders.axons.UncompletedConvolutionalAxonsBuilder;
@@ -57,8 +57,8 @@ public interface Base3DGraphBuilderState {
 
 	UncompletedBatchNormAxons3DBuilder<?> getBatchNormAxonsBuilder();
 
-	void setBiases(BiasMatrix biases);
+	void setBiases(BiasVector biases);
 
-	BiasMatrix getBiases();
+	BiasVector getBiases();
 
 }

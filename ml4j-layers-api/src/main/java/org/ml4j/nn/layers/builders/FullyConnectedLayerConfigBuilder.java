@@ -6,8 +6,9 @@ import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.AxonsConfigBuilderBase;
-import org.ml4j.nn.axons.BatchNormConfig;
-import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.AxonsContextConfigurer;
+import org.ml4j.nn.axons.BatchNormAxonsConfig;
+import org.ml4j.nn.axons.BiasVector;
 import org.ml4j.nn.axons.WeightsFormat;
 import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.neurons.Neurons;
@@ -26,16 +27,17 @@ public class FullyConnectedLayerConfigBuilder extends AxonsConfigBuilderBase<Ful
 	private DifferentiableActivationFunction activationFunction;
 	private WeightsMatrix weightsMatrix;
 	private WeightsFormat weightsFormat;
-	private BiasMatrix biasMatrix;
+	private BiasVector biasMatrix;
 	private Boolean withBiasUnit;
-	private BatchNormConfig<Neurons> batchNormConfig;
+	private BatchNormAxonsConfig<Neurons> batchNormAxonsConfig;
+	private AxonsContextConfigurer axonsContextConfigurer;
 	
-	public BatchNormConfig<Neurons> getBatchNormConfig() {
-		return batchNormConfig;
+	public BatchNormAxonsConfig<Neurons> getBatchNormAxonsConfig() {
+		return batchNormAxonsConfig;
 	}
 
-	public FullyConnectedLayerConfigBuilder withBatchNormConfig(BatchNormConfig<Neurons> batchNormConfig) {
-		this.batchNormConfig = batchNormConfig;
+	public FullyConnectedLayerConfigBuilder withBatchNormConfig(BatchNormAxonsConfig<Neurons> batchNormAxonsConfig) {
+		this.batchNormAxonsConfig = batchNormAxonsConfig;
 		return this;
 	}
 
@@ -62,8 +64,19 @@ public class FullyConnectedLayerConfigBuilder extends AxonsConfigBuilderBase<Ful
 		return this;
 	}
 	
-	
-	public FullyConnectedLayerConfigBuilder withBiasMatrix(BiasMatrix biasMatrix) {
+	public AxonsContextConfigurer getAxonsContextConfigurer() {
+		return axonsContextConfigurer;
+	}
+
+	public FullyConnectedLayerConfigBuilder withAxonsContextConfigurer(AxonsContextConfigurer axonsContextConfigurer) {
+		if (this.axonsContextConfigurer != null) {
+			throw new IllegalStateException("Axons context configurer has already been set on this layer config");
+		}
+		this.axonsContextConfigurer = axonsContextConfigurer;
+		return this;
+	}
+
+	public FullyConnectedLayerConfigBuilder withBiasVector(BiasVector biasMatrix) {
 		if (leftNeurons != null && !leftNeurons.hasBiasUnit()) {
 			throw new IllegalStateException("Unable to set a bias matrix as left neurons instance has not been configured with a bias unit");
 		}
@@ -83,7 +96,7 @@ public class FullyConnectedLayerConfigBuilder extends AxonsConfigBuilderBase<Ful
 		return this;
 	}
 
-	public BiasMatrix getBiasMatrix() {
+	public BiasVector getBiasVector() {
 		return biasMatrix;
 	}
 

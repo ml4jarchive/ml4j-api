@@ -46,6 +46,7 @@ public interface DirectedLayer<A extends Axons<?,?,?>, L extends DirectedLayer<A
    *     Directed Layer.
    */
   int getOutputNeuronCount();
+
   
   /**
    * @return The primary differentiable activation function configured for this DirectedLayer.   

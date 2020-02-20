@@ -18,10 +18,10 @@ import java.util.List;
 
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.components.DirectedComponentsContext;
-import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentBipoleGraph;
+import org.ml4j.nn.components.onetone.DefaultNeuralComponent;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.NeuronsActivation;
 
@@ -36,7 +36,7 @@ import org.ml4j.nn.neurons.NeuronsActivation;
  * @param <R> The type of Neurons on the right of these DirectedSynapses.
  */
 public interface DirectedSynapses<L extends Neurons, R extends Neurons> extends Synapses<DirectedSynapses<L, R>>,
-		DefaultChainableDirectedComponent<DirectedSynapsesActivation, DirectedComponentsContext>, NeuralComponent<DefaultChainableDirectedComponent<?, ?>> {
+		DefaultChainableDirectedComponent<DirectedSynapsesActivation, DirectedComponentsContext>, DefaultNeuralComponent {
 
 	/**
 	 * @return The DifferentiableActivationFunction applied to the right hand Axons

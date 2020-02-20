@@ -31,5 +31,5 @@ public interface SynapsesContext extends NeuronsActivationContext {
 	/**
 	 * @param withFreezeOut Whether these Synapses are frozen out of training.
 	 */
-	public void setWithFreezeOut(boolean withFreezeOut);
+	public SynapsesContext withFreezeOut(boolean withFreezeOut);
 }

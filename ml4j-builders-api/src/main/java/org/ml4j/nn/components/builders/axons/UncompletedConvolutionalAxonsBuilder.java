@@ -13,9 +13,7 @@
  */
 package org.ml4j.nn.components.builders.axons;
 
-import java.util.function.Consumer;
-
-import org.ml4j.nn.axons.AxonsContext;
+import org.ml4j.nn.axons.AxonsContextConfigurer;
 import org.ml4j.nn.neurons.Neurons3D;
 
 public interface UncompletedConvolutionalAxonsBuilder<C>
@@ -32,7 +30,7 @@ public interface UncompletedConvolutionalAxonsBuilder<C>
 
 	UncompletedConvolutionalAxonsBuilder<C> withPadding(int widthPadding, int heightPadding);
 
-	UncompletedConvolutionalAxonsBuilder<C> withAxonsContextConfigurer(Consumer<AxonsContext> axonsContextConfigurer);
+	UncompletedConvolutionalAxonsBuilder<C> withAxonsContextConfigurer(AxonsContextConfigurer axonsContextConfigurer);
 
 	int getStrideWidth();
 

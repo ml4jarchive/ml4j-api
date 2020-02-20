@@ -20,10 +20,12 @@ import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons;
-import org.ml4j.nn.axons.Axons3DConfig;
-import org.ml4j.nn.axons.AxonsConfig;
-import org.ml4j.nn.axons.BatchNormConfig;
-import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.AxonsContextConfigurer;
+import org.ml4j.nn.axons.BatchNormAxonsConfig;
+import org.ml4j.nn.axons.BiasVector;
+import org.ml4j.nn.axons.ConvolutionalAxonsConfig;
+import org.ml4j.nn.axons.FullyConnectedAxonsConfig;
+import org.ml4j.nn.axons.PoolingAxonsConfig;
 import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.activationfunctions.DifferentiableActivationFunctionComponent;
 import org.ml4j.nn.components.axons.BatchNormDirectedAxonsComponent;
@@ -49,19 +51,19 @@ import org.ml4j.nn.neurons.Neurons3D;
 public interface DirectedComponentFactory extends NeuralComponentFactory<DefaultChainableDirectedComponent<?, ?>>, Serializable {
 
 	@Override
-	DirectedAxonsComponent<Neurons, Neurons, ?> createFullyConnectedAxonsComponent(String name, AxonsConfig<Neurons, Neurons> axonsConfig, WeightsMatrix connectionWeights, BiasMatrix biases);
+	DirectedAxonsComponent<Neurons, Neurons, ?> createFullyConnectedAxonsComponent(String name, FullyConnectedAxonsConfig axonsConfig, WeightsMatrix connectionWeights, BiasVector biases);
 
 	@Override
-	DirectedAxonsComponent<Neurons3D, Neurons3D, ?> createConvolutionalAxonsComponent(String name, Axons3DConfig config, WeightsMatrix connectionWeights, BiasMatrix biases);
+	DirectedAxonsComponent<Neurons3D, Neurons3D, ?> createConvolutionalAxonsComponent(String name, ConvolutionalAxonsConfig config, WeightsMatrix connectionWeights, BiasVector biases);
 
 	@Override
-	DirectedAxonsComponent<Neurons3D, Neurons3D, ?> createMaxPoolingAxonsComponent(String name, Axons3DConfig config, boolean scaleOutputs);
+	DirectedAxonsComponent<Neurons3D, Neurons3D, ?> createMaxPoolingAxonsComponent(String name, PoolingAxonsConfig config, boolean scaleOutputs);
 
 	@Override
-	DirectedAxonsComponent<Neurons3D, Neurons3D, ?> createAveragePoolingAxonsComponent(String name, Axons3DConfig config);
+	DirectedAxonsComponent<Neurons3D, Neurons3D, ?> createAveragePoolingAxonsComponent(String name, PoolingAxonsConfig config);
 
 	@Override
-	<N extends Neurons> BatchNormDirectedAxonsComponent<N, ?> createBatchNormAxonsComponent(String name, N neurons, BatchNormConfig<N> batchNormConfig);
+	<N extends Neurons> BatchNormDirectedAxonsComponent<N, ?> createBatchNormAxonsComponent(String name, BatchNormAxonsConfig<N> batchNormConfig);
 
 	/**
 	 * Construct a DirectedAxonsComponent adapter for the specified Axons.
@@ -70,10 +72,14 @@ public interface DirectedComponentFactory extends NeuralComponentFactory<Default
 	 * @param <R>   The type of Neurons on the RHS of this DirectedAxonsComponent
 	 * @param name	The name of the component.
 	 * @param axons The Axons to be wrapped inside the DirectedAxonsComponent.
+	 * @param axonsContextConfigurer A configurer for the AxonsContext containing
+	 *                               hyperparameters for the axons - specify
+	 *                               AxonsContextConfigurer.DEFAULT for default
+	 *                               context.
 	 * @return DirectedAxonsComponent wrapping the specified Axons.
 	 */
 	<L extends Neurons, R extends Neurons> DirectedAxonsComponent<L, R, ?> createDirectedAxonsComponent(String name, 
-			Axons<L, R, ?> axons);
+			Axons<L, R, ?> axons, AxonsContextConfigurer axonsContextConfigurer);
 
 	@Override
 	<N extends Neurons> DirectedAxonsComponent<N, N, ?> createPassThroughAxonsComponent(String name, N leftNeurons, N rightNeurons);

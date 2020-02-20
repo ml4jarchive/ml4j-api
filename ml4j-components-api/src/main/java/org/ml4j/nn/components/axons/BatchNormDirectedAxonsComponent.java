@@ -16,9 +16,7 @@ package org.ml4j.nn.components.axons;
 
 import org.ml4j.Matrix;
 import org.ml4j.nn.axons.Axons;
-import org.ml4j.nn.components.AxonsContextAwareNeuralComponent;
 import org.ml4j.nn.components.factories.DirectedComponentFactory;
-import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.neurons.Neurons;
 
 /**
@@ -38,7 +36,7 @@ import org.ml4j.nn.neurons.Neurons;
  *            BatchNormDirectedAxonsComponent.
  */
 public interface BatchNormDirectedAxonsComponent<N extends Neurons, A extends Axons<N, N, ?>>
-		extends DirectedAxonsComponent<N, N, A>, AxonsContextAwareNeuralComponent<DefaultChainableDirectedComponent<?, ?>> {
+		extends DirectedAxonsComponent<N, N, A> {
 
 	/**
 	 * @return A column vector of the exponentially weighted average input feature

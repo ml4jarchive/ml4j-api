@@ -13,35 +13,33 @@
  */
 package org.ml4j.nn.components.builders.axons;
 
-import java.util.function.Consumer;
-
-import org.ml4j.Matrix;
-import org.ml4j.nn.axons.AxonsContext;
+import org.ml4j.nn.axons.AxonsContextConfigurer;
 import org.ml4j.nn.axons.BatchNormConfig.BatchNormDimension;
-import org.ml4j.nn.axons.BiasMatrix;
-import org.ml4j.nn.axons.WeightsMatrix;
+import org.ml4j.nn.axons.BiasVector;
+import org.ml4j.nn.axons.FeaturesVector;
+import org.ml4j.nn.axons.WeightsVector;
 import org.ml4j.nn.neurons.Neurons;
 
 public interface UncompletedBatchNormAxonsBuilder<N extends Neurons, C>
 		extends UncompletedTrainableAxonsBuilder<N, C, UncompletedBatchNormAxonsBuilder<N, C>> {
 
-	UncompletedBatchNormAxonsBuilder<N, C> withAxonsContextConfigurer(Consumer<AxonsContext> axonsContextConfigurer);
+	UncompletedBatchNormAxonsBuilder<N, C> withAxonsContextConfigurer(AxonsContextConfigurer axonsContextConfig);
 
-	UncompletedBatchNormAxonsBuilder<N, C> withGamma(WeightsMatrix gamma);
+	UncompletedBatchNormAxonsBuilder<N, C> withGamma(WeightsVector gamma);
 
-	UncompletedBatchNormAxonsBuilder<N, C> withBeta(BiasMatrix beta);
+	UncompletedBatchNormAxonsBuilder<N, C> withBeta(BiasVector beta);
 
-	UncompletedBatchNormAxonsBuilder<N, C> withMean(Matrix mean);
+	UncompletedBatchNormAxonsBuilder<N, C> withMean(FeaturesVector mean);
 
-	UncompletedBatchNormAxonsBuilder<N, C> withVariance(Matrix variance);
+	UncompletedBatchNormAxonsBuilder<N, C> withVariance(FeaturesVector variance);
 
-	WeightsMatrix getGamma();
+	WeightsVector getGamma();
 
-	BiasMatrix getBeta();
+	BiasVector getBeta();
 
-	Matrix getMean();
+	FeaturesVector getMean();
 
-	Matrix getVariance();
+	FeaturesVector getVariance();
 	
 	BatchNormDimension<N> getBatchNormDimension();
 

@@ -8,4 +8,10 @@ package org.ml4j.nn;
 public interface LayeredFeedForwardNeuralNetworkContext
 		extends LayeredDirectedNeuralNetworkContext, FeedForwardNeuralNetworkContext {
 
+	@Override
+	LayeredFeedForwardNeuralNetworkContext asTrainingContext();
+
+	@Override
+	LayeredFeedForwardNeuralNetworkContext asNonTrainingContext();
+
 }

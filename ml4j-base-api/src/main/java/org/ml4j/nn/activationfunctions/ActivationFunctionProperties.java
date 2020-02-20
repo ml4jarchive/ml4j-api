@@ -24,13 +24,12 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  * @author Michael Lavelle
  */
 public class ActivationFunctionProperties implements Serializable {
-	
+		
 	/**
 	 * Default serialization id.
 	 */
 	private static final long serialVersionUID = 1L;
 
-	// TODO- TEMP
 	public static final float DEFAULT_ALPHA = 0.01f;
 	
 	private Float alpha;

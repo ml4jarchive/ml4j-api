@@ -14,29 +14,24 @@
 
 package org.ml4j.nn.layers;
 
-import org.ml4j.nn.synapses.DirectedSynapsesContext;
+import org.ml4j.nn.components.DirectedComponentActivationContext;
 
 /**
  * Encapsulates the runtime context used with a DirectedLayer.
  * 
  * @author Michael Lavelle
  */
-public interface DirectedLayerContext extends LayerContext {
-
-  /**
-   * @param synapsesIndex The index of the synapses within this DirectedLayer.
-   * @return The context we use to propagate data through the directed 
-   *         synapses of this Layer.
-   */
-  DirectedSynapsesContext getSynapsesContext(int synapsesIndex);
-  
-  /**
-   * @return Whether to freeze out this Layer for training.
-   */
-  boolean isWithFreezeOut();
-  
-  /**
-   * @param withFreezeOut Whether to freeze out this Layer for training.
-   */
-  void setWithFreezeOut(boolean withFreezeOut);
+public interface DirectedLayerContext extends LayerContext<DirectedLayerContext>, DirectedComponentActivationContext{ 
+	
+	/**
+	 * @return This context as a training context.
+	 */
+	@Override
+	DirectedLayerContext asTrainingContext();
+	
+	/**
+	 * 
+	 * @return This context as a non-training context.
+	 */
+	DirectedLayerContext asNonTrainingContext();
 }

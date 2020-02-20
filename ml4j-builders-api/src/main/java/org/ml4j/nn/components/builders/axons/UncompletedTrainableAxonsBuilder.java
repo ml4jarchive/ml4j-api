@@ -13,10 +13,8 @@
  */
 package org.ml4j.nn.components.builders.axons;
 
-import java.util.function.Consumer;
-
-import org.ml4j.nn.axons.AxonsContext;
-import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.AxonsContextConfigurer;
+import org.ml4j.nn.axons.BiasVector;
 import org.ml4j.nn.axons.WeightsMatrix;
 
 public interface UncompletedTrainableAxonsBuilder<N, C, B extends UncompletedTrainableAxonsBuilder<N, C, B>> {
@@ -27,9 +25,9 @@ public interface UncompletedTrainableAxonsBuilder<N, C, B extends UncompletedTra
 
 	B withBiasUnit();
 
-	B withBiases(BiasMatrix biases);
+	B withBiases(BiasVector biases);
 
-	Consumer<AxonsContext> getAxonsContextConfigurer();
+	AxonsContextConfigurer getAxonsContextConfigurer();
 	
 	String getName();
 

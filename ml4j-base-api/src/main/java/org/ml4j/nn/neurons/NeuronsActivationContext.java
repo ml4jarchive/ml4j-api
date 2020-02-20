@@ -19,6 +19,7 @@ package org.ml4j.nn.neurons;
 import java.io.Serializable;
 
 import org.ml4j.MatrixFactory;
+import org.ml4j.nn.components.DirectedComponentsContext;
 
 /**
  * Defines the runtime context for NeuronsActivation instances.
@@ -58,5 +59,25 @@ public interface NeuronsActivationContext extends Serializable {
 		}
 		return trainingContext;
 	}
+	
+	default boolean isTrainingContextStatusConsistentWith(DirectedComponentsContext directedComponentsContext) {
+		return isTrainingContext() == directedComponentsContext.isTrainingContext();
+	}
+	
+	/**
+	 * @return A lightweight wrapper around the current context, 
+	 * with shared factories and configuration, but with training mode set to true.
+	 * This does not change the training/non-training status of the session that
+	 * may have generated this context, or that of the current context.
+	 */
+	NeuronsActivationContext asTrainingContext();
+	
+	/**
+	 * @return A lightweight wrapper around the current context, 
+	 * with shared factories and configuration, but with training mode set to false.
+	 * This does not change the training/non-training status of the session that
+	 * may have generated this context, or that of the current context.
+	 */
+	NeuronsActivationContext asNonTrainingContext();
 
 }

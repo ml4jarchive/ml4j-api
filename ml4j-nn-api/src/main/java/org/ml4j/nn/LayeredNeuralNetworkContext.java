@@ -1,7 +1,5 @@
 package org.ml4j.nn;
 
-import org.ml4j.nn.layers.DirectedLayerContext;
-
 public interface LayeredNeuralNetworkContext extends NeuralNetworkContext {
 
 	/**
@@ -13,5 +11,5 @@ public interface LayeredNeuralNetworkContext extends NeuralNetworkContext {
 	 * @return The DirectedLayerContext for the DirectedLayer specified by the
 	 *         layerIndex.
 	 */
-	DirectedLayerContext getLayerContext(int layerIndex);
+	//DirectedLayerContext getLayerContext(int layerIndex);
 }

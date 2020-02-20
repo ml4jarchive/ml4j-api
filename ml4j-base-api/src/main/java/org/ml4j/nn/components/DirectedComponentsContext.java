@@ -15,6 +15,7 @@ package org.ml4j.nn.components;
 
 import java.io.Serializable;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 import org.ml4j.MatrixFactory;
 
@@ -24,16 +25,17 @@ public interface DirectedComponentsContext extends Serializable {
 	 * @param <C> The type of context we wish to obtain.
 	 * @param component The component for which we wish to retrieve the context.
 	 * @param defaultContextSupplier A supplier of a default context should there be no pre-existing context available.
+	 * @param creator A creator of a new context, given a pre-existing context.
 	 * @return The context for the component.
 	 */
-	<C extends Serializable> C getContext(DirectedComponent<?, ?, C, ?> component, Supplier<C> defaultContextSupplier);
+	<C extends Serializable> C getContext(ContextualNeuralComponent<C> component, Supplier<C> defaultContextSupplier, UnaryOperator<C> creator);
 
 	/**
 	 * @param <C> The type of context we wish to set.
 	 * @param component The component whose context we wish to set.
 	 * @param context The context we wish to set.
 	 */
-	<C extends Serializable> void setContext(DirectedComponent<?, ?, C, ?> component, C context);
+	<C extends Serializable> void setContext(ContextualNeuralComponent<C> component, C context);
 
 	MatrixFactory getMatrixFactory();
 

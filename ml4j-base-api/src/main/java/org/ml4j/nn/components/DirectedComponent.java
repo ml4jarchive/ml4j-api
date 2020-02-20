@@ -13,6 +13,8 @@
  */
 package org.ml4j.nn.components;
 
+import java.io.Serializable;
+
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
 
 /**
@@ -28,9 +30,10 @@ import org.ml4j.nn.components.factories.NeuralComponentFactory;
  *            component.
  * @param <C> The type of context used by this component for forward
  *            propagation, and by the resulting activation for back propagation.
+ * @param <F> The type of NeuralComponentFactory used to duplicate nested components on duplication
  * 
  */
-public interface DirectedComponent<I, A extends DirectedComponentActivation<I, ?>, C, F extends NeuralComponentFactory<?>> extends NeuralNetworkComponent {
+public interface DirectedComponent<I, A extends DirectedComponentActivation<I, ?>, C extends Serializable, F extends NeuralComponentFactory<?>> extends NeuralNetworkComponent {
 
 	/**
 	 * Forward Propagates the activations through the Synapses via the Axons and
@@ -50,6 +53,7 @@ public interface DirectedComponent<I, A extends DirectedComponentActivation<I, ?
 	NeuralComponentType getComponentType();
 
 	/**
+	 * @param neuralComponentFactory A NeuralComponentFactory implementation used to duplicate nested components.
 	 * @return A deep copy of this component.
 	 */
 	DirectedComponent<I, A, C, F> dup(F neuralComponentFactory);

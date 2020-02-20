@@ -9,7 +9,7 @@ import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
  * 
  * @author Michael Lavelle
  */
-public interface NeuralComponentVisitor<T extends NeuralComponent<T>> {
+public interface NeuralComponentVisitor<T extends NeuralComponent<?>> {
 
 	/**
 	 * Visit the specified component.
